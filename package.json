@@ -1,0 +1,44 @@
+{
+  "name": "shop-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "webpack -wd",
+    "start": "nodemon --exec @babel-node lib/server.js "
+  },
+  "author": "Krzysztof U",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@hapi/joi": "^15.1.1",
+    "babel-jest": "^24.9.0",
+    "babel-node": "0.0.1-security",
+    "babel-polyfill": "^6.26.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.9",
+    "multer": "^1.4.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
+    "webpack": "^4.39.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.0-beta.6",
+    "jest": "^24.8.0",
+    "webpack-cli": "^3.3.6"
+  }
+}
