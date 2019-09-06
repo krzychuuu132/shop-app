@@ -2,13 +2,13 @@
   "name": "shop-app",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/server.js",
+  "main": "src/server.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "webpack -wd",
-    "start": "node --exec @babel-node lib/server.js "
+    "webpack": "webpack -wd",
+    "start": "nodemon  @babel-node src/server.js "
   },
   "author": "Krzysztof U",
   "license": "ISC",
@@ -23,11 +23,15 @@
     "dotenv": "^8.0.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
+    "mini-css-extract-plugin": "^0.8.0",
     "mongoose": "^5.6.9",
     "multer": "^1.4.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "url-loader": "^2.1.0",
     "webpack": "^4.39.2"
   },
   "devDependencies": {
@@ -38,7 +42,11 @@
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.0-beta.6",
+    "css-loader": "^3.2.0",
     "jest": "^24.8.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
     "webpack-cli": "^3.3.6"
   }
 }

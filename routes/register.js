@@ -24,12 +24,19 @@ router.post("/register", upload.single(), async (req, res) => {
   const emailThere = await User.findOne({ email: req.body.email });
   if (emailThere)
     return res.status(200).json({
-      text: "taki emial juz istenieje w bazie"
+      text: "taki email juz istenieje w bazie",
+      type: "email"
     });
 
-  if (error && error !== null) return res.json(error.details[0].message);
+  if (error && error !== null)
+    return res.json({
+      text: error.details[0].message,
+      type: error.details[0].path[0]
+    });
   else if (password !== repeatPassword)
-    return res.status(200).json({ text: "hasla musza byc takie same" });
+    return res
+      .status(200)
+      .json({ text: "hasla musza byc takie same", type: "password" });
   else {
     const user = new User({
       name,

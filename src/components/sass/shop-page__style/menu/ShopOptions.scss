@@ -1,0 +1,66 @@
+.accout-options {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    position: relative;
+
+    &__link {
+        text-decoration: none;
+        color: black;
+        text-align: center;
+
+        .options-list,
+        .options-shopping,
+        .options-accout {
+            text-align: center;
+            z-index: 1;
+
+
+
+
+        }
+
+        &:hover+div {
+            opacity: 1;
+            transform: translateY(0);
+
+        }
+    }
+
+    &__icon {
+
+        font-size: 16px;
+    }
+
+    &__title {
+        font-size: 12px;
+        text-transform: capitalize;
+        padding-top: 2px;
+        letter-spacing: 1px;
+    }
+
+    &--active-list,
+    &--active-shopping,
+    &--active-accout {
+        position: absolute;
+        top: 100%;
+        left: -15%;
+
+        opacity: 0;
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        text-align: center;
+        margin: 0 5px;
+        border: 1px solid black;
+        transition: all .5s ease;
+    }
+
+    &--active-shopping {
+        left: 20%;
+    }
+
+    &--active-accout {
+        left: 50%;
+    }
+
+}
