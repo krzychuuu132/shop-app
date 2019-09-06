@@ -8,7 +8,7 @@
   },
   "scripts": {
     "webpack": "webpack -wd",
-    "start": "nodemon  @babel-node src/server.js "
+    "start": "node  @babel-node src/server.js "
   },
   "author": "Krzysztof U",
   "license": "ISC",
