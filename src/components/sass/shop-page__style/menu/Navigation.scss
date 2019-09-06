@@ -1,0 +1,274 @@
+$default-color: #333;
+
+@mixin hamburger-line {
+  width: 100%;
+  height: 2px;
+  background-color: $default-color;
+  position: absolute;
+  transition: all 0.1s 0.2s ease-in-out;
+}
+
+.hamburger {
+  height: 50px;
+  padding: 20px;
+  display: flex;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  z-index: 3;
+  transition: all 0.2s 0.2s;
+
+  outline: none;
+}
+
+.hamburger--active {
+  position: absolute;
+  top: 0;
+  right: 4%;
+  padding: 20px;
+
+  .hamburger__container {
+    .hamburger__line {
+      background-color: transparent;
+
+      &:after {
+        transform: translateY(10px) rotate(45deg);
+        background-color: white;
+      }
+
+      &:before {
+        transform: translateY(-10px) rotate(-45deg);
+        background-color: white;
+      }
+    }
+  }
+}
+
+.hamburger__container {
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hamburger__line {
+  @include hamburger-line();
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:after,
+  &:before {
+    @include hamburger-line();
+
+    content: "";
+    left: 0;
+    transition: all 0.2s 0.2s ease-in-out;
+  }
+
+  &:after {
+    top: -10px;
+  }
+
+  &:before {
+    top: 10px;
+  }
+}
+
+//div-container od menu hamburger
+.navigation {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  background-color: antiquewhite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  transition: transform 0.15s linear;
+  transform: translateX(-100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 130px;
+  }
+
+  //sex-choice
+  &__sex-choice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 130px;
+    background-color: yellow;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    align-items: flex-end;
+    justify-content: start;
+    padding: 20px 40px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &__sex-list {
+    width: 300px;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: auto;
+    list-style: none;
+    z-index: 2;
+  }
+
+  &__sex-item {
+    border-left: 1px solid whitesmoke;
+    width: auto;
+    text-align: center;
+  }
+
+  &__sex-item:nth-child(1) {
+    border-left: none;
+  }
+
+  &__sex-link {
+    text-decoration: none;
+    color: white;
+    padding: 4px 10px;
+    text-transform: capitalize;
+  }
+
+  &__sex-link--active {
+    transition: 1s;
+
+    border-bottom: 1px solid red;
+  }
+
+  //categories
+
+  &__list {
+    padding: 30px;
+  }
+
+  &__item {
+  }
+
+  &__link {
+    display: block;
+    width: 100vw;
+    padding: 20px 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $default-color;
+  }
+}
+
+.navigation--active {
+  transform: translateX(0);
+  overflow-y: hidden;
+}
+
+/*.menu {
+  position: absolute;
+  width: 20px;
+  left: 3%;
+  top: 55%;
+  z-index: 1;
+
+  &__btn {
+    width: 30px;
+    height: 15px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &-element {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      position: relative;
+      &__lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        border-radius: 25%;
+      }
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        transform: translateY(-50%);
+
+        border-radius: 25%;
+      }
+      &::after {
+        top: 100%;
+        background-color: black;
+      }
+    }
+  }
+}
+
+.menu--active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 100vh;
+  background-color: blanchedalmond;
+  overflow-y: hidden;
+  z-index: 2;
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+
+  &__btn {
+    position: absolute;
+    left: 82%;
+    top: 2%;
+
+    &-element {
+      &__lines {
+        transform: rotate(45deg);
+      }
+      &::after,
+      &::before {
+      }
+      &::after {
+      }
+    }
+  }
+}
+
+.menu--active ~ * {
+  filter: blur(10px);
+}
+
+*/
