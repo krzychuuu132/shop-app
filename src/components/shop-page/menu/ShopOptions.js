@@ -15,7 +15,7 @@ const ShopOptions = () => {
 
         <div className="accout-options--active-list">1</div>
 
-        <Link to="shopping-list" className="accout-options__link">
+        <Link to="/shopping-list" className="accout-options__link">
           <span className="options-shopping">
             <i className="fas fa-shopping-cart options-shopping__icon"></i>
             <p className="options-shopping__title">koszyk</p>
@@ -31,7 +31,7 @@ const ShopOptions = () => {
           </span>
         </Link>
 
-        <div className="accout-options--active-accout">123</div>
+        <div className="accout-options--active-accout"></div>
       </div>
     </>
   );

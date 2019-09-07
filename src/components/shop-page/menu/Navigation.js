@@ -9,41 +9,56 @@ import Kids from "./Kids";
 import imgMans from "../../sass/img/boy-small.jpg";
 import imgGirls from "../../sass/img/woman-small.jpg";
 import imgKids from "../../sass/img/kids-small.jpg";
-const showClothes = sex => {
-  const [hide, useActive] = useState(false);
-  return (
-    <ul className="navigation__list">
-      <li className="navigation__item">
-        <Link
-          to={`/mainSide/${sex}/shoes`}
-          className="navigation__link"
-          onClick={() => useActive(!hide)}
-        >
-          buty
-        </Link>
-      </li>
-      <li className="navigation__item">
-        <Link to={`/mainSide/${sex}/t-shirt`} className="navigation__link">
-          t-shirty
-        </Link>
-      </li>
-      <li className="navigation__item">
-        <Link to={`/mainSide/${sex}/blouses`} className="navigation__link">
-          bluzy
-        </Link>
-      </li>
-      <li className="navigation__item">
-        <Link to={`/mainSide/${sex}/jackets`} className="navigation__link">
-          kurtki
-        </Link>
-      </li>
-      <li className="navigation__item">
-        <Link to={`/mainSide/${sex}/trousers`} className="navigation__link">
-          spodnie
-        </Link>
-      </li>
-    </ul>
+
+const showClothes = (sex, change, useActive) => {
+  //ICON Menu-choice
+  const icon = (
+    <span className="navigation__link__span">
+      <i className="fas fa-chevron-right navigation__link__span-icon"></i>
+    </span>
   );
+
+  const productsList = [
+    {
+      id: 0,
+      text: "buty",
+      translateText: "shoes"
+    },
+    {
+      id: 1,
+      text: "t-shirty",
+      translateText: "T-shirts"
+    },
+    {
+      id: 2,
+      text: "bluzy",
+      translateText: "blouses"
+    },
+    {
+      id: 3,
+      text: "kurtki",
+      translateText: "jackets"
+    },
+    {
+      id: 4,
+      text: "spodnie",
+      translateText: "trousers"
+    }
+  ];
+  const ProductsListItem = productsList.map(item => (
+    <li className="navigation__item" key={item.id}>
+      <Link
+        to={`/mainSide/${sex}/${item.translateText}`}
+        className="navigation__link"
+        onClick={() => useActive(!change)}
+      >
+        {item.text}
+        {icon}
+      </Link>
+    </li>
+  ));
+
+  return <ul className="navigation__list">{ProductsListItem}</ul>;
 };
 
 const Navigation = () => {
@@ -54,7 +69,7 @@ const Navigation = () => {
 
   return (
     <>
-      <button className={activeSpan} onClick={() => useActive(!change)}>
+      <button className={activeSpan} onClick={async () => useActive(!change)}>
         <span className="hamburger__container">
           <span className="hamburger__line"></span>
         </span>
@@ -91,35 +106,47 @@ const Navigation = () => {
             </li>
           </ul>
         </div>
+
         <Switch>
           <Route
             path="/mainSide/mans"
             component={() => {
               return (
                 <>
-                  <Mans showClothes={showClothes} />,
+                  <Mans
+                    showClothes={() => showClothes("mans", change, useActive)}
+                  />
+
                   <img src={imgMans} alt="mans" className="navigation__img" />
                 </>
               );
             }}
           />
+
           <Route
             path="/mainSide/girls"
             component={() => {
               return (
                 <>
-                  <Girls showClothes={showClothes} />,
+                  <Girls
+                    showClothes={() => showClothes("girls", change, useActive)}
+                  />
+
                   <img src={imgGirls} alt="girls" className="navigation__img" />
                 </>
               );
             }}
           />
+
           <Route
             path="/mainSide/kids"
             component={() => {
               return (
                 <>
-                  <Kids showClothes={showClothes} />,
+                  <Kids
+                    showClothes={() => showClothes("kids", change, useActive)}
+                  />
+
                   <img src={imgKids} alt="kids" className="navigation__img" />
                 </>
               );

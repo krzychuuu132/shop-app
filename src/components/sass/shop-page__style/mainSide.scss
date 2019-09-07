@@ -17,41 +17,7 @@
             display: none;
         }
 
-        @media (min-width: 600px) {
-            &__menu-type {
-                display: block;
-            }
 
-            &__menu-type {
-                display: flex;
-                justify-content: center;
-                min-width: 200px;
-                max-width: 280px;
-                min-height: 20px;
-
-                &__link {
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
-                    font-size: 11px;
-
-                    height: 100%;
-                    padding: 19px 15px;
-                    position: relative;
-
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        top: 50%;
-                        width: 1px;
-                        height: 10px;
-                        background-color: black;
-                        transform: translateY(-50%);
-                    }
-                }
-            }
-        }
 
         .accout-options,
         &__logo {

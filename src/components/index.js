@@ -5,12 +5,18 @@ import StartSide from "./StartSide";
 import Register from "./Register";
 import Login from "./Login";
 import BadPatch from "./BadPatch";
+
 //import ShopMenu from "./shop-page/MainSide";
 import "./sass/accout/style.scss";
 import mainSide from "./shop-page/MainSide";
 import WishList from "./shop-page/WishList";
 import ShoppingList from "./shop-page/ShoppingList";
 import Accout from "./shop-page/Accout";
+// REDUX
+import { Provider as ReduxProvider } from "react-redux";
+import configureStore from "../redux/configureStore";
+
+const store = configureStore();
 class App extends React.Component {
   render() {
     return (
@@ -32,4 +38,9 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <ReduxProvider store={store}>
+    <App />
+  </ReduxProvider>,
+  document.getElementById("root")
+);

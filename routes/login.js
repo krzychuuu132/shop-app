@@ -4,7 +4,7 @@ const { loginValidation } = require("../validation");
 const bcrypt = require("bcryptjs");
 // MODEL
 const User = require("../models/User");
-router.get("/mainSide", (req, res) => {
+router.get("/mainSide/girls", (req, res) => {
   res.render("index", { anser: 4545 });
 });
 router.get("/login", (req, res) => {
@@ -27,7 +27,7 @@ router.post("/login", async (req, res) => {
   if (!compareHidePassword) return res.render("index");
   //if (!error) return console.log(error.details[0].message);
 
-  res.status(300).redirect("/mainSide");
+  res.status(300).redirect("/mainSide/girls");
 });
 
 module.exports = router;
