@@ -3,6 +3,8 @@ import "../sass/shop-page__style/mainSide.scss";
 import { Link } from "react-router-dom";
 import ShopOptions from "./menu/ShopOptions";
 import Navigation from "./menu/Navigation";
+import Main from "./main/Main";
+
 const mainSide = () => {
   return (
     <>
@@ -28,12 +30,15 @@ const mainSide = () => {
               placeholder="wyszukaj"
             />
             <button className="components__search-btn">
-              <i className="fas fa-search components__search-btn__icon"></i>
+              <span className="fas fa-search components__search-btn__icon"></span>
             </button>
           </div>
           <ShopOptions />
         </div>
       </header>
+      <main className="main">
+        <Main />
+      </main>
     </>
   );
 };

@@ -14,7 +14,7 @@ const showClothes = (sex, change, useActive) => {
   //ICON Menu-choice
   const icon = (
     <span className="navigation__link__span">
-      <i className="fas fa-chevron-right navigation__link__span-icon"></i>
+      <span className="fas fa-chevron-right navigation__link__span-icon"></span>
     </span>
   );
 

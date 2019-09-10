@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import StartSide from "./StartSide";
-import Register from "./Register";
-import Login from "./Login";
-import BadPatch from "./BadPatch";
+import StartSide from "./shop-page/accout/StartSide";
+import Register from "./shop-page/accout/Register";
+import Login from "./shop-page/accout/Login";
+import BadPatch from "./shop-page/accout/BadPatch";
 
 //import ShopMenu from "./shop-page/MainSide";
 import "./sass/accout/style.scss";
 import mainSide from "./shop-page/MainSide";
-import WishList from "./shop-page/WishList";
-import ShoppingList from "./shop-page/ShoppingList";
-import Accout from "./shop-page/Accout";
+import WishList from "./shop-page/menu-options/WishList";
+import ShoppingList from "./shop-page/menu-options/ShoppingList";
+import Accout from "./shop-page/menu-options/Accout";
 // REDUX
 import { Provider as ReduxProvider } from "react-redux";
 import configureStore from "../redux/configureStore";
