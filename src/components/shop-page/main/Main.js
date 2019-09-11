@@ -3,7 +3,7 @@ import "../../sass/main/main.scss";
 
 import slider__womansSmall from "../../sass/img/woman-source.jpg";
 import slider__mansSmall from "../../sass/img/slider__mans-big.jpg";
-import slider__kidsSmall from "../../sass/img/kids-small.jpg";
+import slider__kidsSmall from "../../sass/img/kids-source.jpg";
 
 class Main extends React.Component {
   constructor() {
@@ -24,6 +24,18 @@ class Main extends React.Component {
       dragging: false
     };
   }
+
+  handleChangeSliderPicture = () => {
+    let index = 0;
+
+    const arrow = [slider__mansSmall, slider__kidsSmall];
+
+    setInterval(() => {
+      index === 1 ? (index = 0) : index++;
+
+      this.img2El.current.src = arrow[index];
+    }, 6000);
+  };
 
   initEvents = () => {
     this.handleMouseDown();
@@ -148,6 +160,7 @@ class Main extends React.Component {
             </div>
           </div>
         </div>
+        {this.handleChangeSliderPicture()}
       </>
     );
   }

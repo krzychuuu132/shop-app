@@ -485,7 +485,11 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  padding-bottom: 250px; }
+  padding-bottom: 200px; }
+
+@media (min-width: 1024px) {
+  .slider__images-container {
+    padding-bottom: 450px; } }
 
 .slider__image-container {
   position: absolute;

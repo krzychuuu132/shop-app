@@ -20,7 +20,13 @@
   position: relative;
   width: 100%;
   height: 100%;
-  padding-bottom: $image-height-proportion;
+  padding-bottom: $image-height-mobileProportion;
+}
+
+@media(min-width:1024px) {
+  .slider__images-container {
+    padding-bottom: $image-height-desktopProportion;
+  }
 }
 
 .slider__image-container {
