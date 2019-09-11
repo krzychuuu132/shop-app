@@ -161,6 +161,38 @@ class Main extends React.Component {
           </div>
         </div>
         {this.handleChangeSliderPicture()}
+        <section className="quality">
+          <div className="service">
+            <p className="service__options">
+              <i className="fas fa-user-shield service__icon"></i>
+              <span className="service__title">SSL</span>Bezpieczne zakupy
+            </p>
+          </div>
+          <div className="service">
+            <p className="service__options">
+              <i className="fas fa-sync service__icon"></i>
+              <span className="service__title">30</span>dni na zwrot towaru
+            </p>
+          </div>
+          <div className="service">
+            <p className="service__options">
+              <i className="fas fa-shuttle-van service__icon"></i>
+              <span className="service__title">Szybka</span>wysyłka
+            </p>
+          </div>
+          <div className="service">
+            <p className="service__options">
+              <i className="fas fa-tag service__icon"></i>
+              <span className="service__title">Sprawdzona </span>jakość
+            </p>
+          </div>
+          <div className="service">
+            <p className="service__options">
+              <i className="fas fa-hand-holding-usd service__icon"></i>
+              <span className="service__title">Korzystne</span>ceny
+            </p>
+          </div>
+        </section>
       </>
     );
   }
@@ -168,35 +200,4 @@ class Main extends React.Component {
 
 export default Main;
 
-/*<section className="quality">
-        <div className="service">
-          <p className="service__options">
-            <i className="fas fa-user-shield service__icon"></i>
-            <span className="service__title">SSL</span>Bezpieczne zakupy
-          </p>
-        </div>
-        <div className="service">
-          <p className="service__options">
-            <i className="fas fa-sync service__icon"></i>
-            <span className="service__title">30</span>dni na zwrot towaru
-          </p>
-        </div>
-        <div className="service">
-          <p className="service__options">
-            <i className="fas fa-shuttle-van service__icon"></i>
-            <span className="service__title">Szybka</span>wysyłka
-          </p>
-        </div>
-        <div className="service">
-          <p className="service__options">
-            <i className="fas fa-tag service__icon"></i>
-            <span className="service__title">Sprawdzona </span>jakość
-          </p>
-        </div>
-        <div className="service">
-          <p className="service__options">
-            <i className="fas fa-hand-holding-usd service__icon"></i>
-            <span className="service__title">Korzystne</span>ceny
-          </p>
-        </div>
-      </section> */
+/* */

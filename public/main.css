@@ -515,39 +515,27 @@ body {
   .slider__image-container--second {
     width: 100%; }
 
-/*
 .quality {
-  min-height: 250px;
-  margin-top: 180px;
+  min-height: 150px;
   padding: 20px;
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: repeat(auto-fill, auto);
-
+  grid-template-columns: repeat(auto-fill, 170px);
   align-items: center;
-  justify-content: flex-start;
-
-  .service {
+  justify-content: center; }
+  .quality .service {
     font-size: 13px;
     font-family: Arial, Helvetica, sans-serif;
-
-    &__options {
+    padding: 10px; }
+    .quality .service__options {
       word-spacing: 3px;
-      text-align: center;
-    }
-
-    &__icon {
+      text-align: center; }
+    .quality .service__icon {
       font-size: 30px;
-      color: rgb(175, 173, 173);
-    }
-
-    &__title {
+      color: #afadad; }
+    .quality .service__title {
       font-weight: bold;
-      padding: 0 3px 0 20px;
-    }
-  }
-}
-*/
+      padding: 0 3px 0 20px; }
 
 .wish-list {
   width: 100vw;
