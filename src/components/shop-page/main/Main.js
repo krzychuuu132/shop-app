@@ -32,7 +32,7 @@ class Main extends React.Component {
   };
 
   getOffset = clientX => {
-    const offset = clientX - this.imagesContainerLeftOffset;
+    const offset = clientX;
 
     if (offset < 0) return 0;
     else if (offset > this.imagesContainerWidth)
@@ -68,8 +68,8 @@ class Main extends React.Component {
   };
 
   addJustImagesSize = () => {
-    this.imagesContainerLeftOffset = this.imagesContainerEl.current.offsetLeft;
     this.imagesContainerWidth = this.imagesContainerEl.current.offsetWidth;
+    this.imagesContainerLeftOffset = this.imagesContainerEl.current.offsetLeft;
 
     this.img1El.current.style.width = this.imagesContainerWidth + "px";
     this.img2El.current.style.width = this.imagesContainerWidth + "px";
@@ -83,9 +83,14 @@ class Main extends React.Component {
     });
   };
 
-  componentWillMount = () => {
+  UNSAFE_componentWillMount = () => {
     window.addEventListener("resize", this.addJustImagesSize);
     window.addEventListener("mousemove", this.handleMouseMove);
+    window.addEventListener("touchmove", e => {
+      if (this.state.dragging) {
+        this.move(e.touches[0].clientX);
+      }
+    });
   };
 
   render() {
@@ -126,6 +131,16 @@ class Main extends React.Component {
                 ref={this.handleEl}
                 onMouseDown={this.handleMouseDown}
                 onMouseUp={this.handleMouseUp}
+                onTouchStart={() =>
+                  this.setState({
+                    dragging: true
+                  })
+                }
+                onTouchEnd={() => {
+                  this.setState({
+                    dragging: false
+                  });
+                }}
               >
                 <span className="fas fa-chevron-left"></span>
                 <span className="fas fa-chevron-right"></span>

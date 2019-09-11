@@ -4,7 +4,7 @@
 .main {
   min-height: 100vh;
   background-color: whitesmoke;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
   padding: 10px 0;
 
@@ -28,19 +28,24 @@
   left: 0;
   top: 0;
   height: 100%;
+  width: 100%;
   overflow: hidden;
 
   img {
     top: 50%;
     height: 100%;
     transform: translateY(-50%);
-    width: $image-width;
+
     position: absolute;
     -webkit-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
     filter: brightness(0.6);
+
+    &:nth-child(2) {
+      width: 90%;
+    }
   }
 
   &--first {
