@@ -479,13 +479,32 @@ body {
 
 .slider {
   max-width: 100%;
-  margin: 10px auto; }
+  margin: 10px auto;
+  position: relative; }
+  .slider__dots {
+    width: 50px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    gap: 2px 0;
+    justify-content: center;
+    align-items: center;
+    padding: 10px; }
+  .slider__dot {
+    width: 10px;
+    height: 10px;
+    background-color: black; }
 
 .slider__images-container {
   position: relative;
   width: 100%;
   height: 100%;
-  padding-bottom: 200px; }
+  padding-bottom: 35%; }
 
 @media (min-width: 1024px) {
   .slider__images-container {
@@ -517,10 +536,11 @@ body {
 
 .quality {
   min-height: 150px;
+  border-bottom: 1px solid gray;
   padding: 20px;
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: repeat(auto-fill, 170px);
+  grid-template-columns: repeat(auto-fill, 150px);
   align-items: center;
   justify-content: center; }
   .quality .service {
@@ -535,7 +555,69 @@ body {
       color: #afadad; }
     .quality .service__title {
       font-weight: bold;
-      padding: 0 3px 0 20px; }
+      padding: 0 3px 0 20px;
+      font-size: 14px; }
+  .quality .service:nth-last-child(1) {
+    grid-column: 1/3; }
+  @media (min-width: 490px) {
+    .quality .service:nth-last-child(1) {
+      grid-column: auto; } }
+
+@media (min-width: 930px) {
+  .quality {
+    grid-template-columns: repeat(5, auto);
+    justify-content: space-around; } }
+
+.search {
+  height: 50px;
+  position: relative; }
+  .search__filtr {
+    min-width: 70px;
+    height: auto;
+    position: absolute;
+    right: 3%;
+    top: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    .search__filtr button {
+      color: black;
+      font-size: 19px;
+      background-color: transparent;
+      border: none;
+      outline: none; }
+  .search__text {
+    color: black; }
+  .search--active {
+    z-index: 3;
+    transform: translateY(0);
+    transition: .5s;
+    will-change: transform; }
+  .search__unactive {
+    transform: translateY(-100vh);
+    transition: .5s; }
+
+.filter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(240, 233, 233, 0.904);
+  width: 100vw;
+  height: 100vh; }
+  .filter__btn {
+    position: absolute;
+    top: 1.5%;
+    left: 2%;
+    background-color: transparent;
+    border: none; }
+    .filter__btn span {
+      font-size: 20px; }
+  .filter__title {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 20px; }
+
 
 .wish-list {
   width: 100vw;

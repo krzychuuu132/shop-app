@@ -7,8 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "webpack": "webpack -wd",
-    "start": "node src/server.js "
+    "webpack": "webpack -wd --inline --progress --colors",
+    "start": "nodemon --exec @babel-node src/server.js "
   },
   "author": "Krzysztof U",
   "license": "ISC",
@@ -34,7 +34,8 @@
     "redux": "^4.0.4",
     "redux-immutable-state-invariant": "^2.1.0",
     "url-loader": "^2.1.0",
-    "webpack": "^4.39.2"
+    "webpack": "^4.39.2",
+    "webpack-dev-server": "^3.8.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

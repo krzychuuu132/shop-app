@@ -159,6 +159,10 @@ class Main extends React.Component {
               </div>
             </div>
           </div>
+          <div className="slider__dots">
+            <span className="slider__dot"></span>
+            <span className="slider__dot"></span>
+          </div>
         </div>
         {this.handleChangeSliderPicture()}
         <section className="quality">

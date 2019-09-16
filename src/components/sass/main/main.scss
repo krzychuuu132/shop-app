@@ -14,6 +14,30 @@
 .slider {
   max-width: $image-width;
   margin: 10px auto;
+  position: relative;
+
+  &__dots {
+    width: 50px;
+    height: 80px;
+
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    gap: 2px 0;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+  }
 }
 
 .slider__images-container {
@@ -67,28 +91,13 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .quality {
   min-height: 150px;
-
+  border-bottom: 1px solid gray;
   padding: 20px;
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: repeat(auto-fill, 170px);
+  grid-template-columns: repeat(auto-fill, 150px);
 
   align-items: center;
   justify-content: center;
@@ -103,14 +112,39 @@
       text-align: center;
     }
 
+
+
     &__icon {
       font-size: 30px;
       color: rgb(175, 173, 173);
+
     }
 
     &__title {
       font-weight: bold;
       padding: 0 3px 0 20px;
+      font-size: 14px;
     }
+  }
+
+
+
+  .service:nth-last-child(1) {
+    grid-column: 1/3;
+
+  }
+
+  @media(min-width:490px) {
+    .service:nth-last-child(1) {
+      grid-column: auto;
+
+    }
+  }
+}
+
+@media(min-width:930px) {
+  .quality {
+    grid-template-columns: repeat(5, auto);
+    justify-content: space-around;
   }
 }

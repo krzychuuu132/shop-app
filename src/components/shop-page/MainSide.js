@@ -5,6 +5,11 @@ import ShopOptions from "./menu/ShopOptions";
 import Navigation from "./menu/Navigation";
 import Main from "./main/Main";
 
+// Search-Panel,Products
+
+import SearchProducts from "./main/SearchProducts";
+import Products from "./main/Products";
+
 const mainSide = () => {
   return (
     <>
@@ -38,6 +43,8 @@ const mainSide = () => {
       </header>
       <main className="main">
         <Main />
+        <SearchProducts />
+        <Products />
       </main>
     </>
   );
