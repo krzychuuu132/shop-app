@@ -536,7 +536,7 @@ body {
 
 .quality {
   min-height: 150px;
-  border-bottom: 1px solid gray;
+  border-bottom: 0.1px solid #c2baba;
   padding: 20px;
   display: grid;
   grid-template-rows: auto;
@@ -576,7 +576,8 @@ body {
     height: auto;
     position: absolute;
     right: 3%;
-    top: 5%;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     justify-content: space-around;
     align-items: center; }
@@ -596,12 +597,19 @@ body {
   .search__unactive {
     transform: translateY(-100vh);
     transition: .5s; }
+  .search__name {
+    position: absolute;
+    text-transform: uppercase;
+    left: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px; }
 
 .filter {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(240, 233, 233, 0.904);
+  background-color: rgba(240, 233, 233, 0.979);
   width: 100vw;
   height: 100vh; }
   .filter__btn {
@@ -617,7 +625,33 @@ body {
     text-transform: uppercase;
     padding: 10px;
     font-size: 20px; }
-
+  .filter__element {
+    width: 100%;
+    height: 50px;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 25px; }
+  .filter__price {
+    display: grid;
+    flex-direction: column;
+    grid-template-rows: repeat(3, auto);
+    height: auto; }
+  .filter__price-promotion {
+    grid-row: 3; }
+  .filter__sort-options {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: red;
+    transform: translateX(100%);
+    transition: .2s;
+    z-index: 5; }
+  .filter__sort-options--active {
+    transform: translateX(0); }
 
 .wish-list {
   width: 100vw;

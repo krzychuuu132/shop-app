@@ -7,7 +7,8 @@
         height: auto;
         position: absolute;
         right: 3%;
-        top: 5%;
+        top: 50%;
+        transform: translateY(-50%);
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -39,13 +40,22 @@
         transform: translateY(-100vh);
         transition: .5s;
     }
+
+    &__name {
+        position: absolute;
+        text-transform: uppercase;
+        left: 3%;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 15px;
+    }
 }
 
 .filter {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(240, 233, 233, 0.904);
+    background-color: rgba(240, 233, 233, 0.979);
     width: 100vw;
     height: 100vh;
 
@@ -66,5 +76,46 @@
         text-transform: uppercase;
         padding: 10px;
         font-size: 20px;
+    }
+
+
+    //Element of Filters
+
+    &__element {
+        width: 100%;
+        height: 50px;
+        padding: 10px 20px;
+        text-transform: capitalize;
+        font-weight: bold;
+        letter-spacing: 1px;
+        line-height: 25px;
+    }
+
+    &__price {
+        display: grid;
+        flex-direction: column;
+        grid-template-rows: repeat(3, auto);
+        height: auto;
+    }
+
+    &__price-promotion {
+        grid-row: 3;
+    }
+
+    &__sort-options {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100vw;
+        height: 100vh;
+        background-color: red;
+        transform: translateX(100%);
+        transition: .2s;
+        z-index: 5;
+    }
+
+    &__sort-options--active {
+        transform: translateX(0);
     }
 }

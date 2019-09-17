@@ -11,6 +11,26 @@ import SearchProducts from "./main/SearchProducts";
 import Products from "./main/Products";
 
 const mainSide = () => {
+  const sexChoice = [
+    {
+      id: 0,
+      type: "odzież żeńska",
+      path: "/mainSide/girls",
+      class: "search__name"
+    },
+    {
+      id: 1,
+      type: "odzież męska",
+      path: "/mainSide/mans",
+      class: "search__name"
+    },
+    {
+      id: 2,
+      type: "odzież dziecięca",
+      path: "/mainSide/kids",
+      class: "search__name"
+    }
+  ];
   return (
     <>
       <header className="header">
@@ -43,7 +63,7 @@ const mainSide = () => {
       </header>
       <main className="main">
         <Main />
-        <SearchProducts />
+        <SearchProducts sexChoice={sexChoice} />
         <Products />
       </main>
     </>
