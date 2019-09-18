@@ -15,6 +15,17 @@ const SearchProducts = props => {
       component={() => <h3 className={person.class}>{person.type}</h3>}
     ></Route>
   ));
+  console.log(activeCategory);
+
+  const showComponent = title => {
+    const titleOfFilter = (
+      <h1 className="filter__sort-options_title">{title}</h1>
+    );
+    if (activeCategory === "sortuj") return titleOfFilter;
+    else if (activeCategory === "rozmiar") return titleOfFilter;
+    else if (activeCategory === "marka") return titleOfFilter;
+    else if (activeCategory === "cena") return titleOfFilter;
+  };
 
   return (
     <>
@@ -45,12 +56,22 @@ const SearchProducts = props => {
           <h1 className="filter__title">filtr</h1>
           <div
             className="filter__sort filter__element"
-            onClick={() => useActiveCategory("sort")}
+            onClick={() => useActiveCategory("sortuj")}
           >
             sortuj
           </div>
-          <div className="filter__size filter__element">rozmiar</div>
-          <div className="filter__bussines filter__element">marka</div>
+          <div
+            className="filter__size filter__element"
+            onClick={() => useActiveCategory("rozmiar")}
+          >
+            rozmiar
+          </div>
+          <div
+            className="filter__bussines filter__element"
+            onClick={() => useActiveCategory("marka")}
+          >
+            marka
+          </div>
           <div className="filter__price filter__element">
             cena
             <input type="range" />
@@ -58,7 +79,6 @@ const SearchProducts = props => {
             <label className="filter__price-promotion">tylko promocje</label>
           </div>
 
-          <div className="filter__color filter__element">cena</div>
           <div
             className={
               activeCategory
@@ -66,7 +86,17 @@ const SearchProducts = props => {
                 : "filter__sort-options"
             }
           >
-            siemannnnno
+            {showComponent(activeCategory)}
+
+            <div className="filter__exit">
+              <h3 className="filter__exit-item">zamknij</h3>
+              <button className="filter__exit-btn">
+                <span
+                  className="fas fa-times filter__exit-icon"
+                  onClick={() => useActiveCategory(!activeCategory)}
+                ></span>
+              </button>
+            </div>
           </div>
         </div>
       </section>

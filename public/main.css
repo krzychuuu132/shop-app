@@ -609,9 +609,10 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(240, 233, 233, 0.979);
+  background-color: white;
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  overflow-y: hidden; }
   .filter__btn {
     position: absolute;
     top: 1.5%;
@@ -646,12 +647,42 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: red;
+    background-color: white;
     transform: translateX(100%);
     transition: .2s;
     z-index: 5; }
+    .filter__sort-options_title {
+      text-transform: uppercase;
+      color: black;
+      text-align: center;
+      font-size: 18px;
+      padding: 10px; }
   .filter__sort-options--active {
-    transform: translateX(0); }
+    transform: translateX(0);
+    overflow-y: hidden; }
+  .filter__exit {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: black; }
+    .filter__exit-item {
+      text-align: center;
+      text-transform: uppercase;
+      color: white;
+      line-height: 60px; }
+    .filter__exit-btn {
+      position: absolute;
+      left: 5%;
+      bottom: 50%;
+      transform: translateY(50%);
+      background-color: transparent;
+      border: none;
+      padding: 15px 8px; }
+    .filter__exit-icon {
+      color: white;
+      font-size: 16px; }
 
 .wish-list {
   width: 100vw;
