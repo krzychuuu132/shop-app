@@ -21,8 +21,34 @@ const SearchProducts = props => {
     const titleOfFilter = (
       <h1 className="filter__sort-options_title">{title}</h1>
     );
-    if (activeCategory === "sortuj") return titleOfFilter;
-    else if (activeCategory === "rozmiar") return titleOfFilter;
+    if (activeCategory === "sortuj")
+      return (
+        <div className="sorting">
+          {titleOfFilter}
+          <span className="sorting__element">popularność</span>
+          <span className="sorting__element">nowości</span>
+          <span className="sorting__element">najniższa cena</span>
+          <span className="sorting__element">najwyższa cena</span>
+          <span className="sorting__element">wyprzedaż</span>
+        </div>
+      );
+    else if (activeCategory === "rozmiar")
+      return (
+        <>
+          {titleOfFilter}
+          <div className="size">
+            <span className="size__element">36</span>
+            <span className="size__element">37</span>
+            <span className="size__element">38</span>
+            <span className="size__element">39</span>
+            <span className="size__element">40</span>
+            <span className="size__element">41</span>
+            <span className="size__element">42</span>
+            <span className="size__element">43</span>
+            <span className="size__element">44</span>
+          </div>
+        </>
+      );
     else if (activeCategory === "marka") return titleOfFilter;
     else if (activeCategory === "cena") return titleOfFilter;
   };

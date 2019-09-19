@@ -590,6 +590,7 @@ body {
   .search__text {
     color: black; }
   .search--active {
+    overflow: hidden;
     z-index: 3;
     transform: translateY(0);
     transition: .5s;
@@ -683,6 +684,30 @@ body {
     .filter__exit-icon {
       color: white;
       font-size: 16px; }
+
+.sorting {
+  display: flex;
+  flex-direction: column;
+  padding: 15px; }
+  .sorting__element {
+    text-transform: capitalize;
+    font-size: 15px;
+    padding: 15px 5px; }
+
+.size {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px; }
+  .size__element {
+    display: block;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    line-height: calc(70px / 2);
+    font-weight: bold;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 15px; }
 
 .wish-list {
   width: 100vw;
