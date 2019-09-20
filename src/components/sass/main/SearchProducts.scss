@@ -33,12 +33,14 @@
         transform: translateY(0);
         transition: .5s;
         will-change: transform;
+
     }
 
     &__unactive {
 
         transform: translateY(-100vh);
         transition: .5s;
+
     }
 
     &__name {
@@ -92,6 +94,17 @@
         font-weight: bold;
         letter-spacing: 1px;
         line-height: 25px;
+        position: relative;
+
+        &-icon {
+            position: absolute;
+            top: 50%;
+            right: 6%;
+            transform: translateY(-50%);
+            font-size: 20px;
+
+
+        }
     }
 
     &__price {
@@ -99,23 +112,41 @@
         flex-direction: column;
         grid-template-rows: repeat(3, auto);
         height: auto;
+        position: relative;
+
+        &-scope {
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            color: rgb(141, 139, 139);
+
+        }
+
+        &-input_scope {
+            margin: 15px 0 6px 0;
+
+        }
+
     }
 
-    &__price-promotion {
-        grid-row: 3;
-    }
+
 
     &__sort-options {
         position: fixed;
         top: 0;
         left: 0;
-
         width: 100vw;
         height: 100vh;
+
+
         background-color: white;
         transform: translateX(100%);
         transition: .2s;
-        z-index: 5;
+        z-index: 2;
+
+
+
+
 
         &_title {
             text-transform: uppercase;
@@ -129,8 +160,8 @@
     }
 
     &__sort-options--active {
-        transform: translateX(0);
-        overflow-y: hidden;
+        transform: translateX(0%);
+
     }
 
     &__exit {
@@ -168,11 +199,11 @@
 
     }
 
-    //options-design
 
 
 }
 
+//options-design
 .sorting {
     display: flex;
     flex-direction: column;
