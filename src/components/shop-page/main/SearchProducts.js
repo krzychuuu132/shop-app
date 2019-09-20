@@ -15,38 +15,73 @@ const SearchProducts = props => {
       component={() => <h3 className={person.class}>{person.type}</h3>}
     ></Route>
   ));
-  console.log(activeCategory);
-
+  const sizes = [
+    {
+      number: 36
+    },
+    {
+      number: 37
+    },
+    {
+      number: 38
+    },
+    {
+      number: 39
+    },
+    {
+      number: 40
+    }
+  ];
+  const sortOptions = [
+    {
+      text: "popularność"
+    },
+    {
+      text: "nowości"
+    },
+    {
+      text: "najniższa cena"
+    },
+    {
+      text: "najwyższa cena"
+    },
+    {
+      text: "wyprzedaż"
+    }
+  ];
   const showComponent = title => {
     const titleOfFilter = (
       <h1 className="filter__sort-options_title">{title}</h1>
     );
+
+    const HandleShowSizeElements = () => {
+      return sizes.map((size, index) => (
+        <span className="size__element" key={index}>
+          {size.number}
+        </span>
+      ));
+    };
+
+    const HandleShowSortOptions = () => {
+      return sortOptions.map((option, index) => (
+        <span className="sorting__element" key={index}>
+          {option.text}
+        </span>
+      ));
+    };
+
     if (activeCategory === "sortuj")
       return (
         <div className="sorting">
           {titleOfFilter}
-          <span className="sorting__element">popularność</span>
-          <span className="sorting__element">nowości</span>
-          <span className="sorting__element">najniższa cena</span>
-          <span className="sorting__element">najwyższa cena</span>
-          <span className="sorting__element">wyprzedaż</span>
+          {HandleShowSortOptions()}
         </div>
       );
     else if (activeCategory === "rozmiar")
       return (
         <>
           {titleOfFilter}
-          <div className="size">
-            <span className="size__element">36</span>
-            <span className="size__element">37</span>
-            <span className="size__element">38</span>
-            <span className="size__element">39</span>
-            <span className="size__element">40</span>
-            <span className="size__element">41</span>
-            <span className="size__element">42</span>
-            <span className="size__element">43</span>
-            <span className="size__element">44</span>
-          </div>
+          <div className="size">{HandleShowSizeElements()}</div>
         </>
       );
     else if (activeCategory === "marka") return titleOfFilter;
@@ -85,24 +120,30 @@ const SearchProducts = props => {
             onClick={() => useActiveCategory("sortuj")}
           >
             sortuj
+            <span className="fas fa-angle-right filter__element-icon"></span>
           </div>
           <div
             className="filter__size filter__element"
             onClick={() => useActiveCategory("rozmiar")}
           >
             rozmiar
+            <span className="fas fa-angle-right filter__element-icon"></span>
           </div>
           <div
             className="filter__bussines filter__element"
             onClick={() => useActiveCategory("marka")}
           >
             marka
+            <span className="fas fa-angle-right filter__element-icon"></span>
           </div>
           <div className="filter__price filter__element">
             cena
-            <input type="range" />
-            <input type="checkbox" className="filter__price-check" />
-            <label className="filter__price-promotion">tylko promocje</label>
+            <input type="range" className="filter__price-input_scope" />
+            <label className="filter__price-promotion">
+              <input type="checkbox" className="filter__price-check" /> tylko
+              promocje
+            </label>
+            <div className="filter__price-scope">40zł-5539zł</div>
           </div>
 
           <div
