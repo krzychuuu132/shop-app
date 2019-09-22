@@ -6,165 +6,46 @@ import slider__mansSmall from "../../sass/img/slider__mans-big.jpg";
 import slider__kidsSmall from "../../sass/img/kids-source.jpg";
 
 class Main extends React.Component {
-  constructor() {
-    super();
-    this.imagesContainerEl = React.createRef();
-    this.img1El = React.createRef();
-    this.img2El = React.createRef();
-    this.img3El = React.createRef();
-    this.img1ContainerEl = React.createRef();
-    this.img2ContainerEl = React.createRef();
-    //this.img3ContainerEl = React.createRef();
-    this.deviderEl = React.createRef();
-    this.handleEl = React.createRef();
-    this.imagesContainerWidth;
-    this.imagesContainerLeftOffset;
-
-    this.state = {
-      dragging: false
-    };
+  constructor(props) {
+    super(props);
+    this.sliderFirstImage = React.createRef();
+    this.sliderMainContainer = React.createRef();
+    this.prevBtn = React.createRef();
+    this.nextBtn = React.createRef();
   }
-
-  handleChangeSliderPicture = () => {
-    let index = 0;
-
-    const arrow = [slider__mansSmall, slider__kidsSmall];
-
-    setInterval(() => {
-      index === 1 ? (index = 0) : index++;
-
-      this.img2El.current.src = arrow[index];
-    }, 6000);
-  };
-
-  initEvents = () => {
-    this.handleMouseDown();
-    this.handleMouseUp();
-    this.handleMouseMove();
-  };
-
-  getOffset = clientX => {
-    const offset = clientX;
-
-    if (offset < 0) return 0;
-    else if (offset > this.imagesContainerWidth)
-      return this.imagesContainerWidth;
-    else return offset;
-  };
-
-  move = clientX => {
-    const offset = this.getOffset(clientX);
-
-    const percent = (offset / this.imagesContainerWidth) * 100;
-
-    this.deviderEl.current.style.left = percent + "%";
-    this.img2El.current.style.width = percent + "%";
-  };
-
-  handleMouseMove = e => {
-    if (this.state.dragging) {
-      this.move(e.clientX);
-    }
-  };
-
-  handleMouseDown = () => {
-    this.setState({
-      dragging: true
-    });
-  };
-
-  handleMouseUp = () => {
-    this.setState({
-      dragging: false
-    });
-  };
-
-  addJustImagesSize = () => {
-    this.imagesContainerWidth = this.imagesContainerEl.current.offsetWidth;
-    this.imagesContainerLeftOffset = this.imagesContainerEl.current.offsetLeft;
-
-    this.img1El.current.style.width = this.imagesContainerWidth + "px";
-    this.img2El.current.style.width = this.imagesContainerWidth + "px";
-    //this.img3El.current.style.width = this.imagesContainerWidth + "px";
-  };
-
-  componentDidMount = () => {
-    window.addEventListener("DOMContentLoaded", () => {
-      this.addJustImagesSize();
-      this.initEvents();
-    });
-  };
-
-  UNSAFE_componentWillMount = () => {
-    window.addEventListener("resize", this.addJustImagesSize);
-    window.addEventListener("mousemove", this.handleMouseMove);
-    window.addEventListener("touchmove", e => {
-      if (this.state.dragging) {
-        this.move(e.touches[0].clientX);
-      }
-    });
-  };
-
+  state = {};
   render() {
+    // Counter
+
+    let counter = 1;
+
+    const size = this.sliderFirstImage.clientWidth;
+    //console.log(size);
     return (
       <>
-        <div className="slider">
-          <div
-            className="slider__images-container"
-            ref={this.imagesContainerEl}
-          >
-            <div
-              className="slider__image-container slider__image-container--first"
-              ref={this.img1ContainerEl}
-            >
-              <img
-                src={slider__womansSmall}
-                alt="girls-picture"
-                draggable="false"
-                ref={this.img1El}
-              />
-            </div>
-
-            <div
-              className="slider__image-container slider__image-container--second"
-              ref={this.img2ContainerEl}
-            >
-              <img
-                src={slider__mansSmall}
-                alt="man-picture"
-                draggable="false"
-                ref={this.img2El}
-              />
-            </div>
-
-            <div className="slider__devider" ref={this.deviderEl}>
-              <div
-                className="slider__handle"
-                ref={this.handleEl}
-                onMouseDown={this.handleMouseDown}
-                onMouseUp={this.handleMouseUp}
-                onTouchStart={() =>
-                  this.setState({
-                    dragging: true
-                  })
-                }
-                onTouchEnd={() => {
-                  this.setState({
-                    dragging: false
-                  });
-                }}
-              >
-                <span className="fas fa-chevron-left"></span>
-                <span className="fas fa-chevron-right"></span>
-              </div>
-            </div>
-          </div>
-          <div className="slider__dots">
-            <span className="slider__dot"></span>
-            <span className="slider__dot"></span>
+        <div className="slider" ref={this.sliderMainContainer}>
+          <div className="slider__pictures">
+            <img
+              src={slider__kidsSmall}
+              className="slider__lastClone slider__picture"
+              ref={this.sliderFirstImage}
+            />
+            <img src={slider__mansSmall} className="slider__picture" />
+            <img src={slider__womansSmall} className="slider__picture" />
+            <img src={slider__kidsSmall} className="slider__picture" />
+            <img
+              src={slider__mansSmall}
+              className="slider__firstClone slider__picture"
+            />
           </div>
         </div>
-        {this.handleChangeSliderPicture()}
+        <button className="prevBtn" ref={this.prevBtn}>
+          Prev
+        </button>
+        <button className="nextBtn" ref={this.nextBtn}>
+          Next
+        </button>
+
         <section className="quality">
           <div className="service">
             <p className="service__options">

@@ -34,21 +34,58 @@ const SearchProducts = props => {
   ];
   const sortOptions = [
     {
-      text: "popularność"
+      text: "popularność",
+      id: 0,
+      className: "sorting__element"
     },
     {
-      text: "nowości"
+      text: "nowości",
+      id: 1,
+      className: "sorting__element"
     },
     {
-      text: "najniższa cena"
+      text: "najniższa cena",
+      id: 2,
+      className: "sorting__element"
     },
     {
-      text: "najwyższa cena"
+      text: "najwyższa cena",
+      id: 3,
+      className: "sorting__element"
     },
     {
-      text: "wyprzedaż"
+      text: "wyprzedaż",
+      id: 4,
+      className: "sorting__element"
     }
   ];
+
+  const markOptions = [
+    {
+      text: "puma"
+    },
+    {
+      text: "adidas"
+    },
+    {
+      text: "nike"
+    },
+    {
+      text: "Armani"
+    },
+    {
+      text: "new balance"
+    },
+    {
+      text: "Calvin klein"
+    },
+    {
+      text: "Lacoste"
+    }
+  ];
+  const exitElement = useRef(null);
+  const exitElementContent = useRef(null);
+
   const showComponent = title => {
     const titleOfFilter = (
       <h1 className="filter__sort-options_title">{title}</h1>
@@ -62,9 +99,43 @@ const SearchProducts = props => {
       ));
     };
 
+    // SORT
+    const [activeSortElement, useActiveSortElement] = useState(sortOptions);
+
+    const handleSortClick = index => {
+      const element = activeSortElement.filter(option => {
+        if (option.id === index) {
+          option.className = "sorting__element sorting__element--active";
+          exitElement.current.style.backgroundColor = "orange";
+          exitElementContent.current.innerText = "zapisz";
+          return option;
+        } else {
+          option.className = "sorting__element";
+
+          return option;
+        }
+      });
+
+      useActiveSortElement(element);
+    };
+    const handleClearSorting = () => {
+      const copyTable = activeSortElement.map(element => element);
+
+      const activeElement = copyTable.filter(
+        element => (element.className = "sorting__element")
+      );
+      exitElement.current.style.backgroundColor = "black";
+      exitElementContent.current.innerText = "zamknij";
+
+      useActiveSortElement(activeElement);
+    };
     const HandleShowSortOptions = () => {
-      return sortOptions.map((option, index) => (
-        <span className="sorting__element" key={index}>
+      return activeSortElement.map((option, index) => (
+        <span
+          className={option.className}
+          key={index}
+          onClick={() => handleSortClick(index)}
+        >
           {option.text}
         </span>
       ));
@@ -74,6 +145,12 @@ const SearchProducts = props => {
       return (
         <div className="sorting">
           {titleOfFilter}
+
+          <span className="sorting__clear" onClick={handleClearSorting}>
+            wyczyść
+          </span>
+
+          {console.log(Boolean(() => handleSortClick()))}
           {HandleShowSortOptions()}
         </div>
       );
@@ -84,7 +161,19 @@ const SearchProducts = props => {
           <div className="size">{HandleShowSizeElements()}</div>
         </>
       );
-    else if (activeCategory === "marka") return titleOfFilter;
+    else if (activeCategory === "marka")
+      return (
+        <>
+          {titleOfFilter}
+          <div className="mark">
+            {markOptions.map((mark, index) => (
+              <span className="mark__element" key={index}>
+                {mark.text}
+              </span>
+            ))}
+          </div>
+        </>
+      );
     else if (activeCategory === "cena") return titleOfFilter;
   };
 
@@ -155,8 +244,10 @@ const SearchProducts = props => {
           >
             {showComponent(activeCategory)}
 
-            <div className="filter__exit">
-              <h3 className="filter__exit-item">zamknij</h3>
+            <div className={"filter__exit"} ref={exitElement}>
+              <h3 className="filter__exit-item" ref={exitElementContent}>
+                zamknij
+              </h3>
               <button className="filter__exit-btn">
                 <span
                   className="fas fa-times filter__exit-icon"

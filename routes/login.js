@@ -8,11 +8,7 @@ router.get("/mainSide/girls", (req, res) => {
   res.render("index", { anser: 4545 });
 });
 router.get("/login", (req, res) => {
-  res.render("index", {
-    answer:
-      `login ${req.body.email}lub haslo ${req.body.password} nie sa poprawnymi danymi` ||
-      null
-  });
+  res.render("index");
 });
 router.post("/login", async (req, res) => {
   //const { error } = loginValidation(req.body);

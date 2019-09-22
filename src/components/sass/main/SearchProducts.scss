@@ -20,7 +20,6 @@
             border: none;
             outline: none;
         }
-
     }
 
     &__text {
@@ -31,16 +30,13 @@
         overflow: hidden;
         z-index: 3;
         transform: translateY(0);
-        transition: .5s;
+        transition: 0.5s;
         will-change: transform;
-
     }
 
     &__unactive {
-
         transform: translateY(-100vh);
-        transition: .5s;
-
+        transition: 0.5s;
     }
 
     &__name {
@@ -62,8 +58,6 @@
     height: 100vh;
     overflow-y: hidden;
 
-
-
     &__btn {
         position: absolute;
         top: 1.5%;
@@ -83,7 +77,6 @@
         font-size: 20px;
     }
 
-
     //Element of Filters
 
     &__element {
@@ -102,8 +95,6 @@
             right: 6%;
             transform: translateY(-50%);
             font-size: 20px;
-
-
         }
     }
 
@@ -119,17 +110,12 @@
             top: 10%;
             right: 5%;
             color: rgb(141, 139, 139);
-
         }
 
         &-input_scope {
             margin: 15px 0 6px 0;
-
         }
-
     }
-
-
 
     &__sort-options {
         position: fixed;
@@ -138,15 +124,10 @@
         width: 100vw;
         height: 100vh;
 
-
         background-color: white;
         transform: translateX(100%);
-        transition: .2s;
+        transition: 0.2s;
         z-index: 2;
-
-
-
-
 
         &_title {
             text-transform: uppercase;
@@ -155,13 +136,10 @@
             font-size: 18px;
             padding: 10px;
         }
-
-
     }
 
     &__sort-options--active {
         transform: translateX(0%);
-
     }
 
     &__exit {
@@ -171,7 +149,6 @@
         width: 100%;
         height: 60px;
         background-color: black;
-
 
         &-item {
             text-align: center;
@@ -187,20 +164,15 @@
             transform: translateY(50%);
             background-color: transparent;
             border: none;
-            padding: 15px 8px;
-
+            padding: 15px 12px;
+            outline: none;
         }
 
         &-icon {
             color: white;
             font-size: 16px;
         }
-
-
     }
-
-
-
 }
 
 //options-design
@@ -209,12 +181,38 @@
     flex-direction: column;
 
     padding: 15px;
+    position: relative;
 
     &__element {
         text-transform: capitalize;
         font-size: 15px;
         padding: 15px 5px;
+
+        &--active {
+            color: orange;
+        }
     }
+
+    &__clear {
+        font-weight: bold;
+        text-transform: uppercase;
+        color: red;
+        position: absolute;
+        right: 2%;
+        top: 9%;
+        padding: 0 10px;
+        font-size: 13px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: 1px;
+            background-color: red;
+        }
+    }
+
 }
 
 .size {
@@ -233,5 +231,22 @@
         border: 1px solid black;
         margin: 5px;
         padding: 15px;
+    }
+}
+
+.mark {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    &__element {
+        word-spacing: 4px;
+        text-transform: capitalize;
+        padding: 18px 0;
+    }
+
+    &__element::first-letter {
+        font-size: 18px;
+        font-weight: bold;
     }
 }
