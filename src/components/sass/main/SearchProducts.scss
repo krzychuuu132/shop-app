@@ -231,6 +231,15 @@
         border: 1px solid black;
         margin: 5px;
         padding: 15px;
+
+        &--active {
+            border-color: orange;
+            color: orange;
+        }
+    }
+
+    &__clear {
+        top: 1.9%;
     }
 }
 
@@ -243,10 +252,17 @@
         word-spacing: 4px;
         text-transform: capitalize;
         padding: 18px 0;
+
+        &--active {
+
+            color: orange;
+        }
     }
 
     &__element::first-letter {
         font-size: 18px;
         font-weight: bold;
+
+
     }
 }

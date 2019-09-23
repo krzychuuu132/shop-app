@@ -15,21 +15,31 @@ const SearchProducts = props => {
       component={() => <h3 className={person.class}>{person.type}</h3>}
     ></Route>
   ));
-  const sizes = [
+  const _sizes = [
     {
-      number: 36
+      id: 0,
+      number: 36,
+      className: "size__element"
     },
     {
-      number: 37
+      id: 1,
+      number: 37,
+      className: "size__element"
     },
     {
-      number: 38
+      id: 2,
+      number: 38,
+      className: "size__element"
     },
     {
-      number: 39
+      id: 3,
+      number: 39,
+      className: "size__element"
     },
     {
-      number: 40
+      id: 4,
+      number: 40,
+      className: "size__element"
     }
   ];
   const sortOptions = [
@@ -60,27 +70,41 @@ const SearchProducts = props => {
     }
   ];
 
-  const markOptions = [
+  const _markOptions = [
     {
-      text: "puma"
+      id: 0,
+      text: "puma",
+      className: "mark__element"
     },
     {
-      text: "adidas"
+      id: 1,
+      text: "adidas",
+      className: "mark__element"
     },
     {
-      text: "nike"
+      id: 2,
+      text: "nike",
+      className: "mark__element"
     },
     {
-      text: "Armani"
+      id: 3,
+      text: "Armani",
+      className: "mark__element"
     },
     {
-      text: "new balance"
+      id: 4,
+      text: "new balance",
+      className: "mark__element"
     },
     {
-      text: "Calvin klein"
+      id: 5,
+      text: "Calvin klein",
+      className: "mark__element"
     },
     {
-      text: "Lacoste"
+      id: 6,
+      text: "Lacoste",
+      className: "mark__element"
     }
   ];
   const exitElement = useRef(null);
@@ -91,23 +115,32 @@ const SearchProducts = props => {
       <h1 className="filter__sort-options_title">{title}</h1>
     );
 
-    const HandleShowSizeElements = () => {
-      return sizes.map((size, index) => (
-        <span className="size__element" key={index}>
-          {size.number}
-        </span>
-      ));
+    // Universal Functions
+    const handleSaveOptions = (type, option) => {
+      option.className = `${type}__element ${type}__element--active`;
+      exitElement.current.style.backgroundColor = "orange";
+      exitElementContent.current.innerText = "zapisz";
     };
 
-    // SORT
+    const handleCloseOptions = (type, stateTable, useStateTable) => {
+      const copyTable = stateTable.map(element => element);
+
+      const activeElement = copyTable.filter(
+        element => (element.className = `${type}__element`)
+      );
+      exitElement.current.style.backgroundColor = "black";
+      exitElementContent.current.innerText = "zamknij";
+      useStateTable(activeElement);
+    };
+
+    // SORTING
     const [activeSortElement, useActiveSortElement] = useState(sortOptions);
 
     const handleSortClick = index => {
       const element = activeSortElement.filter(option => {
         if (option.id === index) {
-          option.className = "sorting__element sorting__element--active";
-          exitElement.current.style.backgroundColor = "orange";
-          exitElementContent.current.innerText = "zapisz";
+          handleSaveOptions("sorting", option);
+
           return option;
         } else {
           option.className = "sorting__element";
@@ -118,17 +151,11 @@ const SearchProducts = props => {
 
       useActiveSortElement(element);
     };
+
     const handleClearSorting = () => {
-      const copyTable = activeSortElement.map(element => element);
-
-      const activeElement = copyTable.filter(
-        element => (element.className = "sorting__element")
-      );
-      exitElement.current.style.backgroundColor = "black";
-      exitElementContent.current.innerText = "zamknij";
-
-      useActiveSortElement(activeElement);
+      handleCloseOptions("sorting", activeSortElement, useActiveSortElement);
     };
+
     const HandleShowSortOptions = () => {
       return activeSortElement.map((option, index) => (
         <span
@@ -141,6 +168,57 @@ const SearchProducts = props => {
       ));
     };
 
+    // SIZE
+
+    const [activeSizeElement, useActiveSizeElement] = useState(_sizes);
+
+    const handleClearSizing = () => {
+      handleCloseOptions("size", activeSizeElement, useActiveSizeElement);
+    };
+
+    const handleSizeClick = index => {
+      const activeSort = activeSizeElement.filter(element => {
+        if (element.id === index) {
+          handleSaveOptions("size", element);
+        } else {
+          element.className = "size__element";
+        }
+        return element;
+      });
+
+      useActiveSizeElement(activeSort);
+    };
+
+    const HandleShowSizeElements = () => {
+      return activeSizeElement.map((size, index) => (
+        <span
+          className={size.className}
+          key={index}
+          onClick={() => handleSizeClick(index)}
+        >
+          {size.number}
+        </span>
+      ));
+    };
+    // MARKS
+
+    const [activeMarkElement, useActiveMarkElement] = useState(_markOptions);
+
+    const handleMarkClick = index => {
+      const activeMark = activeMarkElement.filter(element => {
+        if (element.id === index) {
+          handleSaveOptions("mark", element);
+        } else {
+          element.className = "mark__element";
+        }
+        return element;
+      });
+      useActiveMarkElement(activeMark);
+    };
+
+    const handleClearMark = () => {
+      handleCloseOptions("mark", activeMarkElement, useActiveMarkElement);
+    };
     if (activeCategory === "sortuj")
       return (
         <div className="sorting">
@@ -150,27 +228,46 @@ const SearchProducts = props => {
             wyczyść
           </span>
 
-          {console.log(Boolean(() => handleSortClick()))}
           {HandleShowSortOptions()}
         </div>
       );
+    // SIZE
     else if (activeCategory === "rozmiar")
       return (
         <>
           {titleOfFilter}
-          <div className="size">{HandleShowSizeElements()}</div>
+          <div className="size">
+            {HandleShowSizeElements()}
+            <span
+              className="sorting__clear size__clear"
+              onClick={handleClearSizing}
+            >
+              wyczyść
+            </span>
+          </div>
         </>
       );
+    // MARK
     else if (activeCategory === "marka")
       return (
         <>
           {titleOfFilter}
           <div className="mark">
-            {markOptions.map((mark, index) => (
-              <span className="mark__element" key={index}>
+            {activeMarkElement.map((mark, index) => (
+              <span
+                className={mark.className}
+                key={index}
+                onClick={() => handleMarkClick(index)}
+              >
                 {mark.text}
               </span>
             ))}
+            <span
+              className="sorting__clear size__clear"
+              onClick={handleClearMark}
+            >
+              wyczyść
+            </span>
           </div>
         </>
       );
@@ -244,7 +341,15 @@ const SearchProducts = props => {
           >
             {showComponent(activeCategory)}
 
-            <div className={"filter__exit"} ref={exitElement}>
+            <div
+              className={"filter__exit"}
+              ref={exitElement}
+              onClick={() => {
+                if (exitElement.current.style.backgroundColor === "orange") {
+                  return useActive(!active);
+                } else null;
+              }}
+            >
               <h3 className="filter__exit-item" ref={exitElementContent}>
                 zamknij
               </h3>
