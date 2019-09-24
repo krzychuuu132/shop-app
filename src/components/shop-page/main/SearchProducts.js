@@ -42,7 +42,7 @@ const SearchProducts = props => {
       className: "size__element"
     }
   ];
-  const sortOptions = [
+  const _sortOptions = [
     {
       text: "popularność",
       id: 0,
@@ -107,8 +107,12 @@ const SearchProducts = props => {
       className: "mark__element"
     }
   ];
+
   const exitElement = useRef(null);
   const exitElementContent = useRef(null);
+
+  const [activePrice, useAtivePrice] = useState(40);
+  const [activePromotion, useActivePromotion] = useState(false);
 
   const showComponent = title => {
     const titleOfFilter = (
@@ -134,7 +138,7 @@ const SearchProducts = props => {
     };
 
     // SORTING
-    const [activeSortElement, useActiveSortElement] = useState(sortOptions);
+    const [activeSortElement, useActiveSortElement] = useState(_sortOptions);
 
     const handleSortClick = index => {
       const element = activeSortElement.filter(option => {
@@ -219,6 +223,7 @@ const SearchProducts = props => {
     const handleClearMark = () => {
       handleCloseOptions("mark", activeMarkElement, useActiveMarkElement);
     };
+
     if (activeCategory === "sortuj")
       return (
         <div className="sorting">
@@ -271,6 +276,7 @@ const SearchProducts = props => {
           </div>
         </>
       );
+    // PRICE
     else if (activeCategory === "cena") return titleOfFilter;
   };
 
@@ -324,12 +330,24 @@ const SearchProducts = props => {
           </div>
           <div className="filter__price filter__element">
             cena
-            <input type="range" className="filter__price-input_scope" />
+            <input
+              type="range"
+              className="filter__price-input_scope"
+              value={activePrice}
+              onChange={e => useAtivePrice(e.target.value)}
+              min={40}
+              max={512}
+            />
             <label className="filter__price-promotion">
-              <input type="checkbox" className="filter__price-check" /> tylko
-              promocje
+              <input
+                type="checkbox"
+                className="filter__price-check"
+                checked={activePromotion}
+                onChange={e => useActivePromotion(e.target.checked)}
+              />
+              tylko promocje
             </label>
-            <div className="filter__price-scope">40zł-5539zł</div>
+            <div className="filter__price-scope">40zł-{activePrice}zł</div>
           </div>
 
           <div
