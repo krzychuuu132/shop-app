@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "../../sass/main/main.scss";
 
 import slider__womansSmall from "../../sass/img/woman-source.jpg";
@@ -10,20 +10,81 @@ const Main = () => {
   const sliderFirstImage = useRef(null);
   const prevBtn = useRef(null);
   const nextBtn = useRef(null);
-
+  const imgs = document.querySelectorAll(".slider__pictures img");
+  const [sizeOfImg, useSizeOfImg] = useState(0);
+  const [counter, useCounter] = useState(1);
   // Counter
 
-  let counter = 1;
-  let size;
   useEffect(() => {
     const size = sliderFirstImage.current.clientWidth;
-    console.log(size);
+
+    useSizeOfImg(size);
+    sliderMainContainer.current.style.transform =
+      "translateX(" + -sizeOfImg * counter + "px)";
   });
+
+  const sliderSetting = value => {
+    sliderMainContainer.current.style.transition = "transform .5s ease-in-out";
+    useCounter(value);
+    sliderMainContainer.current.style.transform =
+      "translateX(" + -sizeOfImg * counter + "px)";
+  };
+
+  // Button Listeners
+
+  // NEXT
+  const handleNextSlide = () => {
+    if (counter >= imgs.length - 1) return;
+    sliderSetting(counter + 1);
+  };
+
+  // PREVIOUS
+
+  const handlePrevSlide = () => {
+    if (counter <= 0) return;
+    sliderSetting(counter - 1);
+  };
+
+  // Trans-End
+
+  const handleTransEnd = () => {
+    if (imgs[counter].className.includes("slider__lastClone")) {
+      sliderMainContainer.current.style.transition = "none";
+      useCounter(imgs.length - 2);
+      sliderMainContainer.current.style.transform =
+        "translateX(" + -sizeOfImg * counter + "px)";
+    }
+
+    if (imgs[counter].className.includes("slider__firstClone")) {
+      sliderMainContainer.current.style.transition = "none";
+      useCounter(imgs.length - counter);
+      sliderMainContainer.current.style.transform =
+        "translateX(" + -sizeOfImg * counter + "px)";
+    }
+  };
 
   return (
     <>
-      <div className="slider" ref={sliderMainContainer}>
-        <div className="slider__pictures">
+      <div className="slider">
+        <button
+          className="slider__prevBtn"
+          ref={prevBtn}
+          onClick={handlePrevSlide}
+        >
+          <span className="fas fa-arrow-left slider__icon-left"></span>
+        </button>
+        <button
+          className="slider__nextBtn"
+          ref={nextBtn}
+          onClick={handleNextSlide}
+        >
+          <span className="fas fa-arrow-right slider__icon-right"></span>
+        </button>
+        <div
+          className="slider__pictures"
+          ref={sliderMainContainer}
+          onTransitionEnd={handleTransEnd}
+        >
           <img
             src={slider__kidsSmall}
             className="slider__lastClone slider__picture"
@@ -38,12 +99,6 @@ const Main = () => {
           />
         </div>
       </div>
-      <button className="prevBtn" ref={prevBtn}>
-        Prev
-      </button>
-      <button className="nextBtn" ref={nextBtn}>
-        Next
-      </button>
 
       <section className="quality">
         <div className="service">
