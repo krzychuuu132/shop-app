@@ -1,7 +1,7 @@
 import React from "react";
-
-const Girls = () => {
-  return <h1>Girls</h1>;
+import Product from "./Product";
+const Girls = props => {
+  return <Product type={"girls"} />;
 };
 
 export default Girls;

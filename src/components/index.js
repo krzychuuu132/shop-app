@@ -12,11 +12,9 @@ import mainSide from "./shop-page/MainSide";
 import WishList from "./shop-page/menu-options/WishList";
 import ShoppingList from "./shop-page/menu-options/ShoppingList";
 import Accout from "./shop-page/menu-options/Accout";
-// REDUX
-import { Provider as ReduxProvider } from "react-redux";
-import configureStore from "../redux/configureStore";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 
-const store = configureStore();
 class App extends React.Component {
   render() {
     return (
@@ -39,8 +37,8 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <ReduxProvider store={store}>
+  <Provider store={store}>
     <App />
-  </ReduxProvider>,
+  </Provider>,
   document.getElementById("root")
 );

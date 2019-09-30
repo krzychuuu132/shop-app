@@ -1,6 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+//var HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const config = {
@@ -18,6 +18,7 @@ const config = {
       chunkFilename: "[id].css"
     }),
     new CleanWebpackPlugin()
+  
   ],
 
   module: {

@@ -1,0 +1,8 @@
+const SORT_PRODUCT = "SORT_PRODUCT";
+
+const ADD_PRODUCT = "ADD_PRODUCT";
+
+export default {
+  SORT_PRODUCT,
+  ADD_PRODUCT
+};

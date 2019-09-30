@@ -7,7 +7,6 @@
     "lib": "lib"
   },
   "scripts": {
-
     "dev": "webpack --config ./webpack.config.js",
     "dev:watch": "npm run dev -- --watch",
     "start": "node src/server.js"
@@ -35,6 +34,7 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
     "redux-immutable-state-invariant": "^2.1.0",
     "swig": "^1.4.2",
     "url-loader": "^2.1.0",

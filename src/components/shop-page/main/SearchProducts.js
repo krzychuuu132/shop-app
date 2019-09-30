@@ -1,7 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../../sass/main/SearchProducts.scss";
 import { Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 const SearchProducts = props => {
+  const dispatch = useDispatch();
+
   const [active, useActive] = useState(false);
 
   const [activeCategory, useActiveCategory] = useState("");
@@ -139,6 +143,23 @@ const SearchProducts = props => {
 
     // SORTING
     const [activeSortElement, useActiveSortElement] = useState(_sortOptions);
+    const activeElement = activeSortElement.filter(element => {
+      if (
+        element.className === "sorting__element sorting__element--active" &&
+        element.text === "najwyższa cena"
+      )
+        return element;
+    });
+    if (activeElement.length !== 0) {
+      dispatch({
+        type: "SORT_PRODUCT"
+      });
+    } else {
+      dispatch({
+        type: "SORT_DEFAULT_PRODUCT"
+      });
+    }
+    console.log(activeElement);
 
     const handleSortClick = index => {
       const element = activeSortElement.filter(option => {

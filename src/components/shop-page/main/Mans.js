@@ -1,7 +1,8 @@
 import React from "react";
+import Product from "./Product";
 
 const Mans = () => {
-  return <h1>Mans</h1>;
+  return <Product type={"mens"} />;
 };
 
 export default Mans;

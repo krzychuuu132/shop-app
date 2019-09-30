@@ -1,7 +1,8 @@
 import React from "react";
+import Product from "./Product";
 
 const Kids = () => {
-  return <h1>Kids</h1>;
+  return <Product type={"kids"} />;
 };
 
 export default Kids;

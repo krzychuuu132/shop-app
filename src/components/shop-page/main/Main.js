@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../../sass/main/main.scss";
-
 import slider__womansSmall from "../../sass/img/woman-source.jpg";
 import slider__mansSmall from "../../sass/img/slider__mans-big.jpg";
 import slider__kidsSmall from "../../sass/img/kids-source.jpg";
@@ -11,16 +10,19 @@ const Main = () => {
   const prevBtn = useRef(null);
   const nextBtn = useRef(null);
   const imgs = document.querySelectorAll(".slider__pictures img");
+
   const [sizeOfImg, useSizeOfImg] = useState(0);
   const [counter, useCounter] = useState(1);
   // Counter
-
-  useEffect(() => {
+  const getSize = () => {
     const size = sliderFirstImage.current.clientWidth;
-
     useSizeOfImg(size);
-    sliderMainContainer.current.style.transform =
-      "translateX(" + -sizeOfImg * counter + "px)";
+  };
+  window.addEventListener("resize", () => {
+    getSize();
+  });
+  useEffect(() => {
+    getSize();
   });
 
   const sliderSetting = value => {
@@ -84,6 +86,7 @@ const Main = () => {
           className="slider__pictures"
           ref={sliderMainContainer}
           onTransitionEnd={handleTransEnd}
+          style={{ transform: "translateX(" + -sizeOfImg * counter + "px)" }}
         >
           <img
             src={slider__kidsSmall}

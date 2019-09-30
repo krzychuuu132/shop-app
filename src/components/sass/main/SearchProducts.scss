@@ -2,6 +2,7 @@
     height: 50px;
     position: relative;
 
+
     &__filtr {
         min-width: 70px;
         height: auto;
@@ -28,7 +29,7 @@
 
     &--active {
         overflow: hidden;
-        z-index: 3;
+        z-index: 8;
         transform: translateY(0);
         transition: 0.5s;
         will-change: transform;
