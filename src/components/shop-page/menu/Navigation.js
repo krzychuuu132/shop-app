@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { NavLink, Link, Switch, Route } from "react-router-dom";
 import "../../sass/shop-page__style/menu/Navigation.scss";
 
@@ -9,6 +10,7 @@ import Kids from "./Kids";
 import imgMans from "../../sass/img/boy-small.jpg";
 import imgGirls from "../../sass/img/woman-small.jpg";
 import imgKids from "../../sass/img/kids-small.jpg";
+import store from "../../../redux/store";
 
 const showClothes = (sex, change, useActive) => {
   //ICON Menu-choice
@@ -27,17 +29,17 @@ const showClothes = (sex, change, useActive) => {
     {
       id: 1,
       text: "t-shirty",
-      translateText: "T-shirts"
+      translateText: "t-shirt"
     },
     {
       id: 2,
       text: "bluzy",
-      translateText: "blouses"
+      translateText: "blouse"
     },
     {
       id: 3,
       text: "kurtki",
-      translateText: "jackets"
+      translateText: "jacket"
     },
     {
       id: 4,
@@ -45,8 +47,19 @@ const showClothes = (sex, change, useActive) => {
       translateText: "trousers"
     }
   ];
+
+  // SHOWING_PRODUCTS
+  const handleChooseProduct = (sex, type) => {
+    const showProduct = product => ({ type: "SHOW_PRODUCT", product });
+    store.dispatch(showProduct(type));
+  };
+
   const ProductsListItem = productsList.map(item => (
-    <li className="navigation__item" key={item.id}>
+    <li
+      className="navigation__item"
+      key={item.id}
+      onClick={() => handleChooseProduct(sex, item.translateText)}
+    >
       <Link
         to={`/mainSide/${sex}/${item.translateText}`}
         className="navigation__link"
@@ -86,9 +99,10 @@ const Navigation = () => {
                 Kobiety
               </NavLink>
             </li>
+
             <li className="navigation__sex-item">
               <NavLink
-                to="/mainSide/mans"
+                to="/mainSide/mens"
                 className="navigation__sex-link"
                 activeClassName="navigation__sex-link--active"
               >
@@ -109,12 +123,12 @@ const Navigation = () => {
 
         <Switch>
           <Route
-            path="/mainSide/mans"
+            path="/mainSide/mens"
             component={() => {
               return (
                 <>
                   <Mans
-                    showClothes={() => showClothes("mans", change, useActive)}
+                    showClothes={() => showClothes("mens", change, useActive)}
                   />
 
                   <img src={imgMans} alt="mans" className="navigation__img" />

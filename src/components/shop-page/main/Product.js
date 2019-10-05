@@ -3,29 +3,35 @@ import "../../sass/main/Product.scss";
 import { useSelector } from "react-redux";
 
 const Product = props => {
-  const products = useSelector(state => state);
+  const products = useSelector(state => state.products);
 
-  const showElements = (product, index) => {
-    return (
+  const showElements = products => {
+    return products.map((product, index) => (
       <div className="product" key={index}>
         <img alt="product-img" src={product.src} className="product__picture" />
-        <h6 className="product__title">{product.title}</h6>
-        <p className="product__price">{product.price},00 zł</p>
+        <h6 className="product__title">{product.company}</h6>
+        <p className="product__price">od {product.price},00 zł</p>
+        <p>{product.type}</p>
       </div>
-    );
+    ));
   };
 
   const showProduct = (type = props.type) => {
-    const girls = products.girls;
-    const mens = products.mens;
-    const kids = products.kids;
+    const searchProducts = () => {
+      const get = products.filter(product => {
+        if (type === "girls" && product.sex === "girls") {
+          return product;
+        } else if (type === "kids" && product.sex === "kids") {
+          return product;
+        } else if (type === "mens" && product.sex === "mens") {
+          return product;
+        }
+      });
+      return get;
+    };
+    const getProducts = searchProducts();
 
-    if (type === "girls")
-      return girls.map((product, index) => showElements(product, index));
-    else if (type === "kids")
-      return kids.map((product, index) => showElements(product, index));
-    else if (type === "mens")
-      return mens.map((product, index) => showElements(product, index));
+    if (searchProducts) return showElements(getProducts);
   };
 
   return <div className="product-container">{showProduct()}</div>;

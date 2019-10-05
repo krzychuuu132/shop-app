@@ -21,7 +21,7 @@ const mainSide = () => {
     {
       id: 1,
       type: "odzież męska",
-      path: "/mainSide/mans",
+      path: "/mainSide/mens",
       class: "search__name"
     },
     {
@@ -40,7 +40,7 @@ const mainSide = () => {
             <Link to="/mainSide/girls" className="components__menu-type__link">
               Kobiety
             </Link>
-            <Link to="/mainSide/mans" className="components__menu-type__link">
+            <Link to="/mainSide/mens" className="components__menu-type__link">
               mężczyźni
             </Link>
             <Link to="/mainSide/kids" className="components__menu-type__link">

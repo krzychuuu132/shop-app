@@ -138,28 +138,39 @@ const SearchProducts = props => {
       );
       exitElement.current.style.backgroundColor = "black";
       exitElementContent.current.innerText = "zamknij";
+      dispatch({ type: "RETURN_DEFAULT" });
       useStateTable(activeElement);
     };
 
     // SORTING
     const [activeSortElement, useActiveSortElement] = useState(_sortOptions);
-    const activeElement = activeSortElement.filter(element => {
-      if (
-        element.className === "sorting__element sorting__element--active" &&
-        element.text === "najwyższa cena"
-      )
-        return element;
+
+    // DISPLAY PRODUCTS ON THE WEBSITE //REDUX
+    activeSortElement.filter(element => {
+      if (element.className === "sorting__element sorting__element--active") {
+        if (element.text === "najwyższa cena") {
+          dispatch({
+            type: "SORT_PRODUCT"
+          });
+        } else if (element.text === "najniższa cena") {
+          dispatch({
+            type: "SORT_PRODUCT_SMALLEST"
+          });
+        } else if (element.text === "nowości") {
+          dispatch({
+            type: "SORT_PRODUCT_NOVELTY"
+          });
+        } else if (element.text === "popularność") {
+          dispatch({
+            type: "SORT_POPULARITY"
+          });
+        } else if (element.text === "wyprzedaż") {
+          dispatch({
+            type: "SALE_PRODUCTS"
+          });
+        } else return null;
+      }
     });
-    if (activeElement.length !== 0) {
-      dispatch({
-        type: "SORT_PRODUCT"
-      });
-    } else {
-      dispatch({
-        type: "SORT_DEFAULT_PRODUCT"
-      });
-    }
-    console.log(activeElement);
 
     const handleSortClick = index => {
       const element = activeSortElement.filter(option => {
