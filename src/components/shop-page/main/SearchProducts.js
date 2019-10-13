@@ -2,7 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import "../../sass/main/SearchProducts.scss";
 import { Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import store from "../../../redux/store";
+//import store from "../../../redux/store";
 
+import Products from "./Products";
 const SearchProducts = props => {
   const dispatch = useDispatch();
 
@@ -22,54 +25,39 @@ const SearchProducts = props => {
   const _sizes = [
     {
       id: 0,
-      number: 36,
+      size: "XS",
       className: "size__element"
     },
     {
       id: 1,
-      number: 37,
+      size: "S",
       className: "size__element"
     },
     {
       id: 2,
-      number: 38,
+      size: "M",
       className: "size__element"
     },
     {
       id: 3,
-      number: 39,
+      size: "L",
       className: "size__element"
     },
     {
       id: 4,
-      number: 40,
+      size: "XL",
       className: "size__element"
     }
   ];
   const _sortOptions = [
     {
-      text: "popularność",
+      text: "najniższa cena",
       id: 0,
       className: "sorting__element"
     },
     {
-      text: "nowości",
-      id: 1,
-      className: "sorting__element"
-    },
-    {
-      text: "najniższa cena",
-      id: 2,
-      className: "sorting__element"
-    },
-    {
       text: "najwyższa cena",
-      id: 3,
-      className: "sorting__element"
-    },
-    {
-      text: "wyprzedaż",
-      id: 4,
+      id: 1,
       className: "sorting__element"
     }
   ];
@@ -116,6 +104,15 @@ const SearchProducts = props => {
   const exitElementContent = useRef(null);
 
   const [activePrice, useAtivePrice] = useState(40);
+  const handleChangePrice = e => {
+    useAtivePrice(e.target.value);
+    const showProduct = price => ({
+      type: " SHOW_PRODUCT_PRICE",
+      price
+    });
+    store.dispatch(showProduct(activePrice));
+  };
+
   const [activePromotion, useActivePromotion] = useState(false);
 
   const showComponent = title => {
@@ -155,18 +152,6 @@ const SearchProducts = props => {
         } else if (element.text === "najniższa cena") {
           dispatch({
             type: "SORT_PRODUCT_SMALLEST"
-          });
-        } else if (element.text === "nowości") {
-          dispatch({
-            type: "SORT_PRODUCT_NOVELTY"
-          });
-        } else if (element.text === "popularność") {
-          dispatch({
-            type: "SORT_POPULARITY"
-          });
-        } else if (element.text === "wyprzedaż") {
-          dispatch({
-            type: "SALE_PRODUCTS"
           });
         } else return null;
       }
@@ -212,7 +197,12 @@ const SearchProducts = props => {
       handleCloseOptions("size", activeSizeElement, useActiveSizeElement);
     };
 
-    const handleSizeClick = index => {
+    const handleSizeClick = (index, size) => {
+      // const showSizeProduct = size => ({
+      //   type: "SHOW_PRODUCT_SIZE",
+      //  size
+      //});
+      store.dispatch(showSizeProduct(size));
       const activeSort = activeSizeElement.filter(element => {
         if (element.id === index) {
           handleSaveOptions("size", element);
@@ -230,9 +220,9 @@ const SearchProducts = props => {
         <span
           className={size.className}
           key={index}
-          onClick={() => handleSizeClick(index)}
+          onClick={() => handleSizeClick(index, size.size)}
         >
-          {size.number}
+          {size.size}
         </span>
       ));
     };
@@ -366,7 +356,7 @@ const SearchProducts = props => {
               type="range"
               className="filter__price-input_scope"
               value={activePrice}
-              onChange={e => useAtivePrice(e.target.value)}
+              onChange={handleChangePrice}
               min={40}
               max={512}
             />
@@ -413,6 +403,7 @@ const SearchProducts = props => {
           </div>
         </div>
       </section>
+      <Products />
     </>
   );
 };

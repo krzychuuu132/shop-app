@@ -1,5 +1,4 @@
 import types from "./types";
-import Product from "../../../components/shop-page/main/Product";
 
 const INITIAL_PRODUCTS = {
   products: [
@@ -11,7 +10,8 @@ const INITIAL_PRODUCTS = {
       company: "Adidas",
       novelty: true,
       popularity: true,
-      sale: false
+      sale: false,
+      size: "M"
     },
     {
       sex: "girls",
@@ -21,7 +21,8 @@ const INITIAL_PRODUCTS = {
       company: "Puma",
       novelty: true,
       popularity: true,
-      sale: false
+      sale: false,
+      size: "L"
     },
     {
       sex: "girls",
@@ -31,7 +32,8 @@ const INITIAL_PRODUCTS = {
       company: "Calvin Klein",
       novelty: false,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "S"
     },
     {
       sex: "girls",
@@ -41,7 +43,8 @@ const INITIAL_PRODUCTS = {
       company: "Lacoste",
       novelty: true,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "XS"
     },
     {
       sex: "girls",
@@ -51,7 +54,8 @@ const INITIAL_PRODUCTS = {
       company: "Adidas",
       novelty: false,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "XL"
     },
     {
       sex: "girls",
@@ -61,7 +65,8 @@ const INITIAL_PRODUCTS = {
       company: "Armani",
       novelty: true,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "M"
     },
     {
       sex: "girls",
@@ -71,7 +76,8 @@ const INITIAL_PRODUCTS = {
       company: "Nike",
       novelty: true,
       popularity: false,
-      sale: true
+      sale: true,
+      size: "L"
     },
 
     {
@@ -82,7 +88,8 @@ const INITIAL_PRODUCTS = {
       company: "Tommy Hilfiger",
       novelty: false,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "S"
     },
     {
       sex: "mens",
@@ -92,7 +99,8 @@ const INITIAL_PRODUCTS = {
       company: "Adidas",
       novelty: true,
       popularity: true,
-      sale: true
+      sale: true,
+      size: "XS"
     },
     {
       sex: "mens",
@@ -102,7 +110,8 @@ const INITIAL_PRODUCTS = {
       company: "Nike",
       novelty: true,
       popularity: false,
-      sale: true
+      sale: true,
+      size: "M"
     },
     {
       sex: "mens",
@@ -112,7 +121,8 @@ const INITIAL_PRODUCTS = {
       company: "New Balance",
       novelty: false,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "L"
     },
     {
       sex: "mens",
@@ -122,7 +132,8 @@ const INITIAL_PRODUCTS = {
       company: "Lacoste",
       novelty: false,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "S"
     },
 
     {
@@ -133,7 +144,8 @@ const INITIAL_PRODUCTS = {
       company: "Adidas",
       novelty: true,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "XL"
     },
     {
       sex: "kids",
@@ -143,7 +155,8 @@ const INITIAL_PRODUCTS = {
       company: "Armani",
       novelty: false,
       popularity: true,
-      sale: false
+      sale: false,
+      size: "L"
     },
     {
       sex: "kids",
@@ -153,7 +166,8 @@ const INITIAL_PRODUCTS = {
       company: "New Balance",
       novelty: false,
       popularity: true,
-      sale: false
+      sale: false,
+      size: "XL"
     },
     {
       sex: "kids",
@@ -163,7 +177,8 @@ const INITIAL_PRODUCTS = {
       company: "Lacoste",
       novelty: false,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "S"
     },
     {
       sex: "kids",
@@ -173,7 +188,8 @@ const INITIAL_PRODUCTS = {
       company: "Nike",
       novelty: false,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "S"
     },
     {
       sex: "kids",
@@ -183,7 +199,8 @@ const INITIAL_PRODUCTS = {
       company: "Adidas",
       novelty: false,
       popularity: false,
-      sale: false
+      sale: false,
+      size: "M"
     },
 
     {
@@ -194,49 +211,81 @@ const INITIAL_PRODUCTS = {
       company: "Puma",
       novelty: false,
       popularity: true,
-      sale: true
+      sale: true,
+      size: "M"
     }
   ]
 };
 
-const copyProducts = INITIAL_PRODUCTS.products.map(products => products);
-
 const productsReducer = (state = INITIAL_PRODUCTS, action) => {
   switch (action.type) {
     case types.SORT_PRODUCT:
-      console.log(copyProducts);
-      const copy = copyProducts.filter(product => {
-        if (product.type === action.product) {
-          return product;
-        }
-      });
-
       return {
-        products: copy.sort((a, b) => b.price - a.price)
+        products: state.products.sort((a, b) => b.price - a.price)
       };
 
     case types.SORT_PRODUCT_SMALLEST:
       return {
-        products: copyProducts.sort((a, b) => a.price - b.price)
+        products: state.products.sort((a, b) => a.price - b.price)
       };
 
+    case types.SHOW_PRODUCT:
+      return {
+        products: INITIAL_PRODUCTS.products.filter(product => {
+          if (product.type === action.product && product.sex === action.sex) {
+            return product;
+          }
+        })
+      };
+
+    case types.RETURN_DEFAULT:
+      return {
+        products: state.products.sort((a, b) => a.type.localeCompare(b.type))
+      };
+
+    case types.RETURN_DEFAULT_SEX:
+      return {
+        products: INITIAL_PRODUCTS.products
+      };
+    case types.SHOW_PRODUCT_PRICE:
+      console.log(action.price);
+      return {
+        products: INITIAL_PRODUCTS.products.filter(
+          product => action.price > product.price
+        )
+      };
+    default:
+      return state;
+  }
+};
+
+export default productsReducer;
+
+/*
+ case types.SHOW_PRODUCT_SIZE:
+      return {
+        products: INITIAL_PRODUCTS.products.filter(
+          product => product.size === action.size
+        )
+      };
     case types.SORT_NOVELTY:
       return {
-        products: copyProducts.filter(product => {
+        products: state.products.filter(product => {
           if (product.novelty) return product;
         })
       };
 
     case types.SORT_POPULARITY:
       return {
-        products: copyProducts.filter(product => {
+        products: state.products.filter(product => {
           if (product.popularity) return product;
+          else return state;
         })
       };
 
     case types.SALE_PRODUCTS:
       return {
-        products: copyProducts.filter(product => {
+        products: state.products.filter(product => {
           if (product.sale) return product;
         })
       };
@@ -244,20 +293,4 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
     case types.RETURN_DEFAULT:
       return {
         products: INITIAL_PRODUCTS.products
-      };
-
-    case types.SHOW_PRODUCT:
-      return {
-        products: copyProducts.filter(product => {
-          if (product.type === action.product) {
-            return product;
-          }
-        })
-      };
-
-    default:
-      return state;
-  }
-};
-
-export default productsReducer;
+      }; */

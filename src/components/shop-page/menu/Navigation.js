@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useDispatch } from "react-redux";
 import { NavLink, Link, Switch, Route } from "react-router-dom";
 import "../../sass/shop-page__style/menu/Navigation.scss";
 
@@ -50,8 +50,12 @@ const showClothes = (sex, change, useActive) => {
 
   // SHOWING_PRODUCTS
   const handleChooseProduct = (sex, type) => {
-    const showProduct = product => ({ type: "SHOW_PRODUCT", product });
-    store.dispatch(showProduct(type));
+    const showProduct = (product, sex) => ({
+      type: "SHOW_PRODUCT",
+      product,
+      sex
+    });
+    store.dispatch(showProduct(type, sex));
   };
 
   const ProductsListItem = productsList.map(item => (
@@ -75,6 +79,8 @@ const showClothes = (sex, change, useActive) => {
 };
 
 const Navigation = () => {
+  const dispatch = useDispatch();
+
   const [change, useActive] = useState(false);
 
   const activeSpan = change ? "hamburger--active hamburger" : "hamburger";
@@ -95,6 +101,11 @@ const Navigation = () => {
                 to="/mainSide/girls"
                 className="navigation__sex-link"
                 activeClassName="navigation__sex-link--active"
+                onClick={() =>
+                  dispatch({
+                    type: "RETURN_DEFAULT_SEX"
+                  })
+                }
               >
                 Kobiety
               </NavLink>
@@ -105,8 +116,13 @@ const Navigation = () => {
                 to="/mainSide/mens"
                 className="navigation__sex-link"
                 activeClassName="navigation__sex-link--active"
+                onClick={() =>
+                  dispatch({
+                    type: "RETURN_DEFAULT_SEX"
+                  })
+                }
               >
-                Mezczyzni
+                Meżczyźni
               </NavLink>
             </li>
             <li className="navigation__sex-item">
@@ -114,6 +130,11 @@ const Navigation = () => {
                 to="/mainSide/kids"
                 className="navigation__sex-link"
                 activeClassName="navigation__sex-link--active"
+                onClick={() =>
+                  dispatch({
+                    type: "RETURN_DEFAULT_SEX"
+                  })
+                }
               >
                 dzieci
               </NavLink>
