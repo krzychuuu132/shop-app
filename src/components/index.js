@@ -28,7 +28,7 @@ class App extends React.Component {
             <Route path="/wish-list" component={WishList} />
             <Route path="/shopping-list" component={ShoppingList} />
             <Route path="/accout" component={Accout} />
-            <Route path="/product" component={ProductDetails}></Route>;
+
             <Route component={BadPatch} />
           </Switch>
         </div>

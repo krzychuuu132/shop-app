@@ -11,7 +11,8 @@ const INITIAL_PRODUCTS = {
       novelty: true,
       popularity: true,
       sale: false,
-      size: "M"
+      size: "M",
+      id: 0
     },
     {
       sex: "girls",
@@ -22,7 +23,8 @@ const INITIAL_PRODUCTS = {
       novelty: true,
       popularity: true,
       sale: false,
-      size: "L"
+      size: "L",
+      id: 1
     },
     {
       sex: "girls",
@@ -33,7 +35,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: false,
       sale: false,
-      size: "S"
+      size: "S",
+      id: 2
     },
     {
       sex: "girls",
@@ -44,7 +47,8 @@ const INITIAL_PRODUCTS = {
       novelty: true,
       popularity: false,
       sale: false,
-      size: "XS"
+      size: "XS",
+      id: 3
     },
     {
       sex: "girls",
@@ -55,7 +59,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: false,
       sale: false,
-      size: "XL"
+      size: "XL",
+      id: 4
     },
     {
       sex: "girls",
@@ -66,7 +71,8 @@ const INITIAL_PRODUCTS = {
       novelty: true,
       popularity: false,
       sale: false,
-      size: "M"
+      size: "M",
+      id: 5
     },
     {
       sex: "girls",
@@ -77,7 +83,8 @@ const INITIAL_PRODUCTS = {
       novelty: true,
       popularity: false,
       sale: true,
-      size: "L"
+      size: "L",
+      id: 6
     },
 
     {
@@ -89,7 +96,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: false,
       sale: false,
-      size: "S"
+      size: "S",
+      id: 7
     },
     {
       sex: "mens",
@@ -100,7 +108,8 @@ const INITIAL_PRODUCTS = {
       novelty: true,
       popularity: true,
       sale: true,
-      size: "XS"
+      size: "XS",
+      id: 8
     },
     {
       sex: "mens",
@@ -111,7 +120,8 @@ const INITIAL_PRODUCTS = {
       novelty: true,
       popularity: false,
       sale: true,
-      size: "M"
+      size: "M",
+      id: 9
     },
     {
       sex: "mens",
@@ -122,7 +132,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: false,
       sale: false,
-      size: "L"
+      size: "L",
+      id: 10
     },
     {
       sex: "mens",
@@ -133,7 +144,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: false,
       sale: false,
-      size: "S"
+      size: "S",
+      id: 11
     },
 
     {
@@ -145,7 +157,8 @@ const INITIAL_PRODUCTS = {
       novelty: true,
       popularity: false,
       sale: false,
-      size: "XL"
+      size: "XL",
+      id: 12
     },
     {
       sex: "kids",
@@ -156,7 +169,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: true,
       sale: false,
-      size: "L"
+      size: "L",
+      id: 13
     },
     {
       sex: "kids",
@@ -167,7 +181,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: true,
       sale: false,
-      size: "XL"
+      size: "XL",
+      id: 14
     },
     {
       sex: "kids",
@@ -178,7 +193,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: false,
       sale: false,
-      size: "S"
+      size: "S",
+      id: 15
     },
     {
       sex: "kids",
@@ -189,7 +205,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: false,
       sale: false,
-      size: "S"
+      size: "S",
+      id: 16
     },
     {
       sex: "kids",
@@ -200,7 +217,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: false,
       sale: false,
-      size: "M"
+      size: "M",
+      id: 17
     },
 
     {
@@ -212,7 +230,8 @@ const INITIAL_PRODUCTS = {
       novelty: false,
       popularity: true,
       sale: true,
-      size: "M"
+      size: "M",
+      id: 18
     }
   ]
 };
@@ -248,7 +267,6 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
         products: INITIAL_PRODUCTS.products
       };
     case types.SHOW_PRODUCT_PRICE:
-      console.log(action.price);
       return {
         products: INITIAL_PRODUCTS.products.filter(
           product => action.price > product.price
@@ -259,7 +277,24 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
   }
 };
 
-export default productsReducer;
+const productsDeatilsReducer = (state = INITIAL_PRODUCTS, action) => {
+  switch (action.type) {
+    case types.SHOW_PRODUCT_DETAILS:
+      return {
+        products: INITIAL_PRODUCTS.products.filter(
+          product => product.id === action.productID
+        )
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default {
+  productsReducer,
+  productsDeatilsReducer
+};
 
 /*
  case types.SHOW_PRODUCT_SIZE:

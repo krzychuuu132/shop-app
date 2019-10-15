@@ -1,6 +1,5 @@
-//import { combineReducers } from "redux";
+import { combineReducers } from "redux";
 import productsReducer from "./products/duck/index";
+import productsDeatilsReducer from "./products/duck/index";
 
-const rootReducer = productsReducer;
-
-export default rootReducer;
+export default combineReducers(productsReducer, productsDeatilsReducer);

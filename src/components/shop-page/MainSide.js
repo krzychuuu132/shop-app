@@ -4,15 +4,12 @@ import { Link } from "react-router-dom";
 import ShopOptions from "./menu/ShopOptions";
 import Navigation from "./menu/Navigation";
 import Main from "./main/Main";
-import { useSelector } from "react-redux";
+
 // Search-Panel,Products
 
-import Products from "./main/Products";
 import SearchProducts from "./main/SearchProducts";
 
 const mainSide = () => {
-  const products = useSelector(state => state.products);
-
   const sexChoice = [
     {
       id: 0,
