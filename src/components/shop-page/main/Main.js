@@ -15,7 +15,7 @@ const Main = () => {
   const [counter, useCounter] = useState(1);
   // Counter
   const getSize = () => {
-    const size = sliderFirstImage.current.clientWidth;
+    const size = sliderFirstImage.current.clientWidth || 0;
     useSizeOfImg(size);
   };
   window.addEventListener("resize", () => {

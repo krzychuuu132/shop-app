@@ -1,3 +1,6 @@
+@import "./favPrFunctions";
+
+
 .container {
     width: 100vw;
     min-height: 100vh;
@@ -5,9 +8,39 @@
 
 }
 
+.product-wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    overflow: hidden;
+
+
+}
+
+.product-exit {
+    position: absolute;
+    top: 2.5%;
+    left: 2.5%;
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    outline: none;
+    transition: font-size .3s ease;
+
+    &:hover {
+        font-size: larger;
+    }
+}
+
+
 
 
 .product-details {
+    position: relative;
 
     .search {
         display: none;
@@ -17,11 +50,37 @@
     min-height: 650px;
 
 
+
+    .product-favourite {
+        @include favourite;
+
+        &-icon {
+            font-size: 20px;
+            font-weight: bold;
+
+
+
+
+
+        }
+    }
+
+
+
+
+
+
+
+
     &__img {
-        margin-top: 50px;
+        margin-top: 20px;
         width: 100%;
-        height: 70%;
+        height: 60%;
         filter: brightness(0.5);
+
+
+
+
     }
 
     &__company {
@@ -71,6 +130,7 @@
 .options {
     display: flex;
     flex-direction: column;
+    width: 100%;
     height: 400px;
 
     &__type {
@@ -92,7 +152,7 @@
         margin: 13px auto;
         border: none;
         height: 50px;
-
+        position: relative;
         border-radius: 5px;
 
         &-text {
@@ -101,9 +161,49 @@
             font-weight: bold;
             letter-spacing: 1px;
             display: block;
-            width: 100%;
+            width: 90%;
             font-size: 13px;
             margin-left: 16px;
+        }
+
+        &-icon {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: white;
+        }
+    }
+
+
+}
+
+.transport {
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+
+    padding: 22px 0 0 20px;
+
+    &__transport {
+        display: flex;
+        flex-grow: 1;
+
+    }
+
+    &-icon {
+        font-size: 15px;
+    }
+
+    &__text {
+        padding-left: 10px;
+        font-size: 12px;
+
+        &-important {
+            font-weight: bolder;
+            font-size: 13px;
+            padding-right: 6px;
         }
     }
 }

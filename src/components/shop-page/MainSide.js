@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ShopOptions from "./menu/ShopOptions";
 import Navigation from "./menu/Navigation";
 import Main from "./main/Main";
-
+import Footer from "./main/Footer";
 // Search-Panel,Products
 
 import SearchProducts from "./main/SearchProducts";
@@ -64,6 +64,9 @@ const mainSide = () => {
         <Main />
         <SearchProducts sexChoice={sexChoice} />
       </main>
+      <footer className="footer">
+        <Footer />
+      </footer>
     </>
   );
 };

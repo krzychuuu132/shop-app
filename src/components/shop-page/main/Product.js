@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../../sass/main/Product.scss";
 import { useSelector } from "react-redux";
-import { useHistory, Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import store from "../../../redux/store";
-import ProductDetails from "./ProductDetails";
+
+import ProductFavourite from "./ProductFavourite";
+
 const Product = props => {
   const [activeProduct, useActiveProduct] = useState(false);
 
@@ -12,28 +14,33 @@ const Product = props => {
   let history = useHistory();
 
   const handleProductClcik = id => {
-    useActiveProduct(!activeProduct);
-    // history.push(`/product-343343434_${id}`);
+    history.push(`/product`);
 
     const SHOW_PRODUCT_DETAILS = productID => ({
       type: "SHOW_PRODUCT_DETAILS",
       productID
     });
     store.dispatch(SHOW_PRODUCT_DETAILS(id));
+    useActiveProduct(!activeProduct);
   };
-  console.log(activeProduct);
+
   const showElements = products => {
     return products.map((product, index) => (
-      <div
-        className="product"
-        key={index}
-        onClick={() => handleProductClcik(product.id)}
-      >
-        <img alt="product-img" src={product.src} className="product__picture" />
-        <h6 className="product__title">{product.company}</h6>
-        <p className="product__price">od {product.price},00 zł</p>
-        <p>{product.type}</p>
-      </div>
+      <>
+        <div className="product" key={index}>
+          <img
+            alt="product-img"
+            src={product.src}
+            className="product__picture"
+            onClick={() => handleProductClcik(product.id)}
+          />
+
+          <h6 className="product__title">{product.company}</h6>
+          <p className="product__price">od {product.price},00 zł</p>
+          <p>{product.type}</p>
+          <ProductFavourite />
+        </div>
+      </>
     ));
   };
 
@@ -54,11 +61,7 @@ const Product = props => {
 
     if (searchProducts) return showElements(getProducts);
   };
-  return activeProduct ? (
-    <ProductDetails />
-  ) : (
-    <div className="product-container">{showProduct()}</div>
-  );
+  return <div className="product-container">{showProduct()}</div>;
 };
 
 export default Product;
