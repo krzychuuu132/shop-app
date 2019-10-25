@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../sass/shop-page__style/menu/ShopOptions.scss";
-
+import { useSelector } from "react-redux";
 const ShopOptions = () => {
+  const favouriteProducts = useSelector(state =>
+    state.productsReducer.products.filter(product => product.favourite)
+  );
+  const favouriteProductsLength = favouriteProducts.length;
   return (
     <>
       <div className="accout-options">
@@ -10,6 +14,9 @@ const ShopOptions = () => {
           <span className="options-list">
             <i className="far fa-heart options-list__icon"></i>
             <p className="options-list__title">lista życzeń </p>
+            <div className="options-list__counter">
+              {favouriteProductsLength}
+            </div>
           </span>
         </Link>
 

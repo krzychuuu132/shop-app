@@ -4,6 +4,7 @@ const app = express();
 const register = require("../routes/register");
 const login = require("../routes/login");
 const startSide = require("../routes/start-side");
+const myAccout = require("../routes/myAccout");
 require("dotenv/config");
 const bodyParser = require("body-parser");
 //mongoose
@@ -15,6 +16,7 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 /*"nodemon --exec @babel-node lib/server.js "*/
 app.use("/", register);
+app.use("/", myAccout);
 app.use("/", login);
 app.use("/", startSide);
 

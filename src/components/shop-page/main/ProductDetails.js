@@ -31,7 +31,7 @@ const ProductDetails = props => {
             className="product-details__img"
           />
 
-          <ProductFavourite />
+          <ProductFavourite product={productDetails[0]} />
 
           <p className="product-details__company">
             {productDetails[0].company}{" "}

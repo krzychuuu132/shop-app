@@ -407,6 +407,16 @@
   .accout-options--active-accout {
     left: 50%; }
 
+.options-list {
+  position: relative; }
+  .options-list__counter {
+    position: absolute;
+    right: -35%;
+    bottom: -30%;
+    color: red;
+    font-weight: bold;
+    font-size: 12px; }
+
 .product-favourite--active {
   animation: addToFavourite .3s linear 1;
   transition: .2s; }
@@ -1068,7 +1078,7 @@ body {
 
 .wish-list {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #e7e3e3;
   position: relative; }
   .wish-list__content {
@@ -1085,11 +1095,9 @@ body {
     text-transform: capitalize;
     padding: 20px;
     word-spacing: 3px; }
-  .wish-list__products {
-    width: 100vw;
-    min-height: 70vh;
-    display: grid;
-    border-top: 0.5px solid #dbd0d0; }
+  .wish-list .products {
+    display: flex;
+    flex-wrap: wrap; }
 
 
 

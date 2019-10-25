@@ -12,7 +12,8 @@ const INITIAL_PRODUCTS = {
       popularity: true,
       sale: false,
       size: "M",
-      id: 0
+      id: 0,
+      favourite: false
     },
     {
       sex: "girls",
@@ -24,7 +25,8 @@ const INITIAL_PRODUCTS = {
       popularity: true,
       sale: false,
       size: "L",
-      id: 1
+      id: 1,
+      favourite: false
     },
     {
       sex: "girls",
@@ -36,7 +38,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "S",
-      id: 2
+      id: 2,
+      favourite: false
     },
     {
       sex: "girls",
@@ -48,7 +51,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "XS",
-      id: 3
+      id: 3,
+      favourite: false
     },
     {
       sex: "girls",
@@ -60,7 +64,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "XL",
-      id: 4
+      id: 4,
+      favourite: false
     },
     {
       sex: "girls",
@@ -72,7 +77,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "M",
-      id: 5
+      id: 5,
+      favourite: false
     },
     {
       sex: "girls",
@@ -84,7 +90,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: true,
       size: "L",
-      id: 6
+      id: 6,
+      favourite: false
     },
 
     {
@@ -97,7 +104,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "S",
-      id: 7
+      id: 7,
+      favourite: false
     },
     {
       sex: "mens",
@@ -109,7 +117,8 @@ const INITIAL_PRODUCTS = {
       popularity: true,
       sale: true,
       size: "XS",
-      id: 8
+      id: 8,
+      favourite: false
     },
     {
       sex: "mens",
@@ -121,7 +130,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: true,
       size: "M",
-      id: 9
+      id: 9,
+      favourite: false
     },
     {
       sex: "mens",
@@ -133,7 +143,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "L",
-      id: 10
+      id: 10,
+      favourite: false
     },
     {
       sex: "mens",
@@ -145,7 +156,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "S",
-      id: 11
+      id: 11,
+      favourite: false
     },
 
     {
@@ -158,7 +170,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "XL",
-      id: 12
+      id: 12,
+      favourite: false
     },
     {
       sex: "kids",
@@ -170,7 +183,8 @@ const INITIAL_PRODUCTS = {
       popularity: true,
       sale: false,
       size: "L",
-      id: 13
+      id: 13,
+      favourite: false
     },
     {
       sex: "kids",
@@ -182,7 +196,8 @@ const INITIAL_PRODUCTS = {
       popularity: true,
       sale: false,
       size: "XL",
-      id: 14
+      id: 14,
+      favourite: false
     },
     {
       sex: "kids",
@@ -194,7 +209,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "S",
-      id: 15
+      id: 15,
+      favourite: false
     },
     {
       sex: "kids",
@@ -206,7 +222,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "S",
-      id: 16
+      id: 16,
+      favourite: false
     },
     {
       sex: "kids",
@@ -218,7 +235,8 @@ const INITIAL_PRODUCTS = {
       popularity: false,
       sale: false,
       size: "M",
-      id: 17
+      id: 17,
+      favourite: false
     },
 
     {
@@ -231,7 +249,8 @@ const INITIAL_PRODUCTS = {
       popularity: true,
       sale: true,
       size: "M",
-      id: 18
+      id: 18,
+      favourite: false
     }
   ]
 };
@@ -285,7 +304,15 @@ const productsDeatilsReducer = (state = INITIAL_PRODUCTS, action) => {
           product => product.id === action.productID
         )
       };
-
+    case types.ADD_PRODUCT_TO_FAVOURITE:
+      return {
+        products: INITIAL_PRODUCTS.products.filter(product => {
+          if (product === action.product) {
+            product.favourite = !product.favourite;
+            return product;
+          }
+        })
+      };
     default:
       return state;
   }

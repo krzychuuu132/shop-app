@@ -38,7 +38,7 @@ const Product = props => {
           <h6 className="product__title">{product.company}</h6>
           <p className="product__price">od {product.price},00 zł</p>
           <p>{product.type}</p>
-          <ProductFavourite />
+          <ProductFavourite product={product} />
         </div>
       </>
     ));

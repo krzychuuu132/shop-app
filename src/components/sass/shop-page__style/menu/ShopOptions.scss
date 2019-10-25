@@ -60,3 +60,16 @@
     }
 
 }
+
+.options-list {
+    position: relative;
+
+    &__counter {
+        position: absolute;
+        right: -35%;
+        bottom: -30%;
+        color: red;
+        font-weight: bold;
+        font-size: 12px;
+    }
+}

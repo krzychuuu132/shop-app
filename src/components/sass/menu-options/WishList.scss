@@ -1,6 +1,6 @@
 .wish-list {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: rgb(231, 227, 227);
     position: relative;
 
@@ -24,12 +24,9 @@
         word-spacing: 3px;
     }
 
-    &__products {
+    .products {
+        display: flex;
+        flex-wrap: wrap;
 
-
-        width: 100vw;
-        min-height: 70vh;
-        display: grid;
-        border-top: 0.5px solid rgb(219, 208, 208);
     }
 }
