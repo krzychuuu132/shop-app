@@ -6,7 +6,13 @@ const ShopOptions = () => {
   const favouriteProducts = useSelector(state =>
     state.productsReducer.products.filter(product => product.favourite)
   );
+
+  const buyShopProduct = useSelector(
+    state => state.buyProductsReducer.products
+  );
   const favouriteProductsLength = favouriteProducts.length;
+  const buyShopProductLength = buyShopProduct.length;
+
   return (
     <>
       <div className="accout-options">
@@ -26,6 +32,7 @@ const ShopOptions = () => {
           <span className="options-shopping">
             <i className="fas fa-shopping-cart options-shopping__icon"></i>
             <p className="options-shopping__title">koszyk</p>
+            <div className="options-list__counter">{buyShopProductLength}</div>
           </span>
         </Link>
 

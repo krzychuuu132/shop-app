@@ -32,7 +32,6 @@ const WishList = () => {
 
       <h6 className="product__title">{product.company}</h6>
       <p className="product__price">od {product.price},00 zł</p>
-      <p>{product.type}</p>
     </div>
   ));
 
@@ -41,7 +40,14 @@ const WishList = () => {
       <div className="wish-list__content">
         <h1 className="wish-list__title">moja lista życzeń</h1>
       </div>
-      <div className="products">{products}</div>
+      {favouriteProducts.length === 0 ? (
+        <>
+          <h3 className="wish-list__nothing">Nie masz ulubionych rzeczy</h3>
+          <span className="far fa-angry wish-list__nothing-icon"></span>
+        </>
+      ) : (
+        <div className="products">{products}</div>
+      )}
     </div>
   );
 };

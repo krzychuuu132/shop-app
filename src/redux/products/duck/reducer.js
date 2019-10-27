@@ -13,7 +13,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "M",
       id: 0,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "girls",
@@ -26,7 +27,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "L",
       id: 1,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "girls",
@@ -39,7 +41,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "S",
       id: 2,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "girls",
@@ -52,7 +55,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "XS",
       id: 3,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "girls",
@@ -65,7 +69,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "XL",
       id: 4,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "girls",
@@ -78,7 +83,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "M",
       id: 5,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "girls",
@@ -91,7 +97,8 @@ const INITIAL_PRODUCTS = {
       sale: true,
       size: "L",
       id: 6,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
 
     {
@@ -105,7 +112,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "S",
       id: 7,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "mens",
@@ -118,7 +126,8 @@ const INITIAL_PRODUCTS = {
       sale: true,
       size: "XS",
       id: 8,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "mens",
@@ -131,7 +140,8 @@ const INITIAL_PRODUCTS = {
       sale: true,
       size: "M",
       id: 9,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "mens",
@@ -144,7 +154,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "L",
       id: 10,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "mens",
@@ -157,7 +168,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "S",
       id: 11,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
 
     {
@@ -171,7 +183,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "XL",
       id: 12,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "kids",
@@ -184,7 +197,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "L",
       id: 13,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "kids",
@@ -197,7 +211,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "XL",
       id: 14,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "kids",
@@ -210,7 +225,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "S",
       id: 15,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "kids",
@@ -223,7 +239,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "S",
       id: 16,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
     {
       sex: "kids",
@@ -236,7 +253,8 @@ const INITIAL_PRODUCTS = {
       sale: false,
       size: "M",
       id: 17,
-      favourite: false
+      favourite: false,
+      shopList: false
     },
 
     {
@@ -250,11 +268,14 @@ const INITIAL_PRODUCTS = {
       sale: true,
       size: "M",
       id: 18,
-      favourite: false
+      favourite: false,
+      shopList: false
     }
   ]
 };
-
+const buyProduct = {
+  products: []
+};
 const productsReducer = (state = INITIAL_PRODUCTS, action) => {
   switch (action.type) {
     case types.SORT_PRODUCT:
@@ -313,46 +334,25 @@ const productsDeatilsReducer = (state = INITIAL_PRODUCTS, action) => {
           }
         })
       };
+
     default:
       return state;
   }
 };
-
+const buyProductsReducer = (state = buyProduct, action) => {
+  switch (action.type) {
+    case types.ADD_TO_SHOP_LIST:
+      console.log(action.product);
+      return {
+        ...state,
+        products: [...state.products, action.product]
+      };
+    default:
+      return state;
+  }
+};
 export default {
   productsReducer,
-  productsDeatilsReducer
+  productsDeatilsReducer,
+  buyProductsReducer
 };
-
-/*
- case types.SHOW_PRODUCT_SIZE:
-      return {
-        products: INITIAL_PRODUCTS.products.filter(
-          product => product.size === action.size
-        )
-      };
-    case types.SORT_NOVELTY:
-      return {
-        products: state.products.filter(product => {
-          if (product.novelty) return product;
-        })
-      };
-
-    case types.SORT_POPULARITY:
-      return {
-        products: state.products.filter(product => {
-          if (product.popularity) return product;
-          else return state;
-        })
-      };
-
-    case types.SALE_PRODUCTS:
-      return {
-        products: state.products.filter(product => {
-          if (product.sale) return product;
-        })
-      };
-
-    case types.RETURN_DEFAULT:
-      return {
-        products: INITIAL_PRODUCTS.products
-      }; */

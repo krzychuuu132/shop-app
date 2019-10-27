@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../../sass/main/ProductDetails.scss";
 import ShopOptions from "../menu/ShopOptions";
 import ProductFavourite from "./ProductFavourite";
 import Footer from "./Footer";
+import store from "../../../redux/store";
+const addToList = product => ({
+  type: "ADD_TO_SHOP_LIST",
+  product
+});
+
 const ProductDetails = props => {
+  const [addClass, useAddClass] = useState(false);
   const history = useHistory();
 
   const productDetails = useSelector(
@@ -58,7 +65,15 @@ const ProductDetails = props => {
             <option value="M">M</option>
           </select>
 
-          <button className="options__btn">
+          <button
+            className={
+              addClass ? "options__btn options__btn--active" : "options__btn"
+            }
+            onClick={() => {
+              store.dispatch(addToList(productDetails[0]));
+              useAddClass(!addClass);
+            }}
+          >
             <span className="options__btn-text">Dodaj do koszyka</span>
             <span className="fas fa-shopping-basket options__btn-icon"></span>
           </button>

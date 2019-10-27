@@ -154,6 +154,7 @@
         height: 50px;
         position: relative;
         border-radius: 5px;
+        outline: none;
 
         &-text {
             text-align: left;
@@ -173,6 +174,20 @@
             transform: translateY(-50%);
             font-size: 16px;
             color: white;
+        }
+
+        &--active &-icon {
+            animation: addToList .8s ease-in-out 1;
+        }
+
+        @keyframes addToList {
+            from {
+                font-size: 22px;
+            }
+
+            to {
+                font-size: 16px;
+            }
         }
     }
 

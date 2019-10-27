@@ -63,13 +63,36 @@
 
 .options-list {
     position: relative;
+    display: block;
+    width: 80px;
 
     &__counter {
         position: absolute;
-        right: -35%;
-        bottom: -30%;
-        color: red;
-        font-weight: bold;
+        right: 0%;
+        top: 0%;
+        color: white;
+        width: 30px;
         font-size: 12px;
+        text-align: center;
+        font-weight: bold;
+
+
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: "";
+            width: 30px;
+            height: 15px;
+            background-color: darkorange;
+            border-radius: 25px;
+            z-index: -1;
+        }
     }
+}
+
+.options-shopping {
+    position: relative;
+    display: block;
+    width: 80px;
 }

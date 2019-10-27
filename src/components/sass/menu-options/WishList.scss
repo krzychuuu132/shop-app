@@ -8,7 +8,7 @@
     &__content {
         width: 100vw;
         height: 250px;
-        background-color: whitesmoke;
+        background-color: white;
         position: relative;
 
     }
@@ -28,5 +28,17 @@
         display: flex;
         flex-wrap: wrap;
 
+    }
+
+    &__nothing {
+
+        color: red;
+        padding: 25px 0 25px 25px;
+        display: inline-block;
+    }
+
+    &__nothing-icon {
+        padding-left: 7px;
+        font-size: 22px;
     }
 }
