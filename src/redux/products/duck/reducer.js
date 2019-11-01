@@ -342,10 +342,27 @@ const productsDeatilsReducer = (state = INITIAL_PRODUCTS, action) => {
 const buyProductsReducer = (state = buyProduct, action) => {
   switch (action.type) {
     case types.ADD_TO_SHOP_LIST:
-      console.log(action.product);
       return {
         ...state,
         products: [...state.products, action.product]
+      };
+    case types.ADD_THE_SAME_PRODUCT:
+      return {
+        products: state.products.filter(product => {
+          if (product.id === action.product[0].id) {
+            product.counter++;
+
+            return product;
+          }
+        })
+      };
+
+    case types.DELETE_FROM_SHOP_LIST:
+      return {
+        ...state,
+        products: state.products.filter(product => {
+          if (product !== action.product) return product;
+        })
       };
     default:
       return state;

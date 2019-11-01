@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../../sass/main/ProductDetails.scss";
@@ -10,15 +10,22 @@ const addToList = product => ({
   type: "ADD_TO_SHOP_LIST",
   product
 });
-
+const findTheSameProducts = product => ({
+  type: "ADD_THE_SAME_PRODUCT",
+  product
+});
 const ProductDetails = props => {
   const [addClass, useAddClass] = useState(false);
+  const [selectSize, useSelectSize] = useState("");
   const history = useHistory();
-
+  const selectSizeItems = useRef(null);
   const productDetails = useSelector(
     state => state.productsDeatilsReducer.products
   );
 
+  const buyShopProduct = useSelector(
+    state => state.buyProductsReducer.products
+  );
   return (
     <>
       <div className="product-wrapper">
@@ -58,11 +65,18 @@ const ProductDetails = props => {
         </div>
         <div className="options">
           <span className="options__type">Rozmiary europejsie</span>
-          <select name="sizes" className="options__size">
+          <select
+            name="sizes"
+            className="options__size"
+            value={selectSize}
+            onChange={e => useSelectSize(e.target.value)}
+            ref={selectSizeItems}
+          >
             <option value="Wybierz rozmiar">Wybierz rozmiar</option>
             <option value="XS">XS</option>
             <option value="S">S</option>
             <option value="M">M</option>
+            <option value="L">L</option>
           </select>
 
           <button
@@ -70,7 +84,30 @@ const ProductDetails = props => {
               addClass ? "options__btn options__btn--active" : "options__btn"
             }
             onClick={() => {
-              store.dispatch(addToList(productDetails[0]));
+              if (!selectSize) {
+                console.log("wybierz rozmiar!");
+                selectSizeItems.current.className =
+                  "options__size options__size--active";
+              } else {
+                selectSizeItems.current.className = "options__size";
+
+                const copyProductDetails = productDetails.map(product => {
+                  if (product) {
+                    product.counter = 1;
+                    product.size = selectSize;
+                  }
+                  return product;
+                });
+
+                const theSameProducts = buyShopProduct.filter(product => {
+                  if (product.id === productDetails[0].id) return product;
+                });
+
+                if (theSameProducts && theSameProducts.length !== 0)
+                  store.dispatch(findTheSameProducts(theSameProducts));
+                else store.dispatch(addToList(copyProductDetails[0]));
+              }
+
               useAddClass(!addClass);
             }}
           >
