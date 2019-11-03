@@ -14,10 +14,10 @@ const findTheSameProducts = product => ({
   type: "ADD_THE_SAME_PRODUCT",
   product
 });
-const ProductDetails = props => {
+const ProductDetails = () => {
   const [addClass, useAddClass] = useState(false);
   const [selectSize, useSelectSize] = useState("");
-  console.log(selectSize);
+
   const history = useHistory();
   const selectSizeItems = useRef(null);
   const productDetails = useSelector(

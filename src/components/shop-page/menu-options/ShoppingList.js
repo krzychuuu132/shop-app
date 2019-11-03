@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "../../sass/menu-options/Shopping.scss";
 import { useSelector } from "react-redux";
 import ShopOptions from "../menu/ShopOptions";
 import store from "../../../redux/store";
+import Payment from "../payment/Payment";
 
 const handleSumMoney = sum => {
   let sumScore = sum.reduce((a, b) => a + b);
@@ -15,9 +17,9 @@ const handleMoneysToPay = (product, sum) => {
   return sumMoney;
 };
 
-const handleNextOrderStep = sumMoneys => {};
-
 const ShoppingList = () => {
+  const history = useHistory();
+
   // SUM OF MONEY
   const sum = [];
 
@@ -28,7 +30,7 @@ const ShoppingList = () => {
   });
 
   const [deleteProduct, useDeleteProduct] = useState(false);
-
+  const [nextStep, useNextStep] = useState(false);
   const buyShopProduct = useSelector(
     state => state.buyProductsReducer.products
   );
@@ -63,7 +65,7 @@ const ShoppingList = () => {
         </select>
         <div className="products__price">
           <span className="products__promotion">
-            {product.counter * product.price - 30},00 zł
+            {product.counter * product.price + 30},00 zł
           </span>
           <span className="products__price-item">
             {handleMoneysToPay(product, sum)},00 zł
@@ -110,24 +112,52 @@ const ShoppingList = () => {
               <span className="far fa-angry products__no-things-icon"></span>
             </h1>
           ) : (
-            productsToBuy
+            <>
+              {productsToBuy}
+              <div className="transport">
+                <h1 className="transport__title">
+                  Przewidywalna dostawa przesyłki
+                </h1>
+                <p className="transport__content">
+                  Oczekuj swojej przesyłki w domu do <strong>2 dni</strong>{" "}
+                  roboczych od nadania przesyłki
+                </p>
+              </div>
+
+              <div className="payment-methods">
+                <h2 className="payment-methods__title">U nas zapłacisz:</h2>
+                <div className="payment-methods-icons">
+                  <span className="fab fa-cc-mastercard"></span>
+                  <span className="fab fa-cc-visa"></span>
+                  <span className="fab fa-cc-paypal"></span>
+                  <span className="fab fa-cc-apple-pay"></span>
+                  <span className="fab fa-cc-discover"></span>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>
       {buyShopProduct.length !== 0 ? (
         <div className="fees">
           <div className="fees__price">
-            Łączna kwota (w tym VAT)
+            Łączna kwota (w tym VAT) + przesyłka GRATIS
             <span className="fees__price-item">{handleSumMoney(sum)}</span>
           </div>
           <button
             className="fees__next-step"
-            onClick={() => handleNextOrderStep()}
+            onClick={() => {
+              history.push("shopping-list/adres");
+              useNextStep(!nextStep);
+            }}
           >
             przejdź do kasy
           </button>
         </div>
       ) : null}
+      <div className={nextStep ? "payment payment--active" : "payment"}>
+        <Payment />
+      </div>
     </>
   );
 };

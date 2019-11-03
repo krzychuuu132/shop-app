@@ -1138,7 +1138,7 @@ body {
     font-size: 22px; }
 
 .shop-list {
-  min-height: 110vh;
+  min-height: 120vh;
   background-color: white;
   display: flex;
   flex-direction: column; }
@@ -1146,13 +1146,14 @@ body {
 .accout-options {
   margin: 0 auto;
   padding: 10px;
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 3; }
 
 .products {
   margin: 0 auto;
   width: 100vw;
-  min-height: 110vh;
-  background-color: #f0eaea;
+  min-height: 120vh;
+  background-color: #E0E0E0;
   position: relative; }
   .products__length {
     position: absolute;
@@ -1236,7 +1237,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 90px;
-  background-color: #e2dbdb; }
+  background-color: white; }
   .fees__price {
     height: 50%;
     line-height: 45px;
@@ -1244,7 +1245,7 @@ body {
     letter-spacing: 1px;
     position: relative;
     font-size: 13px;
-    margin-left: 10px; }
+    margin-left: 20px; }
     .fees__price-item {
       position: absolute;
       top: 0;
@@ -1265,10 +1266,80 @@ body {
     font-size: 13px;
     letter-spacing: 1px; }
 
+.transport {
+  height: 115px;
+  padding: 20px;
+  background-color: white;
+  margin: 17px 0; }
+  .transport__title {
+    font-size: 22px;
+    letter-spacing: 1px; }
+  .transport__content {
+    padding-top: 10px; }
+
+.payment-methods {
+  height: 115px;
+  padding: 20px;
+  background-color: white; }
+  .payment-methods__title {
+    font-size: 22px;
+    letter-spacing: 1px; }
+  .payment-methods-icons {
+    padding-top: 10px; }
+    .payment-methods-icons > span {
+      font-size: 40px;
+      margin: 0 4px; }
+
+.payment {
+  position: absolute;
+  top: 8.5%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #E0E0E0;
+  transform: translateX(-100%);
+  transition: .2s;
+  z-index: 2; }
+  .payment--active {
+    transform: translateX(0%); }
+
 @keyframes bigger {
   from {
     transform: scale(1.3); }
   to {
     transform: scale(1); } }
+
+.buy-product {
+  width: 100%;
+  height: 100%; }
+  .buy-product__steps {
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%;
+    height: 100px;
+    background-color: white;
+    position: relative; }
+    .buy-product__steps-info {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 0.5px solid black;
+      text-align: center;
+      line-height: 40px;
+      z-index: 2;
+      margin: 0 5%;
+      background-color: white; }
+    .buy-product__steps::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 1px;
+      background-color: #c2c0c0;
+      z-index: 1; }
 
 

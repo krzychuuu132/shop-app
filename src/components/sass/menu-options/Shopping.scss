@@ -1,21 +1,23 @@
 .shop-list {
-    min-height: 110vh;
+    min-height: 120vh;
     background-color: white;
     display: flex;
     flex-direction: column;
+
 }
 
 .accout-options {
     margin: 0 auto;
     padding: 10px;
     overflow: hidden;
+    z-index: 3;
 }
 
 .products {
     margin: 0 auto;
     width: 100vw;
-    min-height: 110vh;
-    background-color: rgb(240, 234, 234);
+    min-height: 120vh;
+    background-color: #E0E0E0;
     position: relative;
 
     &__length {
@@ -130,7 +132,7 @@
     bottom: 0;
     width: 100%;
     height: 90px;
-    background-color: rgb(226, 219, 219);
+    background-color: white;
 
 
     &__price {
@@ -140,7 +142,7 @@
         letter-spacing: 1px;
         position: relative;
         font-size: 13px;
-        margin-left: 10px;
+        margin-left: 20px;
 
         &-item {
             position: absolute;
@@ -167,8 +169,60 @@
     }
 }
 
+.transport {
+    height: 115px;
+    padding: 20px;
+
+    background-color: white;
+    margin: 17px 0;
+
+    &__title {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+
+    &__content {
+        padding-top: 10px;
+    }
+}
+
+.payment-methods {
+    height: 115px;
+    padding: 20px;
+    background-color: white;
 
 
+    &__title {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+
+    &-icons {
+        padding-top: 10px;
+
+
+        &>span {
+            font-size: 40px;
+            margin: 0 4px;
+        }
+    }
+}
+
+.payment {
+    position: absolute;
+    top: 8.5%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #E0E0E0;
+    transform: translateX(-100%);
+    transition: .2s;
+    z-index: 2;
+
+    &--active {
+        transform: translateX(0%);
+    }
+}
 
 @keyframes bigger {
     from {
