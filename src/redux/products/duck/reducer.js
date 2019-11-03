@@ -364,6 +364,16 @@ const buyProductsReducer = (state = buyProduct, action) => {
           if (product !== action.product) return product;
         })
       };
+    case types.UPDATE_COUNTER:
+      return {
+        ...state,
+        products: state.products.filter(product => {
+          if (product.id === action.product.id) {
+            product.counter = action.value;
+          }
+          return product;
+        })
+      };
     default:
       return state;
   }

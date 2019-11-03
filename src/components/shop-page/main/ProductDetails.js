@@ -17,6 +17,7 @@ const findTheSameProducts = product => ({
 const ProductDetails = props => {
   const [addClass, useAddClass] = useState(false);
   const [selectSize, useSelectSize] = useState("");
+  console.log(selectSize);
   const history = useHistory();
   const selectSizeItems = useRef(null);
   const productDetails = useSelector(
@@ -84,7 +85,7 @@ const ProductDetails = props => {
               addClass ? "options__btn options__btn--active" : "options__btn"
             }
             onClick={() => {
-              if (!selectSize) {
+              if (!selectSize || selectSize === "Wybierz rozmiar") {
                 console.log("wybierz rozmiar!");
                 selectSizeItems.current.className =
                   "options__size options__size--active";

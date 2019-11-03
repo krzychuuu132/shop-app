@@ -4,12 +4,36 @@ import { useSelector } from "react-redux";
 import ShopOptions from "../menu/ShopOptions";
 import store from "../../../redux/store";
 
+const handleSumMoney = sum => {
+  let sumScore = sum.reduce((a, b) => a + b);
+  return `${sumScore},00zł`;
+};
+
+const handleMoneysToPay = (product, sum) => {
+  const sumMoney = product.counter * product.price;
+  sum.push(sumMoney);
+  return sumMoney;
+};
+
+const handleNextOrderStep = sumMoneys => {};
+
 const ShoppingList = () => {
+  // SUM OF MONEY
+  const sum = [];
+
+  const updateCounter = (product, value) => ({
+    type: "UPDATE_COUNTER",
+    product,
+    value
+  });
+
   const [deleteProduct, useDeleteProduct] = useState(false);
-  const [productQuantity, useProductQuantity] = useState(1);
+
   const buyShopProduct = useSelector(
     state => state.buyProductsReducer.products
   );
+
+  const savedMoney = 30;
 
   const productsToBuy = buyShopProduct.map((product, index) => (
     <div className="products__product" key={index}>
@@ -30,10 +54,8 @@ const ShoppingList = () => {
         <select
           name="sizes"
           className="products__quantity"
-          value={productQuantity}
-          onChange={e => useProductQuantity(e.target.value)}
+          onChange={e => store.dispatch(updateCounter(product, e.target.value))}
         >
-          <option value="1">1</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -41,11 +63,14 @@ const ShoppingList = () => {
         </select>
         <div className="products__price">
           <span className="products__promotion">
-            {productQuantity * product.price - 30}zł
+            {product.counter * product.price - 30},00 zł
           </span>
           <span className="products__price-item">
-            {productQuantity * product.price}zł
+            {handleMoneysToPay(product, sum)},00 zł
           </span>
+          <div className="products__price-saved">
+            oszczędzasz {savedMoney} zł
+          </div>
         </div>
       </div>
       <div
@@ -80,13 +105,29 @@ const ShoppingList = () => {
             </h2>
           ) : null}
           {buyShopProduct.length === 0 ? (
-            <h1>Nie masz żadnych przedmiotów w swoim koszyku :(</h1>
+            <h1 className="products__no-things">
+              Nie masz żadnych przedmiotów w swoim koszyku{" "}
+              <span className="far fa-angry products__no-things-icon"></span>
+            </h1>
           ) : (
             productsToBuy
           )}
         </div>
       </div>
-      <div className="fees"></div>
+      {buyShopProduct.length !== 0 ? (
+        <div className="fees">
+          <div className="fees__price">
+            Łączna kwota (w tym VAT)
+            <span className="fees__price-item">{handleSumMoney(sum)}</span>
+          </div>
+          <button
+            className="fees__next-step"
+            onClick={() => handleNextOrderStep()}
+          >
+            przejdź do kasy
+          </button>
+        </div>
+      ) : null}
     </>
   );
 };

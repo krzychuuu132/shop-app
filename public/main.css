@@ -1138,20 +1138,21 @@ body {
     font-size: 22px; }
 
 .shop-list {
-  min-height: 100vh;
+  min-height: 110vh;
   background-color: white;
   display: flex;
   flex-direction: column; }
 
 .accout-options {
   margin: 0 auto;
-  padding: 10px; }
+  padding: 10px;
+  overflow: hidden; }
 
 .products {
   margin: 0 auto;
   width: 100vw;
-  min-height: 100vh;
-  background-color: gainsboro;
+  min-height: 110vh;
+  background-color: #f0eaea;
   position: relative; }
   .products__length {
     position: absolute;
@@ -1159,7 +1160,7 @@ body {
     left: 0;
     padding: 15px 20px;
     font-size: 18px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Roboto Mono", monospace;
     letter-spacing: 1px;
     z-index: 1; }
   .products__img {
@@ -1175,7 +1176,8 @@ body {
     background-color: white;
     margin: 10px auto;
     position: relative;
-    border-radius: 1px; }
+    border-radius: 1px;
+    border-top: 0.5px solid #ece9e9; }
   .products__info {
     display: flex;
     flex-direction: column; }
@@ -1187,11 +1189,11 @@ body {
     position: absolute;
     top: 3.5%;
     right: 3.5%;
-    transition: .2s; }
+    transition: 0.2s; }
     .products__delete-icon {
       font-size: 22px; }
     .products__delete--active .products__delete-icon {
-      animation: bigger .2s ease 1; }
+      animation: bigger 0.2s ease 1; }
   .products__quantity {
     width: 90px;
     height: 40px;
@@ -1200,23 +1202,68 @@ body {
     display: flex;
     width: 200px;
     font-weight: bold;
-    padding-top: 10px;
+    position: relative;
     font-size: 14px; }
     .products__price-item {
       color: #cc1313;
       font-weight: bold;
       letter-spacing: 1px;
       margin-left: 20px; }
+    .products__price-saved {
+      position: absolute;
+      bottom: -115%;
+      left: 5%;
+      font-size: 12px;
+      color: #db1818;
+      letter-spacing: 1px; }
   .products__promotion {
     text-decoration: line-through; }
+  .products__no-things {
+    font-size: 22px;
+    color: red;
+    text-align: center;
+    padding-top: 35px;
+    letter-spacing: 1px;
+    line-height: 30px;
+    margin: 0 10px; }
+    .products__no-things-icon {
+      font-size: 25px;
+      color: black; }
 
 .fees {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 170px;
-  background-color: lightgreen; }
+  height: 90px;
+  background-color: #e2dbdb; }
+  .fees__price {
+    height: 50%;
+    line-height: 45px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    font-size: 13px;
+    margin-left: 10px; }
+    .fees__price-item {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: #db1818;
+      margin-right: 10px;
+      font-size: 15px; }
+  .fees__next-step {
+    background-color: #ff4e00;
+    color: white;
+    width: 100%;
+    height: 50%;
+    border: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    line-height: 45px;
+    font-size: 13px;
+    letter-spacing: 1px; }
 
 @keyframes bigger {
   from {
