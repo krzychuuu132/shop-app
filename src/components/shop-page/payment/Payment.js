@@ -11,6 +11,7 @@ const Payment = props => {
   //Gotowe
   if (history.location.pathname === "/shopping-list/adres") {
     adresItem.current.style.backgroundColor = "red";
+    //dg
   }
   return (
     <div className="buy-product" onClick={() => console.log(history.location)}>
