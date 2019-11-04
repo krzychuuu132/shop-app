@@ -214,7 +214,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #E0E0E0;
+    background-color: white;
+    border-top: 0.05px solid rgb(235, 232, 232);
     transform: translateX(-100%);
     transition: .2s;
     z-index: 2;
