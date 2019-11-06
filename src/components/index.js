@@ -14,6 +14,8 @@ import ShoppingList from "./shop-page/menu-options/ShoppingList";
 import Accout from "./shop-page/menu-options/Accout";
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import Payment from "./shop-page/payment/Payment";
+import Costs from "./shop-page/payment/Costs";
 
 class App extends React.Component {
   render() {
@@ -29,6 +31,8 @@ class App extends React.Component {
             <Route path="/shopping-list" component={ShoppingList} />
             <Route path="/accout" component={Accout} />
             <Route path="/product" component={ProductDetails} />
+            <Route path="/payment/adres" component={Payment} />
+            <Route path="/payment/płatności" component={Costs} />
             <Route component={BadPatch} />
           </Switch>
         </div>

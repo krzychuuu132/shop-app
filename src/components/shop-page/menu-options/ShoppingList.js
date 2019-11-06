@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Route } from "react-router-dom";
 import "../../sass/menu-options/Shopping.scss";
 import { useSelector } from "react-redux";
 import ShopOptions from "../menu/ShopOptions";
@@ -147,7 +147,7 @@ const ShoppingList = () => {
           <button
             className="fees__next-step"
             onClick={() => {
-              history.push("shopping-list/adres");
+              history.push("payment/adres");
               useNextStep(!nextStep);
             }}
           >
@@ -155,9 +155,6 @@ const ShoppingList = () => {
           </button>
         </div>
       ) : null}
-      <div className={nextStep ? "payment payment--active" : "payment"}>
-        <Payment />
-      </div>
     </>
   );
 };

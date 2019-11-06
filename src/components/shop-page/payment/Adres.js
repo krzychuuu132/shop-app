@@ -1,7 +1,9 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "../../sass/payment/adres.scss";
 
 const Adres = () => {
+  const history = useHistory();
   return (
     <div className="adres">
       <h1 className="adres__title">adres dostawy</h1>
@@ -36,9 +38,19 @@ const Adres = () => {
         gotowe dostaniesz SMS z kodem PIN paczki DHL.
       </div>
       <div className="adres__data-phone">
-        <p>Numer telefonu komórkowego</p>
-        <input type="text" placeholder="numer" className=""></input>
+        <p className="adres__data-phone_number">Numer telefonu komórkowego</p>
+        <input
+          type="text"
+          placeholder="numer"
+          className="adres__data-number"
+        ></input>
       </div>
+      <button
+        className="adres__btn"
+        onClick={() => history.push("/payment/płatności")}
+      >
+        przejdź dalej
+      </button>
     </div>
   );
 };
