@@ -1,0 +1,86 @@
+.accout-options {
+    margin: 8px auto;
+}
+
+.buy-product__steps {
+    padding-top: 25px;
+}
+
+.buy-costs {
+    width: 100%;
+    min-height: 100vh;
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        font-size: 15px;
+        padding: 10px 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+
+    &__payment {
+        margin: 0 auto;
+        width: 95%;
+        height: 100%;
+        border-top: 0.05px solid lightgray;
+        padding: 10px 0px;
+
+
+        //form
+        &-type {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-height: 70%;
+            padding: 5px 0px;
+        }
+
+        //label
+        &-method {
+            width: 100%;
+            padding: 20px 5px;
+            border-top: 0.05px solid rgb(221, 217, 217);
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: relative;
+
+            &:nth-child(1) {
+                border: none;
+
+            }
+
+            & span {
+                position: absolute;
+                font-size: 28px;
+                top: 50%;
+                right: 10%;
+                transform: translateY(-50%);
+
+                &:nth-child(3) {
+                    right: 20%;
+                }
+            }
+        }
+
+        //input
+        &-choice {
+            width: 15px;
+            height: 15px;
+            margin: 0 10px;
+            background-color: white;
+        }
+    }
+
+
+    &__summary {
+        width: 100vw;
+        height: 400px;
+        background-color: turquoise;
+        margin: 25px 0;
+    }
+}

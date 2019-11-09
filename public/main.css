@@ -1412,6 +1412,7 @@ body {
     padding: 7px; }
 
 .adres__btn {
+  margin: 0 auto;
   margin-top: 10px;
   display: block;
   width: 250px;
@@ -1423,7 +1424,64 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   border: none;
-  margin: 0 auto;
   outline: none; }
 
+
+.accout-options {
+  margin: 8px auto; }
+
+.buy-product__steps {
+  padding-top: 25px; }
+
+.buy-costs {
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column; }
+  .buy-costs__title {
+    font-size: 15px;
+    padding: 10px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
+  .buy-costs__payment {
+    margin: 0 auto;
+    width: 95%;
+    height: 100%;
+    border-top: 0.05px solid lightgray;
+    padding: 10px 0px; }
+    .buy-costs__payment-type {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 70%;
+      padding: 5px 0px; }
+    .buy-costs__payment-method {
+      width: 100%;
+      padding: 20px 5px;
+      border-top: 0.05px solid #ddd9d9;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      position: relative; }
+      .buy-costs__payment-method:nth-child(1) {
+        border: none; }
+      .buy-costs__payment-method span {
+        position: absolute;
+        font-size: 28px;
+        top: 50%;
+        right: 10%;
+        transform: translateY(-50%); }
+        .buy-costs__payment-method span:nth-child(3) {
+          right: 20%; }
+    .buy-costs__payment-choice {
+      width: 15px;
+      height: 15px;
+      margin: 0 10px;
+      background-color: white; }
+  .buy-costs__summary {
+    width: 100vw;
+    height: 400px;
+    background-color: turquoise;
+    margin: 25px 0; }
 

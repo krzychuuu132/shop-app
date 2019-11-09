@@ -13,7 +13,7 @@ const Payment = () => {
 
   return (
     <>
-      <div className="buy-product" onClick={() => console.log(history)}>
+      <div className="buy-product">
         <ShopOptions />
         <Steps />
         <Adres />

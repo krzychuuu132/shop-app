@@ -14,7 +14,9 @@ const Steps = () => {
       <div className={handleCorrectPath(history.location.pathname, "adres")}>
         1
       </div>
-      <div className={handleCorrectPath(history.location.pathname, "płatność")}>
+      <div
+        className={handleCorrectPath(history.location.pathname, "płatności")}
+      >
         2
       </div>
       <div
