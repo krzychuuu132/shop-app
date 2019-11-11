@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "webpack --config ./webpack.config.js",
     "dev:watch": "npm run dev -- --watch",
-    "start": "node src/server.js"
+    "start": "nodemon src/server.js"
   },
   "author": "Krzysztof U",
   "license": "ISC",

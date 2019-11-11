@@ -11,14 +11,17 @@ const config = {
     path: path.resolve(__dirname, "public"),
     filename: "bundle.js"
   },
-
+  //devServer: {
+  // port: 3001,
+  // contentBase: "./public/bundle.js",
+  // inline: true
+  //},
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
     new CleanWebpackPlugin()
-  
   ],
 
   module: {

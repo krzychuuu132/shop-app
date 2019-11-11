@@ -1552,4 +1552,24 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column; }
+  .shop-summary__protect {
+    width: 100%;
+    height: 60px;
+    background-color: gray;
+    text-align: center;
+    line-height: 60px; }
+    .shop-summary__protect-title {
+      font-size: 20px;
+      color: white;
+      letter-spacing: 1px; }
+  .shop-summary__info {
+    margin: 25px auto;
+    width: 95%;
+    height: 100%; }
+    .shop-summary__info-title {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 17px;
+      padding: 5px 0;
+      border-bottom: 0.05px solid #ddd9d9; }
 
