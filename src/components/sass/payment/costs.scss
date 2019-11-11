@@ -65,6 +65,13 @@
                     right: 20%;
                 }
             }
+
+            &_data {
+                padding: 15px;
+                margin-top: 8px;
+                line-height: 20px;
+                text-align: center;
+            }
         }
 
         //input
@@ -79,8 +86,81 @@
 
     &__summary {
         width: 100vw;
-        height: 400px;
-        background-color: turquoise;
-        margin: 25px 0;
+        height: 250px;
+        background-color: rgb(255, 255, 255);
+        margin: 5px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &-transport {
+            width: 95%;
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: relative;
+            border-bottom: 0.05px solid rgb(221, 217, 217);
+
+            &_promotion {
+                position: absolute;
+                right: 5%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+
+
+        }
+
+        &-price {
+            text-transform: uppercase;
+            padding: 10px 0;
+            letter-spacing: 1px;
+            font-size: 16px;
+            width: 95%;
+            position: relative;
+            font-weight: bold;
+
+            &_vat {
+                margin: 0 6px;
+                font-size: 8px;
+                color: rgb(200, 199, 199);
+            }
+
+            &_value {
+                position: absolute;
+                right: 5%;
+                top: 50%;
+                transform: translateY(-50%);
+                color: rgb(161, 2, 2);
+            }
+        }
+
+        //btn
+        &-btn {
+            margin-top: 20px;
+            width: 220px;
+            padding: 5px 15px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background-color: #ff4e00;
+            border: none;
+            border-radius: 5px;
+
+        }
+
+        //text
+        &-text {
+            margin-top: 15px;
+            font-size: 11px;
+            letter-spacing: 1px;
+
+        }
     }
 }

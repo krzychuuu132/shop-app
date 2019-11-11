@@ -1,10 +1,31 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "../../sass/payment/costs.scss";
 import ShopOptions from "../menu/ShopOptions";
 import Steps from "./Steps";
 import Footer from "../main/Footer";
 
+const infoAboutUser = userInfo => {
+  console.log(userInfo);
+  //const userData = userInfo.forEach(data => <p>{data}</p>);
+
+  return (
+    <>
+      <p>imię i nazwisko: {userInfo[0].imie}</p>
+      <p>adres: {userInfo[0].adres}</p>
+      <p>kod pocztowy: {userInfo[0].kod}</p>
+      <p>kraj: {userInfo[0].kraj}</p>
+    </>
+  );
+};
+
 const Costs = () => {
+  const history = useHistory();
+  // DATA
+  const OrderData = useSelector(state => state.dataProductOrder.products);
+  const OrderPrice = useSelector(state => state.orderPrice.products);
+
   return (
     <>
       <div className="buy-costs">
@@ -46,18 +67,36 @@ const Costs = () => {
                 className="buy-costs__payment-choice"
               />
               Za pobraniem (gratis)
-              <div className="buy-costs__payment-method_data"></div>
+              <div className="buy-costs__payment-method_data">
+                {infoAboutUser(OrderData)}
+              </div>
             </label>
           </form>
         </div>
 
         <div className="buy-costs__summary">
-          <p>Przesyłka</p>
-          <p>
-            łączna kwota <span>108,00 zł</span>
+          <p className="buy-costs__summary-transport">
+            Przesyłka
+            <span className="buy-costs__summary-transport_promotion">
+              Gratis
+            </span>
           </p>
-          <button>Dalej</button>
-          <p>Sprawdź zamówienie i potwierdź w ostatnim kroku</p>
+          <p className="buy-costs__summary-price">
+            łączna kwota
+            <span className="buy-costs__summary-price_vat">(w tym VAT)</span>
+            <span className="buy-costs__summary-price_value">
+              {OrderPrice},00zł
+            </span>
+          </p>
+          <button
+            className="buy-costs__summary-btn"
+            onClick={() => history.push("/payment/podsumowanie")}
+          >
+            Dalej
+          </button>
+          <p className="buy-costs__summary-text">
+            Sprawdź zamówienie i potwierdź w ostatnim kroku
+          </p>
         </div>
       </div>
       <Footer />

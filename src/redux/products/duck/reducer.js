@@ -276,6 +276,12 @@ const INITIAL_PRODUCTS = {
 const buyProduct = {
   products: []
 };
+const orderProduct = {
+  products: []
+};
+const ProductPrice = {
+  products: []
+};
 const productsReducer = (state = INITIAL_PRODUCTS, action) => {
   switch (action.type) {
     case types.SORT_PRODUCT:
@@ -378,8 +384,34 @@ const buyProductsReducer = (state = buyProduct, action) => {
       return state;
   }
 };
+
+const dataProductOrder = (state = orderProduct, action) => {
+  switch (action.type) {
+    case types.PRODUCT_DATA:
+      return {
+        products: [action.product]
+      };
+
+    default:
+      return state;
+  }
+};
+
+const orderPrice = (state = ProductPrice, action) => {
+  switch (action.type) {
+    case types.PRODUCT_DATA_PRICE:
+      return {
+        products: action.price
+      };
+
+    default:
+      return state;
+  }
+};
 export default {
   productsReducer,
   productsDeatilsReducer,
-  buyProductsReducer
+  buyProductsReducer,
+  dataProductOrder,
+  orderPrice
 };

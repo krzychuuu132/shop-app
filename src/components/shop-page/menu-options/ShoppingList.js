@@ -8,6 +8,12 @@ import Payment from "../payment/Payment";
 
 const handleSumMoney = sum => {
   let sumScore = sum.reduce((a, b) => a + b);
+  const orderPrice = price => ({
+    type: "PRODUCT_DATA_PRICE",
+    price
+  });
+  store.dispatch(orderPrice(sumScore));
+
   return `${sumScore},00zł`;
 };
 

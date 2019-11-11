@@ -1,10 +1,19 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import store from "../../../redux/store";
+
 import "../../sass/payment/adres.scss";
 
 const Adres = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
-  let formData = [{}];
+
+  const addDataFromOrder = product => ({
+    type: "PRODUCT_DATA",
+    product
+  });
+
   return (
     <div className="adres">
       <h1 className="adres__title">adres dostawy</h1>
@@ -12,22 +21,29 @@ const Adres = () => {
         <form
           className="adres__location-form"
           onSubmit={e => {
+            const formData = new FormData(e.target);
+            const user = {};
+
             e.preventDefault();
 
-            for (let i = 0; i < 4; i++) {
-              formData[i] = e.target[i].value;
+            for (let entry of formData.entries()) {
+              user[entry[0]] = entry[1];
             }
+            console.log(user);
+
+            store.dispatch(addDataFromOrder(user));
+            history.push("/payment/płatności");
           }}
         >
           <input
             type="text"
-            placeholder="Imię i Nazwisko"
+            placeholder="imie"
             className="adres__location-form_data"
-            name="imie i nazwisko"
+            name="imie"
           ></input>
           <input
             type="text"
-            placeholder="Adres Zamieszkania"
+            placeholder="adres "
             className="adres__location-form_data"
             name="adres"
           ></input>
@@ -35,7 +51,7 @@ const Adres = () => {
             type="text"
             placeholder="Kod pocztowy - Miasto"
             className="adres__location-form_data"
-            name="kod pocztowy"
+            name="kod"
           ></input>
           <input
             type="text"
@@ -43,6 +59,7 @@ const Adres = () => {
             className="adres__location-form_data"
             name="kraj"
           ></input>
+          <button className="adres__btn">przejdź dalej</button>
         </form>
       </div>
 
@@ -58,15 +75,6 @@ const Adres = () => {
           placeholder="numer"
           className="adres__data-number"
         ></input>
-        <button
-          className="adres__btn"
-          onClick={() => {
-            console.log(formData);
-            history.push("/payment/płatności");
-          }}
-        >
-          przejdź dalej
-        </button>
       </div>
     </div>
   );
