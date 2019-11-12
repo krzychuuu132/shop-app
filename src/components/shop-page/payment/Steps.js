@@ -24,7 +24,7 @@ const Steps = () => {
       >
         3
       </div>
-      <div className={handleCorrectPath(history.location.pathname, "ready")}>
+      <div className={handleCorrectPath(history.location.pathname, "gotowe")}>
         4
       </div>
     </div>

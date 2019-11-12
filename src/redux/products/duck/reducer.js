@@ -391,7 +391,16 @@ const dataProductOrder = (state = orderProduct, action) => {
       return {
         products: [action.product]
       };
-
+    case types.PAYMENT_METHOD:
+      console.log(state.products);
+      return {
+        products: state.products.filter(product => {
+          if (product.imie === action.product.imie) {
+            product.method = action.method;
+          }
+          return product;
+        })
+      };
     default:
       return state;
   }

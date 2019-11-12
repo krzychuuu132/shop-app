@@ -5,8 +5,11 @@ import "../../sass/payment/costs.scss";
 import ShopOptions from "../menu/ShopOptions";
 import Steps from "./Steps";
 import Footer from "../main/Footer";
+import { useDispatch } from "react-redux";
+import store from "../../../redux/store";
 
 const infoAboutUser = userInfo => {
+  const dispatch = useDispatch();
   console.log(userInfo);
   //const userData = userInfo.forEach(data => <p>{data}</p>);
 
@@ -26,6 +29,12 @@ const Costs = () => {
   const OrderData = useSelector(state => state.dataProductOrder.products);
   const OrderPrice = useSelector(state => state.orderPrice.products);
 
+  const paymentMethod = (product, method) => ({
+    type: "PAYMENT_METHOD",
+    product,
+    method
+  });
+
   return (
     <>
       <div className="buy-costs">
@@ -33,12 +42,18 @@ const Costs = () => {
         <Steps />
         <h1 className="buy-costs__title">Rodzaj płatności</h1>
         <div className="buy-costs__payment">
-          <form className="buy-costs__payment-type">
+          <form
+            className="buy-costs__payment-type"
+            onChange={e =>
+              store.dispatch(paymentMethod(OrderData[0], e.target.value))
+            }
+          >
             <label className="buy-costs__payment-method">
               <input
                 type="radio"
                 name="payment-method"
                 className="buy-costs__payment-choice"
+                value="PayPal (gratis)"
               />
               PayPal (gratis)<span className="fab fa-cc-paypal"></span>
             </label>
@@ -47,6 +62,7 @@ const Costs = () => {
                 type="radio"
                 name="payment-method"
                 className="buy-costs__payment-choice"
+                value=" Szybki przelew (gratis)"
               />
               Szybki przelew (gratis)
               <span className="fab fa-amazon-pay"></span>
@@ -56,6 +72,7 @@ const Costs = () => {
                 type="radio"
                 name="payment-method"
                 className="buy-costs__payment-choice"
+                value="Karta płatnicza (gratis)"
               />
               Karta płatnicza (gratis)<span className="fab fa-cc-visa"></span>
               <span className="fab fa-cc-mastercard"></span>
@@ -65,6 +82,7 @@ const Costs = () => {
                 type="radio"
                 name="payment-method"
                 className="buy-costs__payment-choice"
+                value="Za pobraniem (gratis)"
               />
               Za pobraniem (gratis)
               <div className="buy-costs__payment-method_data">

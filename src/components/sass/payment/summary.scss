@@ -36,5 +36,46 @@
         }
     }
 
+    &__data-title {
+        padding: 15px;
+        letter-spacing: 1px;
+        color: brown;
+    }
 
+    &__data {
+
+        padding: 2px 0;
+        letter-spacing: 1px;
+
+        &>strong {
+            color: rgb(80, 64, 64);
+            margin: 0 6px;
+        }
+
+        &-method {
+            font-weight: bold;
+            color: red;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+    }
+
+
+    &__order-product_btn {
+        width: 100%;
+        height: 50px;
+        background-color: #ff4e00;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+        line-height: 50px;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        border: none;
+        outline: none;
+
+    }
 }
