@@ -22,6 +22,7 @@ const ProductFavourite = props => {
         });
         store.dispatch(showProduct(props.product));
       }}
+      key={props.product.id}
     >
       <span className="far fa-heart product-details__img-icon"></span>
     </div>

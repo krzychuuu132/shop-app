@@ -36,7 +36,7 @@ const Summary = () => {
 
           <h3 className="shop-summary__data-title">Metoda płatności:</h3>
           <p className="shop-summary__data-method">- {summaryInfo.method}</p>
-          <h3 className="shop-summary__data-title">Koszty</h3>
+          <h3 className="shop-summary__data-title">Koszty:</h3>
           <p className="shop-summary__data-price">
             Cena(z dostawą):{" "}
             <strong>{OrderPrice},00zł + darmowa przesyłka</strong>

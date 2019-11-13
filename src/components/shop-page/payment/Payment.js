@@ -2,8 +2,6 @@ import React from "react";
 
 import "../../sass/payment/payment.scss";
 import Adres from "../payment/Adres";
-import ShopOptions from "../menu/ShopOptions";
-import Steps from "./Steps";
 
 const Payment = () => {
   //Adres
@@ -14,8 +12,6 @@ const Payment = () => {
   return (
     <>
       <div className="buy-product">
-        <ShopOptions />
-        <Steps />
         <Adres />
       </div>
     </>

@@ -2,7 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import store from "../../../redux/store";
-
+import ShopOptions from "../menu/ShopOptions";
+import Steps from "./Steps";
 import "../../sass/payment/adres.scss";
 
 const Adres = () => {
@@ -16,6 +17,8 @@ const Adres = () => {
 
   return (
     <div className="adres">
+      <ShopOptions />
+      <Steps />
       <h1 className="adres__title">adres dostawy</h1>
       <div className="adres__location">
         <form
@@ -29,7 +32,6 @@ const Adres = () => {
             for (let entry of formData.entries()) {
               user[entry[0]] = entry[1];
             }
-            console.log(user);
 
             store.dispatch(addDataFromOrder(user));
             history.push("/payment/płatności");
@@ -69,7 +71,9 @@ const Adres = () => {
         gotowe dostaniesz SMS z kodem PIN paczki DHL.
       </div>
       <div className="adres__data-phone">
-        <p className="adres__data-phone_number">Numer telefonu komórkowego</p>
+        <p className="adres__data-phone_number">
+          Numer telefonu komórkowego (opcjonalnie)
+        </p>
         <input
           type="text"
           placeholder="numer"

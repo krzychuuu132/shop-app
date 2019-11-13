@@ -1,7 +1,60 @@
+@import "../main/favPrFunctions";
+
 .ordered-product {
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: white;
+
+    &__protect {
+        @include protect
+    }
+
+    &__ready {
+        margin: 35px auto;
+        width: 95%;
+        background-color: chartreuse;
+        height: 200px;
+        text-align: center;
+        padding: 25px;
+        border-radius: 50px;
+        letter-spacing: 1px;
+        position: relative;
+        font-weight: bold;
+
+        & span {
+            font-size: 28px;
+            padding: 2px;
+
+        }
+
+        & span:nth-child(1) {
+            padding: 5px 0;
+        }
+
+        & span:nth-child(2) {
+            font-size: 50px;
+        }
+
+        &-icon {
+            position: absolute;
+            left: 50%;
+            top: 65%;
+            transform: translate(-50%, -50%);
+
+        }
+    }
+
+    &__go-back-icon {
+        position: absolute;
+        left: 5%;
+        top: 50%;
+        font-size: 32px;
+        transform: translateY(-50%);
+    }
+
+    &__go-main-side {
+        @include order-btn
+    }
 }

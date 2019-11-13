@@ -362,7 +362,10 @@ const buyProductsReducer = (state = buyProduct, action) => {
           }
         })
       };
-
+    case types.CLEAR_SHOP:
+      return {
+        products: []
+      };
     case types.DELETE_FROM_SHOP_LIST:
       return {
         ...state,

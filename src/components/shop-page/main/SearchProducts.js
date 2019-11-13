@@ -198,10 +198,6 @@ const SearchProducts = props => {
     };
 
     const handleSizeClick = (index, size) => {
-      // const showSizeProduct = size => ({
-      //   type: "SHOW_PRODUCT_SIZE",
-      //  size
-      //});
       store.dispatch(showSizeProduct(size));
       const activeSort = activeSizeElement.filter(element => {
         if (element.id === index) {

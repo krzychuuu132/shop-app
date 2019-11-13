@@ -1,4 +1,7 @@
 .adres {
+    display: flex;
+    flex-direction: column;
+
     &__title {
         text-transform: uppercase;
         letter-spacing: 1px;

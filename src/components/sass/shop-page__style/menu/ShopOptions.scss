@@ -1,7 +1,11 @@
 .accout-options {
     display: grid;
-    grid-template-columns: 100px 100px 100px;
+    grid-template-columns: 90px 90px 90px;
     position: relative;
+
+    @media (min-width:410px) {
+        grid-template-columns: 100px 100px 100px;
+    }
 
     &__link {
         text-decoration: none;
