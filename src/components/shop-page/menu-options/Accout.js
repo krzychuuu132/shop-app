@@ -4,12 +4,11 @@ import "../../sass/menu-options/Accout.scss";
 const Accout = () => {
   const [getInfo, useGetInfo] = useState("");
 
-  //useEffect(() => {
-  //  fetch("/accout", { method: "GET" })
-  //   .then(res => res.json())
-  //   .then(data => useGetInfo(data.text));
-  //});
-
+  useEffect(() => {
+    fetch("/accout", { method: "GET" })
+      .then(res => res.json())
+      .then(data => console.log(data));
+  });
   return (
     <div className="account">
       <h1 className="account__title">informacje o koncie</h1>

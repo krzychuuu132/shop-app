@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { loginValidation } = require("../validation");
+
+let data;
 const bcrypt = require("bcryptjs");
 // MODEL
 const User = require("../models/User");
@@ -24,6 +26,7 @@ router.post("/login", async (req, res) => {
   //if (!error) return console.log(error.details[0].message);
 
   res.status(300).redirect("/mainSide/girls");
+  data = checkingDataOfLogin;
 });
 
-module.exports = router;
+(module.exports = router), data;

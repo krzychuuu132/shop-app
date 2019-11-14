@@ -13,15 +13,20 @@ const Main = () => {
 
   const [sizeOfImg, useSizeOfImg] = useState(0);
   const [counter, useCounter] = useState(1);
+
+  console.log(counter);
   // Counter
   const getSize = () => {
-    const size = sliderFirstImage.current.clientWidth || 0;
+    const size = sliderFirstImage.current.clientWidth || "";
     useSizeOfImg(size);
   };
   window.addEventListener("resize", () => {
     getSize();
   });
   useEffect(() => {
+    setInterval(() => {
+      //useCounter(counter++);
+    }, 3000);
     getSize();
   });
 

@@ -318,6 +318,12 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
           product => action.price > product.price
         )
       };
+    case types.SEARCH_PRODUCT:
+      return {
+        products: INITIAL_PRODUCTS.products.filter(product =>
+          product.company.toLowerCase().includes(action.search.toLowerCase())
+        )
+      };
     default:
       return state;
   }

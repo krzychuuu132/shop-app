@@ -5,11 +5,17 @@ import ShopOptions from "./menu/ShopOptions";
 import Navigation from "./menu/Navigation";
 import Main from "./main/Main";
 import Footer from "./main/Footer";
+import store from "../../redux/store";
 // Search-Panel,Products
 
 import SearchProducts from "./main/SearchProducts";
 
 const mainSide = () => {
+  const searchProduct = search => ({
+    type: "SEARCH_PRODUCT",
+    search
+  });
+
   const sexChoice = [
     {
       id: 0,
@@ -52,6 +58,7 @@ const mainSide = () => {
               type="search"
               className="components__search-input"
               placeholder="wyszukaj"
+              onChange={e => store.dispatch(searchProduct(e.target.value))}
             />
             <button className="components__search-btn">
               <span className="fas fa-search components__search-btn__icon"></span>
