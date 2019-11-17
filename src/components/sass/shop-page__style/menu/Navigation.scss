@@ -6,11 +6,12 @@ $default-color: #333;
   background-color: $default-color;
   position: absolute;
   transition: all 0.1s 0.2s ease-in-out;
+
 }
 
 .hamburger {
-  height: 50px;
-  padding: 20px;
+  height: 40px;
+
   display: flex;
   cursor: pointer;
   background-color: transparent;
@@ -30,12 +31,12 @@ $default-color: #333;
       background-color: transparent;
 
       &:after {
-        transform: translateY(10px) rotate(45deg);
+        transform: translateY(6px) rotate(45deg);
         background-color: white;
       }
 
       &:before {
-        transform: translateY(-10px) rotate(-45deg);
+        transform: translateY(-6px) rotate(-45deg);
         background-color: white;
       }
     }
@@ -43,7 +44,7 @@ $default-color: #333;
 }
 
 .hamburger__container {
-  width: 30px;
+  width: 20px;
   height: 24px;
   display: flex;
   flex-direction: column;
@@ -65,11 +66,11 @@ $default-color: #333;
   }
 
   &:after {
-    top: -10px;
+    top: -6px;
   }
 
   &:before {
-    top: 10px;
+    top: 6px;
   }
 }
 
@@ -161,7 +162,7 @@ $default-color: #333;
     list-style: none;
   }
 
-  &__item {}
+
 
   &__link {
 

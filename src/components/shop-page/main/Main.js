@@ -14,7 +14,6 @@ const Main = () => {
   const [sizeOfImg, useSizeOfImg] = useState(0);
   const [counter, useCounter] = useState(1);
 
-  console.log(counter);
   // Counter
   const getSize = () => {
     const size = sliderFirstImage.current.clientWidth || "";
@@ -24,9 +23,6 @@ const Main = () => {
     getSize();
   });
   useEffect(() => {
-    setInterval(() => {
-      //useCounter(counter++);
-    }, 3000);
     getSize();
   });
 
@@ -78,14 +74,14 @@ const Main = () => {
           ref={prevBtn}
           onClick={handlePrevSlide}
         >
-          <span className="fas fa-arrow-left slider__icon-left"></span>
+          <span className="fas fa-chevron-left slider__icon-left"></span>
         </button>
         <button
           className="slider__nextBtn"
           ref={nextBtn}
           onClick={handleNextSlide}
         >
-          <span className="fas fa-arrow-right slider__icon-right"></span>
+          <span className="fas fa-chevron-right slider__icon-right"></span>
         </button>
         <div
           className="slider__pictures"

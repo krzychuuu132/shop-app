@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../sass/shop-page__style/mainSide.scss";
 import { Link } from "react-router-dom";
 import ShopOptions from "./menu/ShopOptions";
@@ -6,6 +6,7 @@ import Navigation from "./menu/Navigation";
 import Main from "./main/Main";
 import Footer from "./main/Footer";
 import store from "../../redux/store";
+import icon from "../sass/img/shop-logo.png";
 // Search-Panel,Products
 
 import SearchProducts from "./main/SearchProducts";
@@ -15,23 +16,23 @@ const mainSide = () => {
     type: "SEARCH_PRODUCT",
     search
   });
-
+  const [search, useSearch] = useState(false);
   const sexChoice = [
     {
       id: 0,
-      type: "odzież żeńska",
+      type: "dla niej",
       path: "/mainSide/girls",
       class: "search__name"
     },
     {
       id: 1,
-      type: "odzież męska",
+      type: "dla niego",
       path: "/mainSide/mens",
       class: "search__name"
     },
     {
       id: 2,
-      type: "odzież dziecięca",
+      type: "dla dziecka",
       path: "/mainSide/kids",
       class: "search__name"
     }
@@ -40,7 +41,45 @@ const mainSide = () => {
     <>
       <header className="header">
         <Navigation />
+
         <div className="components">
+          <div className="search-panel">
+            <button
+              className="search-panel__btn"
+              onClick={() => useSearch(!search)}
+            >
+              <span className="fas fa-search"></span>
+            </button>
+          </div>
+          <div
+            className={
+              search
+                ? "search-panel search-panel--active"
+                : "search-panel--unactive"
+            }
+          >
+            {search ? (
+              <div className="search-panel__search">
+                <input
+                  type="search"
+                  className="search-panel__search-input"
+                  placeholder="Wyszukaj..."
+                  onChange={e => store.dispatch(searchProduct(e.target.value))}
+                />
+                <button
+                  onClick={() => useSearch(false)}
+                  className="search-panel__search-exit"
+                >
+                  <span className="fas fa-times"></span>
+                </button>
+              </div>
+            ) : null}
+          </div>
+          <div className="logo">
+            <picture>
+              <img src={icon} alt="shop-logo" />
+            </picture>
+          </div>
           <div className="components__menu-type">
             <Link to="/mainSide/girls" className="components__menu-type__link">
               Kobiety
@@ -51,18 +90,6 @@ const mainSide = () => {
             <Link to="/mainSide/kids" className="components__menu-type__link">
               dzieci
             </Link>
-          </div>
-
-          <div className="components__search">
-            <input
-              type="search"
-              className="components__search-input"
-              placeholder="wyszukaj"
-              onChange={e => store.dispatch(searchProduct(e.target.value))}
-            />
-            <button className="components__search-btn">
-              <span className="fas fa-search components__search-btn__icon"></span>
-            </button>
           </div>
           <ShopOptions />
         </div>
