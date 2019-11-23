@@ -39,13 +39,17 @@
 
     &__title {
         width: 100%;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: bold;
         height: 30px;
         padding-left: 10px;
         line-height: 35px;
         position: relative;
 
+        & span {
+            text-transform: uppercase;
+            font-size: 10px;
+        }
 
         &::after {
             content: "";

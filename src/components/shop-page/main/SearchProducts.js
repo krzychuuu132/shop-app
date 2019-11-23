@@ -191,50 +191,24 @@ const SearchProducts = props => {
 
     // SIZE
 
-    const [activeSizeElement, useActiveSizeElement] = useState(_sizes);
-
-    const handleClearSizing = () => {
-      handleCloseOptions("size", activeSizeElement, useActiveSizeElement);
-    };
-
-    const handleSizeClick = (index, size) => {
-      store.dispatch(showSizeProduct(size));
-      const activeSort = activeSizeElement.filter(element => {
-        if (element.id === index) {
-          handleSaveOptions("size", element);
-        } else {
-          element.className = "size__element";
-        }
-        return element;
-      });
-
-      useActiveSizeElement(activeSort);
-    };
-
-    const HandleShowSizeElements = () => {
-      return activeSizeElement.map((size, index) => (
-        <span
-          className={size.className}
-          key={index}
-          onClick={() => handleSizeClick(index, size.size)}
-        >
-          {size.size}
-        </span>
-      ));
-    };
     // MARKS
-
+    const showMark = product => ({
+      type: "SHOW_MARK",
+      product
+    });
     const [activeMarkElement, useActiveMarkElement] = useState(_markOptions);
 
     const handleMarkClick = index => {
       const activeMark = activeMarkElement.filter(element => {
         if (element.id === index) {
           handleSaveOptions("mark", element);
+          store.dispatch(showMark(element));
         } else {
           element.className = "mark__element";
         }
         return element;
       });
+
       useActiveMarkElement(activeMark);
     };
 
@@ -332,13 +306,7 @@ const SearchProducts = props => {
             sortuj
             <span className="fas fa-angle-right filter__element-icon"></span>
           </div>
-          <div
-            className="filter__size filter__element"
-            onClick={() => useActiveCategory("rozmiar")}
-          >
-            rozmiar
-            <span className="fas fa-angle-right filter__element-icon"></span>
-          </div>
+
           <div
             className="filter__bussines filter__element"
             onClick={() => useActiveCategory("marka")}
@@ -356,15 +324,6 @@ const SearchProducts = props => {
               min={40}
               max={512}
             />
-            <label className="filter__price-promotion">
-              <input
-                type="checkbox"
-                className="filter__price-check"
-                checked={activePromotion}
-                onChange={e => useActivePromotion(e.target.checked)}
-              />
-              tylko promocje
-            </label>
             <div className="filter__price-scope">40zł-{activePrice}zł</div>
           </div>
 

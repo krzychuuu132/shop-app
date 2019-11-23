@@ -302,10 +302,21 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
           }
         })
       };
-
+    case types.SHOW_MARK:
+      return {
+        ...state,
+        products: INITIAL_PRODUCTS.products.filter(product => {
+          if (
+            product.company.toLowerCase() === action.product.text.toLowerCase()
+          ) {
+            return product;
+          }
+        })
+      };
     case types.RETURN_DEFAULT:
       return {
-        products: state.products.sort((a, b) => a.type.localeCompare(b.type))
+        ...state,
+        products: INITIAL_PRODUCTS.products.filter(product => product)
       };
 
     case types.RETURN_DEFAULT_SEX:

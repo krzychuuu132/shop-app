@@ -26,21 +26,21 @@ const Product = props => {
 
   const showElements = products => {
     return products.map((product, index) => (
-      <>
-        <div className="product" key={index}>
-          <img
-            alt="product-img"
-            src={product.src}
-            className="product__picture"
-            onClick={() => handleProductClcik(product.id)}
-          />
+      <div className="product" key={index}>
+        <img
+          alt="product-img"
+          src={product.src}
+          className="product__picture"
+          onClick={() => handleProductClcik(product.id)}
+        />
 
-          <h6 className="product__title">{product.company}</h6>
-          <p className="product__price"> {product.price},00 zł</p>
+        <h6 className="product__title">
+          <span> {product.type}</span> - {product.company}
+        </h6>
+        <p className="product__price"> {product.price},00 zł</p>
 
-          <ProductFavourite product={product} />
-        </div>
-      </>
+        <ProductFavourite product={product} />
+      </div>
     ));
   };
 
