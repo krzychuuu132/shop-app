@@ -1,74 +1,211 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../../sass/main/main.scss";
-import img1 from "../../sass/img/clothes-1.jpg";
-import img2 from "../../sass/img/clothes-2.jpg";
-import img3 from "../../sass/img/clothes-3.jpg";
+
 const Main = () => {
-  const [counter, useCounter] = useState(1);
-  // const lines = document.querySelectorAll(".slider__line");
+  let [counter, useCounter] = useState(1);
+
+  useEffect(() => {
+    changeSlide(1, firstLine);
+  }, [1]);
+
+  const [src, useSrc] = useState("/img/clothes-1.jpg");
+  const [sliderDescript, useSliderDescript] = useState([
+    "Nowa kolekcja",
+    "wiele różnych promocji"
+  ]);
   //const img = document.querySelector(".slider__img");
 
-  const sliderTitle = useRef(null);
-  const sliderText = useRef(null);
-  const sliderImg = useRef(null);
+  let sliderTitle = useRef(null);
+  let sliderText = useRef(null);
+  let sliderImg = useRef(null);
+  let sliderContent = useRef(null);
+  let sliderBtn = useRef(null);
+  let firstLine = useRef(null);
+  let secondLine = useRef(null);
+  let thirdLine = useRef(null);
+  const contentAnim = index => {
+    if (index === 1) {
+      useSliderDescript(["Nowa kolekcja", "wiele różnych promocji"]);
 
-  const nextSlide = direction => {
-    if (direction === "right") {
-      // useCounter(counter++);
-    } else if (direction === "left") {
-      //useCounter(counter--);
+      TweenMax.set([sliderContent, sliderTitle, sliderText, sliderBtn], {
+        clearProps: "all"
+      });
+
+      TweenMax.from(sliderContent, { visibility: "hidden" });
+      TweenMax.to(sliderContent, { visibility: "visible", x: 0 });
+      //TweenMax.to(".slider__backgr", 1.2, { zIndex: 1, x: "100%", opacity: 0.9 }, 2)
+      TweenMax.to(sliderTitle, 0.4, {
+        ease: "back.out(1.7)",
+        y: 0,
+        visibility: "visible",
+        delay: 0.8
+      });
+      TweenMax.to(sliderText, 0.8, {
+        ease: "back.out(1.7)",
+        x: 0,
+        visibility: "visible",
+        delay: 1
+      });
+      TweenMax.to(sliderBtn, 0.12, {
+        ease: "back.out(1.7)",
+        opacity: 1,
+        y: 0,
+        visibility: "visible",
+        delay: 1.2
+      });
+    } else if (index === 2) {
+      useSliderDescript(["Nie przegap", "Kupuj w naszym sklepie!"]);
+
+      TweenMax.set([sliderContent, sliderTitle, sliderText, sliderBtn], {
+        clearProps: "all"
+      });
+
+      //TweenMax.to(".slider__backgr", 3.3, { zIndex: 8, x: "-100%", opacity: 1 }, 2)
+
+      TweenMax.to(sliderContent, {
+        visibility: "visible",
+        x: "40%",
+        width: "auto"
+      });
+
+      TweenMax.to(sliderTitle, 0.4, {
+        ease: "back.out(1.7)",
+        y: 10,
+        visibility: "visible",
+        delay: 0.8
+      });
+      TweenMax.to(sliderText, 0.8, {
+        ease: "back.out(1.7)",
+        x: 0,
+        y: 10,
+        visibility: "visible",
+        delay: 1
+      });
+      // TweenMax.to(".slider__btn", .12, { ease: "back.out(1.7)", opacity: 1, y: 0, visibility: "visible", delay: 1.2 })
+    } else if (index === 3) {
+      useSliderDescript([
+        "promocja przy zakupie",
+        "ubrania dla niej i dla niego!"
+      ]);
+
+      TweenMax.set([sliderContent, sliderTitle, sliderText, sliderBtn], {
+        clearProps: "all"
+      });
+
+      TweenMax.to(sliderContent, {
+        visibility: "visible",
+        x: "0%",
+        height: "100%",
+        top: 0,
+        backgroundColor: "rgba(255,0,0,0.5)"
+      });
+
+      TweenMax.to(sliderTitle, 0.8, {
+        ease: "elastic.out(1, 0.3)",
+        y: 10,
+        visibility: "visible",
+        delay: 0.8
+      });
+
+      TweenMax.to(sliderText, 0.1, {
+        ease: "back.out(1.7)",
+        x: 0,
+        y: 20,
+        visibility: "visible",
+        delay: 1
+      });
     }
-
-    if (counter === 4) counter = 1;
-
-    if (counter === 0) counter = 3;
-    // changeSlide(counter);
   };
 
+  const changeSlide = (index, element) => {
+    // const activeLine = counter - 1
+    console.log(index);
+    contentAnim(index);
+    //lines.forEach(line => line.classList.remove("slider__line--active"))
+    //lines[activeLine].classList.add("slider__line--active")
+    firstLine.current.className = "slider__line";
+    secondLine.current.className = "slider__line";
+    thirdLine.current.className = "slider__line";
+
+    element.current.className = "slider__line slider__line--active";
+    useSrc(`/img/clothes-${index}.jpg`);
+  };
+
+  const handleWhichLine = counter => {
+    if (counter === 1) return firstLine;
+    else if (counter === 2) return secondLine;
+    else if (counter === 3) return thirdLine;
+  };
   return (
     <>
       <div className="slider">
-        <img
-          src={"/clothes-1.jpg"}
-          alt="picture"
-          className="slider__img"
-          ref={sliderImg}
-        />
-
+        <img src={src} alt="picture" className="slider__img" ref={sliderImg} />
         <div className="slider__lines">
           <span
             className="slider__line "
-            onClick={() => changeSlide(1)}
-            data-index="1"
+            ref={firstLine}
+            onClick={() => changeSlide(1, firstLine)}
           ></span>
           <span
             className="slider__line"
-            onClick={() => changeSlide(2)}
-            data-index="2"
+            ref={secondLine}
+            onClick={() => changeSlide(2, secondLine)}
           ></span>
           <span
             className="slider__line"
-            onClick={() => changeSlide(3)}
-            data-index="3"
+            ref={thirdLine}
+            onClick={() => changeSlide(3, thirdLine)}
           ></span>
         </div>
-
-        <div className="slider__content">
-          <p className="slider__title" ref={sliderTitle}>
-            Nowa kolekcja
+        <div
+          className="slider__content"
+          ref={element => {
+            sliderContent = element;
+          }}
+        >
+          <p
+            className="slider__title"
+            ref={element => {
+              sliderTitle = element;
+            }}
+          >
+            {sliderDescript[0]}
           </p>
-          <h1 className="slider__text" ref={sliderText}>
-            wiele różnych promocji
+          <h1
+            className="slider__text"
+            ref={element => {
+              sliderText = element;
+            }}
+          >
+            {sliderDescript[1]}
           </h1>
-          <button className="slider__btn">kup teraz!</button>
+          <button
+            className="slider__btn"
+            ref={element => {
+              sliderBtn = element;
+            }}
+          >
+            kup teraz!
+          </button>
         </div>
         <span
           className="fas fa-chevron-left slider__icon-left"
-          onClick={nextSlide(`left`)}
+          onClick={() => {
+            useCounter(--counter);
+            if (counter === 0) useCounter(3);
+
+            changeSlide(counter, handleWhichLine(counter));
+          }}
         ></span>
         <span
           className="fas fa-chevron-right  slider__icon-right"
-          onClick={nextSlide(`right`)}
+          onClick={() => {
+            useCounter(++counter);
+
+            if (counter === 4) useCounter((counter = 1));
+
+            changeSlide(counter, handleWhichLine(counter));
+          }}
         ></span>
         <div className="slider__backgr"></div>
       </div>
@@ -109,5 +246,3 @@ const Main = () => {
   );
 };
 export default Main;
-
-/* */
