@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../../sass/main/main.scss";
+import img1 from "../../sass/img/clothes-1.jpg";
 
 const Main = () => {
   let [counter, useCounter] = useState(1);
@@ -94,7 +95,7 @@ const Main = () => {
 
       TweenMax.to(sliderContent, {
         visibility: "visible",
-        x: "0%",
+        x: "7%",
         height: "100%",
         top: 0,
         backgroundColor: "rgba(255,0,0,0.5)"
@@ -128,7 +129,7 @@ const Main = () => {
     thirdLine.current.className = "slider__line";
 
     element.current.className = "slider__line slider__line--active";
-    useSrc(`/img/clothes-${index}.jpg`);
+    useSrc(`/images/clothes-${index}.jpg`);
   };
 
   const handleWhichLine = counter => {

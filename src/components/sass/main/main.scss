@@ -150,15 +150,17 @@
   &__icon-left {
     position: absolute;
     bottom: 5%;
-    left: 2%;
+    left: 2.5%;
     transform: translateY(-50%);
+    color: tomato;
   }
 
   &__icon-right {
     position: absolute;
     bottom: 5%;
-    right: 5%;
+    right: 2.5%;
     transform: translateY(-50%);
+    color: tomato;
   }
 
 }

@@ -51,29 +51,27 @@ const mainSide = () => {
               <span className="fas fa-search"></span>
             </button>
           </div>
-          <div
-            className={
-              search
-                ? "search-panel search-panel--active"
-                : "search-panel--unactive"
-            }
-          >
-            {search ? (
-              <div className="search-panel__search">
-                <input
-                  type="search"
-                  className="search-panel__search-input"
-                  placeholder="Wyszukaj..."
-                  onChange={e => store.dispatch(searchProduct(e.target.value))}
-                />
-                <button
-                  onClick={() => useSearch(false)}
-                  className="search-panel__search-exit"
-                >
-                  <span className="fas fa-times"></span>
-                </button>
-              </div>
-            ) : null}
+          <div className="search-panel">
+            <div
+              className={
+                search
+                  ? "search-panel__search search-panel__search--active"
+                  : "search-panel__search"
+              }
+            >
+              <input
+                type="search"
+                className="search-panel__search-input"
+                placeholder="Wyszukaj..."
+                onChange={e => store.dispatch(searchProduct(e.target.value))}
+              />
+              <button
+                onClick={() => useSearch(false)}
+                className="search-panel__search-exit"
+              >
+                <span className="fas fa-times"></span>
+              </button>
+            </div>
           </div>
           <div className="logo">
             <picture>

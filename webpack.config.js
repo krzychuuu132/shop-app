@@ -20,8 +20,8 @@ const config = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
-    }),
-    new CleanWebpackPlugin()
+    })
+    // new CleanWebpackPlugin()
   ],
 
   module: {
@@ -32,7 +32,14 @@ const config = {
 
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       },
-      { test: /\.(png|jpe?g|gif)$/i, loader: "url-loader?mimetype=image/jpg" }
+      {
+        test: /\.(png|jpeg|gif|svg|jpg)$/i,
+        loader: "file-loader",
+        options: {
+          name: "[name][contenthash].[ext]",
+          outputPath: "/images"
+        }
+      }
     ]
   }
 };
