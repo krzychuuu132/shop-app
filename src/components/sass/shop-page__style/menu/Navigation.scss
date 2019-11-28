@@ -19,6 +19,10 @@ $default-color: #333;
   z-index: 8;
   transition: all 0.2s 0.2s;
 
+  @media(min-width:1280px) {
+    display: none;
+  }
+
   outline: none;
 }
 
@@ -93,6 +97,14 @@ $default-color: #333;
   overflow: hidden;
   z-index: 7;
 
+  @media(min-width:1280px) {
+    display: initial;
+    display: none;
+    transform: translateX(0);
+    //background: transparent;
+    height: 400px; //position: initial; // reset-position absolute
+  }
+
   &__img {
     position: absolute;
     left: 0;
@@ -100,6 +112,10 @@ $default-color: #333;
     width: 100%;
     height: 130px;
     filter: brightness(0.5);
+
+    @media(min-width:1280px) {
+      display: none;
+    }
   }
 
   //sex-choice
@@ -119,6 +135,13 @@ $default-color: #333;
     padding: 20px 40px;
     position: relative;
     border-bottom: 1px solid black;
+
+    @media(min-width:1280px) {
+      transform: translateX(0);
+      border-bottom: none;
+      align-items: initial;
+      justify-content: initial;
+    }
   }
 
   &__sex-list {
@@ -135,17 +158,40 @@ $default-color: #333;
     border-left: 1px solid whitesmoke;
     width: auto;
     text-align: center;
+
+    @media(min-width:1280px) {
+      border-left: none;
+    }
   }
 
   &__sex-item:nth-child(1) {
     border-left: none;
   }
 
+
+
   &__sex-link {
     text-decoration: none;
     color: white;
     padding: 4px 10px;
     text-transform: capitalize;
+
+    @media(min-width:1280px) {
+      &:hover &__list {
+        color: red;
+      }
+    }
+  }
+
+  &__list {
+    padding: 30px;
+    margin-left: 25px;
+
+    list-style: none;
+
+    @media(min-width:1280px) {
+      // display: none;
+    }
   }
 
   &__sex-link--active {
@@ -155,12 +201,7 @@ $default-color: #333;
 
   //categories
 
-  &__list {
-    padding: 30px;
-    margin-left: 25px;
 
-    list-style: none;
-  }
 
 
 
@@ -180,11 +221,21 @@ $default-color: #333;
     font-size: 14px;
     position: relative;
 
+    @media(min-width:1280px) {
+      width: 80px;
+    }
+
+
+
     &__span {
       position: absolute;
       right: 7%;
       top: 50%;
       transform: translateY(-50%);
+
+      @media(min-width:1280px) {
+        display: none;
+      }
 
       &-icon {
         font-size: 16px;
@@ -198,3 +249,5 @@ $default-color: #333;
   transform: translateX(0);
   overflow-y: hidden;
 }
+
+//460,640,800,1024,1280-desktop_small

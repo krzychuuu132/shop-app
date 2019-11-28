@@ -24,6 +24,13 @@
   height: 250px;
   width: 100vw;
 
+  @media(min-width:800px) {
+    height: 300px;
+  }
+
+  @media(min-width:1024px) {
+    height: 400px;
+  }
 
   position: relative;
   z-index: 1;
@@ -79,6 +86,11 @@
     z-index: 2;
     padding: 7px;
 
+    @media(min-width:1024px) {
+      width: 350px;
+      padding: 20px 5px;
+    }
+
     &::after {
       content: '';
       position: absolute;
@@ -89,6 +101,7 @@
       z-index: -1;
 
       background-color: rgba(0, 0, 0, 0.527);
+
     }
 
   }
@@ -107,6 +120,10 @@
     visibility: hidden;
     z-index: 1;
     transform: translateY(-50px);
+
+    @media(min-width:1024px) {
+      font-size: 12px;
+    }
   }
 
   &__text {
@@ -119,6 +136,10 @@
     transform: translateX(-90px);
     color: white;
     text-align: center;
+
+    @media(min-width:1024px) {
+      font-size: 24px;
+    }
   }
 
   &__btn {
@@ -139,6 +160,10 @@
     transform: translateY(90px);
     font-size: 12px;
 
+    @media(min-width:1024px) {
+      padding: 0 20px;
+    }
+
     & .fas {
       font-size: 20px;
       color: black;
@@ -153,6 +178,10 @@
     left: 2.5%;
     transform: translateY(-50%);
     color: tomato;
+
+    @media(min-width:1024px) {
+      font-size: 18px;
+    }
   }
 
   &__icon-right {
@@ -161,6 +190,10 @@
     right: 2.5%;
     transform: translateY(-50%);
     color: tomato;
+
+    @media(min-width:1024px) {
+      font-size: 18px;
+    }
   }
 
 }

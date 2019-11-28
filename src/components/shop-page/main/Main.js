@@ -55,13 +55,11 @@ const Main = () => {
         delay: 1.2
       });
     } else if (index === 2) {
-      useSliderDescript(["Nie przegap", "Kupuj w naszym sklepie!"]);
+      useSliderDescript(["Nie przegap okazji!", "Kupuj w naszym sklepie!"]);
 
       TweenMax.set([sliderContent, sliderTitle, sliderText, sliderBtn], {
         clearProps: "all"
       });
-
-      //TweenMax.to(".slider__backgr", 3.3, { zIndex: 8, x: "-100%", opacity: 1 }, 2)
 
       TweenMax.to(sliderContent, {
         visibility: "visible",
@@ -82,7 +80,6 @@ const Main = () => {
         visibility: "visible",
         delay: 1
       });
-      // TweenMax.to(".slider__btn", .12, { ease: "back.out(1.7)", opacity: 1, y: 0, visibility: "visible", delay: 1.2 })
     } else if (index === 3) {
       useSliderDescript([
         "promocja przy zakupie",
@@ -119,11 +116,8 @@ const Main = () => {
   };
 
   const changeSlide = (index, element) => {
-    // const activeLine = counter - 1
-    console.log(index);
     contentAnim(index);
-    //lines.forEach(line => line.classList.remove("slider__line--active"))
-    //lines[activeLine].classList.add("slider__line--active")
+
     firstLine.current.className = "slider__line";
     secondLine.current.className = "slider__line";
     thirdLine.current.className = "slider__line";
@@ -193,7 +187,7 @@ const Main = () => {
           className="fas fa-chevron-left slider__icon-left"
           onClick={() => {
             useCounter(--counter);
-            if (counter === 0) useCounter(3);
+            if (counter === 0) useCounter((counter = 3));
 
             changeSlide(counter, handleWhichLine(counter));
           }}
