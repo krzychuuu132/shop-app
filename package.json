@@ -27,6 +27,7 @@
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "file-loader": "^5.0.2",
+    "gsap": "^3.0.1",
     "heroku-cli": "^7.0.9",
     "mini-css-extract-plugin": "^0.8.0",
     "mongoose": "^5.7.5",

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
+import { TweenMax } from "gsap";
 import "../../sass/main/main.scss";
-import img1 from "../../sass/img/clothes-1.jpg";
 
 const Main = () => {
   let [counter, useCounter] = useState(1);
@@ -14,7 +14,6 @@ const Main = () => {
     "Nowa kolekcja",
     "wiele różnych promocji"
   ]);
-  //const img = document.querySelector(".slider__img");
 
   let sliderTitle = useRef(null);
   let sliderText = useRef(null);
@@ -24,6 +23,7 @@ const Main = () => {
   let firstLine = useRef(null);
   let secondLine = useRef(null);
   let thirdLine = useRef(null);
+
   const contentAnim = index => {
     if (index === 1) {
       useSliderDescript(["Nowa kolekcja", "wiele różnych promocji"]);
