@@ -3,7 +3,7 @@ import "../../sass/main/Footer.scss";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <>
       <div className="footer__elements">
         <p className="footer__elements-title">
           Chcesz jako pierwszy kupić produkt w cenie promocyjnej?
@@ -22,7 +22,7 @@ const Footer = () => {
           cookies zgodnie z polityką prywatności
         </p>
       </div>
-    </footer>
+    </>
   );
 };
 

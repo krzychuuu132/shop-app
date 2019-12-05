@@ -157,10 +157,25 @@ const Navigation = () => {
               <li
                 className="navigation__sex-item"
                 onMouseEnter={() =>
-                  TweenMax.to(menuList, { height: 250, width: 96, opacity: 1 })
+                  TweenMax.to(
+                    menuList,
+                    0,
+
+                    {
+                      display: "flex",
+                      height: 250,
+                      opacity: 1,
+                      width: 250
+                    }
+                  )
                 }
                 onMouseLeave={() =>
-                  TweenMax.to(menuList, { height: 0, opacity: 0 })
+                  TweenMax.to(menuList, 0.5, {
+                    height: 0,
+                    opacity: 0,
+                    display: "none",
+                    width: 0
+                  })
                 }
               >
                 <NavLink
@@ -214,14 +229,25 @@ const Navigation = () => {
               <li
                 className="navigation__sex-item"
                 onMouseEnter={() =>
-                  TweenMax.to(menuSecondList, {
-                    height: 250,
-                    width: 96,
-                    opacity: 1
-                  })
+                  TweenMax.to(
+                    menuSecondList,
+                    0,
+
+                    {
+                      display: "flex",
+                      height: 250,
+                      opacity: 1,
+                      width: 250
+                    }
+                  )
                 }
                 onMouseLeave={() =>
-                  TweenMax.to(menuSecondList, { height: 0, opacity: 0 })
+                  TweenMax.to(menuSecondList, 0.5, {
+                    height: 0,
+                    opacity: 0,
+                    display: "none",
+                    width: 0
+                  })
                 }
               >
                 <NavLink
@@ -275,14 +301,25 @@ const Navigation = () => {
               <li
                 className="navigation__sex-item"
                 onMouseEnter={() =>
-                  TweenMax.to(menuThirdList, {
-                    height: 250,
-                    width: 96,
-                    opacity: 1
-                  })
+                  TweenMax.to(
+                    menuThirdList,
+                    0,
+
+                    {
+                      display: "flex",
+                      height: 250,
+                      opacity: 1,
+                      width: 250
+                    }
+                  )
                 }
                 onMouseLeave={() =>
-                  TweenMax.to(menuThirdList, { height: 0, opacity: 0 })
+                  TweenMax.to(menuThirdList, 0.5, {
+                    height: 0,
+                    opacity: 0,
+                    display: "none",
+                    width: 0
+                  })
                 }
               >
                 <NavLink
