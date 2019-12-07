@@ -16,8 +16,8 @@ const ShopOptions = () => {
 
   return (
     <>
-      <div className="accout-options">
-        <Link to="/wish-list" className="accout-options__link">
+      <div className="account-options">
+        <Link to="/wish-list" className="account-options__link">
           <span className="options-list">
             <i className="far fa-heart options-list__icon"></i>
 
@@ -27,9 +27,9 @@ const ShopOptions = () => {
           </span>
         </Link>
 
-        <div className="accout-options--active-list">1</div>
+        <div className="account-options--active-list">1</div>
 
-        <Link to="/shopping-list" className="accout-options__link">
+        <Link to="/shopping-list" className="account-options__link">
           <span className="options-list">
             <i className="fas fa-shopping-cart options-shopping__icon"></i>
 
@@ -37,15 +37,15 @@ const ShopOptions = () => {
           </span>
         </Link>
 
-        <div className="accout-options--active-shopping">12</div>
+        <div className="account-options--active-shopping">12</div>
 
-        <Link to="/accout" className="accout-options__link">
-          <span className="options-accout">
-            <i className="fas fa-user options-accout__icon"></i>
+        <Link to="/account" className="account-options__link">
+          <span className="options-account">
+            <i className="fas fa-user options-account__icon"></i>
           </span>
         </Link>
 
-        <div className="accout-options--active-accout"></div>
+        <div className="account-options--active-account"></div>
       </div>
     </>
     //<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

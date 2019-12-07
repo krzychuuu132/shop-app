@@ -30,6 +30,17 @@
         outline: none;
         margin-left: 9px;
         cursor: pointer;
+
+
+        @media (min-width: 1280px) {
+          transform: rotate(0deg) translateX(0px);
+          transition: transform .2s;
+
+          &:hover {
+            transform: rotate(15deg) translateX(5px);
+          }
+        }
+
       }
 
 
@@ -116,7 +127,7 @@
       display: none;
     }
 
-    .accout-options,
+    .account-options,
     &__logo {
       position: absolute;
       right: 5%;

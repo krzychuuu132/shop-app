@@ -413,28 +413,36 @@
         .transport__text-important {
           font-size: 15px; } }
 
-.accout-options {
+.account-options {
   width: 180px;
   display: grid;
   grid-template-columns: repeat(3, 60px);
   position: relative; }
-  .accout-options__link {
+  .account-options__link {
     text-decoration: none;
     color: black;
     text-align: center; }
-    .accout-options__link .options-list,
-    .accout-options__link .options-shopping,
-    .accout-options__link .options-accout {
+    @media (min-width: 1280px) {
+      .account-options__link {
+        transform: translateY(0);
+        transition: all .3s;
+        color: #494646; }
+        .account-options__link:hover {
+          transform: translateY(-3px);
+          color: black; } }
+    .account-options__link .options-list,
+    .account-options__link .options-shopping,
+    .account-options__link .options-account {
       text-align: center;
       z-index: 1; }
-  .accout-options__icon {
+  .account-options__icon {
     font-size: 16px; }
-  .accout-options__title {
+  .account-options__title {
     font-size: 12px;
     text-transform: capitalize;
     padding-top: 2px;
     letter-spacing: 1px; }
-  .accout-options--active-list, .accout-options--active-shopping, .accout-options--active-accout {
+  .account-options--active-list, .account-options--active-shopping, .account-options--active-account {
     position: absolute;
     top: 100%;
     left: -15%;
@@ -446,9 +454,9 @@
     margin: 0 5px;
     border: 1px solid black;
     transition: all .5s ease; }
-  .accout-options--active-shopping {
+  .account-options--active-shopping {
     left: 20%; }
-  .accout-options--active-accout {
+  .account-options--active-account {
     left: 50%; }
 
 .options-list {
@@ -602,6 +610,12 @@ body {
         outline: none;
         margin-left: 9px;
         cursor: pointer; }
+        @media (min-width: 1280px) {
+          .header .components .search-panel__btn {
+            transform: rotate(0deg) translateX(0px);
+            transition: transform .2s; }
+            .header .components .search-panel__btn:hover {
+              transform: rotate(15deg) translateX(5px); } }
       .header .components .search-panel__search {
         width: 80%;
         display: flex;
@@ -657,7 +671,7 @@ body {
         height: 100%; }
     .header .components__menu-type {
       display: none; }
-    .header .components .accout-options, .header .components__logo {
+    .header .components .account-options, .header .components__logo {
       position: absolute;
       right: 5%;
       top: 10%; }
@@ -733,15 +747,15 @@ body {
     z-index: 5;
     position: absolute;
     top: 100%;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-color: rgba(250, 166, 83, 0.924);
+    background-image: linear-gradient(rgba(255, 0, 0, 0.801), rgba(255, 255, 0, 0.746));
     list-style: none;
-    display: none;
     height: 0;
     opacity: 0;
-    width: 0; }
+    width: 250px; }
   .navigation-desktop__item {
     flex-grow: 1;
     margin: 8px 5px; }
@@ -917,7 +931,8 @@ body {
     background-color: white;
     flex-grow: 1;
     margin: 5px 0;
-    border-radius: 10px; }
+    border-radius: 10px;
+    cursor: pointer; }
   .slider__line--active {
     transition: .4s;
     background-color: red;
@@ -1005,19 +1020,31 @@ body {
     bottom: 5%;
     left: 2.5%;
     transform: translateY(-50%);
-    color: tomato; }
+    color: tomato;
+    cursor: pointer; }
     @media (min-width: 1024px) {
       .slider__icon-left {
         font-size: 18px; } }
+    @media (min-width: 1280px) {
+      .slider__icon-left {
+        transition: .3s; }
+        .slider__icon-left:hover {
+          color: red; } }
   .slider__icon-right {
     position: absolute;
     bottom: 5%;
     right: 2.5%;
     transform: translateY(-50%);
-    color: tomato; }
+    color: tomato;
+    cursor: pointer; }
     @media (min-width: 1024px) {
       .slider__icon-right {
         font-size: 18px; } }
+    @media (min-width: 1280px) {
+      .slider__icon-right {
+        transition: .3s; }
+        .slider__icon-right:hover {
+          color: red; } }
 
 .footer {
   height: 300px;
@@ -1071,12 +1098,16 @@ body {
     justify-content: space-around;
     align-items: center; }
     .search__filtr button {
-      color: black;
+      color: #645f5f;
       font-size: 19px;
       background-color: transparent;
       border: none;
       outline: none;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: .2s; }
+      @media (min-width: 1280px) {
+        .search__filtr button:hover {
+          color: black; } }
   .search__text {
     color: black; }
   .search--active {
@@ -1346,11 +1377,10 @@ body {
   grid-template-columns: repeat(auto-fill, 160px);
   gap: 0 12px;
   padding-top: 10px; }
-
-@media (min-width: 1490px) {
-  .product-container {
-    max-width: 1500px;
-    margin: 0 auto; } }
+  @media (min-width: 1490px) {
+    .product-container {
+      max-width: 1500px;
+      margin: 0 auto; } }
 
 .product {
   width: 150px;
@@ -1362,11 +1392,17 @@ body {
   justify-content: center;
   align-items: center;
   position: relative; }
+  @media (min-width: 1280px) {
+    .product {
+      cursor: pointer; }
+      .product:hover .product__picture {
+        filter: brightness(0.8); } }
   .product__picture {
     height: 70%;
     z-index: 1;
     width: 100%;
-    filter: brightness(0.5); }
+    filter: brightness(0.5);
+    transition: .3s; }
   .product__title {
     width: 100%;
     font-size: 12px;
@@ -1405,7 +1441,12 @@ body {
   right: 5%;
   top: 7%;
   opacity: 0.8;
-  z-index: 2; }
+  z-index: 2;
+  transition: all .3s; }
+  @media (min-width: 1280px) {
+    .product-favourite:hover {
+      background-color: rgba(255, 0, 0, 0.596);
+      color: white; } }
 
 @media (max-width: 335px) {
   .product-container {
@@ -1453,7 +1494,7 @@ body {
   display: flex;
   flex-direction: column; }
 
-.accout-options {
+.account-options {
   margin: 0 auto;
   padding: 10px;
   overflow: hidden;
@@ -1461,7 +1502,7 @@ body {
 
 .products {
   margin: 0 auto;
-  width: 100vw;
+  width: 100%;
   min-height: 120vh;
   background-color: #E0E0E0;
   position: relative; }
@@ -1825,7 +1866,7 @@ body {
       margin: 0 10px;
       background-color: white; }
   .buy-costs__summary {
-    width: 100vw;
+    width: 100%;
     height: 250px;
     background-color: white;
     margin: 5px 0;

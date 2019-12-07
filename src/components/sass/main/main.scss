@@ -52,6 +52,11 @@
     flex-grow: 1;
     margin: 5px 0;
     border-radius: 10px;
+    cursor: pointer;
+
+
+
+
   }
 
   &__line--active {
@@ -178,9 +183,18 @@
     left: 2.5%;
     transform: translateY(-50%);
     color: tomato;
+    cursor: pointer;
 
     @media(min-width:1024px) {
       font-size: 18px;
+    }
+
+    @media(min-width:1280px) {
+      transition: .3s;
+
+      &:hover {
+        color: red;
+      }
     }
   }
 
@@ -190,9 +204,18 @@
     right: 2.5%;
     transform: translateY(-50%);
     color: tomato;
+    cursor: pointer;
 
     @media(min-width:1024px) {
       font-size: 18px;
+    }
+
+    @media(min-width:1280px) {
+      transition: .3s;
+
+      &:hover {
+        color: red;
+      }
     }
   }
 

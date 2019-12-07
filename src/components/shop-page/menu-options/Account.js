@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "../../sass/menu-options/Accout.scss";
+import "../../sass/menu-options/Account.scss";
 
 const Accout = () => {
   const [getInfo, useGetInfo] = useState("");
 
   useEffect(() => {
-    fetch("/accout", { method: "GET" })
+    fetch("/account", { method: "GET" })
       .then(res => res.json())
       .then(data => console.log(data));
   });

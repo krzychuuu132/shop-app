@@ -9,15 +9,16 @@
     gap: 0 12px;
     padding-top: 10px;
 
-}
+    @media (min-width: 1490px) {
 
-@media (min-width: 1490px) {
-    .product-container {
         max-width: 1500px;
         margin: 0 auto;
 
+
     }
 }
+
+
 
 .product {
     width: 150px;
@@ -30,11 +31,22 @@
     align-items: center;
     position: relative;
 
+
+    @media(min-width:1280px) {
+        cursor: pointer;
+
+
+        &:hover &__picture {
+            filter: brightness(0.8)
+        }
+    }
+
     &__picture {
         height: 70%;
         z-index: 1;
         width: 100%;
         filter: brightness(0.5);
+        transition: .3s;
     }
 
     &__title {
@@ -81,7 +93,16 @@
     top: 7%;
     opacity: 0.8;
     z-index: 2;
+    transition: all .3s;
 
+    @media(min-width:1280px) {
+
+
+        &:hover {
+            background-color: rgba(255, 0, 0, 0.596);
+            color: white;
+        }
+    }
 
 
 }

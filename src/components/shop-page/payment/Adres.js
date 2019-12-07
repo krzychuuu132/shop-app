@@ -42,15 +42,19 @@ const Adres = () => {
             placeholder="imie"
             className="adres__location-form_data"
             name="imie"
+            min="3"
+            max="10"
           ></input>
           <input
             type="text"
             placeholder="adres "
             className="adres__location-form_data"
             name="adres"
+            min="7"
+            max="20"
           ></input>
           <input
-            type="text"
+            type="number"
             placeholder="Kod pocztowy - Miasto"
             className="adres__location-form_data"
             name="kod"
@@ -75,7 +79,7 @@ const Adres = () => {
           Numer telefonu komórkowego (opcjonalnie)
         </p>
         <input
-          type="text"
+          type="number"
           placeholder="numer"
           className="adres__data-number"
         ></input>

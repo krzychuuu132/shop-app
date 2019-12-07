@@ -159,22 +159,18 @@ const Navigation = () => {
                 onMouseEnter={() =>
                   TweenMax.to(
                     menuList,
-                    0,
+                    0.2,
 
                     {
-                      display: "flex",
                       height: 250,
-                      opacity: 1,
-                      width: 250
+                      opacity: 1
                     }
                   )
                 }
                 onMouseLeave={() =>
-                  TweenMax.to(menuList, 0.5, {
+                  TweenMax.to(menuList, 0.4, {
                     height: 0,
-                    opacity: 0,
-                    display: "none",
-                    width: 0
+                    opacity: 0
                   })
                 }
               >
@@ -231,22 +227,18 @@ const Navigation = () => {
                 onMouseEnter={() =>
                   TweenMax.to(
                     menuSecondList,
-                    0,
+                    0.2,
 
                     {
-                      display: "flex",
                       height: 250,
-                      opacity: 1,
-                      width: 250
+                      opacity: 1
                     }
                   )
                 }
                 onMouseLeave={() =>
-                  TweenMax.to(menuSecondList, 0.5, {
+                  TweenMax.to(menuSecondList, 0.4, {
                     height: 0,
-                    opacity: 0,
-                    display: "none",
-                    width: 0
+                    opacity: 0
                   })
                 }
               >
@@ -303,22 +295,18 @@ const Navigation = () => {
                 onMouseEnter={() =>
                   TweenMax.to(
                     menuThirdList,
-                    0,
+                    0.2,
 
                     {
-                      display: "flex",
                       height: 250,
-                      opacity: 1,
-                      width: 250
+                      opacity: 1
                     }
                   )
                 }
                 onMouseLeave={() =>
-                  TweenMax.to(menuThirdList, 0.5, {
+                  TweenMax.to(menuThirdList, 0.4, {
                     height: 0,
-                    opacity: 0,
-                    display: "none",
-                    width: 0
+                    opacity: 0
                   })
                 }
               >

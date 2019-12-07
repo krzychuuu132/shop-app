@@ -18,12 +18,22 @@
 
 
         & button {
-            color: black;
+            color: rgb(100, 95, 95);
             font-size: 19px;
             background-color: transparent;
             border: none;
             outline: none;
             cursor: pointer;
+            transition: .2s;
+
+            @media(min-width:1280px) {
+
+
+                &:hover {
+                    color: black;
+
+                }
+            }
         }
     }
 

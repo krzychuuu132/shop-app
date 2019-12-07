@@ -11,7 +11,7 @@ import "./sass/accout/style.scss";
 import mainSide from "./shop-page/MainSide";
 import WishList from "./shop-page/menu-options/WishList";
 import ShoppingList from "./shop-page/menu-options/ShoppingList";
-import Accout from "./shop-page/menu-options/Accout";
+import Account from "./shop-page/menu-options/Account";
 import { Provider } from "react-redux";
 import store from "../redux/store";
 import Payment from "./shop-page/payment/Payment";
@@ -31,7 +31,7 @@ class App extends React.Component {
             <Route path="/mainSide" component={mainSide} />
             <Route path="/wish-list" component={WishList} />
             <Route path="/shopping-list" component={ShoppingList} />
-            <Route path="/accout" component={Accout} />
+            <Route path="/account" component={Account} />
             <Route path="/product" component={ProductDetails} />
             <Route path="/payment/adres" component={Payment} />
             <Route path="/payment/płatności" component={Costs} />
