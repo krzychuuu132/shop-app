@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import store from "../../../redux/store";
@@ -7,6 +7,8 @@ import Steps from "./Steps";
 import "../../sass/payment/adres.scss";
 
 const Adres = () => {
+  const [dataError, useDataError] = useState(false);
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,6 +23,9 @@ const Adres = () => {
       <Steps />
       <h1 className="adres__title">adres dostawy</h1>
       <div className="adres__location">
+        {dataError ? (
+          <p className="adres__location-error">uzupełnij dane!</p>
+        ) : null}
         <form
           className="adres__location-form"
           onSubmit={e => {
@@ -32,9 +37,14 @@ const Adres = () => {
             for (let entry of formData.entries()) {
               user[entry[0]] = entry[1];
             }
-
-            store.dispatch(addDataFromOrder(user));
-            history.push("/payment/płatności");
+            console.log(user);
+            if (user.imie && user.kraj && user.kod && user.adres !== "") {
+              useDataError(false);
+              store.dispatch(addDataFromOrder(user));
+              history.push("/payment/płatności");
+            } else {
+              useDataError(true);
+            }
           }}
         >
           <input
@@ -54,7 +64,7 @@ const Adres = () => {
             max="20"
           ></input>
           <input
-            type="number"
+            type="text"
             placeholder="Kod pocztowy - Miasto"
             className="adres__location-form_data"
             name="kod"

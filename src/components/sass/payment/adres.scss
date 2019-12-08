@@ -15,9 +15,25 @@
         border-top: 0.05px solid lightgray;
         padding: 25px 10px;
 
+        &-error {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+        }
+
+
+
         &-form {
             display: flex;
             flex-direction: column;
+
+            @media(min-width:1280px) {
+                width: 55%;
+                margin: 0 auto;
+
+            }
 
             &_data {
                 margin: 12px 0;

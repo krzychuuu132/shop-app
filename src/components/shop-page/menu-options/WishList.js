@@ -30,15 +30,17 @@ const WishList = () => {
         onClick={() => handleProductClcik(product.id, history)}
       />
 
-      <h6 className="product__title">{product.company}</h6>
-      <p className="product__price">od {product.price},00 zł</p>
+      <h6 className="product__title">
+        <span> {product.type}</span> - {product.company}
+      </h6>
+      <p className="product__price"> {product.price},00 zł</p>
     </div>
   ));
 
   return (
     <div className="wish-list">
       <div className="wish-list__content">
-        <h1 className="wish-list__title">moja lista życzeń</h1>
+        <h1 className="wish-list__title"> lista życzeń</h1>
       </div>
       {favouriteProducts.length === 0 ? (
         <>

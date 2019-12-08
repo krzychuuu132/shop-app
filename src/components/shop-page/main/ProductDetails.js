@@ -6,6 +6,8 @@ import ShopOptions from "../menu/ShopOptions";
 import ProductFavourite from "./ProductFavourite";
 import Footer from "./Footer";
 import store from "../../../redux/store";
+import { TweenMax } from "gsap";
+
 const addToList = product => ({
   type: "ADD_TO_SHOP_LIST",
   product
@@ -15,11 +17,13 @@ const findTheSameProducts = product => ({
   product
 });
 const ProductDetails = () => {
+  const history = useHistory();
+  const selectSizeItems = useRef(null);
+  let btnIcon = useRef(null);
+
   const [addClass, useAddClass] = useState(false);
   const [selectSize, useSelectSize] = useState("");
 
-  const history = useHistory();
-  const selectSizeItems = useRef(null);
   const productDetails = useSelector(
     state => state.productsDeatilsReducer.products
   );
@@ -49,7 +53,10 @@ const ProductDetails = () => {
           <ProductFavourite product={productDetails[0]} />
           <div className="product-details__container">
             <p className="product-details__company">
-              {productDetails[0].company}{" "}
+              {productDetails[0].company}
+              <span className="product-details__company-info">
+                (1 produkt w magazynie)
+              </span>{" "}
               <span className="fas fa-angle-right"></span>
             </p>
 
@@ -82,12 +89,9 @@ const ProductDetails = () => {
           </select>
 
           <button
-            className={
-              addClass ? "options__btn options__btn--active" : "options__btn"
-            }
+            className={"options__btn"}
             onClick={() => {
               if (!selectSize || selectSize === "Wybierz rozmiar") {
-                console.log("wybierz rozmiar!");
                 selectSizeItems.current.className =
                   "options__size options__size--active";
               } else {
@@ -109,12 +113,15 @@ const ProductDetails = () => {
                   store.dispatch(findTheSameProducts(theSameProducts));
                 else store.dispatch(addToList(copyProductDetails[0]));
               }
-
+              TweenMax.fromTo(btnIcon, 0.4, { fontSize: 16 }, { fontSize: 20 });
               useAddClass(!addClass);
             }}
           >
             <span className="options__btn-text">Dodaj do koszyka</span>
-            <span className="fas fa-shopping-basket options__btn-icon"></span>
+            <span
+              className="fas fa-shopping-basket options__btn-icon"
+              ref={element => (btnIcon = element)}
+            ></span>
           </button>
           <div className="transport">
             <div className="transport__transport">

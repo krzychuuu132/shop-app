@@ -68,8 +68,9 @@
           width: 200px;
           height: 30px;
           top: -13px;
+          background-color: transparent;
 
-          margin-left: 10px;
+          margin-left: 25px;
         }
 
 
@@ -86,6 +87,21 @@
           height: 60%;
           padding: 10px;
           border: none;
+          transition: .3s;
+          color: black;
+
+          @media (min-width: 1280px) {
+            width: 100%;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid rgba(0, 0, 255, 0.719);
+            margin-right: 10px;
+
+            &:focus {
+              padding: 13px;
+              border-color: rgba(255, 99, 71, 0.883);
+            }
+          }
         }
 
         &-exit {
