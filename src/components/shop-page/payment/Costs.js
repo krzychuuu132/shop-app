@@ -117,7 +117,10 @@ const Costs = () => {
           </p>
         </div>
       </div>
-      <Footer />
+      <footer className="footer">
+        {" "}
+        <Footer />
+      </footer>
     </>
   );
 };

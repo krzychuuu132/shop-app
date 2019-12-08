@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import store from "../../../redux/store";
 import ShopOptions from "../menu/ShopOptions";
 import Steps from "./Steps";
+import { TweenMax } from "gsap";
+
 import "../../sass/payment/adres.scss";
 
 const Adres = () => {
@@ -11,21 +13,34 @@ const Adres = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  let errorText = useRef(null);
 
   const addDataFromOrder = product => ({
     type: "PRODUCT_DATA",
     product
   });
 
+  const handleShowError = () => {
+    TweenMax.fromTo(
+      errorText,
+      0.3,
+      { opacity: 0, y: -100 },
+      { opacity: 1, y: 0 }
+    );
+  };
   return (
     <div className="adres">
       <ShopOptions />
       <Steps />
       <h1 className="adres__title">adres dostawy</h1>
       <div className="adres__location">
-        {dataError ? (
-          <p className="adres__location-error">uzupełnij dane!</p>
-        ) : null}
+        <p
+          className="adres__location-error"
+          ref={element => (errorText = element)}
+        >
+          uzupełnij dane!
+        </p>
+
         <form
           className="adres__location-form"
           onSubmit={e => {
@@ -44,6 +59,7 @@ const Adres = () => {
               history.push("/payment/płatności");
             } else {
               useDataError(true);
+              handleShowError();
             }
           }}
         >

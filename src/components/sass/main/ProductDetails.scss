@@ -110,15 +110,14 @@
         filter: brightness(0.5);
 
         &-icon {
-            font-size: 20px;
 
 
 
 
             @media(min-width:1280px) {
-                font-size: 22px;
+
                 cursor: pointer;
-                line-height: 33px;
+
 
             }
 
