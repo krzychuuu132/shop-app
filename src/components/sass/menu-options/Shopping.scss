@@ -19,8 +19,12 @@
     min-height: 120vh;
     background-color: #E0E0E0;
     position: relative;
-    padding: 0 50px;
 
+    //
+    @media (min-width:1280px) {
+        letter-spacing: 1px;
+        padding: 0 50px;
+    }
 
     &__length {
         position: absolute;

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "../../sass/menu-options/Account.scss";
 
 const Accout = () => {
-  const [getInfo, useGetInfo] = useState("");
-
+  const [userData, useUserData] = useState({});
+  //console.log(userData);
   useEffect(() => {
-    fetch("/account", { method: "GET" })
+    fetch("/login")
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => useUserData(data));
   });
   return (
     <div className="account">

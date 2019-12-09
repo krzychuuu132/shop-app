@@ -1,3 +1,5 @@
+//rgba(0, 250, 250, 0.267)
+
 .search {
     height: 50px;
     position: relative;
@@ -82,12 +84,13 @@
 
     @media (min-width: 1280px) {
         left: initial;
+        top: 0;
         right: 0;
 
         background-color: rgba(173, 216, 230, 0.966);
 
         width: 300px;
-        height: 100%;
+        height: 100vh;
 
     }
 
@@ -105,6 +108,7 @@
     }
 
     &__title {
+
         text-align: center;
         text-transform: uppercase;
         padding: 10px;
@@ -122,6 +126,7 @@
         letter-spacing: 1px;
         line-height: 25px;
         position: relative;
+        cursor: pointer;
 
         &-icon {
             position: absolute;
@@ -276,11 +281,22 @@
             text-align: center;
             font-size: 18px;
             padding: 10px;
+            width: 50px;
         }
     }
 
     &__sort-options--active {
         transform: translateX(0%);
+
+        @media(min-width:1280px) {
+            background-color: rgba(173, 216, 230, 0.966);
+            color: white;
+            font-size: 17px;
+            //font-weight: bold;
+            width: 300px;
+        }
+
+
     }
 
     &__exit {
@@ -290,6 +306,7 @@
         width: 100%;
         height: 60px;
         background-color: black;
+        cursor: pointer;
 
         &-item {
             text-align: center;
@@ -308,6 +325,10 @@
             padding: 15px 12px;
             outline: none;
             cursor: pointer;
+
+            @media(min-width:1280px) {
+                left: 1%;
+            }
         }
 
         &-icon {
@@ -325,13 +346,22 @@
     padding: 15px;
     position: relative;
 
+    @media(min-width:1280px) {
+        width: 300px;
+    }
+
     &__element {
         text-transform: capitalize;
         font-size: 15px;
         padding: 15px 5px;
+        cursor: pointer;
 
         &--active {
             color: orange;
+
+            @media(min-width:1280px) {
+                width: 300px;
+            }
         }
     }
 
@@ -344,6 +374,7 @@
         top: 9%;
         padding: 0 10px;
         font-size: 13px;
+        cursor: pointer;
 
         &::before {
             content: "";
@@ -363,6 +394,10 @@
 
     padding: 20px;
 
+    @media(min-width:1280px) {
+        width: 300px;
+    }
+
     &__element {
         display: block;
         width: 70px;
@@ -373,6 +408,7 @@
         border: 1px solid black;
         margin: 5px;
         padding: 15px;
+        cursor: pointer;
 
         &--active {
             border-color: orange;
@@ -390,14 +426,19 @@
     flex-direction: column;
     padding: 20px;
 
+
+
     &__element {
         word-spacing: 4px;
         text-transform: capitalize;
         padding: 18px 0;
+        cursor: pointer;
 
         &--active {
 
             color: orange;
+
+
         }
     }
 

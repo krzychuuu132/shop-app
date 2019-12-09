@@ -28,7 +28,7 @@
         padding: 20px 5px;
         height: auto;
         display: grid;
-        grid-template-columns: 160px;
+        grid-template-columns: 63% 30%;
         grid-template-rows: 50px;
         gap: 40px 10px;
 
@@ -40,16 +40,19 @@
             color: rgb(180, 179, 179);
             position: relative;
             outline: none;
-            padding: 20px 0;
+            padding: 20px 15px;
+
             border-bottom: 2px solid gray;
             letter-spacing: 1px;
             transition: .3s;
+
 
 
             &:focus {
                 color: white;
                 border-color: white;
                 outline-style: none;
+                background-color: transparent;
 
             }
 

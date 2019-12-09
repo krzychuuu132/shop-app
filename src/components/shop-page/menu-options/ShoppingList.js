@@ -106,7 +106,14 @@ const ShoppingList = () => {
       <div className="shop-list">
         <ShopOptions />
 
-        <div className="products">
+        <div
+          className="products"
+          style={
+            buyShopProduct.length === 0
+              ? { backgroundColor: "rgba(0, 250, 250, 0.267)" }
+              : null
+          }
+        >
           {buyShopProduct.length !== 0 ? (
             <h2 className="products__length">
               Koszyk ({buyShopProduct.length} art.)

@@ -6,7 +6,7 @@ const StartSide = () => {
     <>
       <div className="start-page">
         <Link to="/register" className="start-page__link">
-          Nie masz konta?Zarejestruj sie!
+          Nie masz konta? Zarejestruj sie!
         </Link>
         <Link to="/login" className="start-page__link">
           Zaloguj sie!

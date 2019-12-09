@@ -24,7 +24,7 @@ router.post("/login", async (req, res) => {
   );
   if (!compareHidePassword) return res.render("index");
   //if (!error) return console.log(error.details[0].message);
-
+  //res.json(checkingDataOfLogin);
   res.status(300).redirect("/mainSide/girls");
   data = checkingDataOfLogin;
 });
