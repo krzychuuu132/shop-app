@@ -947,8 +947,11 @@ body {
   width: 100%; }
   @media (min-width: 1280px) {
     .main {
-      max-width: 1300px;
+      max-width: 1100px;
       margin: 0 auto; } }
+  @media (min-width: 1600px) {
+    .main {
+      max-width: 1300px; } }
 
 :root {
   --btnHeight: 40px; }
@@ -963,7 +966,10 @@ body {
   @media (min-width: 800px) {
     .slider {
       height: 300px; } }
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
+    .slider {
+      height: 350px; } }
+  @media (min-width: 1600px) {
     .slider {
       height: 400px; } }
   .slider__lines {
@@ -1584,7 +1590,7 @@ body {
   @media (min-width: 1280px) {
     .products {
       letter-spacing: 1px;
-      padding: 0 50px; } }
+      padding: 0 20px; } }
   .products__length {
     position: absolute;
     top: 0;
@@ -1881,6 +1887,7 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     border: none;
+    cursor: pointer;
     outline: none; }
 
 .account {

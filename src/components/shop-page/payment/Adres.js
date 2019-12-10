@@ -52,7 +52,7 @@ const Adres = () => {
             for (let entry of formData.entries()) {
               user[entry[0]] = entry[1];
             }
-            console.log(user);
+
             if (user.imie && user.kraj && user.kod && user.adres !== "") {
               useDataError(false);
               store.dispatch(addDataFromOrder(user));

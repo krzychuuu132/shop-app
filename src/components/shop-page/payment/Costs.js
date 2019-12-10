@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../../sass/payment/costs.scss";
@@ -25,6 +25,7 @@ const infoAboutUser = userInfo => {
 
 const Costs = () => {
   const history = useHistory();
+  const [paymentChoice, usePaymentChoice] = useState(false);
   // DATA
   const OrderData = useSelector(state => state.dataProductOrder.products);
   const OrderPrice = useSelector(state => state.orderPrice.products);
@@ -44,9 +45,10 @@ const Costs = () => {
         <div className="buy-costs__payment">
           <form
             className="buy-costs__payment-type"
-            onChange={e =>
-              store.dispatch(paymentMethod(OrderData[0], e.target.value))
-            }
+            onChange={e => {
+              usePaymentChoice(true);
+              store.dispatch(paymentMethod(OrderData[0], e.target.value));
+            }}
           >
             <label className="buy-costs__payment-method">
               <input
@@ -83,6 +85,7 @@ const Costs = () => {
                 name="payment-method"
                 className="buy-costs__payment-choice"
                 value="Za pobraniem (gratis)"
+                checked
               />
               Za pobraniem (gratis)
               <div className="buy-costs__payment-method_data">
@@ -108,7 +111,16 @@ const Costs = () => {
           </p>
           <button
             className="buy-costs__summary-btn"
-            onClick={() => history.push("/payment/podsumowanie")}
+            onClick={() => {
+              if (paymentChoice) {
+                history.push("/payment/podsumowanie");
+              } else {
+                store.dispatch(
+                  paymentMethod(OrderData[0], "Za pobraniem (gratis)")
+                );
+                history.push("/payment/podsumowanie");
+              }
+            }}
           >
             Dalej
           </button>
