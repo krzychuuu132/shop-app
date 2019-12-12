@@ -1,14 +1,32 @@
 .header {
-  width: 100%;
+  width: 100vw;
+
   height: 50px;
   background-color: white;
   display: flex;
+  align-items: center;
   overflow: hidden;
   padding: 0px 15px;
   border-bottom: 2px solid rgb(235, 233, 233);
 
+
+
+  @media (min-width: 1280px) {
+    margin: 10px auto;
+    max-width: 90%;
+    overflow: visible;
+
+  }
+
+  @media (min-width: 1600px) {
+
+    max-width: 70%;
+
+  }
+
   .components {
-    width: 100%;
+
+    width: 100vw;
     height: 40px;
     background-color: white;
     display: flex;
@@ -21,15 +39,26 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      z-index: 5;
+      padding-top: 5px;
+
+      @media (min-width: 1280px) {
+        z-index: 2;
+        margin-left: -55px;
+      }
+
+
+
 
       //search-products BTN
       &__btn {
         background-color: transparent;
         border: none;
-        font-size: 20px;
+        font-size: 16px;
         outline: none;
-        margin-left: 9px;
+
         cursor: pointer;
+        color: rgb(212, 209, 209);
 
 
         @media (min-width: 1280px) {
@@ -50,7 +79,7 @@
       &__search {
         width: 80%;
         display: flex;
-        transform: translateX(-200%);
+        transform: translateX(-100%);
         justify-content: center;
         align-items: center;
         transition: 0.7s;
@@ -59,26 +88,30 @@
         left: 0;
         width: 100vw;
         height: 50px;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.9);
         transition: 0.4s;
-        z-index: 8;
+        z-index: 5;
 
         @media (min-width: 1280px) {
           position: absolute;
-          width: 200px;
+          width: 400px;
           height: 30px;
           top: -13px;
           background-color: transparent;
-
+          transform: translateX(-300%);
           margin-left: 25px;
         }
 
 
 
         &--active {
+          z-index: 6;
+          transform: translateX(0%);
 
-          transform: translateX(0);
 
+          @media (min-width: 1280px) {
+            transform: translateX(80%);
+          }
 
         }
 
@@ -91,6 +124,7 @@
           color: black;
 
           @media (min-width: 1280px) {
+            background-color: transparent;
             width: 100%;
             border: none;
             outline: none;
@@ -109,6 +143,15 @@
           background-color: transparent;
           border: none;
           cursor: pointer;
+          z-index: 9;
+
+          @media (min-width: 1280px) {
+            margin-left: 45px;
+
+            &:hover {
+              color: turquoise;
+            }
+          }
 
           &>span {
             font-size: 22px;
@@ -117,6 +160,15 @@
             right: 5%;
             transform: translateY(-50%);
             color: red;
+
+
+            @media (min-width: 1280px) {
+
+
+              &:hover {
+                color: rgb(134, 4, 4);
+              }
+            }
           }
         }
       }
@@ -143,11 +195,26 @@
       display: none;
     }
 
-    .account-options,
     &__logo {
       position: absolute;
-      right: 5%;
-      top: 10%;
+      left: 1%;
+      top: 5%;
+    }
+
+    .account-options {
+      position: absolute;
+      left: 0%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: 10px;
+
+
+
+      @media (min-width: 1280px) {
+        left: -2%;
+        top: 50%;
+
+      }
     }
   }
 }

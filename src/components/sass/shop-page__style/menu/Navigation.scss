@@ -1,8 +1,8 @@
-$default-color: #333;
+$default-color: white;
 
 @mixin hamburger-line {
   width: 100%;
-  height: 2px;
+  height: 3px;
   background-color: $default-color;
   position: absolute;
   transition: all 0.1s 0.2s ease-in-out;
@@ -15,8 +15,12 @@ $default-color: #333;
   cursor: pointer;
   background-color: transparent;
   border: none;
-  z-index: 8;
+  z-index: 5;
   transition: all 0.2s 0.2s;
+  position: absolute;
+  right: 4%;
+
+
 
   @media (min-width: 1280px) {
     display: none;
@@ -34,12 +38,12 @@ $default-color: #333;
       background-color: transparent;
 
       &:after {
-        transform: translateY(6px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
         background-color: white;
       }
 
       &:before {
-        transform: translateY(-6px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
         background-color: white;
       }
     }
@@ -47,7 +51,7 @@ $default-color: #333;
 }
 
 .hamburger__container {
-  width: 20px;
+  width: 25px;
   height: 24px;
   display: flex;
   flex-direction: column;
@@ -69,19 +73,19 @@ $default-color: #333;
   }
 
   &:after {
-    top: -6px;
+    top: -8px;
   }
 
   &:before {
-    top: 6px;
+    top: 8px;
   }
 }
 
 //div-container od menu hamburger
 .navigation-desktop {
   position: absolute;
-  top: 0;
-  left: 25%;
+
+  right: 5%;
   width: 600px;
   height: 45px;
   z-index: 2;
@@ -96,21 +100,20 @@ $default-color: #333;
 
   //ul
   &__list {
-
     z-index: 5;
     position: absolute;
-    top: 100%;
+    transform: translateY(1px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: linear-gradient(rgba(78, 71, 71, 0.801), rgba(26, 26, 24, 0.746));
+    background-image: linear-gradient(rgba(78, 71, 71, 0.801),
+        rgba(26, 26, 24, 0.746));
     list-style: none;
-
+    visibility: hidden;
     height: 0;
     opacity: 0;
     width: 250px;
-
   }
 
   //li
@@ -125,27 +128,19 @@ $default-color: #333;
     transform: translateX(400px);
     letter-spacing: 2px;
     padding: 10px;
-    transition: .3s;
+    transition: 0.3s;
     position: relative;
     color: white;
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Roboto Mono", monospace;
     text-transform: capitalize;
     font-size: 13px;
     font-weight: bolder;
     text-transform: uppercase;
 
-
-
     &:hover {
       transform: translateX(40px);
       margin-left: 9px;
     }
-
-
-
-
-
-
   }
 }
 
@@ -165,7 +160,7 @@ $default-color: #333;
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  z-index: 7;
+  z-index: 4;
 
   @media (min-width: 1280px) {
     display: none;
@@ -187,7 +182,7 @@ $default-color: #333;
     left: 0;
     width: 100vw;
     height: 130px;
-
+    overflow: hidden;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -200,7 +195,7 @@ $default-color: #333;
   }
 
   &__sex-list {
-    width: 300px;
+    width: 350px;
     height: auto;
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -209,8 +204,8 @@ $default-color: #333;
     z-index: 2;
 
     @media (min-width: 1280px) {
-
-      height: 40px;
+      display: flex;
+      width: 500px;
     }
   }
 
@@ -221,26 +216,30 @@ $default-color: #333;
 
     @media (min-width: 1280px) {
       border: none;
-      height: 100%;
+      flex-grow: 1;
       position: relative;
-    }
+      margin: 0 10px;
 
-    @media (min-width: 1280px) {
-      &::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 40%;
-        transform: translateY(-40%);
-        width: 1px;
-        height: 25%;
-        background-color: black;
-      }
-    }
+      @media (min-width: 1280px) {
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 80%;
+          height: 1px;
+          background-color: red;
+          transform: translateX(-100%);
+          opacity: 1;
+          transition: visibility 0.6s linear 2s;
+          transition: transform 0.4s;
+          visibility: hidden;
+        }
 
-    @media (min-width: 1280px) {
-      &:hover>a {
-        // color: white;
+        &:hover::after {
+          visibility: visible;
+          transform: translateX(-50%);
+        }
       }
     }
   }
@@ -263,12 +262,18 @@ $default-color: #333;
     text-transform: capitalize;
 
     @media (min-width: 1280px) {
-      color: black;
-      height: 60px;
-      line-height: 30px;
+      display: block;
+      font-family: "Roboto", sans-serif;
+      color: white;
+      transition: 0.3s;
+      border-bottom: none;
+      padding: 10px;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 14px;
+      position: relative;
     }
-
-
   }
 
   &__sex-link--active {
@@ -276,9 +281,7 @@ $default-color: #333;
     border-bottom: 1px solid red;
 
     @media (min-width: 1280px) {
-      transition: .3s;
-      border-bottom: none;
-
+      transition: 0.1s;
     }
   }
 
@@ -314,8 +317,8 @@ $default-color: #333;
 
 .navigation--active {
   transform: translateX(0);
-  overflow-y: hidden;
 
+  overflow-y: hidden;
 }
 
 //460,640,800,1024,1280-desktop_small

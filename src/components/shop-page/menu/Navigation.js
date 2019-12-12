@@ -161,16 +161,14 @@ const Navigation = () => {
                     menuList,
                     0.2,
 
-                    {
-                      height: 250,
-                      opacity: 1
-                    }
+                    { visibility: "visible", height: 250, opacity: 1 }
                   )
                 }
                 onMouseLeave={() =>
                   TweenMax.to(menuList, 0.4, {
                     height: 0,
-                    opacity: 0
+                    opacity: 0,
+                    visibility: "hidden"
                   })
                 }
               >
@@ -188,8 +186,8 @@ const Navigation = () => {
                       TweenMax.fromTo(
                         firstLink,
                         0.3,
-                        { fontSize: 19 },
-                        { fontSize: 16 }
+                        { fontSize: 16 },
+                        { fontSize: 14 }
                       );
                   }}
                 >
@@ -229,14 +227,12 @@ const Navigation = () => {
                     menuSecondList,
                     0.2,
 
-                    {
-                      height: 250,
-                      opacity: 1
-                    }
+                    { visibility: "visible", height: 250, opacity: 1 }
                   )
                 }
                 onMouseLeave={() =>
                   TweenMax.to(menuSecondList, 0.4, {
+                    visibility: "hidden",
                     height: 0,
                     opacity: 0
                   })
@@ -256,12 +252,12 @@ const Navigation = () => {
                       TweenMax.fromTo(
                         secondLink,
                         0.3,
-                        { fontSize: 19 },
-                        { fontSize: 16 }
+                        { fontSize: 16 },
+                        { fontSize: 14 }
                       );
                   }}
                 >
-                  Meżczyźni
+                  Mężczyźni
                 </NavLink>
                 <ul
                   className="navigation-desktop__list"
@@ -297,14 +293,12 @@ const Navigation = () => {
                     menuThirdList,
                     0.2,
 
-                    {
-                      height: 250,
-                      opacity: 1
-                    }
+                    { visibility: "visible", height: 250, opacity: 1 }
                   )
                 }
                 onMouseLeave={() =>
                   TweenMax.to(menuThirdList, 0.4, {
+                    visibility: "hidden",
                     height: 0,
                     opacity: 0
                   })
@@ -324,8 +318,8 @@ const Navigation = () => {
                       TweenMax.fromTo(
                         thirdLink,
                         0.3,
-                        { fontSize: 19 },
-                        { fontSize: 16 }
+                        { fontSize: 16 },
+                        { fontSize: 14 }
                       );
                   }}
                 >

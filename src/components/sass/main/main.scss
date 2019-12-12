@@ -14,7 +14,7 @@
   }
 
   @media(min-width:1600px) {
-    max-width: 1300px;
+    max-width: 1400px;
 
   }
 }
@@ -27,41 +27,40 @@
 
 
 .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
   margin: 0 auto;
-  height: 250px;
+  height: 600px;
   width: 100%;
 
-  @media(min-width:800px) {
-    height: 300px;
-  }
+
 
   @media(min-width:1280px) {
-    height: 350px;
+    height: 700px;
   }
 
-  @media(min-width:1600px) {
-    height: 400px;
-  }
 
-  position: relative;
   z-index: 1;
   background-color: teal;
 
   &__lines {
     display: flex;
-    flex-direction: column;
+
 
     position: absolute;
-    top: 10%;
-    right: 5%;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   &__line {
-    width: 3px;
-    height: 14px;
-    background-color: white;
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    border: 1px solid white;
     flex-grow: 1;
-    margin: 5px 0;
+    margin: 0 9px;
     border-radius: 10px;
     cursor: pointer;
 
@@ -72,8 +71,8 @@
 
   &__line--active {
     transition: .4s;
-    background-color: red;
-    transform: translateX(-2px);
+    background-color: white;
+    transform: translateY(-2px);
 
   }
 
@@ -86,7 +85,11 @@
     top: 0;
     width: 100%;
     height: 100%;
-    filter: brightness(0.9);
+    filter: brightness(0.4);
+
+    @media(min-width:1280px) {
+      filter: brightness(0.4);
+    }
   }
 
   &__content {
@@ -100,11 +103,11 @@
     left: 5%;
     visibility: hidden;
     z-index: 2;
-    padding: 7px;
+    padding: 13px;
 
     @media(min-width:1024px) {
-      width: 350px;
-      padding: 20px 5px;
+      width: 400px;
+      padding: 30px 5px;
     }
 
     &::after {
@@ -264,9 +267,15 @@
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: repeat(auto-fill, 150px);
+  margin-top: 550px;
 
   align-items: center;
   justify-content: center;
+
+  @media(min-width:1280px) {
+
+    margin-top: 650px;
+  }
 
   .service {
     font-size: 13px;
