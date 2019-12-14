@@ -15,8 +15,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding-top: 10px;
     overflow: hidden;
+    margin: 0 auto;
+
+    @media(min-width:1280px) {
+        width: 80%;
+    }
+
 
 
 }
@@ -51,18 +58,17 @@
     min-height: 650px;
 
     @media(min-width:800px) {
-        width: 60%;
+
         margin-top: 20px;
     }
 
     @media(min-width:1024px) {
-        width: 80%;
+        width: 1000px;
         height: 400px;
-        display: grid;
-        grid-template-columns: 300px auto;
-        grid-template-rows: 600px 150px;
+        display: flex;
         min-height: 300px;
-        margin-top: 80px;
+        margin: 80px 0;
+
 
     }
 
@@ -87,8 +93,13 @@
 
         @media(min-width:800px) {
             top: 3%;
+            cursor: pointer;
         }
 
+        @media(min-width:1024px) {
+            right: -15%;
+            top: -1%;
+        }
 
 
 
@@ -99,7 +110,14 @@
 
 
 
+    @media(min-width:1024px) {
 
+        &__container {
+            order: -1;
+            width: 60%;
+        }
+
+    }
 
 
 
@@ -109,30 +127,23 @@
         height: 60%;
         filter: brightness(0.5);
 
-        &-icon {
 
-
-
-
-            @media(min-width:1280px) {
-
-                cursor: pointer;
-
-
-            }
-
-
-
-
-
-        }
 
         @media(min-width:800px) {
             display: block;
             margin: 0 auto;
             width: 95%;
+            height: 80%;
         }
 
+        @media(min-width:1024px) {
+            order: 1;
+
+            width: 350px;
+            height: 100%;
+
+
+        }
 
 
     }
@@ -151,21 +162,37 @@
 
         }
 
-        @media(min-width:1280px) {
+        @media(min-width:1024px) {
             font-size: 14px;
             font-family: Arial, Helvetica, sans-serif;
         }
     }
 
-    &__type {
-        text-transform: capitalize;
-        padding: 7px 20px;
-        font-size: 17px;
-        letter-spacing: 2px;
+    &__description {
+        font-family: "Roboto", sans-serif;
+        color: #666;
+        font-size: 16px;
+        font-weight: 300;
+        width: 85%;
+        padding: 10px;
 
-        @media(min-width:1280px) {
-            font-size: 19px;
-        }
+    }
+
+    &__type {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        padding: 7px 5px;
+
+
+        color: #1b3453;
+        font-size: 26px;
+        font-weight: 500;
+        font-style: italic;
+        font-style: italic;
+        margin-bottom: 9.5px;
+        line-height: 1.1;
+
+        @media(min-width:1280px) {}
     }
 
     &__price {
@@ -210,7 +237,7 @@
     height: 400px;
     position: relative;
     padding: 20px;
-
+    //display: none;
 
 
     @media(min-width:800px) {

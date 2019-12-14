@@ -52,15 +52,12 @@ const ProductDetails = () => {
 
           <ProductFavourite product={productDetails[0]} />
           <div className="product-details__container">
-            <p className="product-details__company">
-              {productDetails[0].company}
-              <span className="product-details__company-info">
-                (1 produkt w magazynie)
-              </span>{" "}
-              <span className="fas fa-angle-right"></span>
-            </p>
-
             <h3 className="product-details__type">{productDetails[0].type}</h3>
+            <p className="product-details__description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              et velit sed ipsum ullamcorper molestie a vel magna. Proin
+              gravida, elit sit amet vehicula lacinia, quam turpis dapibus erat.
+            </p>
 
             <p className="product-details__price">
               <span className="product-details__actual_price">
@@ -69,7 +66,6 @@ const ProductDetails = () => {
               <span className="product-details__vat">w tym VAT</span>
             </p>
             <p className="product-details__promotion">30% taniej</p>
-            <p className="product-details__color">Kolor: bordeaux</p>
           </div>
         </div>
         <div className="options">

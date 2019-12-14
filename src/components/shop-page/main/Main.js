@@ -123,7 +123,18 @@ const Main = () => {
     thirdLine.current.className = "slider__line";
 
     element.current.className = "slider__line slider__line--active";
-    useSrc(`/images/clothes-${index}.jpg`);
+    const smallScreen = window.matchMedia("(min-width:400px)");
+    const mediumScreen = window.matchMedia("(min-width:800px)");
+    const largeScreen = window.matchMedia("(min-width:1200px)");
+    if (smallScreen.matches) {
+      useSrc(`/images/clothes-${index}_small.jpg`);
+    }
+    if (mediumScreen.matches) {
+      useSrc(`/images/clothes-${index}_medium.jpg`);
+    }
+    if (largeScreen.matches) {
+      useSrc(`/images/clothes-${index}_big.jpg`);
+    }
   };
 
   const handleWhichLine = counter => {

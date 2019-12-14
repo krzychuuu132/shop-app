@@ -86,9 +86,15 @@ $default-color: white;
   position: absolute;
 
   right: 5%;
-  width: 600px;
+
+  width: 400px;
   height: 45px;
   z-index: 2;
+
+  @media (min-width: 1600px) {
+    right: 5%;
+    width: 600px;
+  }
 
   &__sex-choice {
     display: flex;
@@ -115,6 +121,8 @@ $default-color: white;
     opacity: 0;
     width: 250px;
   }
+
+
 
   //li
   &__item {

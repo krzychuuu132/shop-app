@@ -293,7 +293,12 @@ const Navigation = () => {
                     menuThirdList,
                     0.2,
 
-                    { visibility: "visible", height: 250, opacity: 1 }
+                    {
+                      visibility: "visible",
+                      height: 250,
+                      opacity: 1,
+                      width: 150
+                    }
                   )
                 }
                 onMouseLeave={() =>
