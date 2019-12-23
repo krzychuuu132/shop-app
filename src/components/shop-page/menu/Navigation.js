@@ -25,37 +25,40 @@ const showClothes = (sex, change, useActive) => {
     {
       id: 0,
       text: "buty",
-      translateText: "shoes"
+      translateText: "buty"
     },
     {
       id: 1,
       text: "t-shirty",
-      translateText: "t-shirt"
+      translateText: "T-shirt"
     },
     {
       id: 2,
       text: "bluzy",
-      translateText: "blouse"
+      translateText: "bluza"
     },
     {
       id: 3,
       text: "kurtki",
-      translateText: "jacket"
+      translateText: "kurtka"
     },
     {
       id: 4,
       text: "spodnie",
-      translateText: "trousers"
+      translateText: "spodnie"
     }
   ];
 
   // SHOWING_PRODUCTS
   const handleChooseProduct = (sex, type) => {
+    //console.log(sex, type);
+
     const showProduct = (product, sex) => ({
       type: "SHOW_PRODUCT",
       product,
       sex
     });
+
     store.dispatch(showProduct(type, sex));
   };
 
@@ -94,27 +97,27 @@ const Navigation = () => {
     {
       id: 0,
       text: "buty",
-      translateText: "shoes"
+      translateText: "buty"
     },
     {
       id: 1,
       text: "t-shirty",
-      translateText: "t-shirt"
+      translateText: "T-shirt"
     },
     {
       id: 2,
       text: "bluzy",
-      translateText: "blouse"
+      translateText: "bluza"
     },
     {
       id: 3,
       text: "kurtki",
-      translateText: "jacket"
+      translateText: "kurtka"
     },
     {
       id: 4,
       text: "spodnie",
-      translateText: "trousers"
+      translateText: "spodnie"
     }
   ];
 
@@ -139,9 +142,6 @@ const Navigation = () => {
     product,
     sex
   });
-
-  if (menuDesktop) {
-  }
 
   return (
     <>

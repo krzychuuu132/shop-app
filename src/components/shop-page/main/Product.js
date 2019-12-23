@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../sass/main/Product.scss";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import store from "../../../redux/store";
-
 import ProductFavourite from "./ProductFavourite";
 
 const Product = props => {
   const [activeProduct, useActiveProduct] = useState(false);
 
   const products = useSelector(state => state.productsReducer.products);
-
+  //console.log(products);
   let history = useHistory();
 
   const handleProductClcik = id => {
@@ -29,15 +28,15 @@ const Product = props => {
       <div className="product" key={index}>
         <img
           alt="product-img"
-          src={product.src}
+          src={product.product.images[0].url}
           className="product__picture"
-          onClick={() => handleProductClcik(product.id)}
+          onClick={() => handleProductClcik(product.product.id)}
         />
 
         <h6 className="product__title">
-          <span> {product.type}</span> - {product.company}
+          <span> {product.product.name}</span> - {product.product.brand}
         </h6>
-        <p className="product__price"> {product.price},00 zł</p>
+        <p className="product__price"> {product.product.price},00 zł</p>
 
         <ProductFavourite product={product} />
       </div>
@@ -47,11 +46,14 @@ const Product = props => {
   const showProduct = (type = props.type) => {
     const searchProducts = () => {
       const get = products.filter(product => {
-        if (type === "girls" && product.sex === "girls") {
+        const sex = product.product.categories[0].name;
+        //console.log(product.product);
+        if (type === "girls" && sex === "girls") {
           return product;
-        } else if (type === "kids" && product.sex === "kids") {
+        } else if (type === "kids" && sex === "kids") {
           return product;
-        } else if (type === "mens" && product.sex === "mens") {
+        } else if (type === "mens" && sex === "mens") {
+          // console.log(product);
           return product;
         }
       });

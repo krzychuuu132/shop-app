@@ -858,7 +858,7 @@ body {
   .navigation-desktop__list {
     z-index: 5;
     position: absolute;
-    transform: translateY(1px);
+    transform: translateY(0px);
     display: flex;
     flex-direction: column;
     justify-content: center;

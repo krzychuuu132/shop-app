@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../sass/shop-page__style/mainSide.scss";
 import { Link } from "react-router-dom";
 import ShopOptions from "./menu/ShopOptions";
@@ -7,15 +7,27 @@ import Main from "./main/Main";
 import Footer from "./main/Footer";
 import store from "../../redux/store";
 import icon from "../sass/img/shop-logo.png";
+import { useDispatch } from "react-redux";
+
+import { getAllProducts } from "../../redux/products/duck/operations";
+
 // Search-Panel,Products
 
 import SearchProducts from "./main/SearchProducts";
 
 const mainSide = () => {
+  const dispatch = useDispatch();
+
   const searchProduct = search => ({
     type: "SEARCH_PRODUCT",
     search
   });
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+    console.log("elooo");
+  }, []);
+
   const [search, useSearch] = useState(false);
   const sexChoice = [
     {

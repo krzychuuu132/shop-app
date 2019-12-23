@@ -1,9 +1,11 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers";
-//import movieActions from "./products/duck/actions";
-const store = createStore(rootReducer, composeWithDevTools());
+import thunk from "redux-thunk";
 
-//store.dispatch(movieActions.add("wspanaile stulecie"));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 export default store;

@@ -25,12 +25,14 @@ const ProductDetails = () => {
   const [selectSize, useSelectSize] = useState("");
 
   const productDetails = useSelector(
-    state => state.productsDeatilsReducer.products
+    state => state.productsDeatilsReducer.products[0]
   );
 
   const buyShopProduct = useSelector(
-    state => state.buyProductsReducer.products
+    state => state.buyProductsReducer.products.product
   );
+  console.log(productDetails);
+
   return (
     <>
       <div className="product-wrapper">
@@ -38,30 +40,34 @@ const ProductDetails = () => {
         <button
           className="product-exit"
           onClick={() => {
-            history.push(`/mainSide/${productDetails[0].sex}`);
+            history.push(
+              `/mainSide/${productDetails.product.categories[0].name}`
+            );
           }}
         >
           <span className="fas fa-arrow-left product-favourite-icon"></span>
         </button>
         <div className="product-details">
           <img
-            src={productDetails[0].src}
+            src={productDetails.product.images[0].url}
             alt="product-img"
             className="product-details__img"
           />
 
-          <ProductFavourite product={productDetails[0]} />
+          <ProductFavourite product={productDetails.product} />
+
           <div className="product-details__container">
-            <h3 className="product-details__type">{productDetails[0].type}</h3>
+            <h3 className="product-details__type">
+              {productDetails.product.name}
+            </h3>
             <p className="product-details__description">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               et velit sed ipsum ullamcorper molestie a vel magna. Proin
               gravida, elit sit amet vehicula lacinia, quam turpis dapibus erat.
             </p>
-
             <p className="product-details__price">
               <span className="product-details__actual_price">
-                {productDetails[0].price} zł
+                {productDetails.product.price} zł
               </span>
               <span className="product-details__vat">w tym VAT</span>
             </p>
@@ -85,21 +91,20 @@ const ProductDetails = () => {
           </select>
 
           <button
-            className={"options__btn"}
+            className={
+              addClass ? "options__btn options__btn--active" : "options__btn"
+            }
             onClick={() => {
               if (!selectSize || selectSize === "Wybierz rozmiar") {
+                console.log("wybierz rozmiar!");
                 selectSizeItems.current.className =
                   "options__size options__size--active";
               } else {
                 selectSizeItems.current.className = "options__size";
+                console.log(productDetails.product.product);
 
-                const copyProductDetails = productDetails.map(product => {
-                  if (product) {
-                    product.counter = 1;
-                    product.size = selectSize;
-                  }
-                  return product;
-                });
+                productDetails.product.product.counter = 1;
+                productDetails.product.product.size = selectSize;
 
                 const theSameProducts = buyShopProduct.filter(product => {
                   if (product.id === productDetails[0].id) return product;
@@ -109,15 +114,12 @@ const ProductDetails = () => {
                   store.dispatch(findTheSameProducts(theSameProducts));
                 else store.dispatch(addToList(copyProductDetails[0]));
               }
-              TweenMax.fromTo(btnIcon, 0.4, { fontSize: 16 }, { fontSize: 20 });
+
               useAddClass(!addClass);
             }}
           >
             <span className="options__btn-text">Dodaj do koszyka</span>
-            <span
-              className="fas fa-shopping-basket options__btn-icon"
-              ref={element => (btnIcon = element)}
-            ></span>
+            <span className="fas fa-shopping-basket options__btn-icon"></span>
           </button>
           <div className="transport">
             <div className="transport__transport">

@@ -1,7 +1,8 @@
 import types from "./types";
 
-const add = name => ({ type: types.ADD_ACTOR, name });
-const reset = () => ({ type: types.DELETE_ACTOR });
+const add = product => ({ type: types.ADD_PRODUCT, product });
+const reset = () => ({ type: types.RESET_PRODUCTS });
+
 const searchProduct = () => ({ type: types.SHOW_PRODUCT, product, sex });
 const clearShop = () => ({
   type: types.CLEAR_SHOP
