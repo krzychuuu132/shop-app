@@ -7,7 +7,7 @@ import Main from "./main/Main";
 import Footer from "./main/Footer";
 import store from "../../redux/store";
 import icon from "../sass/img/shop-logo.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { getAllProducts } from "../../redux/products/duck/operations";
 
@@ -16,6 +16,8 @@ import { getAllProducts } from "../../redux/products/duck/operations";
 import SearchProducts from "./main/SearchProducts";
 
 const mainSide = () => {
+  const products = useSelector(state => state.productsReducer.products);
+
   const dispatch = useDispatch();
 
   const searchProduct = search => ({
@@ -24,8 +26,7 @@ const mainSide = () => {
   });
 
   useEffect(() => {
-    dispatch(getAllProducts());
-    console.log("elooo");
+    products.length >= 50 ? null : dispatch(getAllProducts());
   }, []);
 
   const [search, useSearch] = useState(false);
@@ -74,7 +75,7 @@ const mainSide = () => {
               <input
                 type="search"
                 className="search-panel__search-input"
-                placeholder="Wyszukaj..."
+                placeholder="Wyszukaj Markę..."
                 onChange={e => store.dispatch(searchProduct(e.target.value))}
               />
               <button
@@ -85,11 +86,7 @@ const mainSide = () => {
               </button>
             </div>
           </div>
-          <div className="logo">
-            <picture>
-              <img src={icon} alt="shop-logo" />
-            </picture>
-          </div>
+
           <div className="components__menu-type">
             <Link to="/mainSide/girls" className="components__menu-type__link">
               Kobiety

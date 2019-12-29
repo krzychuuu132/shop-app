@@ -21,7 +21,6 @@ const ProductDetails = () => {
   const selectSizeItems = useRef(null);
   let btnIcon = useRef(null);
 
-  const [addClass, useAddClass] = useState(false);
   const [selectSize, useSelectSize] = useState("");
 
   const productDetails = useSelector(
@@ -29,9 +28,9 @@ const ProductDetails = () => {
   );
 
   const buyShopProduct = useSelector(
-    state => state.buyProductsReducer.products.product
+    state => state.buyProductsReducer.products
   );
-  console.log(productDetails);
+  //console.log(productDetails);
 
   return (
     <>
@@ -54,7 +53,7 @@ const ProductDetails = () => {
             className="product-details__img"
           />
 
-          <ProductFavourite product={productDetails.product} />
+          <ProductFavourite product={productDetails} />
 
           <div className="product-details__container">
             <h3 className="product-details__type">
@@ -84,42 +83,59 @@ const ProductDetails = () => {
             ref={selectSizeItems}
           >
             <option value="Wybierz rozmiar">Wybierz rozmiar</option>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
+            {productDetails.product.name === "buty" ? (
+              <>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+              </>
+            ) : (
+              <>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+              </>
+            )}
           </select>
 
           <button
-            className={
-              addClass ? "options__btn options__btn--active" : "options__btn"
-            }
+            className="options__btn"
             onClick={() => {
               if (!selectSize || selectSize === "Wybierz rozmiar") {
-                console.log("wybierz rozmiar!");
+                //console.log("wybierz rozmiar!");
                 selectSizeItems.current.className =
                   "options__size options__size--active";
               } else {
                 selectSizeItems.current.className = "options__size";
-                console.log(productDetails.product.product);
+                const newObject = Object.assign({}, productDetails.product);
 
-                productDetails.product.product.counter = 1;
-                productDetails.product.product.size = selectSize;
+                newObject.counter = 1;
+                newObject.size = selectSize;
 
                 const theSameProducts = buyShopProduct.filter(product => {
-                  if (product.id === productDetails[0].id) return product;
+                  if (product.id === newObject.id) return product;
                 });
 
                 if (theSameProducts && theSameProducts.length !== 0)
                   store.dispatch(findTheSameProducts(theSameProducts));
-                else store.dispatch(addToList(copyProductDetails[0]));
-              }
+                else store.dispatch(addToList(newObject));
 
-              useAddClass(!addClass);
+                TweenMax.fromTo(
+                  btnIcon,
+                  0.3,
+                  { fontSize: 16 },
+                  { fontSize: 20 }
+                );
+              }
             }}
           >
             <span className="options__btn-text">Dodaj do koszyka</span>
-            <span className="fas fa-shopping-basket options__btn-icon"></span>
+            <span
+              className="fas fa-shopping-basket options__btn-icon"
+              ref={element => (btnIcon = element)}
+            ></span>
           </button>
           <div className="transport">
             <div className="transport__transport">

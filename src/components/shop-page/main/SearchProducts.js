@@ -107,7 +107,7 @@ const SearchProducts = props => {
   const handleChangePrice = e => {
     useAtivePrice(e.target.value);
     const showProduct = price => ({
-      type: " SHOW_PRODUCT_PRICE",
+      type: "SHOW_PRODUCT_PRICE",
       price
     });
     store.dispatch(showProduct(activePrice));
@@ -203,6 +203,7 @@ const SearchProducts = props => {
         if (element.id === index) {
           handleSaveOptions("mark", element);
           store.dispatch(showMark(element));
+          element.className = "mark__element mark__element--active";
         } else {
           element.className = "mark__element";
         }

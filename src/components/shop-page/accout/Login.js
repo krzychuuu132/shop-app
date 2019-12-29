@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../../sass/accout/loginStyle.scss";
+import store from "../../../redux/store";
+
 const Login = () => {
+  const [UserEmail, useUserEmail] = useState("");
   return (
     <>
       <div className="login">
@@ -11,6 +14,8 @@ const Login = () => {
             name="email"
             placeholder="Enter email"
             className="login__form-data"
+            value={UserEmail}
+            onChange={e => useUserEmail(e.target.value)}
           />
 
           <input
@@ -24,6 +29,12 @@ const Login = () => {
             type="submit"
             value="zaloguj sie"
             className="login__form-submit"
+            onClick={() =>
+              localStorage.setItem(
+                store.dispatch({ type: "USER_DATA", data: UserEmail }),
+                "email"
+              )
+            }
           />
         </form>
       </div>

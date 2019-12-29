@@ -4,14 +4,12 @@ import { useSelector } from "react-redux";
 import store from "../../../redux/store";
 
 const ProductFavourite = props => {
-  const productDetails = useSelector(
-    state => state.productsDeatilsReducer.products
-  );
+  const productDetails = useSelector(state => state.productsDeatilsReducer);
 
   return (
     <div
       className={
-        props.product.favourite
+        props.product.product.favourite
           ? "product-favourite product-favourite--active"
           : "product-favourite"
       }
@@ -20,6 +18,7 @@ const ProductFavourite = props => {
           type: "ADD_PRODUCT_TO_FAVOURITE",
           product
         });
+
         store.dispatch(showProduct(props.product));
       }}
       key={props.product.id}

@@ -88,14 +88,14 @@
 
     &__counter {
         position: absolute;
-        right: 0%;
+        right: -1%;
         top: 0%;
         color: white;
         width: 20px;
         font-size: 12px;
         text-align: center;
         font-weight: bold;
-
+        line-height: 13px;
 
         &::after {
             position: absolute;

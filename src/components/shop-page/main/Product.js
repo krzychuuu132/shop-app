@@ -9,12 +9,13 @@ const Product = props => {
   const [activeProduct, useActiveProduct] = useState(false);
 
   const products = useSelector(state => state.productsReducer.products);
-  //console.log(products);
+
   let history = useHistory();
 
   const handleProductClcik = id => {
     history.push(`/product`);
 
+    window.scrollTo(0, 0);
     const SHOW_PRODUCT_DETAILS = productID => ({
       type: "SHOW_PRODUCT_DETAILS",
       productID
@@ -47,13 +48,12 @@ const Product = props => {
     const searchProducts = () => {
       const get = products.filter(product => {
         const sex = product.product.categories[0].name;
-        //console.log(product.product);
+
         if (type === "girls" && sex === "girls") {
           return product;
         } else if (type === "kids" && sex === "kids") {
           return product;
         } else if (type === "mens" && sex === "mens") {
-          // console.log(product);
           return product;
         }
       });

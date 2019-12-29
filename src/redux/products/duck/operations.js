@@ -8,7 +8,7 @@ const fetchProducts = async () => {
     { method: "GET" }
   );
   const json = await response.json();
-  console.log(json);
+
   return json;
 };
 const getAllProducts = () => async dispatch => {

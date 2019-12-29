@@ -21,7 +21,7 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            border: 0.5px solid black;
+            //border: 1px solid black;
             text-align: center;
             line-height: 30px;
             z-index: 2;
@@ -46,7 +46,7 @@
             transform: translate(-50%, -50%);
             width: 45%;
             height: 1px;
-            background-color: lightgray;
+            background-color: rgb(187, 186, 186);
             z-index: 1;
 
             @media (min-width:790px) {

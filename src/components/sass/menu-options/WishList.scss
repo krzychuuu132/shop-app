@@ -1,7 +1,8 @@
 .wish-list {
     width: 100vw;
     min-height: 100vh;
-    background-color: rgba(0, 250, 250, 0.267);
+    background-color: #e3e3e3;
+
     position: relative;
 
 
@@ -28,7 +29,7 @@
         display: flex;
         flex-wrap: wrap;
         padding: 20px;
-        background-color: rgba(0, 250, 250, 0.144);
+        background-color: #e3e3e3;
     }
 
     &__nothing {

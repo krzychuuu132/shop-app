@@ -125,7 +125,7 @@ const Navigation = () => {
 
   const [change, useActive] = useState(false);
   const [desktopVersion, useDesktopVersion] = useState(false);
-  const [menuDesktop, useMenuDesktop] = useState(false);
+  //const [menuDesktop, useMenuDesktop] = useState(false);
 
   const activeSpan = change ? "hamburger--active hamburger" : "hamburger";
   const activeNav = change ? "navigation--active navigation" : "navigation";
@@ -145,7 +145,11 @@ const Navigation = () => {
 
   return (
     <>
-      <button className={activeSpan} onClick={async () => useActive(!change)}>
+      <button
+        className={activeSpan}
+        style={change ? { zIndex: 5 } : { zIndex: 2 }}
+        onClick={async () => useActive(!change)}
+      >
         <span className="hamburger__container">
           <span className="hamburger__line"></span>
         </span>
