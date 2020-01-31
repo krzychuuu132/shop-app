@@ -1,6 +1,6 @@
 import React from "react";
 import Product from "./Product";
-const Girls = props => {
+const Girls = () => {
   return <Product type={"girls"} />;
 };
 

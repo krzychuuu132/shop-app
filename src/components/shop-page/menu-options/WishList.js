@@ -18,22 +18,22 @@ const WishList = () => {
   let history = useHistory();
 
   const favouriteProducts = useSelector(state =>
-    state.productsReducer.products.filter(product => product.product.favourite)
+    state.productsReducer.products.filter(product => product.favourite)
   );
-  console.log(favouriteProducts);
+
   const products = favouriteProducts.map(product => (
-    <div className="product" key={product.product.id}>
+    <div className="product" key={product.id}>
       <img
         alt="product-img"
-        src={product.product.images[0].url}
+        src={product.src}
         className="product__picture"
-        onClick={() => handleProductClcik(product.product.id, history)}
+        onClick={() => handleProductClcik(product.id, history)}
       />
 
       <h6 className="product__title">
-        <span> {product.product.name}</span> - {product.product.brand}
+        <span> {product.type}</span> - {product.brand}
       </h6>
-      <p className="product__price"> {product.product.price},00 zł</p>
+      <p className="product__price"> {product.price},00 zł</p>
     </div>
   ));
 

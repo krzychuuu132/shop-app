@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../../sass/accout/loginStyle.scss";
+import "../../sass/account/loginStyle.scss";
 import store from "../../../redux/store";
 
 const Login = () => {
@@ -12,7 +12,7 @@ const Login = () => {
           <input
             type="email"
             name="email"
-            placeholder="Enter email"
+            placeholder="Email Adress"
             className="login__form-data"
             value={UserEmail}
             onChange={e => useUserEmail(e.target.value)}
@@ -21,13 +21,13 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            placeholder="Enter password"
+            placeholder="Password"
             className="login__form-data"
           />
 
           <input
             type="submit"
-            value="zaloguj sie"
+            value="log in"
             className="login__form-submit"
             onClick={() =>
               localStorage.setItem(

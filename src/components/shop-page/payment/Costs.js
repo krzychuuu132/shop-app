@@ -10,8 +10,6 @@ import store from "../../../redux/store";
 
 const infoAboutUser = userInfo => {
   const dispatch = useDispatch();
-  console.log(userInfo);
-  //const userData = userInfo.forEach(data => <p>{data}</p>);
 
   return (
     <>
@@ -85,7 +83,7 @@ const Costs = () => {
                 name="payment-method"
                 className="buy-costs__payment-choice"
                 value="Za pobraniem (gratis)"
-                checked
+                defaultChecked
               />
               Za pobraniem (gratis)
               <div className="buy-costs__payment-method_data">
@@ -130,7 +128,6 @@ const Costs = () => {
         </div>
       </div>
       <footer className="footer">
-        {" "}
         <Footer />
       </footer>
     </>

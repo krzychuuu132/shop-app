@@ -4,7 +4,7 @@ const INITIAL_PRODUCTS = { products: [] };
 
 const fetchProducts = async () => {
   const response = await fetch(
-    "https://api.jumpseller.com/v1/products.json?login=e4359e8c41eeff4e4cb93ccb51189862&authtoken=163e3f0824e704f0219b69df3dff0082",
+    "https://randomapi.com/api/3h7k0ior?key=5I2X-L570-JLRT-6CMV",
     { method: "GET" }
   );
   const json = await response.json();
@@ -12,9 +12,11 @@ const fetchProducts = async () => {
   return json;
 };
 const getAllProducts = () => async dispatch => {
-  const products = await fetchProducts();
+  const data = await fetchProducts();
 
-  products.map(product => dispatch(actions.add(product)));
-  INITIAL_PRODUCTS.products = products;
+  data.results[0].map((product, index) => {
+    dispatch(actions.add(product));
+  });
+  INITIAL_PRODUCTS.products = data.results[0];
 };
 export { getAllProducts, INITIAL_PRODUCTS };

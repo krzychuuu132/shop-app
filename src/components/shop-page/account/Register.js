@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../sass/accout/registerStyle.scss";
-import "../../sass/accout/createdUser.scss";
+import "../../sass/account/registerStyle.scss";
+import "../../sass/account/createdUser.scss";
 class Register extends React.Component {
   constructor() {
     super();
@@ -36,15 +36,16 @@ class Register extends React.Component {
         <div className="createdUser">
           <h1 className="createdUser__title">{this.state.createdUser}</h1>
           <Link to="/login" className="createdUser__link">
-            Zaloguj sie!
+            Zaloguj sie! <span className="far fa-smile-beam"></span>
           </Link>
         </div>
       );
     } else {
       return (
         <div className="register">
-          <h1 className="register__title">sign in here</h1>
-
+          <div className="register__user">
+            <span className="fas fa-user-plus register__user-icon"></span>
+          </div>
           <form
             onSubmit={this.handleSubmit}
             action="/register"
@@ -55,7 +56,7 @@ class Register extends React.Component {
               name="name"
               type="text"
               placeholder="
-               Enter name"
+               Name"
               className="register__form-data"
             />
             <p className="register__form-errorText">
@@ -66,7 +67,7 @@ class Register extends React.Component {
               id="surname"
               name="surname"
               type="text"
-              placeholder="Enter surname"
+              placeholder="Surname"
               className="register__form-data"
             />
             <p className="register__form-errorText">
@@ -76,7 +77,7 @@ class Register extends React.Component {
               id="email"
               name="email"
               type="email"
-              placeholder="Enter email"
+              placeholder="Email Address"
               className="register__form-email register__form-data"
             />
             <p className="register__form-errorText">
@@ -86,7 +87,7 @@ class Register extends React.Component {
               id="password"
               name="password"
               type="password"
-              placeholder="Enter password"
+              placeholder="Password"
               className="register__form-data"
             />
             <p className="register__form-errorText">
@@ -96,7 +97,7 @@ class Register extends React.Component {
               id="repeatPassword"
               name="repeatPassword"
               type="password"
-              placeholder="Repeat password"
+              placeholder="Repeat Password"
               className="register__form-data"
             />
             <p className="register__form-errorText">

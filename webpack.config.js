@@ -1,7 +1,9 @@
 const path = require("path");
+const fs = require("fs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 //var HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const config = {
   mode: "development",
@@ -17,11 +19,12 @@ const config = {
   // inline: true
   //},
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
-    })
-    // new CleanWebpackPlugin()
+    }),
+    new CopyPlugin([{ from: "./src/components/sass/img", to: "img" }])
   ],
 
   module: {

@@ -7,13 +7,16 @@ import store from "../../../redux/store";
 
 import Products from "./Products";
 const SearchProducts = props => {
-  const dispatch = useDispatch();
-
+  // STATE
   const [active, useActive] = useState(false);
-
   const [activeCategory, useActiveCategory] = useState("");
+  const [activePrice, useAtivePrice] = useState(40);
 
   const divSearch = useRef(null);
+  const exitElement = useRef(null);
+  const exitElementContent = useRef(null);
+
+  const dispatch = useDispatch();
 
   const routes = props.sexChoice.map(person => (
     <Route
@@ -100,20 +103,11 @@ const SearchProducts = props => {
     }
   ];
 
-  const exitElement = useRef(null);
-  const exitElementContent = useRef(null);
-
-  const [activePrice, useAtivePrice] = useState(40);
   const handleChangePrice = e => {
     useAtivePrice(e.target.value);
-    const showProduct = price => ({
-      type: "SHOW_PRODUCT_PRICE",
-      price
-    });
-    store.dispatch(showProduct(activePrice));
-  };
 
-  const [activePromotion, useActivePromotion] = useState(false);
+    store.dispatch({ type: "SHOW_PRODUCT_PRICE", price: activePrice });
+  };
 
   const showComponent = title => {
     const titleOfFilter = (
@@ -135,6 +129,7 @@ const SearchProducts = props => {
       );
       exitElement.current.style.backgroundColor = "black";
       exitElementContent.current.innerText = "zamknij";
+
       dispatch({ type: "RETURN_DEFAULT" });
       useStateTable(activeElement);
     };
@@ -202,6 +197,7 @@ const SearchProducts = props => {
       const activeMark = activeMarkElement.filter(element => {
         if (element.id === index) {
           handleSaveOptions("mark", element);
+
           store.dispatch(showMark(element));
           element.className = "mark__element mark__element--active";
         } else {

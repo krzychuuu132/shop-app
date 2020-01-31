@@ -9,17 +9,15 @@ const ProductFavourite = props => {
   return (
     <div
       className={
-        props.product.product.favourite
+        props.product.favourite
           ? "product-favourite product-favourite--active"
           : "product-favourite"
       }
       onClick={() => {
-        const showProduct = product => ({
+        store.dispatch({
           type: "ADD_PRODUCT_TO_FAVOURITE",
-          product
+          product: props.product
         });
-
-        store.dispatch(showProduct(props.product));
       }}
       key={props.product.id}
     >

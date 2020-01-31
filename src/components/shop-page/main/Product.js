@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../../sass/main/Product.scss";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -6,21 +6,21 @@ import store from "../../../redux/store";
 import ProductFavourite from "./ProductFavourite";
 
 const Product = props => {
+  // STATE
   const [activeProduct, useActiveProduct] = useState(false);
 
+  // REDUX STATE
   const products = useSelector(state => state.productsReducer.products);
 
   let history = useHistory();
 
   const handleProductClcik = id => {
+    //console.log(id);
     history.push(`/product`);
-
     window.scrollTo(0, 0);
-    const SHOW_PRODUCT_DETAILS = productID => ({
-      type: "SHOW_PRODUCT_DETAILS",
-      productID
-    });
-    store.dispatch(SHOW_PRODUCT_DETAILS(id));
+
+    store.dispatch({ type: "SHOW_PRODUCT_DETAILS", productID: id });
+
     useActiveProduct(!activeProduct);
   };
 
@@ -29,15 +29,15 @@ const Product = props => {
       <div className="product" key={index}>
         <img
           alt="product-img"
-          src={product.product.images[0].url}
+          src={product.src}
           className="product__picture"
-          onClick={() => handleProductClcik(product.product.id)}
+          onClick={() => handleProductClcik(product.id)}
         />
 
         <h6 className="product__title">
-          <span> {product.product.name}</span> - {product.product.brand}
+          <span> {product.type}</span> - {product.brand}
         </h6>
-        <p className="product__price"> {product.product.price},00 zł</p>
+        <p className="product__price"> {product.price},00 zł</p>
 
         <ProductFavourite product={product} />
       </div>
@@ -47,7 +47,7 @@ const Product = props => {
   const showProduct = (type = props.type) => {
     const searchProducts = () => {
       const get = products.filter(product => {
-        const sex = product.product.categories[0].name;
+        const sex = product.sex;
 
         if (type === "girls" && sex === "girls") {
           return product;
@@ -67,5 +67,3 @@ const Product = props => {
 };
 
 export default Product;
-
-/*  */

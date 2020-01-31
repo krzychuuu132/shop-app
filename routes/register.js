@@ -24,7 +24,7 @@ router.post("/register", upload.single(), async (req, res) => {
   const emailThere = await User.findOne({ email: req.body.email });
   if (emailThere)
     return res.status(200).json({
-      text: "taki email juz istenieje w bazie",
+      text: "email is already in use",
       type: "email"
     });
 
@@ -50,7 +50,7 @@ router.post("/register", upload.single(), async (req, res) => {
       const savedUser = await user.save();
 
       res.status(200).json({
-        createdUser: `Gratulacje${name}!Udalo ci sie stworzyc uzytkownika o mailu:${email}`
+        createdUser: `Gratulacje ${name}! Udało ci sie stworzyć uzytkownika o mailu: ${email}`
       });
     } catch (err) {
       res.status(404).send(err);

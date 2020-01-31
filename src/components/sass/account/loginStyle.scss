@@ -1,0 +1,121 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    height: 650px;
+    background-color: rgb(243, 236, 236);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .45);
+
+    &__title {
+        text-transform: capitalize;
+        font-size: 30px;
+        margin: 15px 0;
+        color: #ADE372;
+        font-weight: bold;
+
+    }
+
+    &__form {
+
+        width: 70%;
+        flex-basis: 70%;
+        margin: 0px auto;
+        padding: 0px 5px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+
+
+        &-data {
+            border: none;
+            background-color: transparent;
+            font-size: 16px;
+            color: rgb(204, 201, 201);
+
+            outline: none;
+            padding: 10px 10px;
+
+            border: 1px solid rgb(219, 219, 219);
+            margin: 15px 0;
+            letter-spacing: 1px;
+            transition: .3s;
+
+
+
+
+
+            &:focus {
+                color: black;
+
+
+            }
+
+
+        }
+
+
+
+        &-submit {
+
+            width: 200px;
+            height: 50px;
+            margin: 35px auto;
+            // background-color: #7FD323;
+            border: none;
+            border: 1px solid black;
+            color: #7FD323;
+            cursor: pointer;
+            text-transform: capitalize;
+            font-size: 15px;
+            font-weight: bold;
+            transition: .4s;
+            background-color: white;
+
+
+
+            &:hover {
+                background-color: #7FD323;
+                color: white;
+                letter-spacing: 1px;
+                border-color: rgb(219, 219, 219);
+            }
+        }
+
+
+    }
+}
+
+@media (max-width:800px) {
+    .login {
+        width: 80%;
+        height: 500px;
+
+        &__form {
+
+
+
+
+
+
+
+
+
+
+
+
+            &-data {}
+
+            &-submit {}
+        }
+
+    }
+}

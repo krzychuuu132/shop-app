@@ -1,5 +1,6 @@
 import types from "./types";
 import { INITIAL_PRODUCTS } from "./operations";
+//console.log(INITIAL_PRODUCTS);
 
 // DATA
 const buyProduct = {
@@ -24,17 +25,13 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
     case types.SORT_PRODUCT:
       return {
         ...state,
-        products: state.products.sort(
-          (a, b) => b.product.price - a.product.price
-        )
+        products: state.products.sort((a, b) => b.price - a.price)
       };
 
     case types.SORT_PRODUCT_SMALLEST:
       return {
         ...state,
-        products: state.products.sort(
-          (a, b) => a.product.price - b.product.price
-        )
+        products: state.products.sort((a, b) => a.price - b.price)
       };
     case types.RESET_PRODUCTS:
       return {
@@ -46,10 +43,7 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
       return {
         ...state,
         products: INITIAL_PRODUCTS.products.filter(product => {
-          if (
-            product.product.name === action.product &&
-            product.product.categories[0].name === action.sex
-          ) {
+          if (product.type === action.product && product.sex === action.sex) {
             return product;
           }
         })
@@ -60,8 +54,7 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
         ...state,
         products: INITIAL_PRODUCTS.products.filter(product => {
           if (
-            product.product.brand.toLowerCase() ===
-            action.product.text.toLowerCase()
+            product.brand.toLowerCase() === action.product.text.toLowerCase()
           ) {
             return product;
           }
@@ -82,16 +75,14 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
       return {
         ...state,
         products: INITIAL_PRODUCTS.products.filter(
-          product => action.price > product.product.price
+          product => action.price > product.price
         )
       };
     case types.SEARCH_PRODUCT:
       return {
         ...state,
         products: INITIAL_PRODUCTS.products.filter(product =>
-          product.product.brand
-            .toLowerCase()
-            .includes(action.search.toLowerCase())
+          product.brand.toLowerCase().includes(action.search.toLowerCase())
         )
       };
 
@@ -106,8 +97,8 @@ const productsDeatilsReducer = (state = INITIAL_PRODUCTS, action) => {
       return {
         ...state,
         products: INITIAL_PRODUCTS.products.filter(product => {
-          if (product.product.id === action.product.product.id) {
-            product.product.favourite = !product.product.favourite;
+          if (product.id === action.product.id) {
+            product.favourite = !product.favourite;
 
             return product;
           }
@@ -117,7 +108,7 @@ const productsDeatilsReducer = (state = INITIAL_PRODUCTS, action) => {
       return {
         ...state,
         products: INITIAL_PRODUCTS.products.filter(
-          product => product.product.id === action.productID
+          product => product.id === action.productID
         )
       };
 
@@ -136,6 +127,7 @@ const buyProductsReducer = (state = buyProduct, action) => {
       return {
         ...state,
         products: state.products.filter(product => {
+          console.log(action.product);
           if (product.id === action.product[0].id) {
             product.counter++;
 

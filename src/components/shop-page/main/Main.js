@@ -34,7 +34,7 @@ const Main = () => {
 
       TweenMax.from(sliderContent, { visibility: "hidden" });
       TweenMax.to(sliderContent, { visibility: "visible", x: 0 });
-      //TweenMax.to(".slider__backgr", 1.2, { zIndex: 1, x: "100%", opacity: 0.9 }, 2)
+
       TweenMax.to(sliderTitle, 0.4, {
         ease: "back.out(1.7)",
         y: 0,
@@ -73,13 +73,18 @@ const Main = () => {
         visibility: "visible",
         delay: 0.8
       });
-      TweenMax.to(sliderText, 0.8, {
-        ease: "back.out(1.7)",
-        x: 0,
-        y: 10,
-        visibility: "visible",
-        delay: 1
-      });
+      TweenMax.fromTo(
+        sliderText,
+        0.8,
+        {
+          ease: "back.out(1.7)",
+          x: -100,
+          y: 0,
+          visibility: "hidden",
+          delay: 1
+        },
+        { x: 0, y: 0, visibility: "visible" }
+      );
     } else if (index === 3) {
       useSliderDescript([
         "promocja przy zakupie",

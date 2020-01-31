@@ -5,12 +5,30 @@
     align-items: center;
     width: 550px;
     height: 650px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .45);
+    border-radius: 5px;
+
+    &__user {
+        width: 70%;
+        height: 100px;
+        background-color: #FFFFFF;
+        text-align: center;
+        line-height: 100px;
+
+
+
+        &-icon {
+            color: #5D53AA;
+            font-size: 22px;
+        }
+    }
+
 
     &__title {
         text-transform: capitalize;
@@ -24,12 +42,10 @@
         width: 70%;
         flex-basis: 70%;
         margin: 0 auto;
-        padding: 40px;
+        padding: 0px 10px;
         height: auto;
-        display: grid;
-        grid-template-columns: 160px 160px;
-        grid-template-rows: 20px 20px 20px;
-        gap: 40px 10px;
+        display: flex;
+        flex-direction: column;
         position: relative;
 
 
@@ -37,48 +53,51 @@
             border: none;
             background-color: transparent;
             font-size: 16px;
-            color: rgb(180, 179, 179);
+            color: black;
             position: relative;
             outline: none;
-            padding: 20px 0;
-            border-bottom: 2px solid gray;
+            padding: 10px 15px;
+            border: 1px solid rgb(163, 161, 161);
             letter-spacing: 1px;
             transition: .3s;
             outline-color: none;
+            margin: 15px 0;
 
             &:focus {
+                color: black;
+                border-color: rgb(209, 205, 205);
+            }
+
+
+        }
+
+
+
+        &-btn {
+
+            width: 200px;
+            height: 50px;
+            margin: 30px auto;
+
+            border: none;
+            background-color: white;
+            color: #90C843;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 15px;
+            transition: .4s;
+            border: 1px solid #90C843;
+            outline: none;
+
+            &:hover {
+                background-color: #90C843;
                 color: white;
+                letter-spacing: 1px;
                 border-color: white;
             }
 
 
-        }
-
-        &-email {
-            grid-column-start: 1;
-            grid-column-end: 3;
-        }
-
-        &-btn {
-            grid-column-start: 1;
-            grid-column-end: 3;
-            width: 100%;
-            height: 50px;
-            margin: 10px auto;
-            border-radius: 25px;
-            border: none;
-            background-color: #db3998;
-            color: white;
-            cursor: pointer;
-            text-transform: capitalize;
-            font-size: 15px;
-            transition: .4s;
-
-            &:hover {
-                background-color: yellow;
-                color: black;
-                letter-spacing: 1px;
-            }
         }
 
         &-errorText {
@@ -87,12 +106,13 @@
             width: 100%;
             text-align: center;
             font-size: 13px;
-            top: 3%;
+            top: -5%;
             left: 50%;
-            transform: translateX(-50%);
+
             text-transform: uppercase;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-weight: bold;
+            transform: translateX(-50%);
 
         }
     }
@@ -100,28 +120,21 @@
 
 @media (max-width:650px) {
     .register {
-        width: 380px;
-        height: 550px;
+        width: 100%;
+        height: 600px;
 
         &__form {
-            display: flex;
-            flex-direction: column;
+
 
 
             &-btn {
+                width: 150px;
 
-                width: 80%;
-                height: 40px;
-                margin: 20px auto;
 
-                transition: .4s;
 
-                &:hover {
-                    background-color: yellow;
-                    color: black;
-                    letter-spacing: 1px;
 
-                }
+
+
 
             }
         }

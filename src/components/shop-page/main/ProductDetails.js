@@ -8,30 +8,25 @@ import Footer from "./Footer";
 import store from "../../../redux/store";
 import { TweenMax } from "gsap";
 
-const addToList = product => ({
-  type: "ADD_TO_SHOP_LIST",
-  product
-});
-const findTheSameProducts = product => ({
-  type: "ADD_THE_SAME_PRODUCT",
-  product
-});
 const ProductDetails = () => {
-  const history = useHistory();
+  // STATE
+  const [selectSize, useSelectSize] = useState("");
+
+  // REF
   const selectSizeItems = useRef(null);
   let btnIcon = useRef(null);
 
-  const [selectSize, useSelectSize] = useState("");
+  const history = useHistory();
 
+  // REDUX STATE
   const productDetails = useSelector(
-    state => state.productsDeatilsReducer.products[0]
+    state => state.productsDeatilsReducer.products
   );
 
   const buyShopProduct = useSelector(
     state => state.buyProductsReducer.products
   );
-  //console.log(productDetails);
-
+  //console.log(productDetails[0]);
   return (
     <>
       <div className="product-wrapper">
@@ -39,26 +34,22 @@ const ProductDetails = () => {
         <button
           className="product-exit"
           onClick={() => {
-            history.push(
-              `/mainSide/${productDetails.product.categories[0].name}`
-            );
+            history.push(`/mainSide/${productDetails[0].sex}`);
           }}
         >
           <span className="fas fa-arrow-left product-favourite-icon"></span>
         </button>
         <div className="product-details">
           <img
-            src={productDetails.product.images[0].url}
+            src={productDetails[0].src}
             alt="product-img"
             className="product-details__img"
           />
 
-          <ProductFavourite product={productDetails} />
+          <ProductFavourite product={productDetails[0]} />
 
           <div className="product-details__container">
-            <h3 className="product-details__type">
-              {productDetails.product.name}
-            </h3>
+            <h3 className="product-details__type">{productDetails[0].sex}</h3>
             <p className="product-details__description">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               et velit sed ipsum ullamcorper molestie a vel magna. Proin
@@ -66,7 +57,7 @@ const ProductDetails = () => {
             </p>
             <p className="product-details__price">
               <span className="product-details__actual_price">
-                {productDetails.product.price} zł
+                {productDetails[0].price} zł
               </span>
               <span className="product-details__vat">w tym VAT</span>
             </p>
@@ -83,7 +74,7 @@ const ProductDetails = () => {
             ref={selectSizeItems}
           >
             <option value="Wybierz rozmiar">Wybierz rozmiar</option>
-            {productDetails.product.name === "buty" ? (
+            {productDetails[0].type === "buty" ? (
               <>
                 <option value="39">39</option>
                 <option value="40">40</option>
@@ -104,13 +95,12 @@ const ProductDetails = () => {
             className="options__btn"
             onClick={() => {
               if (!selectSize || selectSize === "Wybierz rozmiar") {
-                //console.log("wybierz rozmiar!");
                 selectSizeItems.current.className =
                   "options__size options__size--active";
               } else {
                 selectSizeItems.current.className = "options__size";
-                const newObject = Object.assign({}, productDetails.product);
 
+                const newObject = Object.assign({}, productDetails[0]);
                 newObject.counter = 1;
                 newObject.size = selectSize;
 
@@ -119,8 +109,15 @@ const ProductDetails = () => {
                 });
 
                 if (theSameProducts && theSameProducts.length !== 0)
-                  store.dispatch(findTheSameProducts(theSameProducts));
-                else store.dispatch(addToList(newObject));
+                  store.dispatch({
+                    type: "ADD_THE_SAME_PRODUCT",
+                    product: theSameProducts
+                  });
+                else
+                  store.dispatch({
+                    type: "ADD_TO_SHOP_LIST",
+                    product: newObject
+                  });
 
                 TweenMax.fromTo(
                   btnIcon,
@@ -150,9 +147,8 @@ const ProductDetails = () => {
             <div className="transport__transport">
               <span className="fas fa-truck options__transport-icon"></span>
               <p className="transport__text">
-                {" "}
                 <span className="transport__text-important">
-                  Przesyłka standardowa{" "}
+                  Przesyłka standardowa
                 </span>
                 gratis w ciągu 3-6 dni roboczych
               </p>

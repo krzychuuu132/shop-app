@@ -40,18 +40,18 @@ const ShoppingList = () => {
   const buyShopProduct = useSelector(
     state => state.buyProductsReducer.products
   );
-  console.log(buyShopProduct);
+
   const savedMoney = 30;
 
   const productsToBuy = buyShopProduct.map((product, index) => (
     <div className="products__product" key={index}>
-      <img src={product.images[0].url} className="products__img" />
+      <img src={product.src} className="products__img" />
       <div className="products__info">
         <span className="products__info-content">
           Marka:<b> {product.brand}</b>
         </span>
         <span className="products__info-content">
-          Typ Produktu:<b>{product.name}</b>
+          Typ Produktu:<b>{product.type}</b>
         </span>
         <span className="products__info-content">
           Kolor: <b>Black</b>
@@ -59,6 +59,7 @@ const ShoppingList = () => {
         <span className="products__info-content">
           Rozmiar: <b>{product.size}</b>
         </span>
+        {console.log(product.counter)}
         <select
           name="sizes"
           className="products__quantity"

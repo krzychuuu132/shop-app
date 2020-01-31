@@ -5,7 +5,7 @@ import "../../sass/shop-page__style/menu/ShopOptions.scss";
 import { useSelector } from "react-redux";
 const ShopOptions = () => {
   const favouriteProducts = useSelector(state =>
-    state.productsReducer.products.filter(product => product.product.favourite)
+    state.productsReducer.products.filter(product => product.favourite)
   );
 
   const buyShopProduct = useSelector(

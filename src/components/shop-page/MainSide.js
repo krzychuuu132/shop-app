@@ -17,7 +17,7 @@ import SearchProducts from "./main/SearchProducts";
 
 const mainSide = () => {
   const products = useSelector(state => state.productsReducer.products);
-
+  //console.log(products)
   const dispatch = useDispatch();
 
   const searchProduct = search => ({
