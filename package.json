@@ -7,6 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
+    "dev:server": "webpack-dev-server",
     "dev": "webpack --config ./webpack.config.js",
     "dev:watch": "npm run dev -- --watch",
     "start": "node src/server.js"
@@ -42,7 +43,7 @@
     "express": "^4.17.1",
     "file-loader": "^5.0.2",
     "fs": "0.0.1-security",
-    "gsap": "^3.0.5",
+    "gsap": "^3.1.1",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
     "mongoose": "^5.8.9",
@@ -61,5 +62,8 @@
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
+  },
+  "dependencies": {
+    "heroku-cli": "^7.0.9"
   }
 }

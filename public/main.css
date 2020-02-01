@@ -971,14 +971,14 @@ body {
     left: 0;
     top: 0;
     width: 100%;
-    height: 130px;
+    height: 200px;
     filter: brightness(0.4); }
   .navigation__sex-choice {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 130px;
+    height: 200px;
     overflow: hidden;
     background-position: center;
     background-repeat: no-repeat;
@@ -986,7 +986,7 @@ body {
     display: grid;
     align-items: flex-end;
     justify-content: start;
-    padding: 20px 40px;
+    padding: 20px 10px;
     position: relative;
     border-bottom: 1px solid black; }
   .navigation__sex-list {
@@ -1022,7 +1022,7 @@ body {
       background-color: red;
       transform: translateX(-100%);
       opacity: 1;
-      transition: visibility 0.6s linear 2s;
+      transition: visibility 0.6s linear 1s;
       transition: transform 0.4s;
       visibility: hidden; }
     .navigation__sex-item:hover::after {
@@ -1345,7 +1345,7 @@ body {
       left: initial;
       top: 0;
       right: 0;
-      background-color: rgba(184, 203, 227, 0.966);
+      background-color: rgba(226, 228, 231, 0.924);
       width: 300px;
       height: 100vh; } }
   .filter__btn {

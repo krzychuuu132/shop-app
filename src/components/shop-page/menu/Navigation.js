@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, Link, Switch, Route } from "react-router-dom";
 import { TweenMax } from "gsap";
@@ -8,9 +8,15 @@ import Mans from "./Mans";
 import Girls from "./Girls";
 import Kids from "./Kids";
 
-import imgMans from "../../sass/img/boy-small.jpg";
+import imgMens from "../../sass/img/boy-small.jpg";
+import imgMens_Medium from "../../sass/img/boy-medium.jpg";
+
 import imgGirls from "../../sass/img/woman-small.jpg";
+import imgGirls_Medium from "../../sass/img/woman-medium.jpg";
+
 import imgKids from "../../sass/img/kids-small.jpg";
+import imgKids_Medium from "../../sass/img/kids-medium.jpg";
+
 import store from "../../../redux/store";
 
 const showClothes = (sex, change, useActive) => {
@@ -51,8 +57,6 @@ const showClothes = (sex, change, useActive) => {
 
   // SHOWING_PRODUCTS
   const handleChooseProduct = (sex, type) => {
-    //console.log(sex, type);
-
     const showProduct = (product, sex) => ({
       type: "SHOW_PRODUCT",
       product,
@@ -81,8 +85,6 @@ const showClothes = (sex, change, useActive) => {
 
   return <ul className="navigation__list">{ProductsListItem}</ul>;
 };
-
-/////////////////////
 
 const Navigation = () => {
   let menuList = useRef(null);
@@ -124,13 +126,15 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   const [change, useActive] = useState(false);
-  const [desktopVersion, useDesktopVersion] = useState(false);
-  //const [menuDesktop, useMenuDesktop] = useState(false);
+  const [desktopVersion, useDesktopVersion] = useState(true);
 
   const activeSpan = change ? "hamburger--active hamburger" : "hamburger";
   const activeNav = change ? "navigation--active navigation" : "navigation";
-  useEffect(() => {
-    if (window.innerWidth >= 1280) {
+
+  const desktopViewport = window.matchMedia(" (min-width:1280px)");
+
+  desktopViewport.addListener(mq => {
+    if (mq.matches) {
       useDesktopVersion(true);
     } else {
       useDesktopVersion(false);
@@ -393,7 +397,7 @@ const Navigation = () => {
                     })
                   }
                 >
-                  Meżczyźni
+                  Mężczyźni
                 </NavLink>
               </li>
               <li className="navigation__sex-item">
@@ -423,7 +427,17 @@ const Navigation = () => {
                       showClothes={() => showClothes("mens", change, useActive)}
                     />
 
-                    <img src={imgMans} alt="mans" className="navigation__img" />
+                    <picture>
+                      <source
+                        media="(min-width: 800px)"
+                        srcSet={imgMens_Medium}
+                      ></source>
+                      <img
+                        src={imgMens}
+                        alt="mens"
+                        className="navigation__img"
+                      />
+                    </picture>
                   </>
                 );
               }}
@@ -439,12 +453,17 @@ const Navigation = () => {
                         showClothes("girls", change, useActive)
                       }
                     />
-
-                    <img
-                      src={imgGirls}
-                      alt="girls"
-                      className="navigation__img"
-                    />
+                    <picture>
+                      <source
+                        media="(min-width: 800px)"
+                        srcSet={imgGirls_Medium}
+                      ></source>
+                      <img
+                        src={imgGirls}
+                        alt="girls"
+                        className="navigation__img"
+                      />
+                    </picture>
                   </>
                 );
               }}
@@ -458,8 +477,17 @@ const Navigation = () => {
                     <Kids
                       showClothes={() => showClothes("kids", change, useActive)}
                     />
-
-                    <img src={imgKids} alt="kids" className="navigation__img" />
+                    <picture>
+                      <source
+                        media="(min-width: 800px)"
+                        srcSet={imgKids_Medium}
+                      ></source>
+                      <img
+                        src={imgKids}
+                        alt="kids"
+                        className="navigation__img"
+                      />
+                    </picture>
                   </>
                 );
               }}

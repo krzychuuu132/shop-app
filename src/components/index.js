@@ -6,7 +6,7 @@ import Register from "./shop-page/account/Register";
 import Login from "./shop-page/account/Login";
 import BadPatch from "./shop-page/account/BadPatch";
 import ProductDetails from "./shop-page/main/ProductDetails";
-//import ShopMenu from "./shop-page/MainSide";
+
 import "./sass/account/style.scss";
 import mainSide from "./shop-page/MainSide";
 import WishList from "./shop-page/menu-options/WishList";
@@ -14,13 +14,10 @@ import ShoppingList from "./shop-page/menu-options/ShoppingList";
 import Account from "./shop-page/menu-options/Account";
 import { Provider } from "react-redux";
 import store from "../redux/store";
-import shopApp from "../redux/products/duck/reducer";
 import Payment from "./shop-page/payment/Payment";
 import Costs from "./shop-page/payment/Costs";
 import Summary from "./shop-page/payment/Summary";
 import OrderedProduct from "./shop-page/payment/OrderedProduct";
-import { createStore } from "redux";
-import { loadState, saveState } from "./shop-page/localStorage/localStorage";
 
 class App extends React.Component {
   render() {

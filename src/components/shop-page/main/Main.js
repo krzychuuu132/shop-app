@@ -132,13 +132,13 @@ const Main = () => {
     const mediumScreen = window.matchMedia("(min-width:800px)");
     const largeScreen = window.matchMedia("(min-width:1200px)");
     if (smallScreen.matches) {
-      useSrc(`/images/clothes-${index}_small.jpg`);
+      useSrc(`/img/clothes-${index}_small.jpg`);
     }
     if (mediumScreen.matches) {
-      useSrc(`/images/clothes-${index}_medium.jpg`);
+      useSrc(`/img/clothes-${index}_medium.jpg`);
     }
     if (largeScreen.matches) {
-      useSrc(`/images/clothes-${index}_big.jpg`);
+      useSrc(`/img/clothes-${index}_big.jpg`);
     }
   };
 

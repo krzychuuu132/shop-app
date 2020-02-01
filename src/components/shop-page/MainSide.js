@@ -6,7 +6,7 @@ import Navigation from "./menu/Navigation";
 import Main from "./main/Main";
 import Footer from "./main/Footer";
 import store from "../../redux/store";
-import icon from "../sass/img/shop-logo.png";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAllProducts } from "../../redux/products/duck/operations";

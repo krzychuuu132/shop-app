@@ -94,6 +94,7 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
 const productsDeatilsReducer = (state = INITIAL_PRODUCTS, action) => {
   switch (action.type) {
     case types.ADD_PRODUCT_TO_FAVOURITE:
+      console.log(action.product);
       return {
         ...state,
         products: INITIAL_PRODUCTS.products.filter(product => {
