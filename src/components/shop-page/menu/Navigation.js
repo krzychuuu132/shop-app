@@ -126,12 +126,18 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   const [change, useActive] = useState(false);
-  const [desktopVersion, useDesktopVersion] = useState(true);
+  const [desktopVersion, useDesktopVersion] = useState(false);
 
   const activeSpan = change ? "hamburger--active hamburger" : "hamburger";
   const activeNav = change ? "navigation--active navigation" : "navigation";
 
   const desktopViewport = window.matchMedia(" (min-width:1280px)");
+
+  useEffect(() => {
+    window.innerWidth >= 1280
+      ? useDesktopVersion(true)
+      : useDesktopVersion(false);
+  });
 
   desktopViewport.addListener(mq => {
     if (mq.matches) {
