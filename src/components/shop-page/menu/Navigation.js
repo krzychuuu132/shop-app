@@ -436,10 +436,10 @@ const Navigation = () => {
                     <picture>
                       <source
                         media="(min-width: 800px)"
-                        srcSet={imgMens_Medium}
+                        srcSet="/img/boy-medium.jpg"
                       ></source>
                       <img
-                        src={imgMens}
+                        src="/img/boy-small.jpg"
                         alt="mens"
                         className="navigation__img"
                       />
@@ -462,10 +462,10 @@ const Navigation = () => {
                     <picture>
                       <source
                         media="(min-width: 800px)"
-                        srcSet={imgGirls_Medium}
+                        srcSet="/img/woman-medium.jpg"
                       ></source>
                       <img
-                        src={imgGirls}
+                        src="/img/woman-small.jpg"
                         alt="girls"
                         className="navigation__img"
                       />
@@ -486,10 +486,10 @@ const Navigation = () => {
                     <picture>
                       <source
                         media="(min-width: 800px)"
-                        srcSet={imgKids_Medium}
+                        srcSet="/img/kids-medium.jpg"
                       ></source>
                       <img
-                        src={imgKids}
+                        src="/img/kids-small.jpg"
                         alt="kids"
                         className="navigation__img"
                       />
