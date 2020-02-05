@@ -21,20 +21,15 @@ const ShopOptions = () => {
     <>
       <div className="account-options">
         <Link
-          to="/wish-list"
+          to="/account"
           className="account-options__link"
           style={fontColor ? { color: "white" } : { color: "black" }}
         >
           <span className="options-list">
-            <i className="far fa-heart options-list__icon"></i>
-
-            <div className="options-list__counter">
-              {favouriteProductsLength}
-            </div>
+            <i className="far fa-user options-account__icon"></i>
           </span>
+          <span className="account-options__title">My profile</span>
         </Link>
-
-        <div className="account-options--active-list">1</div>
 
         <Link
           to="/shopping-list"
@@ -43,24 +38,22 @@ const ShopOptions = () => {
         >
           <span className="options-list">
             <i className="fas fa-shopping-cart options-shopping__icon"></i>
-
-            <div className="options-list__counter">{buyShopProductLength}</div>
+          </span>
+          <span className="account-options__title">
+            {buyShopProductLength} Items{" "}
+            <span style={{ color: "lightgray" }}>$0.00</span>
           </span>
         </Link>
-
-        <div className="account-options--active-shopping">12</div>
-
         <Link
-          to="/account"
+          to="/wish-list"
           className="account-options__link"
           style={fontColor ? { color: "white" } : { color: "black" }}
         >
-          <span className="options-account">
-            <i className="fas fa-user options-account__icon"></i>
+          <span className="options-list">
+            <i className="far fa-heart options-list__icon"></i>
           </span>
+          <span className="account-options__title">Wishlist</span>
         </Link>
-
-        <div className="account-options--active-account"></div>
       </div>
     </>
     //<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

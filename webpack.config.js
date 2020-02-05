@@ -20,7 +20,7 @@ const config = {
       title: "QUIZ-APP",
       template: "./views/index.ejs"
     }),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"

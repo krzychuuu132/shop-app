@@ -120,6 +120,41 @@ const Navigation = () => {
       id: 4,
       text: "spodnie",
       translateText: "spodnie"
+    },
+    {
+      id: 45,
+      text: "płaszcze",
+      translateText: "płaszcze"
+    },
+    {
+      id: 6,
+      text: "kurtki puchowe",
+      translateText: "kurtki puchowe"
+    },
+    {
+      id: 7,
+      text: "marynarki",
+      translateText: "marynarki"
+    },
+    {
+      id: 8,
+      text: "sukienki",
+      translateText: "sukienki"
+    },
+    {
+      id: 9,
+      text: "kombinezony",
+      translateText: "kombinezony"
+    },
+    {
+      id: 10,
+      text: "torby",
+      translateText: "torby"
+    },
+    {
+      id: 11,
+      text: "akcesoria",
+      translateText: "akcesoria"
     }
   ];
 
@@ -166,212 +201,128 @@ const Navigation = () => {
       </button>
       {desktopVersion ? (
         <div className="navigation-desktop">
-          <div className="navigation-desktop__sex-choice">
-            <ul className="navigation__sex-list">
-              <li
-                className="navigation__sex-item"
-                onMouseEnter={() =>
-                  TweenMax.to(
-                    menuList,
-                    0.2,
-
-                    { visibility: "visible", height: 250, opacity: 1 }
-                  )
-                }
-                onMouseLeave={() =>
-                  TweenMax.to(menuList, 0.4, {
-                    height: 0,
-                    opacity: 0,
-                    visibility: "hidden"
+          <h1 className="navigation-desktop__title">urban shop</h1>
+          <ul className="navigation-desktop__list">
+            <li className="navigation-desktop__item">
+              <NavLink
+                to="/mainSide/home"
+                className="navigation-desktop__link"
+                activeClassName="navigation-desktop__link--active"
+                style={{ "&::after": { display: "none" } }}
+              >
+                home
+              </NavLink>
+            </li>
+            <li className="navigation-desktop__item">
+              <NavLink
+                activeClassName="navigation-desktop__link--active"
+                to="/mainSide/girls"
+                className="navigation-desktop__link"
+                onClick={() =>
+                  dispatch({
+                    type: "RETURN_DEFAULT_SEX"
                   })
                 }
               >
-                <NavLink
-                  to="/mainSide/girls"
-                  ref={element => {
-                    firstLink = element;
-                  }}
-                  className="navigation__sex-link"
-                  activeClassName="navigation__sex-link--active"
-                  onClick={() => {
-                    dispatch({
-                      type: "RETURN_DEFAULT_SEX"
-                    }),
-                      TweenMax.fromTo(
-                        firstLink,
-                        0.3,
-                        { fontSize: 16 },
-                        { fontSize: 14 }
-                      );
-                  }}
-                >
-                  Kobiety
-                </NavLink>
-                <ul
-                  className="navigation-desktop__list"
-                  ref={element => {
-                    menuList = element;
-                  }}
-                >
-                  {productsList.map(product => (
-                    <li
-                      key={product.id}
-                      onClick={() =>
-                        store.dispatch(
-                          showProduct(product.translateText, "girls")
-                        )
-                      }
-                      className="navigation-desktop__item"
-                    >
-                      <Link
-                        to={`/mainSide/girls/${product.translateText}`}
-                        className="navigation-desktop__link"
-                      >
-                        {product.text}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-
-              <li
-                className="navigation__sex-item"
-                onMouseEnter={() =>
-                  TweenMax.to(
-                    menuSecondList,
-                    0.2,
-
-                    { visibility: "visible", height: 250, opacity: 1 }
-                  )
-                }
-                onMouseLeave={() =>
-                  TweenMax.to(menuSecondList, 0.4, {
-                    visibility: "hidden",
-                    height: 0,
-                    opacity: 0
-                  })
-                }
-              >
-                <NavLink
-                  to="/mainSide/mens"
-                  className="navigation__sex-link"
-                  ref={element => {
-                    secondLink = element;
-                  }}
-                  activeClassName="navigation__sex-link--active"
-                  onClick={() => {
-                    dispatch({
-                      type: "RETURN_DEFAULT_SEX"
-                    }),
-                      TweenMax.fromTo(
-                        secondLink,
-                        0.3,
-                        { fontSize: 16 },
-                        { fontSize: 14 }
-                      );
-                  }}
-                >
-                  Mężczyźni
-                </NavLink>
-                <ul
-                  className="navigation-desktop__list"
-                  ref={element => {
-                    menuSecondList = element;
-                  }}
-                >
-                  {productsList.map(product => (
-                    <li
-                      key={product.id}
-                      onClick={() =>
-                        store.dispatch(
-                          showProduct(product.translateText, "mens")
-                        )
-                      }
-                      className="navigation-desktop__item"
-                    >
-                      <Link
-                        to={`/mainSide/mens/${product.translateText}`}
-                        className="navigation-desktop__link"
-                      >
-                        {product.text}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-
-              <li
-                className="navigation__sex-item"
-                onMouseEnter={() =>
-                  TweenMax.to(
-                    menuThirdList,
-                    0.2,
-
-                    {
-                      visibility: "visible",
-                      height: 250,
-                      opacity: 1,
-                      width: 150
+                Kobiety
+              </NavLink>
+              <ul className="navigation-desktop__sub-list">
+                {productsList.map(product => (
+                  <li
+                    key={product.id}
+                    onClick={() =>
+                      store.dispatch(
+                        showProduct(product.translateText, "girls")
+                      )
                     }
-                  )
-                }
-                onMouseLeave={() =>
-                  TweenMax.to(menuThirdList, 0.4, {
-                    visibility: "hidden",
-                    height: 0,
-                    opacity: 0
-                  })
-                }
-              >
-                <NavLink
-                  to="/mainSide/kids"
-                  className="navigation__sex-link"
-                  ref={element => {
-                    thirdLink = element;
-                  }}
-                  activeClassName="navigation__sex-link--active"
-                  onClick={() => {
-                    dispatch({
-                      type: "RETURN_DEFAULT_SEX"
-                    }),
-                      TweenMax.fromTo(
-                        thirdLink,
-                        0.3,
-                        { fontSize: 16 },
-                        { fontSize: 14 }
-                      );
-                  }}
-                >
-                  dzieci
-                </NavLink>
-                <ul
-                  className="navigation-desktop__list"
-                  ref={element => {
-                    menuThirdList = element;
-                  }}
-                >
-                  {productsList.map(product => (
-                    <li
-                      key={product.id}
-                      onClick={() =>
-                        store.dispatch(
-                          showProduct(product.translateText, "kids")
-                        )
-                      }
-                      className="navigation-desktop__item"
+                    className="navigation-desktop__sub-list_item"
+                  >
+                    <Link
+                      to={`/mainSide/girls/${product.translateText}`}
+                      className="navigation-desktop__sub-list_link"
                     >
-                      <Link
-                        to={`/mainSide/kids/${product.translateText}`}
-                        className="navigation-desktop__link"
-                      >
-                        {product.text}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            </ul>
-          </div>
+                      {product.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+
+            <li className="navigation-desktop__item">
+              <NavLink
+                activeClassName="navigation-desktop__link--active"
+                to="/mainSide/mens"
+                className="navigation-desktop__link"
+                onClick={() => {
+                  dispatch({
+                    type: "RETURN_DEFAULT_SEX"
+                  });
+                }}
+              >
+                Mężczyźni
+              </NavLink>
+              <ul className="navigation-desktop__sub-list">
+                {productsList.map(product => (
+                  <li
+                    key={product.id}
+                    onClick={() =>
+                      store.dispatch(showProduct(product.translateText, "mens"))
+                    }
+                    className="navigation-desktop__sub-list_item"
+                  >
+                    <Link
+                      to={`/mainSide/mens/${product.translateText}`}
+                      className="navigation-desktop__sub-list_link"
+                    >
+                      {product.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+
+            <li className="navigation-desktop__item">
+              <NavLink
+                activeClassName="navigation-desktop__link--active"
+                to="/mainSide/kids"
+                className="navigation-desktop__link"
+                onClick={() => {
+                  dispatch({
+                    type: "RETURN_DEFAULT_SEX"
+                  });
+                }}
+              >
+                dzieci
+              </NavLink>
+              <ul className="navigation-desktop__sub-list">
+                {productsList.map(product => (
+                  <li
+                    key={product.id}
+                    onClick={() =>
+                      store.dispatch(showProduct(product.translateText, "kids"))
+                    }
+                    className="navigation-desktop__sub-list_item"
+                  >
+                    <Link
+                      to={`/mainSide/kids/${product.translateText}`}
+                      className="navigation-desktop__sub-list_link"
+                    >
+                      {product.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li className="navigation-desktop__item">
+              <NavLink
+                to="/mainSide/promotion"
+                className="navigation-desktop__link"
+                activeClassName="navigation-desktop__link--active"
+              >
+                promocje
+              </NavLink>
+            </li>
+          </ul>
         </div>
       ) : (
         <div className={activeNav}>

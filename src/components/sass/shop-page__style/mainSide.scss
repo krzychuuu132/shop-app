@@ -1,38 +1,40 @@
 .header {
   width: 100vw;
 
-  height: 50px;
+
   background-color: white;
   display: flex;
+  flex-direction: column;
   align-items: center;
   overflow: hidden;
   padding: 0px 15px;
-  border-bottom: 2px solid rgb(235, 233, 233);
 
 
 
-  @media (min-width: 1280px) {
-    margin: 10px auto;
-    max-width: 90%;
-    overflow: visible;
 
-  }
 
-  @media (min-width: 1600px) {
-
-    max-width: 70%;
-
-  }
 
   .components {
 
-    width: 100vw;
-    height: 40px;
-    background-color: white;
+    width: 100%;
+    height: 50px;
     display: flex;
     align-items: center;
-    position: relative;
-    padding: 5px 5px;
+    justify-content: flex-end;
+    padding: 10px 20px;
+
+    border-bottom: 2px solid rgb(235, 229, 229);
+
+    &__language {
+      display: flex;
+      margin-right: 45vw;
+
+      &-choice {
+        border: none;
+        font-size: 12px;
+        outline: none;
+      }
+    }
 
     .search-panel {
       display: flex;
@@ -40,12 +42,6 @@
       align-items: center;
       position: relative;
       z-index: 3;
-      padding-top: 5px;
-
-      @media (min-width: 1280px) {
-
-        margin-left: -55px;
-      }
 
 
 
@@ -54,21 +50,15 @@
       &__btn {
         background-color: transparent;
         border: none;
-        font-size: 16px;
+
         outline: none;
 
         cursor: pointer;
-        color: rgb(212, 209, 209);
+        color: black;
+        font-size: 20px;
 
 
-        @media (min-width: 1280px) {
-          transform: rotate(0deg) translateX(0px);
-          transition: transform .2s;
 
-          &:hover {
-            transform: rotate(15deg) translateX(5px);
-          }
-        }
 
       }
 
@@ -176,47 +166,14 @@
       }
     }
 
-    .logo {
-      position: absolute;
-      left: 15%;
-      top: 50%;
-      transform: translateY(-50%);
-      margin-left: 10px;
-      height: 30px;
 
-      @media (min-width: 1280px) {
-        left: 25%;
-      }
-
-      & img {
-        height: 100%;
-      }
-    }
 
     &__menu-type {
       display: none;
     }
 
-    &__logo {
-      position: absolute;
-      left: 1%;
-      top: 5%;
-    }
-
-    .account-options {
-      position: absolute;
-      left: 0%;
-      top: 50%;
-      transform: translateY(-50%);
-      margin-left: 10px;
 
 
 
-      @media (min-width: 1280px) {
-        left: -2%;
-        top: 50%;
-
-      }
-    }
   }
 }

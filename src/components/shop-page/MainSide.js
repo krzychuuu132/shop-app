@@ -53,18 +53,10 @@ const mainSide = () => {
   return (
     <>
       <header className="header">
-        <Navigation />
-
         <div className="components">
-          <div className="search-panel">
-            <button
-              className="search-panel__btn"
-              onClick={() => useSearch(!search)}
-            >
-              <span className="fas fa-search"></span>
-            </button>
-          </div>
-          <div className="search-panel">
+          {/* SEARCH */}
+
+          {/* <div className="search-panel">
             <div
               className={
                 search
@@ -85,9 +77,8 @@ const mainSide = () => {
                 <span className="fas fa-times"></span>
               </button>
             </div>
-          </div>
-
-          <div className="components__menu-type">
+          </div> */}
+          {/*      <div className="components__menu-type">
             <Link to="/mainSide/girls" className="components__menu-type__link">
               Kobiety
             </Link>
@@ -98,8 +89,28 @@ const mainSide = () => {
               dzieci
             </Link>
           </div>
+          */}
+          <div className="components__language">
+            <select value="EN" className="components__language-choice">
+              <option value="EN">EN</option>
+              <option value="PL">PL</option>
+            </select>
+            <select value="USD" className="components__language-choice">
+              <option value="USD">USD</option>
+              <option value="PLN">PLN</option>
+            </select>
+          </div>
           <ShopOptions />
+          <div className="search-panel">
+            <button
+              className="search-panel__btn"
+              onClick={() => useSearch(!search)}
+            >
+              <span className="fas fa-search"></span>
+            </button>
+          </div>
         </div>
+        <Navigation />
       </header>
       <main className="main">
         <Main />

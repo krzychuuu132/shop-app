@@ -34,12 +34,15 @@ const Product = props => {
           onClick={() => handleProductClcik(product.id)}
         />
 
-        <h6 className="product__title">
-          <span> {product.type}</span> - {product.brand}
-        </h6>
-        <p className="product__price"> {product.price},00 zł</p>
-
-        <ProductFavourite product={product} />
+        <h6 className="product__title">{product.type}</h6>
+        <span className="product__rating"></span>
+        <p className="product__price">
+          {" "}
+          {product.price}${" "}
+          <span className="product__promotion">
+            {parseInt(product.price) + 100}$
+          </span>
+        </p>
       </div>
     ));
   };

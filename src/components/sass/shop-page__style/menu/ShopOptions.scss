@@ -1,90 +1,51 @@
 .account-options {
-    width: 180px;
-    display: grid;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    grid-template-columns: repeat(3, 60px);
-    position: relative;
+
+    &__title {
+
+        color: black;
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
 
 
 
     &__link {
         text-decoration: none;
-        color: rgb(236, 230, 230);
-        font-size: 15px;
+        color: black;
+        font-size: 18px;
         text-align: center;
-
-        @media (min-width: 1280px) {
-            transform: translateY(0);
-            transition: all .3s;
-            //color: rgb(73, 70, 70);
-
-            &:hover {
-                transform: translateY(-3px);
-                color: rgb(224, 219, 219);
-            }
-        }
-
-        .options-list,
-        .options-shopping,
-        .options-account {
-            text-align: center;
-            z-index: 1;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
 
 
 
 
-
-
-
-        }
 
 
 
     }
 
-    &__icon {
 
-        font-size: 16px;
-    }
 
-    &__title {
-        font-size: 12px;
-        text-transform: capitalize;
-        padding-top: 2px;
-        letter-spacing: 1px;
-    }
 
-    &--active-list,
-    &--active-shopping,
-    &--active-account {
-        position: absolute;
-        top: 100%;
-        left: -15%;
 
-        opacity: 0;
-        width: 200px;
-        height: 200px;
-        background-color: red;
-        text-align: center;
-        margin: 0 5px;
-        border: 1px solid black;
-        transition: all .5s ease;
-    }
 
-    &--active-shopping {
-        left: 20%;
-    }
-
-    &--active-account {
-        left: 50%;
-    }
 
 }
 
 .options-list {
     position: relative;
     display: block;
-    width: 60px;
+    padding: 0 9px;
+    color: black;
 
     &__counter {
         position: absolute;

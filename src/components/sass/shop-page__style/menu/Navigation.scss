@@ -20,8 +20,6 @@ $default-color: white;
   position: absolute;
   right: 4%;
 
-
-
   @media (min-width: 1280px) {
     display: none;
   }
@@ -83,72 +81,149 @@ $default-color: white;
 
 //div-container od menu hamburger
 .navigation-desktop {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  right: 5%;
-
-  width: 400px;
-  height: 45px;
-  z-index: 2;
-
-  @media (min-width: 1600px) {
-    right: 5%;
-    width: 600px;
+  &__title {
+    text-transform: uppercase;
+    color: rgb(194, 53, 53);
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding-top: 20px;
   }
 
-  &__sex-choice {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-
-  //ul
   &__list {
-    z-index: 5;
-    position: absolute;
-    transform: translateY(0.5px);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    background-image: linear-gradient(rgba(78, 71, 71, 0.801),
-        rgba(26, 26, 24, 0.746));
+    justify-content: space-around;
     list-style: none;
-    visibility: hidden;
-    height: 0;
-    opacity: 0;
-    width: 250px;
   }
 
-
-
-  //li
   &__item {
-    flex-grow: 1;
-    margin: 8px 5px;
+    width: 140px;
+    height: 70px;
+    flex-basis: auto;
+
+    &:hover>.navigation-desktop__sub-list {
+      visibility: visible;
+      opacity: 1;
+    }
+
+
   }
+
+
 
   &__link {
-    text-decoration: none;
+    font-family: "Roboto";
+    text-align: center;
+    display: block;
+    color: black;
     text-transform: uppercase;
-    transform: translateX(400px);
-    letter-spacing: 2px;
-    padding: 10px;
-    transition: 0.3s;
-    position: relative;
-    color: white;
-    font-family: "Roboto Mono", monospace;
-    text-transform: capitalize;
+    text-decoration: none;
     font-size: 13px;
     font-weight: bolder;
-    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    transition: all 0.2s;
+    position: relative;
+
+
+
+    &--active {
+      color: rgb(112, 190, 214);
+    }
+
+
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      //visibility: hidden;
+      width: 0px;
+      height: 0px;
+      opacity: 0;
+
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 9px solid rgb(218, 213, 213);
+      visibility: hidden;
+      transition: all .1s;
+    }
+
+
+
+
+    &:hover::after {
+      visibility: visible;
+      opacity: 1;
+    }
 
     &:hover {
-      transform: translateX(40px);
-      margin-left: 9px;
+      color: rgb(112, 190, 214);
     }
+  }
+
+
+
+
+  &__sub-list {
+    width: 800px;
+    height: 250px;
+    border-top: 2px solid rgb(218, 213, 213);
+    opacity: 0;
+    position: absolute;
+    top: 18.5%;
+    left: 55%;
+    transform: translateX(-50%);
+    transition: all 0.2s;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px;
+    visibility: hidden;
+    z-index: 5;
+    background-color: white;
+
+    grid-template-rows: repeat();
+    list-style: none;
+    -webkit-box-shadow: -5px 4px 15px 0px rgba(209, 209, 209, 1);
+    -moz-box-shadow: -5px 4px 15px 0px rgba(209, 209, 209, 1);
+    box-shadow: -5px 4px 15px 0px rgba(209, 209, 209, 1);
+
+    &_item {
+      display: block;
+      width: 120px;
+
+      margin-top: 20px;
+    }
+
+    &_link {
+      text-decoration: none;
+      text-transform: capitalize;
+      color: black;
+      display: block;
+      text-align: center;
+      font-size: 12px;
+      width: 100%;
+      height: 100%;
+      padding: 5px 15px;
+    }
+
+    &_position {
+      &:nth-of-type(2) {
+        left: 40%;
+      }
+    }
+
+
   }
 }
 

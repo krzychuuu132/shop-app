@@ -3,36 +3,80 @@
 .main {
   min-height: 100vh;
   background-color: white;
-  width: 100%;
+  width: 100vw;
 
-  @media (min-width: 1280px) {
-    max-width: 1100px;
-    margin: 0 auto;
+  &__title {
+    font-family: "roboto";
+    margin-top: 250px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 20px 0;
   }
 
-  @media (min-width: 1600px) {
-    max-width: 1400px;
+  &__categories {
+    margin: 0 auto;
+    width: 700px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+
+    &-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-products {
+      font-family: "roboto";
+      flex-grow: 1;
+      text-transform: capitalize;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+  }
+
+  &__more {
+    padding: 100px 0;
+
+    &-text {
+      font-family: 'Roboto';
+
+      text-align: center;
+      text-transform: uppercase;
+      color: rgb(7, 193, 250);
+      font-weight: bold;
+      position: relative;
+      padding: 5px 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 100px;
+        height: 2px;
+        border-radius: 15px;
+        background-color: rgb(7, 193, 250);
+        transform: translateX(-50%);
+      }
+    }
+
   }
 }
+
 
 :root {
   --btnHeight: 40px;
 }
 
 .slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0 auto;
-  height: 80vh;
-  width: 100%;
+  height: 300px;
+  width: 100vw;
 
-  @media (min-width: 1200px) {
-    height: 80vh;
-  }
-
-  z-index: 1;
-  background-color: teal;
+  background: linear-gradient(to left, #6699ff 1%, #ff99cc 64%);
 
   &__lines {
     display: flex;
@@ -205,6 +249,102 @@
       }
     }
   }
+}
+
+.offer {
+  width: 1100px;
+  height: 250px;
+
+  margin: 0 auto;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+
+
+  &__product {
+
+    flex-basis: calc(1100px / 3);
+    color: white;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      font-family: 'roboto';
+      letter-spacing: 2px;
+      font-size: 22px;
+      text-transform: capitalize;
+
+    }
+
+    &-text {
+      font-size: 12px;
+      width: 75%;
+      padding: 15px 0;
+      margin-bottom: 15px;
+
+      &:nth-child(2) {
+        width: 55%;
+      }
+    }
+
+
+
+    &-price {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 25px;
+      font-weight: normal;
+
+    }
+
+    &-picture {
+      transform: rotate(10deg);
+      position: absolute;
+      right: -2%;
+      bottom: -2%;
+
+      &:nth-of-type(2) {
+        right: 10%;
+        bottom: -15%;
+      }
+
+      &_img {
+        width: 250px;
+        height: 150px;
+        filter: brightness(0.9);
+      }
+
+
+
+    }
+
+
+
+  }
+
+  &__product:nth-child(1) {
+    background-color: #FF6975;
+  }
+
+  &__product:nth-child(2) {
+    background-color: #F6F7F9;
+    color: black;
+
+
+
+  }
+
+  &__product:nth-child(3) {
+    background-color: #C1C8CE;
+    color: rgb(71, 70, 70);
+  }
+
+
+
 }
 
 .footer {

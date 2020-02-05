@@ -271,7 +271,28 @@ const SearchProducts = props => {
 
   return (
     <>
-      <section className="search">
+      <h1 class="main__title">best seller</h1>
+      <div class="main__categories">
+        <ul className="main__categories-list">
+          <li className="main__categories-products">All</li>
+          <li className="main__categories-products">kurtki</li>
+          <li className="main__categories-products">spodnie</li>
+          <li className="main__categories-products">buty</li>
+          <li className="main__categories-products">t-shirty</li>
+          <li className="main__categories-products">płaszcze</li>
+        </ul>
+      </div>
+      <Products />
+      <div className="main__more">
+        <p className="main__more-text">load more</p>
+      </div>
+    </>
+  );
+};
+
+export default SearchProducts;
+
+/*   <section className="search">
         {routes}
         <div className="search__filtr">
           <p className="search__text">Filtr</p>
@@ -354,10 +375,4 @@ const SearchProducts = props => {
             </div>
           </div>
         </div>
-      </section>
-      <Products />
-    </>
-  );
-};
-
-export default SearchProducts;
+      </section> */
