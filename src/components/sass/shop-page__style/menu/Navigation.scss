@@ -143,7 +143,7 @@ $default-color: white;
     &::after {
       content: "";
       position: absolute;
-      bottom: 5%;
+      bottom: 3%;
       left: 50%;
       transform: translateX(-50%);
       //visibility: hidden;
@@ -168,9 +168,9 @@ $default-color: white;
 
     &:hover {
       color: rgb(112, 190, 214);
+      text-decoration: none;
     }
   }
-
 
 
 
@@ -180,7 +180,7 @@ $default-color: white;
     border-top: 2px solid rgb(218, 213, 213);
     opacity: 0;
     position: absolute;
-    top: 18.5%;
+    top: 194px;
     left: 55%;
     transform: translateX(-50%);
     transition: all 0.2s;
@@ -192,7 +192,7 @@ $default-color: white;
     z-index: 5;
     background-color: white;
 
-    grid-template-rows: repeat();
+
     list-style: none;
     -webkit-box-shadow: -5px 4px 15px 0px rgba(209, 209, 209, 1);
     -moz-box-shadow: -5px 4px 15px 0px rgba(209, 209, 209, 1);

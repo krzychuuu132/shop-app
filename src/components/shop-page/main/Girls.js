@@ -1,7 +1,16 @@
 import React from "react";
 import Product from "./Product";
+import Main from "./Main";
+import PathInfo from "../sex_categories/pathInfo";
+import Product_filters from "../sex_categories/Product_filters";
+
 const Girls = () => {
-  return <Product type={"girls"} />;
+  return (
+    <>
+      <PathInfo />
+      <Product_filters />
+    </>
+  );
 };
 
 export default Girls;

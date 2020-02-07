@@ -1,5 +1,11 @@
 @import "./variables";
 
+:root {
+  --btnHeight: 40px;
+}
+
+
+
 .main {
   min-height: 100vh;
   background-color: white;
@@ -7,7 +13,7 @@
 
   &__title {
     font-family: "roboto";
-    margin-top: 250px;
+    margin-top: 50px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -17,9 +23,10 @@
   &__categories {
     margin: 0 auto;
     width: 700px;
-    height: 70px;
+    height: 30px;
     text-align: center;
-    line-height: 70px;
+    line-height: 30px;
+    margin-bottom: 20px;
 
     &-list {
       list-style: none;
@@ -29,242 +36,126 @@
     }
 
     &-products {
-      font-family: "roboto";
       flex-grow: 1;
+    }
+
+    &-link {
+      font-family: "roboto";
+      color: black;
       text-transform: capitalize;
       font-weight: bold;
       font-size: 13px;
-    }
-
-  }
-
-  &__more {
-    padding: 100px 0;
-
-    &-text {
-      font-family: 'Roboto';
-
-      text-align: center;
-      text-transform: uppercase;
-      color: rgb(7, 193, 250);
-      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
       position: relative;
       padding: 5px 0;
+      display: block;
+      width: 100%;
+      height: 100%;
 
-      &::after {
+      &:after {
         content: "";
         position: absolute;
         bottom: 0;
         left: 50%;
-        width: 100px;
-        height: 2px;
-        border-radius: 15px;
-        background-color: rgb(7, 193, 250);
         transform: translateX(-50%);
+        width: 13px;
+        height: 2.5px;
+        border-radius: 5px;
+        background-color: #6699ff;
+        opacity: 0;
+        transition: all 0.2s;
+      }
+
+      &:hover {
+        color: #6699ff;
+        text-decoration: none;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+
+      &--active {
+        color: #6699ff;
       }
     }
-
   }
+
+
 }
 
-
-:root {
-  --btnHeight: 40px;
+.slide {
+  z-index: 0;
 }
 
 .slider {
-  height: 300px;
+  height: 500px;
   width: 100vw;
-
+  position: relative;
   background: linear-gradient(to left, #6699ff 1%, #ff99cc 64%);
 
-  &__lines {
-    display: flex;
+  &__second {
+    height: 500px;
+    width: 100vw;
+    position: relative;
+    background: linear-gradient(to bottom right, #0033cc 23%, #ff99cc 85%);
 
+  }
+
+  &__third {
+    height: 500px;
+    width: 100vw;
+    position: relative;
+    background: linear-gradient(to bottom left, #0033cc -2%, #ff99cc 76%);
+  }
+
+  &__element {
     position: absolute;
-    bottom: 10%;
+    bottom: 0%;
     left: 50%;
-    transform: translateX(-50%);
-  }
+    transform: rotate(5deg);
 
-  &__line {
-    width: 15px;
-    height: 15px;
-    background-color: transparent;
-    border: 1px solid white;
-    flex-grow: 1;
-    margin: 0 9px;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-
-  &__line--active {
-    transition: 0.4s;
-    background-color: white;
-    transform: translateY(-2px);
-  }
-
-  &__img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    filter: brightness(0.4);
-
-    @media (min-width: 1280px) {
-      filter: brightness(0.4);
-    }
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 250px;
-    position: absolute;
-    top: 20%;
-    left: 5%;
-    visibility: hidden;
-    z-index: 2;
-    padding: 13px;
-
-    @media (min-width: 1024px) {
-      width: 400px;
-      padding: 30px 5px;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      left: 0%;
-      top: 0%;
-      z-index: -1;
-
-      background-color: rgba(0, 0, 0, 0.527);
-    }
   }
 
   &__title {
-    text-transform: uppercase;
-
+    font-family: "roboto";
     color: white;
-    letter-spacing: 3px;
-    font-size: 10px;
-    opacity: 1;
-    text-transform: uppercase;
-    visibility: hidden;
-    z-index: 1;
-    transform: translateY(-50px);
-
-    @media (min-width: 1024px) {
-      font-size: 12px;
-    }
+    text-transform: capitalize;
+    position: absolute;
+    top: 30%;
+    left: 20%;
   }
 
   &__text {
-    margin: 10px auto;
-
+    font-family: "roboto";
+    color: white;
     text-transform: capitalize;
-    font-size: 20px;
-    visibility: hidden;
-    transform: translateX(-90px);
-    color: white;
-    text-align: center;
-
-    @media (min-width: 1024px) {
-      font-size: 24px;
-    }
-  }
-
-  &__btn {
-    padding: 0 10px;
-
-    margin-top: 15px;
-    height: var(--btnHeight);
-    text-transform: uppercase;
-    text-align: center;
-    line-height: var(--btnHeight);
-    opacity: 0;
-    border: none;
-    outline: none;
-    font-weight: bold;
-    letter-spacing: 1px;
-    background-color: tomato;
-    color: white;
-    transform: translateY(90px);
+    position: absolute;
     font-size: 12px;
+    width: 400px;
 
-    @media (min-width: 1024px) {
-      padding: 0 20px;
-    }
-
-    & .fas {
-      font-size: 20px;
-      color: black;
-    }
+    top: 40%;
+    left: 20%;
   }
 
-  &__icon-left {
-    position: absolute;
-    bottom: 5%;
-    left: 2.5%;
-    transform: translateY(-50%);
-    color: tomato;
-    cursor: pointer;
-
-    @media (min-width: 1024px) {
-      font-size: 18px;
-    }
-
-    @media (min-width: 1280px) {
-      transition: 0.3s;
-
-      &:hover {
-        color: red;
-      }
-    }
-  }
-
-  &__icon-right {
-    position: absolute;
-    bottom: 5%;
-    right: 2.5%;
-    transform: translateY(-50%);
-    color: tomato;
-    cursor: pointer;
-
-    @media (min-width: 1024px) {
-      font-size: 18px;
-    }
-
-    @media (min-width: 1280px) {
-      transition: 0.3s;
-
-      &:hover {
-        color: red;
-      }
-    }
+  &__img {
+    width: 500px;
+    height: 400px;
+    filter: brightness(0.8);
   }
 }
 
 .offer {
   width: 1100px;
   height: 250px;
+  z-index: 2;
+  margin: 0px auto;
 
-  margin: 0 auto;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translateX(-50%);
+  transform: translateY(-50px);
   display: flex;
 
-
   &__product {
-
     flex-basis: calc(1100px / 3);
     color: white;
     padding: 30px;
@@ -274,136 +165,54 @@
     flex-direction: column;
 
     &-title {
-      font-family: 'roboto';
+      font-family: "roboto";
       letter-spacing: 2px;
       font-size: 22px;
       text-transform: capitalize;
-
     }
 
     &-text {
       font-size: 12px;
       width: 75%;
-      padding: 15px 0;
+      padding: 7px 0;
       margin-bottom: 15px;
 
-      &:nth-child(2) {
-        width: 55%;
+      &:nth-child(1) {
+        margin-top: 300px;
       }
     }
-
-
 
     &-price {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 25px;
       font-weight: normal;
-
     }
 
     &-picture {
       transform: rotate(10deg);
       position: absolute;
-      right: -2%;
-      bottom: -2%;
-
-      &:nth-of-type(2) {
-        right: 10%;
-        bottom: -15%;
-      }
+      bottom: 2%;
+      right: 0;
 
       &_img {
         width: 250px;
         height: 150px;
         filter: brightness(0.9);
       }
-
-
-
     }
-
-
-
   }
 
   &__product:nth-child(1) {
-    background-color: #FF6975;
+    background-color: #ff6975;
   }
 
   &__product:nth-child(2) {
-    background-color: #F6F7F9;
+    background-color: #f6f7f9;
     color: black;
-
-
-
   }
 
   &__product:nth-child(3) {
-    background-color: #C1C8CE;
+    background-color: #c1c8ce;
     color: rgb(71, 70, 70);
-  }
-
-
-
-}
-
-.footer {
-  height: 300px;
-  background-color: rgb(70, 70, 70);
-}
-
-.quality {
-  min-height: 150px;
-  border-bottom: 0.1px solid rgb(194, 186, 186);
-  padding: 20px;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(auto-fill, 150px);
-  margin-top: 73vh;
-
-  align-items: center;
-  justify-content: center;
-
-  @media (min-width: 1280px) {
-    margin-top: 73vh;
-  }
-
-  .service {
-    font-size: 13px;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 10px;
-
-    &__options {
-      word-spacing: 3px;
-      text-align: center;
-    }
-
-    &__icon {
-      font-size: 30px;
-      color: rgb(175, 173, 173);
-    }
-
-    &__title {
-      font-weight: bold;
-      padding: 0 3px 0 20px;
-      font-size: 14px;
-    }
-  }
-
-  .service:nth-last-child(1) {
-    grid-column: 1/3;
-  }
-
-  @media (min-width: 490px) {
-    .service:nth-last-child(1) {
-      grid-column: auto;
-    }
-  }
-}
-
-@media (min-width: 930px) {
-  .quality {
-    grid-template-columns: repeat(5, auto);
-    justify-content: space-around;
   }
 }

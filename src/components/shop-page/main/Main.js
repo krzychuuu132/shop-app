@@ -1,12 +1,78 @@
 import React, { useRef, useEffect, useState } from "react";
 import { TweenMax } from "gsap";
 import "../../sass/main/main.scss";
-import img_1 from "../../sass/img/product_offer.png";
+import Carousel from "react-bootstrap/Carousel";
+
+const secondDivStyle = {
+  marginTop: "160px",
+  textAlign: "center",
+  display: "flex",
+  justifyContent: "Space-between"
+};
 
 const Main = () => {
   return (
     <>
-      <div className="slider"></div>
+      <Carousel>
+        <Carousel.Item>
+          <div className="slider">
+            <h3 className="slider__title">First Slide</h3>{" "}
+            <p className="slider__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              posuere eu augue ac gravida. Etiam enim velit, finibus nec aliquam
+              id, porttitor vel metus. Cras lorem turpis, ornare a porttitor ut.
+            </p>
+            <div className="slider__element">
+              <img
+                src="/img/product_offer.png"
+                className="rounded float-left slider__img"
+                alt="..."
+              />
+            </div>
+          </div>
+        </Carousel.Item>
+        <Carousel.Item>
+          <div className="slider__second">
+            <h3 className="slider__title">Second Slide</h3>{" "}
+            <p className="slider__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              posuere eu augue ac gravida. Etiam enim velit, finibus nec aliquam
+              id, porttitor vel metus. Cras lorem turpis, ornare a porttitor ut.
+            </p>
+            <div className="slider__element">
+              <img
+                src="/img/product_offer2.png"
+                className="rounded float-left slider__img"
+                alt="..."
+                style={{ filter: "brightness(0.7)" }}
+              />
+            </div>
+          </div>
+        </Carousel.Item>
+        <Carousel.Item>
+          <div
+            className="slider__third"
+            style={{
+              background:
+                "linear-gradient(to top left, #9966ff 14%, #ff99cc 72%);"
+            }}
+          >
+            <h3 className="slider__title">Third slide</h3>{" "}
+            <p className="slider__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              posuere eu augue ac gravida. Etiam enim velit, finibus nec aliquam
+              id, porttitor vel metus. Cras lorem turpis, ornare a porttitor ut.
+            </p>
+            <div className="slider__element">
+              <img
+                src="/img/product_offer3.png"
+                className="rounded float-left slider__img"
+                alt="..."
+              />
+            </div>
+          </div>
+        </Carousel.Item>
+      </Carousel>
 
       <div className="offer">
         <div className="offer__product">
@@ -24,9 +90,19 @@ const Main = () => {
           </div>
         </div>
         <div className="offer__product">
-          <h1 className="offer__product-title">cap</h1>
-          <span className="offer__product-price">$120</span>
-          <div className="offer__product-picture">
+          <h1 className="offer__product-title" style={secondDivStyle}>
+            cap
+            <span className="offer__product-price">$120</span>
+          </h1>
+
+          <div
+            className="offer__product-picture"
+            style={{
+              top: "5%",
+              left: "50%",
+              transform: "translateX(-50%)"
+            }}
+          >
             <img
               src="/img/product_offer2.png"
               alt="offers"
@@ -37,8 +113,7 @@ const Main = () => {
         <div className="offer__product">
           <h1 className="offer__product-title">t-shirt</h1>
           <p className="offer__product-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-            pulvinar.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
           </p>
           <span className="offer__product-price">$60</span>
           <div className="offer__product-picture">
@@ -50,38 +125,6 @@ const Main = () => {
           </div>
         </div>
       </div>
-      {/*<section className="quality">
-        <div className="service">
-          <p className="service__options">
-            <i className="fas fa-user-shield service__icon"></i>
-            <span className="service__title">SSL</span>Bezpieczne zakupy
-          </p>
-        </div>
-        <div className="service">
-          <p className="service__options">
-            <i className="fas fa-sync service__icon"></i>
-            <span className="service__title">30</span>dni na zwrot towaru
-          </p>
-        </div>
-        <div className="service">
-          <p className="service__options">
-            <i className="fas fa-shuttle-van service__icon"></i>
-            <span className="service__title">Szybka</span>wysyłka
-          </p>
-        </div>
-        <div className="service">
-          <p className="service__options">
-            <i className="fas fa-tag service__icon"></i>
-            <span className="service__title">Sprawdzona </span>jakość
-          </p>
-        </div>
-        <div className="service">
-          <p className="service__options">
-            <i className="fas fa-hand-holding-usd service__icon"></i>
-            <span className="service__title">Korzystne</span>ceny
-          </p>
-        </div>
-  </section>*/}
     </>
   );
 };

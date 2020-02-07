@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../sass/shop-page__style/mainSide.scss";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import ShopOptions from "./menu/ShopOptions";
 import Navigation from "./menu/Navigation";
 import Main from "./main/Main";
@@ -14,6 +14,10 @@ import { getAllProducts } from "../../redux/products/duck/operations";
 // Search-Panel,Products
 
 import SearchProducts from "./main/SearchProducts";
+import Anyone from "./main/Anyone";
+import Girls from "./main/Girls";
+import Mens from "./main/Mens";
+import Kids from "./main/Kids";
 
 const mainSide = () => {
   const products = useSelector(state => state.productsReducer.products);
@@ -30,26 +34,7 @@ const mainSide = () => {
   }, []);
 
   const [search, useSearch] = useState(false);
-  const sexChoice = [
-    {
-      id: 0,
-      type: "dla niej",
-      path: "/mainSide/girls",
-      class: "search__name"
-    },
-    {
-      id: 1,
-      type: "dla niego",
-      path: "/mainSide/mens",
-      class: "search__name"
-    },
-    {
-      id: 2,
-      type: "dla dziecka",
-      path: "/mainSide/kids",
-      class: "search__name"
-    }
-  ];
+
   return (
     <>
       <header className="header">
@@ -92,12 +77,20 @@ const mainSide = () => {
           */}
           <div className="components__language">
             <select value="EN" className="components__language-choice">
-              <option value="EN">EN</option>
-              <option value="PL">PL</option>
+              <option value="EN" className="components__language-option">
+                EN
+              </option>
+              <option value="PL" className="components__language-option">
+                PL
+              </option>
             </select>
             <select value="USD" className="components__language-choice">
-              <option value="USD">USD</option>
-              <option value="PLN">PLN</option>
+              <option value="USD" className="components__language-option">
+                USD
+              </option>
+              <option value="PLN" className="components__language-option">
+                PLN
+              </option>
             </select>
           </div>
           <ShopOptions />
@@ -113,8 +106,10 @@ const mainSide = () => {
         <Navigation />
       </header>
       <main className="main">
-        <Main />
-        <SearchProducts sexChoice={sexChoice} />
+        <Route path="/mainSide/home" component={Anyone}></Route>
+        <Route path="/mainSide/girls" component={Girls}></Route>
+        <Route path="/mainSide/mens" component={Mens}></Route>
+        <Route path="/mainSide/kids" component={Kids}></Route>
       </main>
       <footer className="footer">
         <Footer />

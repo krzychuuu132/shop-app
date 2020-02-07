@@ -35,7 +35,13 @@ const Product = props => {
         />
 
         <h6 className="product__title">{product.type}</h6>
-        <span className="product__rating"></span>
+        <div className="product__rating">
+          <span class="fa fa-star checked product__rating-checked"></span>
+          <span class="fa fa-star checked product__rating-checked"></span>
+          <span class="fa fa-star checked product__rating-checked"></span>
+          <span class="fa fa-star checked product__rating-checked"></span>
+          <span class="fa fa-star checked product__rating-no_checked"></span>
+        </div>
         <p className="product__price">
           {" "}
           {product.price}${" "}
@@ -43,6 +49,12 @@ const Product = props => {
             {parseInt(product.price) + 100}$
           </span>
         </p>
+        <div className="product__options">
+          <ProductFavourite product={product} />
+          <div className="product__options-shopping">
+            <span className="fas fa-shopping-cart products__options-shopping_icon"></span>
+          </div>
+        </div>
       </div>
     ));
   };
@@ -57,6 +69,8 @@ const Product = props => {
         } else if (type === "kids" && sex === "kids") {
           return product;
         } else if (type === "mens" && sex === "mens") {
+          return product;
+        } else {
           return product;
         }
       });

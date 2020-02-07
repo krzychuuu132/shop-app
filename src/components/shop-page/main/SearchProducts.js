@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../../sass/main/SearchProducts.scss";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import store from "../../../redux/store";
 //import store from "../../../redux/store";
@@ -274,17 +274,97 @@ const SearchProducts = props => {
       <h1 class="main__title">best seller</h1>
       <div class="main__categories">
         <ul className="main__categories-list">
-          <li className="main__categories-products">All</li>
-          <li className="main__categories-products">kurtki</li>
-          <li className="main__categories-products">spodnie</li>
-          <li className="main__categories-products">buty</li>
-          <li className="main__categories-products">t-shirty</li>
-          <li className="main__categories-products">płaszcze</li>
+          <li className="main__categories-products">
+            {" "}
+            <Link
+              className="main__categories-link"
+              to="#"
+              onClick={() => {
+                dispatch({
+                  type: "SHOW_ALL_PRODUCTS"
+                });
+              }}
+            >
+              All
+            </Link>
+          </li>
+          <li className="main__categories-products">
+            {" "}
+            <Link
+              className="main__categories-link"
+              to="#"
+              onClick={() => {
+                dispatch({
+                  type: "SHOW_PRODUCT",
+                  product: "kurtka",
+                  sex: ""
+                });
+              }}
+            >
+              kurtki
+            </Link>
+          </li>
+          <li className="main__categories-products">
+            <Link
+              className="main__categories-link"
+              to="#"
+              onClick={() => {
+                dispatch({
+                  type: "SHOW_PRODUCT",
+                  product: "spodnie",
+                  sex: ""
+                });
+              }}
+            >
+              spodnie
+            </Link>
+          </li>
+          <li className="main__categories-products">
+            <Link
+              className="main__categories-link"
+              to="#"
+              onClick={() => {
+                dispatch({
+                  type: "SHOW_PRODUCT",
+                  product: "buty",
+                  sex: ""
+                });
+              }}
+            >
+              buty
+            </Link>
+          </li>
+          <li className="main__categories-products">
+            <Link
+              className="main__categories-link"
+              to="#"
+              onClick={() => {
+                dispatch({
+                  type: "SHOW_PRODUCT",
+                  product: "T-shirt",
+                  sex: ""
+                });
+              }}
+            >
+              t-shirty
+            </Link>
+          </li>
+          <li className="main__categories-products">
+            <Link
+              className="main__categories-link"
+              to="#"
+              onClick={() => {
+                dispatch({
+                  type: "SHOW_PRODUCT",
+                  product: "bluza",
+                  sex: ""
+                });
+              }}
+            >
+              bluzy
+            </Link>
+          </li>
         </ul>
-      </div>
-      <Products />
-      <div className="main__more">
-        <p className="main__more-text">load more</p>
       </div>
     </>
   );

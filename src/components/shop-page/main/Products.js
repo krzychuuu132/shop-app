@@ -3,15 +3,10 @@ import { Route } from "react-router-dom";
 import Girls from "./Girls";
 import Mens from "./Mens";
 import Kids from "./Kids";
+import Anyone from "./Anyone";
 
 const Products = () => {
-  return (
-    <>
-      <Route path="/mainSide/girls" component={Girls}></Route>
-      <Route path="/mainSide/mens" component={Mens}></Route>
-      <Route path="/mainSide/kids" component={Kids}></Route>
-    </>
-  );
+  return <></>;
 };
 
 export default Products;

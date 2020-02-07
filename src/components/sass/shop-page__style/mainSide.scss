@@ -30,8 +30,32 @@
       margin-right: 45vw;
 
       &-choice {
-        border: none;
+        font-family: "roboto";
         font-size: 12px;
+        margin-bottom: 1em;
+        padding: .25em;
+        border: 0;
+        border-bottom: 2px solid lightgray;
+        font-weight: bold;
+        letter-spacing: .15em;
+        border-radius: 0;
+        outline: none;
+        margin: 0 5px;
+
+        &:focus,
+        &:active {
+          outline: 0;
+          border-bottom-color: rgb(246, 168, 168);
+        }
+
+      }
+
+      &-option {
+        border: none;
+
+        padding: 10px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
         outline: none;
       }
     }

@@ -33,6 +33,11 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
         ...state,
         products: state.products.sort((a, b) => a.price - b.price)
       };
+    case types.SHOW_ALL_PRODUCTS:
+      return {
+        ...state,
+        products: INITIAL_PRODUCTS.products.sort()
+      };
     case types.RESET_PRODUCTS:
       return {
         ...state,
@@ -44,6 +49,8 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
         ...state,
         products: INITIAL_PRODUCTS.products.filter(product => {
           if (product.type === action.product && product.sex === action.sex) {
+            return product;
+          } else if (product.type === action.product && action.sex === "") {
             return product;
           }
         })

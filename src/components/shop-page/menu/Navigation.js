@@ -208,7 +208,11 @@ const Navigation = () => {
                 to="/mainSide/home"
                 className="navigation-desktop__link"
                 activeClassName="navigation-desktop__link--active"
-                style={{ "&::after": { display: "none" } }}
+                onClick={() =>
+                  dispatch({
+                    type: "RETURN_DEFAULT_SEX"
+                  })
+                }
               >
                 home
               </NavLink>

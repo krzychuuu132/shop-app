@@ -7,7 +7,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const config = {
-  mode: "production",
+  mode: "development",
   entry: ["babel-polyfill", "./src/components/index.js"],
 
   output: {

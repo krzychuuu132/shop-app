@@ -1,0 +1,20 @@
+.filters {
+    width: 1100px;
+    min-height: 100vh;
+
+    margin: 0 auto;
+    display: flex;
+
+    &__categories {
+        flex-basis: 300px;
+        background-color: rgba(234, 243, 243, 0.794);
+        height: 400px;
+    }
+
+    &__banner {
+        background-color: #6699ff;
+        flex-grow: 1;
+        height: 350px;
+        margin-left: 30px;
+    }
+}

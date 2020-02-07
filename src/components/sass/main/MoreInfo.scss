@@ -1,0 +1,92 @@
+.main {
+    &__more {
+        padding: 100px 0;
+
+
+        &-text {
+            font-family: "Roboto";
+            cursor: pointer;
+            text-align: center;
+            text-transform: uppercase;
+            color: rgb(7, 193, 250);
+            font-weight: bold;
+            position: relative;
+            padding: 5px 0;
+            font-size: 14px;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 100px;
+                height: 2px;
+                border-radius: 15px;
+                background-color: rgb(7, 193, 250);
+                transform: translateX(-50%);
+            }
+        }
+    }
+}
+
+.main__advert {
+    font-family: "roboto";
+    height: 500px;
+    background-color: #6699ff;
+    color: white;
+    padding: 100px 200px;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    &-title {
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        padding: 30px 0;
+
+    }
+
+    &-text {
+        font-size: 13px;
+        padding-bottom: 30px;
+
+    }
+
+    &-img {
+        position: absolute;
+        right: 8%;
+        bottom: 1%;
+        transform: rotate(10deg);
+    }
+
+
+
+    &-link {
+        text-transform: uppercase;
+        font-size: 22px;
+        padding: 3px 0;
+        letter-spacing: 1px;
+        position: relative;
+        margin-top: 50px;
+        cursor: pointer;
+
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70px;
+            height: 2px;
+            border-radius: 5px;
+            background-color: white;
+            transform: translateX(0);
+            transition: .3s;
+        }
+
+        &:hover:after {
+            transform: translateX(53px);
+        }
+    }
+}
