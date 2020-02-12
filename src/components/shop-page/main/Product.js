@@ -27,20 +27,28 @@ const Product = props => {
   const showElements = products => {
     return products.map((product, index) => (
       <div className="product" key={index}>
+        {products[0] === product ? (
+          <div className="product__hot">hot</div>
+        ) : null}
         <img
           alt="product-img"
           src={product.src}
           className="product__picture"
           onClick={() => handleProductClcik(product.id)}
+          style={
+            products[0] === product
+              ? { paddingTop: "5px", marginTop: "0px" }
+              : null
+          }
         />
 
         <h6 className="product__title">{product.type}</h6>
         <div className="product__rating">
-          <span class="fa fa-star checked product__rating-checked"></span>
-          <span class="fa fa-star checked product__rating-checked"></span>
-          <span class="fa fa-star checked product__rating-checked"></span>
-          <span class="fa fa-star checked product__rating-checked"></span>
-          <span class="fa fa-star checked product__rating-no_checked"></span>
+          <span className="fa fa-star checked product__rating-checked"></span>
+          <span className="fa fa-star checked product__rating-checked"></span>
+          <span className="fa fa-star checked product__rating-checked"></span>
+          <span className="fa fa-star checked product__rating-checked"></span>
+          <span className="fa fa-star checked product__rating-no_checked"></span>
         </div>
         <p className="product__price">
           {" "}

@@ -36,7 +36,7 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
     case types.SHOW_ALL_PRODUCTS:
       return {
         ...state,
-        products: INITIAL_PRODUCTS.products.sort()
+        products: state.products.sort()
       };
     case types.RESET_PRODUCTS:
       return {
@@ -67,6 +67,14 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
           }
         })
       };
+    case types.SHOW_SIZE:
+      return {
+        ...state,
+        products: INITIAL_PRODUCTS.products.filter(
+          product =>
+            product.size === action.size && product.type === action.category
+        )
+      };
     case types.RETURN_DEFAULT:
       return {
         ...state,
@@ -82,7 +90,8 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
       return {
         ...state,
         products: INITIAL_PRODUCTS.products.filter(
-          product => action.price > product.price
+          product =>
+            action.price < product.price && action.category === product.type
         )
       };
     case types.SEARCH_PRODUCT:

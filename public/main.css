@@ -1105,7 +1105,8 @@ body {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 20px 0; }
+    padding: 20px 0;
+    font-size: 35px; }
   .main__categories {
     margin: 0 auto;
     width: 700px;
@@ -1612,14 +1613,25 @@ body {
   border-radius: 5px;
   border: 2px solid #ece6e6;
   transition: all .4s; }
+  .product__hot {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    border-radius: 3px;
+    align-self: start;
+    margin: 6px;
+    background-color: red;
+    color: white; }
   .product__picture {
     height: 170px;
     z-index: 1;
     width: 90%;
     filter: brightness(0.5);
     transition: .3s;
-    padding-top: 15px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    margin-top: 35px; }
   .product__title {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
@@ -1736,21 +1748,6 @@ body {
   font-size: 12px;
   padding: 20px 0;
   background-color: rgba(234, 243, 243, 0.794); }
-
-.filters {
-  width: 1100px;
-  min-height: 100vh;
-  margin: 0 auto;
-  display: flex; }
-  .filters__categories {
-    flex-basis: 300px;
-    background-color: rgba(234, 243, 243, 0.794);
-    height: 400px; }
-  .filters__banner {
-    background-color: #6699ff;
-    flex-grow: 1;
-    height: 350px;
-    margin-left: 30px; }
 
 .main__more {
   padding: 100px 0; }

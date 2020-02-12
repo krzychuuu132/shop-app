@@ -26,7 +26,11 @@ const showProductPrice = price => ({
   type: "SHOW_PRODUCT_PRICE",
   price
 });
-
+const showProductSize = size => ({
+  type: types.SHOW_SIZE,
+  size,
+  category
+});
 export default {
   add,
   reset,
@@ -36,5 +40,6 @@ export default {
   addToList,
   findTheSameProducts,
   showProduct,
-  showProductPrice
+  showProductPrice,
+  showProductSize
 };

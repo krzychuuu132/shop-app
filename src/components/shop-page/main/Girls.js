@@ -8,7 +8,7 @@ const Girls = () => {
   return (
     <>
       <PathInfo />
-      <Product_filters />
+      <Product_filters sex={"girls"} />
     </>
   );
 };

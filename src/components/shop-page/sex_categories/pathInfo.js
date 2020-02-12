@@ -5,7 +5,7 @@ const PathInfo = () => {
   const pageLocation = window.location.pathname;
 
   const space = pageLocation.split();
-  console.log(space);
+  //console.log(space);
   return (
     <section className="section">
       <p className="section__path">{pageLocation.toLowerCase()}</p>

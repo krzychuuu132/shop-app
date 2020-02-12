@@ -60,6 +60,20 @@
     border: 2px solid #ece6e6;
     transition: all .4s;
 
+    &__hot {
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 0px 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        border-radius: 3px;
+        align-self: start;
+        margin: 6px;
+
+
+        background-color: red;
+        color: white;
+    }
 
 
     &__picture {
@@ -68,10 +82,15 @@
         width: 90%;
         filter: brightness(0.5);
         transition: .3s;
-        padding-top: 15px;
+
         margin: 0 auto;
+        margin-top: 35px;
+
 
     }
+
+
+
 
     &__title {
         font-family: Arial, Helvetica, sans-serif;

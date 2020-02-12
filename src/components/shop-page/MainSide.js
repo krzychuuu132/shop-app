@@ -76,21 +76,13 @@ const mainSide = () => {
           </div>
           */}
           <div className="components__language">
-            <select value="EN" className="components__language-choice">
-              <option value="EN" className="components__language-option">
-                EN
-              </option>
-              <option value="PL" className="components__language-option">
-                PL
-              </option>
+            <select className="components__language-choice">
+              <option className="components__language-option">EN</option>
+              <option className="components__language-option">PL</option>
             </select>
-            <select value="USD" className="components__language-choice">
-              <option value="USD" className="components__language-option">
-                USD
-              </option>
-              <option value="PLN" className="components__language-option">
-                PLN
-              </option>
+            <select className="components__language-choice">
+              <option className="components__language-option">USD</option>
+              <option className="components__language-option">PLN</option>
             </select>
           </div>
           <ShopOptions />
