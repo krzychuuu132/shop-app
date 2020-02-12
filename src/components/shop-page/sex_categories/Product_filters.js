@@ -204,7 +204,7 @@ const Product_filters = props => {
         </ul>
       </div>
       <div className="filters__banner">
-        <div className="filters__banner-advert"></div>
+        <div className="filters__banner-advert">
           <h1 className="filters__banner-title">stylish clothes</h1>
           <p className="filters__banner-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
