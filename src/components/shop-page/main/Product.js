@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../sass/main/Product.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import store from "../../../redux/store";
 import ProductFavourite from "./ProductFavourite";
@@ -13,20 +13,25 @@ const Product = props => {
   const products = useSelector(state => state.productsReducer.products);
 
   let history = useHistory();
+  const dispatch = useDispatch();
 
   const handleProductClcik = id => {
     //console.log(id);
     history.push(`/product`);
     window.scrollTo(0, 0);
-
-    store.dispatch({ type: "SHOW_PRODUCT_DETAILS", productID: id });
+    console.log("elooo");
+    dispatch({ type: "SHOW_PRODUCT_DETAILS", productID: id });
 
     useActiveProduct(!activeProduct);
   };
 
   const showElements = products => {
     return products.map((product, index) => (
-      <div className="product" key={index}>
+      <div
+        className="product"
+        key={index}
+        onClick={() => handleProductClcik(product.id)}
+      >
         {products[0] === product ? (
           <div className="product__hot">hot</div>
         ) : null}
@@ -34,7 +39,6 @@ const Product = props => {
           alt="product-img"
           src={product.src}
           className="product__picture"
-          onClick={() => handleProductClcik(product.id)}
           style={
             products[0] === product
               ? { paddingTop: "5px", marginTop: "0px" }
@@ -57,7 +61,10 @@ const Product = props => {
             {parseInt(product.price) + 100}$
           </span>
         </p>
-        <div className="product__options">
+        <div
+          className="product__options"
+          onClick={() => handleProductClcik(product.id)}
+        >
           <ProductFavourite product={product} />
           <div className="product__options-shopping">
             <span className="fas fa-shopping-cart products__options-shopping_icon"></span>

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../../sass/main/SearchProducts.scss";
-import { Route, Link } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import store from "../../../redux/store";
 //import store from "../../../redux/store";
@@ -271,14 +271,15 @@ const SearchProducts = props => {
 
   return (
     <>
-      <h1 class="main__title">best seller</h1>
-      <div class="main__categories">
+      <h1 className="main__title">best seller</h1>
+      <div className="main__categories">
         <ul className="main__categories-list">
           <li className="main__categories-products">
             {" "}
-            <Link
+            <NavLink
               className="main__categories-link"
-              to="#"
+              activeClassName="main__categories-link--active"
+              to="/mainSide/home/All"
               onClick={() => {
                 dispatch({
                   type: "SHOW_ALL_PRODUCTS"
@@ -286,13 +287,14 @@ const SearchProducts = props => {
               }}
             >
               All
-            </Link>
+            </NavLink>
           </li>
           <li className="main__categories-products">
             {" "}
-            <Link
+            <NavLink
               className="main__categories-link"
-              to="#"
+              to="/mainSide/home/kurtki"
+              activeClassName="main__categories-link--active"
               onClick={() => {
                 dispatch({
                   type: "SHOW_PRODUCT",
@@ -302,12 +304,13 @@ const SearchProducts = props => {
               }}
             >
               kurtki
-            </Link>
+            </NavLink>
           </li>
           <li className="main__categories-products">
-            <Link
+            <NavLink
               className="main__categories-link"
-              to="#"
+              activeClassName="main__categories-link--active"
+              to="/mainSide/home/spodnie"
               onClick={() => {
                 dispatch({
                   type: "SHOW_PRODUCT",
@@ -317,12 +320,13 @@ const SearchProducts = props => {
               }}
             >
               spodnie
-            </Link>
+            </NavLink>
           </li>
           <li className="main__categories-products">
-            <Link
+            <NavLink
               className="main__categories-link"
-              to="#"
+              activeClassName="main__categories-link--active"
+              to="/mainSide/home/buty"
               onClick={() => {
                 dispatch({
                   type: "SHOW_PRODUCT",
@@ -332,27 +336,30 @@ const SearchProducts = props => {
               }}
             >
               buty
-            </Link>
+            </NavLink>
           </li>
           <li className="main__categories-products">
-            <Link
+            <NavLink
               className="main__categories-link"
-              to="#"
+              activeClassName="main__categories-link--active"
+              to="/mainSide/home/T-shirty"
               onClick={() => {
                 dispatch({
                   type: "SHOW_PRODUCT",
+
                   product: "T-shirt",
                   sex: ""
                 });
               }}
             >
               t-shirty
-            </Link>
+            </NavLink>
           </li>
           <li className="main__categories-products">
-            <Link
+            <NavLink
               className="main__categories-link"
-              to="#"
+              to="/mainSide/home/bluzy"
+              activeClassName="main__categories-link--active"
               onClick={() => {
                 dispatch({
                   type: "SHOW_PRODUCT",
@@ -362,7 +369,7 @@ const SearchProducts = props => {
               }}
             >
               bluzy
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

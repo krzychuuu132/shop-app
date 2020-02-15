@@ -96,7 +96,8 @@
   height: 500px;
   width: 100vw;
   position: relative;
-  background: linear-gradient(to left, #6699ff 1%, #ff99cc 64%);
+  background: linear-gradient(to left, #3366ff -89%, #ff99cc 107%);
+  display: flex;
 
   &__second {
     height: 500px;
@@ -136,6 +137,7 @@
     text-transform: capitalize;
     position: absolute;
     font-size: 12px;
+    line-height: 20px;
     width: 400px;
 
     top: 40%;
@@ -146,6 +148,38 @@
     width: 500px;
     height: 400px;
     filter: brightness(0.8);
+  }
+
+  &__promotion {
+    font-family: "roboto";
+    position: absolute;
+    top: 60%;
+    left: 20%;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 35px;
+      height: 3px;
+      border-radius: 15px;
+      background-color: white;
+      transform: translateX(0px);
+      transition: all .3s ease-in-out;
+    }
+
+    &:hover::after {
+      transform: translateX(60px);
+    }
   }
 }
 

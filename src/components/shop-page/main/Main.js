@@ -16,7 +16,7 @@ const Main = () => {
       <Carousel>
         <Carousel.Item>
           <div className="slider">
-            <h3 className="slider__title">First Slide</h3>{" "}
+            <h3 className="slider__title">polo slim</h3>{" "}
             <p className="slider__text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               posuere eu augue ac gravida. Etiam enim velit, finibus nec aliquam
@@ -29,17 +29,21 @@ const Main = () => {
                 alt="..."
               />
             </div>
+            <button className="slider__promotion">kup teraz</button>
           </div>
         </Carousel.Item>
         <Carousel.Item>
           <div className="slider__second">
-            <h3 className="slider__title">Second Slide</h3>{" "}
+            <h3 className="slider__title">Cap</h3>{" "}
             <p className="slider__text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               posuere eu augue ac gravida. Etiam enim velit, finibus nec aliquam
               id, porttitor vel metus. Cras lorem turpis, ornare a porttitor ut.
             </p>
-            <div className="slider__element">
+            <div
+              className="slider__element"
+              style={{ top: "5%", transform: "rotate(-5deg)" }}
+            >
               <img
                 src="/img/product_offer2.png"
                 className="rounded float-left slider__img"
@@ -50,14 +54,8 @@ const Main = () => {
           </div>
         </Carousel.Item>
         <Carousel.Item>
-          <div
-            className="slider__third"
-            style={{
-              background:
-                "linear-gradient(to top left, #9966ff 14%, #ff99cc 72%);"
-            }}
-          >
-            <h3 className="slider__title">Third slide</h3>{" "}
+          <div className="slider__third">
+            <h3 className="slider__title">T-shirt regular</h3>{" "}
             <p className="slider__text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               posuere eu augue ac gravida. Etiam enim velit, finibus nec aliquam

@@ -36,7 +36,7 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
     case types.SHOW_ALL_PRODUCTS:
       return {
         ...state,
-        products: state.products.sort()
+        products: INITIAL_PRODUCTS.products.sort()
       };
     case types.RESET_PRODUCTS:
       return {
