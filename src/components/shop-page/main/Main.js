@@ -15,114 +15,41 @@ const Main = () => {
     <>
       <Carousel>
         <Carousel.Item>
-          <div className="slider">
-            <h3 className="slider__title">polo slim</h3>{" "}
-            <p className="slider__text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              posuere eu augue ac gravida. Etiam enim velit, finibus nec aliquam
-              id, porttitor vel metus. Cras lorem turpis, ornare a porttitor ut.
-            </p>
-            <div className="slider__element">
-              <img
-                src="/img/product_offer.png"
-                className="rounded float-left slider__img"
-                alt="..."
-              />
-            </div>
-            <button className="slider__promotion">kup teraz</button>
-          </div>
+          <img
+            className="slider-img"
+            src="/img/product_offer3.png"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>polo slim</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <div className="slider__second">
-            <h3 className="slider__title">Cap</h3>{" "}
-            <p className="slider__text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              posuere eu augue ac gravida. Etiam enim velit, finibus nec aliquam
-              id, porttitor vel metus. Cras lorem turpis, ornare a porttitor ut.
-            </p>
-            <div
-              className="slider__element"
-              style={{ top: "5%", transform: "rotate(-5deg)" }}
-            >
-              <img
-                src="/img/product_offer2.png"
-                className="rounded float-left slider__img"
-                alt="..."
-                style={{ filter: "brightness(0.7)" }}
-              />
-            </div>
-          </div>
+          <img
+            className="slider-img"
+            src="/img/product_offer2.png"
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+            <h3>Cap</h3>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <div className="slider__third">
-            <h3 className="slider__title">T-shirt regular</h3>{" "}
-            <p className="slider__text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              posuere eu augue ac gravida. Etiam enim velit, finibus nec aliquam
-              id, porttitor vel metus. Cras lorem turpis, ornare a porttitor ut.
-            </p>
-            <div className="slider__element">
-              <img
-                src="/img/product_offer3.png"
-                className="rounded float-left slider__img"
-                alt="..."
-              />
-            </div>
-          </div>
+          <img
+            className="slider-img"
+            src="/img/product_offer.png"
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+            <h3>T-shirt regular</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-
-      <div className="offer">
-        <div className="offer__product">
-          <h1 className="offer__product-title">polo</h1>
-          <p className="offer__product-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-          <span className="offer__product-price">$45</span>
-          <div className="offer__product-picture">
-            <img
-              src="/img/product_offer.png"
-              alt="offers"
-              className="offer__product-picture_img"
-            />
-          </div>
-        </div>
-        <div className="offer__product">
-          <h1 className="offer__product-title" style={secondDivStyle}>
-            cap
-            <span className="offer__product-price">$120</span>
-          </h1>
-
-          <div
-            className="offer__product-picture"
-            style={{
-              top: "5%",
-              left: "50%",
-              transform: "translateX(-50%)"
-            }}
-          >
-            <img
-              src="/img/product_offer2.png"
-              alt="offers"
-              className="offer__product-picture_img"
-            />
-          </div>
-        </div>
-        <div className="offer__product">
-          <h1 className="offer__product-title">t-shirt</h1>
-          <p className="offer__product-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-          </p>
-          <span className="offer__product-price">$60</span>
-          <div className="offer__product-picture">
-            <img
-              src="/img/product_offer3.png"
-              alt="offers"
-              className="offer__product-picture_img"
-            />
-          </div>
-        </div>
-      </div>
     </>
   );
 };

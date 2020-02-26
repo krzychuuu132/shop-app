@@ -491,3 +491,32 @@
 
     }
 }
+
+.search-pannel {
+    transform: translateY(-140%);
+    width: auto;
+    transition: all .2s;
+
+    @media(max-width:990px) {
+        position: absolute;
+        top: .5%;
+        left: .5%;
+        width: 80%;
+        z-index: 5;
+
+    }
+
+    @media(max-width:600px) {}
+
+    &--active {
+        transform: translateY(0);
+    }
+
+    @media(max-width:990px) {
+        &--active+.account-options>.account-options__link {
+            visibility: hidden;
+        }
+
+    }
+
+}

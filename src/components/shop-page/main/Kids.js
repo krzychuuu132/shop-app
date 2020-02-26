@@ -6,7 +6,6 @@ import Product_filters from "../sex_categories/Product_filters";
 const Kids = () => {
   return (
     <>
-      <PathInfo />
       <Product_filters sex={"kids"} />
     </>
   );

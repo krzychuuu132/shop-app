@@ -86,14 +86,6 @@ const mainSide = () => {
             </select>
           </div>
           <ShopOptions />
-          <div className="search-panel">
-            <button
-              className="search-panel__btn"
-              onClick={() => useSearch(!search)}
-            >
-              <span className="fas fa-search"></span>
-            </button>
-          </div>
         </div>
         <Navigation />
       </header>

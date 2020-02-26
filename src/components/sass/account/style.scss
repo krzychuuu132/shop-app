@@ -4,9 +4,13 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     overflow-x: hidden;
-    font-family: 'Lato', sans-serif;
+    font-family: "roboto";
     min-height: 100vh;
 
 
@@ -15,16 +19,11 @@ body {
 
     align-items: center;
 
-    @media (min-width: 1280px) {
 
+}
 
+#root {
+    overflow: hidden;
+    min-height: 100vh;
 
-
-
-
-        .container {
-            //background-color: #e3e3e3
-        }
-
-    }
 }

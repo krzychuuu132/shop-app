@@ -13,28 +13,28 @@ const OrderedProduct = () => {
     type: "CLEAR_SHOP"
   });
   return (
-    <div className="ordered-product">
-      <div className="ordered-product__protect">
-        <h2 className="ordered-product__protect-title"> Bezpieczne zakupy</h2>
+    <>
+      <div className="user-info">
+        <h1 className="user-info__title">urban city</h1>
+        <Steps />
       </div>
-      <Steps />
-      <div className="ordered-product__ready">
-        Dziękuję za zamówienie produktu w moim sklepie{" "}
-        <span className="far fa-smile-beam"></span>
-        <span className="fas fa-clipboard-check ordered-product__ready-icon"></span>
+      <div className="ordered-product">
+        <div className="ordered-product__ready">
+          Dziękuję za zamówienie produktu w moim sklepie{" "}
+          <span className="fas fa-clipboard-check ordered-product__ready-icon"></span>
+          <button
+            className="ordered-product__back"
+            onClick={() => {
+              store.dispatch(clearShop());
+              history.push("/mainSide/home/All");
+            }}
+          >
+            <span className="far fas fa-chevron-left ordered-product__back-icon"></span>
+            Powrót do strony głównej
+          </button>
+        </div>
       </div>
-
-      <button
-        className="ordered-product__go-main-side"
-        onClick={() => {
-          store.dispatch(clearShop());
-          history.push("/mainSide/girls");
-        }}
-      >
-        <span className="far fa-arrow-alt-circle-left ordered-product__go-back-icon"></span>
-        Powrót do strony głównej
-      </button>
-    </div>
+    </>
   );
 };
 

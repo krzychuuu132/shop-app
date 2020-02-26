@@ -75,6 +75,15 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
             product.size === action.size && product.type === action.category
         )
       };
+
+    case types.SHOW_COLOR:
+      return {
+        ...state,
+        products: INITIAL_PRODUCTS.products.filter(
+          product =>
+            product.color === action.color && product.type === action.category
+        )
+      };
     case types.RETURN_DEFAULT:
       return {
         ...state,
@@ -89,10 +98,14 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
     case types.SHOW_PRODUCT_PRICE:
       return {
         ...state,
-        products: INITIAL_PRODUCTS.products.filter(
-          product =>
-            action.price < product.price && action.category === product.type
-        )
+        products: INITIAL_PRODUCTS.products.filter(product => {
+          if (
+            parseInt(product.price) < action.price &&
+            product.type === action.category
+          ) {
+            return product;
+          } else null;
+        })
       };
     case types.SEARCH_PRODUCT:
       return {

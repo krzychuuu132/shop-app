@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { NavLink, Link, Switch, Route } from "react-router-dom";
 import { TweenMax } from "gsap";
 import "../../sass/shop-page__style/menu/Navigation.scss";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 import Mans from "./Mans";
 import Girls from "./Girls";
@@ -120,41 +121,6 @@ const Navigation = () => {
       id: 4,
       text: "spodnie",
       translateText: "spodnie"
-    },
-    {
-      id: 45,
-      text: "płaszcze",
-      translateText: "płaszcze"
-    },
-    {
-      id: 6,
-      text: "kurtki puchowe",
-      translateText: "kurtki puchowe"
-    },
-    {
-      id: 7,
-      text: "marynarki",
-      translateText: "marynarki"
-    },
-    {
-      id: 8,
-      text: "sukienki",
-      translateText: "sukienki"
-    },
-    {
-      id: 9,
-      text: "kombinezony",
-      translateText: "kombinezony"
-    },
-    {
-      id: 10,
-      text: "torby",
-      translateText: "torby"
-    },
-    {
-      id: 11,
-      text: "akcesoria",
-      translateText: "akcesoria"
     }
   ];
 
@@ -166,10 +132,10 @@ const Navigation = () => {
   const activeSpan = change ? "hamburger--active hamburger" : "hamburger";
   const activeNav = change ? "navigation--active navigation" : "navigation";
 
-  const desktopViewport = window.matchMedia(" (min-width:1280px)");
+  const desktopViewport = window.matchMedia(" (min-width:990px)");
 
   useEffect(() => {
-    window.innerWidth >= 1280
+    window.innerWidth >= 990
       ? useDesktopVersion(true)
       : useDesktopVersion(false);
   });
@@ -205,7 +171,7 @@ const Navigation = () => {
           <ul className="navigation-desktop__list">
             <li className="navigation-desktop__item">
               <NavLink
-                to="/mainSide/home"
+                to="/mainSide/home/All"
                 className="navigation-desktop__link"
                 activeClassName="navigation-desktop__link--active"
                 onClick={() =>
@@ -220,11 +186,13 @@ const Navigation = () => {
             <li className="navigation-desktop__item">
               <NavLink
                 activeClassName="navigation-desktop__link--active"
-                to="/mainSide/girls"
+                to="/mainSide/girls/buty"
                 className="navigation-desktop__link"
                 onClick={() =>
                   dispatch({
-                    type: "RETURN_DEFAULT_SEX"
+                    type: "SHOW_PRODUCT",
+                    product: "buty",
+                    sex: "girls"
                   })
                 }
               >
@@ -255,13 +223,15 @@ const Navigation = () => {
             <li className="navigation-desktop__item">
               <NavLink
                 activeClassName="navigation-desktop__link--active"
-                to="/mainSide/mens"
+                to="/mainSide/mens/buty"
                 className="navigation-desktop__link"
-                onClick={() => {
+                onClick={() =>
                   dispatch({
-                    type: "RETURN_DEFAULT_SEX"
-                  });
-                }}
+                    type: "SHOW_PRODUCT",
+                    product: "buty",
+                    sex: "mens"
+                  })
+                }
               >
                 Mężczyźni
               </NavLink>
@@ -288,13 +258,15 @@ const Navigation = () => {
             <li className="navigation-desktop__item">
               <NavLink
                 activeClassName="navigation-desktop__link--active"
-                to="/mainSide/kids"
+                to="/mainSide/kids/buty"
                 className="navigation-desktop__link"
-                onClick={() => {
+                onClick={() =>
                   dispatch({
-                    type: "RETURN_DEFAULT_SEX"
-                  });
-                }}
+                    type: "SHOW_PRODUCT",
+                    product: "buty",
+                    sex: "kids"
+                  })
+                }
               >
                 dzieci
               </NavLink>
@@ -319,9 +291,10 @@ const Navigation = () => {
             </li>
             <li className="navigation-desktop__item">
               <NavLink
-                to="/mainSide/promotion"
+                to="promotion"
                 className="navigation-desktop__link"
                 activeClassName="navigation-desktop__link--active"
+                onClick={() => window.scrollTo(0, 700)}
               >
                 promocje
               </NavLink>
@@ -330,6 +303,76 @@ const Navigation = () => {
         </div>
       ) : (
         <div className={activeNav}>
+          <div className="navigation__sex-choice">
+            <ul className="navigation__sex-list">
+              <li className="navigation__sex-item">
+                <NavLink
+                  to="/mainSide/home/All"
+                  className="navigation__sex-link"
+                  activeClassName="navigation__sex-link--active"
+                  onClick={() =>
+                    dispatch({
+                      type: "RETURN_DEFAULT_SEX"
+                    })
+                  }
+                >
+                  home
+                </NavLink>
+              </li>
+              <li className="navigation__sex-item">
+                <NavLink
+                  to="/mainSide/girls"
+                  className="navigation__sex-link"
+                  activeClassName="navigation__sex-link--active"
+                  onClick={() =>
+                    dispatch({
+                      type: "RETURN_DEFAULT_SEX"
+                    })
+                  }
+                >
+                  Kobiety
+                </NavLink>
+              </li>
+
+              <li className="navigation__sex-item">
+                <NavLink
+                  to="/mainSide/mens"
+                  className="navigation__sex-link"
+                  activeClassName="navigation__sex-link--active"
+                  onClick={() =>
+                    dispatch({
+                      type: "RETURN_DEFAULT_SEX"
+                    })
+                  }
+                >
+                  Mężczyźni
+                </NavLink>
+              </li>
+              <li className="navigation__sex-item">
+                <NavLink
+                  to="/mainSide/kids"
+                  className="navigation__sex-link"
+                  activeClassName="navigation__sex-link--active"
+                  onClick={() =>
+                    dispatch({
+                      type: "RETURN_DEFAULT_SEX"
+                    })
+                  }
+                >
+                  dzieci
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Navigation;
+
+/*<div className={activeNav}>
           <div className="navigation__sex-choice">
             <ul className="navigation__sex-list">
               <li className="navigation__sex-item">
@@ -454,10 +497,4 @@ const Navigation = () => {
               }}
             />
           </Switch>
-        </div>
-      )}
-    </>
-  );
-};
-
-export default Navigation;
+        </div> */

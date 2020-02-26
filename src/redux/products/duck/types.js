@@ -22,6 +22,7 @@ const SHOW_MARK = "SHOW_MARK";
 const USER_DATA = "USER_DATA";
 const SHOW_ALL_PRODUCTS = "SHOW_ALL_PRODUCTS";
 const SHOW_SIZE = "SHOW_SIZE";
+const SHOW_COLOR = "SHOW_COLOR";
 
 export default {
   ADD_PRODUCT,
@@ -47,5 +48,6 @@ export default {
   SHOW_MARK,
   USER_DATA,
   SHOW_ALL_PRODUCTS,
-  SHOW_SIZE
+  SHOW_SIZE,
+  SHOW_COLOR
 };

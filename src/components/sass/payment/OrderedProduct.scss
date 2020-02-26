@@ -1,4 +1,4 @@
-@import "../main/favPrFunctions";
+@import "../main/variables";
 
 .ordered-product {
     width: 100%;
@@ -7,14 +7,12 @@
     flex-direction: column;
     background-color: white;
 
-    &__protect {
-        @include protect
-    }
+
 
     &__ready {
         margin: 35px auto;
-        width: 500px;
-        background-color: chartreuse;
+        max-width: 350px;
+
         height: 200px;
         text-align: center;
         padding: 25px;
@@ -23,38 +21,46 @@
         position: relative;
         font-weight: bold;
 
-        & span {
-            font-size: 28px;
-            padding: 2px;
-
+        &-icon {
+            color: rgb(28, 226, 28);
+            font-size: 29px;
+            margin-left: 10px;
         }
 
-        & span:nth-child(1) {
-            padding: 5px 0;
-        }
+    }
 
-        & span:nth-child(2) {
-            font-size: 50px;
-        }
+    &__back {
+        background-color: $default-color;
+        margin-top: 20px;
+        height: 40px;
+        border-radius: 30px;
+        border: none;
+        color: white;
+        line-height: 40px;
+        padding: 0px 15px;
+        font-size: 14px;
+        transition: all .3s;
 
         &-icon {
-            position: absolute;
-            left: 50%;
-            top: 65%;
-            transform: translate(-50%, -50%);
+            margin-right: 9px;
+            font-size: 22px;
+            vertical-align: -3px;
+            transform: translateX(0px);
+            transition: .3s all .1s;
+        }
 
+        &:hover {
+            background: darken($color: $default-color, $amount: 10%);
+        }
+
+        &:hover &-icon {
+            transform: translateX(-5px);
         }
     }
 
-    &__go-back-icon {
-        position: absolute;
-        left: 5%;
-        top: 50%;
-        font-size: 32px;
-        transform: translateY(-50%);
-    }
 
-    &__go-main-side {
-        @include order-btn
-    }
+
+
+
+
 }

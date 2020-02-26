@@ -16,19 +16,24 @@ const Product = props => {
   const dispatch = useDispatch();
 
   const handleProductClcik = id => {
-    //console.log(id);
     history.push(`/product`);
     window.scrollTo(0, 0);
-    console.log("elooo");
+
     dispatch({ type: "SHOW_PRODUCT_DETAILS", productID: id });
 
     useActiveProduct(!activeProduct);
   };
 
   const showElements = products => {
+    const location = window.location.pathname;
+
     return products.map((product, index) => (
       <div
-        className="product"
+        className={
+          index > 7 && location === "/mainSide/home/All"
+            ? "product product--hidden"
+            : "product"
+        }
         key={index}
         onClick={() => handleProductClcik(product.id)}
       >
@@ -61,10 +66,7 @@ const Product = props => {
             {parseInt(product.price) + 100}$
           </span>
         </p>
-        <div
-          className="product__options"
-          onClick={() => handleProductClcik(product.id)}
-        >
+        <div className="product__options">
           <ProductFavourite product={product} />
           <div className="product__options-shopping">
             <span className="fas fa-shopping-cart products__options-shopping_icon"></span>

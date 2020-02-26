@@ -35,10 +35,9 @@ class App extends React.Component {
             <Route path="/account" component={Account} />
             <Route path="/product" component={ProductDetails} />
             <Route path="/payment/adres" component={Payment} />
-            <Route path="/payment/płatności" component={Costs} />
-            <Route path="/payment/podsumowanie" component={Summary} />
+            <Route path="/payment/podsumowanie" component={Costs} />
             <Route path="/payment/gotowe" component={OrderedProduct} />
-            "/payment/gotowe"
+
             <Route component={BadPatch} />
           </Switch>
         </div>

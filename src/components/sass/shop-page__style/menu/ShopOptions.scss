@@ -1,19 +1,14 @@
 .account-options {
-    width: 600px;
+    width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
 
-
     &__title {
-
         color: black;
         font-size: 12px;
         margin-top: 3px;
     }
-
-
-
 
     &__link {
         text-decoration: none;
@@ -24,21 +19,15 @@
         display: flex;
         justify-content: center;
         padding: 10px 0;
-
-
-
-
-
-
-
     }
 
+    @media (max-width:950px) {
+        width: 350px;
+    }
 
-
-
-
-
-
+    @media (max-width:490px) {
+        width: 320px;
+    }
 }
 
 .options-list {

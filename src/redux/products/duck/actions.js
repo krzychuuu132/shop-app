@@ -24,12 +24,22 @@ const showProduct = product => ({
 });
 const showProductPrice = price => ({
   type: "SHOW_PRODUCT_PRICE",
-  price
+  price,
+  category
 });
 const showProductSize = size => ({
   type: types.SHOW_SIZE,
   size,
   category
+});
+const showProductColor = color => ({
+  type: "SHOW_COLOR",
+  color,
+  category
+});
+const searchProducts = search => ({
+  type: types.SEARCH_PRODUCT,
+  search
 });
 export default {
   add,
@@ -41,5 +51,7 @@ export default {
   findTheSameProducts,
   showProduct,
   showProductPrice,
-  showProductSize
+  showProductSize,
+  showProductColor,
+  searchProducts
 };
