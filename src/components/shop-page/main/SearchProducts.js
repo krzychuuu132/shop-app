@@ -3,9 +3,7 @@ import "../../sass/main/SearchProducts.scss";
 import { Route, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import store from "../../../redux/store";
-//import store from "../../../redux/store";
 
-import Products from "./Products";
 const SearchProducts = props => {
   // STATE
   const [active, useActive] = useState(false);
@@ -378,88 +376,3 @@ const SearchProducts = props => {
 };
 
 export default SearchProducts;
-
-/*   <section className="search">
-        {routes}
-        <div className="search__filtr">
-          <p className="search__text">Filtr</p>
-          <button
-            className="fas fa-sliders-h"
-            onClick={() => useActive(!active)}
-          ></button>
-        </div>
-
-        <div
-          className={
-            active ? " filter search--active" : "filter search__unactive"
-          }
-          ref={divSearch}
-        >
-          <button
-            onClick={() =>
-              (divSearch.current.className = "filter search__unactive")
-            }
-            className="filter__btn"
-          >
-            <span className="fas fa-arrow-left"></span>
-          </button>
-          <h1 className="filter__title">filtr</h1>
-          <div
-            className="filter__sort filter__element"
-            onClick={() => useActiveCategory("sortuj")}
-          >
-            sortuj
-            <span className="fas fa-angle-right filter__element-icon"></span>
-          </div>
-
-          <div
-            className="filter__bussines filter__element"
-            onClick={() => useActiveCategory("marka")}
-          >
-            marka
-            <span className="fas fa-angle-right filter__element-icon"></span>
-          </div>
-          <div className="filter__price filter__element">
-            cena
-            <input
-              type="range"
-              className="filter__price-input_scope"
-              value={activePrice}
-              onChange={handleChangePrice}
-              min={40}
-              max={512}
-            />
-            <div className="filter__price-scope">40zł-{activePrice}zł</div>
-          </div>
-
-          <div
-            className={
-              activeCategory
-                ? "filter__sort-options filter__sort-options--active"
-                : "filter__sort-options"
-            }
-          >
-            {showComponent(activeCategory)}
-
-            <div
-              className={"filter__exit"}
-              ref={exitElement}
-              onClick={() => {
-                if (exitElement.current.style.backgroundColor === "orange") {
-                  return useActive(!active);
-                } else null;
-              }}
-            >
-              <h3 className="filter__exit-item" ref={exitElementContent}>
-                zamknij
-              </h3>
-              <button className="filter__exit-btn">
-                <span
-                  className="fas fa-times filter__exit-icon"
-                  onClick={() => useActiveCategory(!activeCategory)}
-                ></span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section> */

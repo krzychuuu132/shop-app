@@ -496,6 +496,7 @@
     transform: translateY(-140%);
     width: auto;
     transition: all .2s;
+    //   display: none;
 
     @media(max-width:990px) {
         position: absolute;
@@ -506,10 +507,11 @@
 
     }
 
-    @media(max-width:600px) {}
+
 
     &--active {
         transform: translateY(0);
+        // display: block;
     }
 
     @media(max-width:990px) {

@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
-import { TweenMax } from "gsap";
+import React from "react";
+
 import "../../sass/main/main.scss";
 import Carousel from "react-bootstrap/Carousel";
 
@@ -29,7 +29,8 @@ const Main = () => {
           <img
             className="slider-img"
             src="/img/product_offer2.png"
-            alt="Third slide"
+            alt="Second slide"
+            style={{ transform: "rotate(-9deg)" }}
           />
 
           <Carousel.Caption>
@@ -50,6 +51,57 @@ const Main = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <div className="offer">
+        <div className="offer__product">
+          <h1 className="offer__product-title">polo</h1>
+          <p className="offer__product-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+          <span className="offer__product-price">$45</span>
+          <div className="offer__product-picture">
+            <img
+              src="/img/product_offer.png"
+              alt="offers"
+              className="offer__product-picture_img"
+            />
+          </div>
+        </div>
+        <div className="offer__product">
+          <h1 className="offer__product-title" style={secondDivStyle}>
+            cap
+            <span className="offer__product-price">$120</span>
+          </h1>
+
+          <div
+            className="offer__product-picture"
+            style={{
+              top: "5%",
+              left: "50%",
+              transform: "translateX(-50%)"
+            }}
+          >
+            <img
+              src="/img/product_offer2.png"
+              alt="offers"
+              className="offer__product-picture_img"
+            />
+          </div>
+        </div>
+        <div className="offer__product">
+          <h1 className="offer__product-title">t-shirt</h1>
+          <p className="offer__product-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+          </p>
+          <span className="offer__product-price">$60</span>
+          <div className="offer__product-picture">
+            <img
+              src="/img/product_offer3.png"
+              alt="offers"
+              className="offer__product-picture_img"
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

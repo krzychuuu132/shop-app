@@ -40,7 +40,7 @@ const WishList = () => {
   return (
     <div className="wish-list">
       <div className="wish-list__content">
-        <h1 className="wish-list__title"> lista życzeń</h1>
+        <h1 className="wish-list__title"> Ulubione</h1>
       </div>
       {favouriteProducts.length === 0 ? (
         <>

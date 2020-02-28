@@ -4,40 +4,7 @@ import "../../sass/sex_categories/Product_filters.scss";
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ProductFavourite from "../main/ProductFavourite";
-import PathInfo from "./PathInfo";
-
-const showProduct = (product, index, view) => {
-  return (
-    <div
-      className={view === "first" ? "product" : "product product--second_view"}
-      key={index}
-    >
-      <img alt="product-img" src={product.src} className="product__picture" />
-
-      <h6 className="product__title">{product.type}</h6>
-      <div className="product__rating">
-        <span className="fa fa-star checked product__rating-checked"></span>
-        <span className="fa fa-star checked product__rating-checked"></span>
-        <span className="fa fa-star checked product__rating-checked"></span>
-        <span className="fa fa-star checked product__rating-checked"></span>
-        <span className="fa fa-star checked product__rating-no_checked"></span>
-      </div>
-      <p className="product__price">
-        {" "}
-        {product.price}${" "}
-        <span className="product__promotion">
-          {parseInt(product.price) + 100}$
-        </span>
-      </p>
-      <div className="product__options">
-        <ProductFavourite product={product} />
-        <div className="product__options-shopping">
-          <span className="fas fa-shopping-cart products__options-shopping_icon"></span>
-        </div>
-      </div>
-    </div>
-  );
-};
+import PathInfo from "./Path_Info";
 
 const showClothes = (sex, useActiveCategory, dispatch, products_sex) => {
   const productsList = [
@@ -266,6 +233,49 @@ const Product_filters = props => {
     }
   });
 
+  const handleProductClcik = id => {
+    history.push(`/product`);
+    window.scrollTo(0, 0);
+
+    dispatch({ type: "SHOW_PRODUCT_DETAILS", productID: id });
+
+    //useActiveProduct(!activeProduct);
+  };
+  const showProduct = (product, index, view) => {
+    return (
+      <div
+        className={
+          view === "first" ? "product" : "product product--second_view"
+        }
+        key={index}
+        onClick={() => handleProductClcik(product.id)}
+      >
+        <img alt="product-img" src={product.src} className="product__picture" />
+
+        <h6 className="product__title">{product.type}</h6>
+        <div className="product__rating">
+          <span className="fa fa-star checked product__rating-checked"></span>
+          <span className="fa fa-star checked product__rating-checked"></span>
+          <span className="fa fa-star checked product__rating-checked"></span>
+          <span className="fa fa-star checked product__rating-checked"></span>
+          <span className="fa fa-star checked product__rating-no_checked"></span>
+        </div>
+        <p className="product__price">
+          {" "}
+          {product.price}${" "}
+          <span className="product__promotion">
+            {parseInt(product.price) + 100}$
+          </span>
+        </p>
+        <div className="product__options">
+          <ProductFavourite product={product} />
+          <div className="product__options-shopping">
+            <span className="fas fa-shopping-cart products__options-shopping_icon"></span>
+          </div>
+        </div>
+      </div>
+    );
+  };
   const showCategoryProducts = (categoryFilters, sex) => {
     switch (categoryFilters) {
       case "Typ Produktu":

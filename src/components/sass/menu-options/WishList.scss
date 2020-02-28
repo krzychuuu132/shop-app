@@ -1,7 +1,7 @@
 .wish-list {
     width: 100vw;
     min-height: 100vh;
-    background-color: #e3e3e3;
+    background-color: white;
 
     position: relative;
 
@@ -9,18 +9,18 @@
     &__content {
         width: 100vw;
         height: 250px;
-        background-color: white;
+        background-color: #eee;
         position: relative;
 
     }
 
     &__title {
-        font-family: 'Roboto Mono', monospace;
+
         position: absolute;
         left: 5%;
         bottom: 3%;
         font-size: 30px;
-        text-transform: capitalize;
+        text-transform: uppercase;
         padding: 20px;
         word-spacing: 3px;
     }
@@ -29,7 +29,7 @@
         display: flex;
         flex-wrap: wrap;
         padding: 20px;
-        background-color: #e3e3e3;
+
     }
 
     &__nothing {

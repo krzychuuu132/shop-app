@@ -16,9 +16,7 @@ import { Provider } from "react-redux";
 import store from "../redux/store";
 import Payment from "./shop-page/payment/Payment";
 import Costs from "./shop-page/payment/Costs";
-import Summary from "./shop-page/payment/Summary";
 import OrderedProduct from "./shop-page/payment/OrderedProduct";
-import Main from "./shop-page/main/Main";
 
 class App extends React.Component {
   render() {

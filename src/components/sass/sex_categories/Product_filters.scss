@@ -438,22 +438,32 @@ $filters-def-back : rgba(233, 241, 241, 0.794);
 
         & .product-container {
             padding: 0;
-            grid-template-columns: repeat(auto-fill, 250px);
+            grid-template-columns: repeat(auto-fill, 300px);
             gap: 0 15px;
 
             @media (max-width:1160px) {
                 grid-template-columns: repeat(auto-fill, 260px);
+                gap: 0 40px;
             }
 
             @media (max-width:565px) {
-                grid-template-columns: repeat(auto-fill, 400px);
+                grid-template-columns: repeat(auto-fill, 370px);
+                gap: 0 15px;
+            }
+
+            @media (max-width:450px) {
+                grid-template-columns: repeat(auto-fill, 340px);
             }
 
             & .product {
 
 
                 @media (max-width:565px) {
-                    width: 100%;
+                    width: 350px;
+                }
+
+                @media (max-width:450px) {
+                    width: 320px;
                 }
             }
 

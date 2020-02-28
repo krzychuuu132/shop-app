@@ -16,13 +16,14 @@
         padding: 25px 10px;
 
         &-error {
-            display: inline;
-            color: red;
+
+            color: #ff4c4c;
             font-size: 18px;
+            font-weight: bold;
             text-align: center;
             text-transform: capitalize;
-            letter-spacing: 1px;
-            padding-left: 20px;
+
+            line-height: 80px;
 
         }
 

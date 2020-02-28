@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../sass/shop-page__style/menu/ShopOptions.scss";
-
 import { useSelector, useDispatch } from "react-redux";
-import { handleSumMoney } from "../menu-options/ShoppingList";
+
 const ShopOptions = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState(false);
@@ -37,30 +36,32 @@ const ShopOptions = () => {
   };
   return (
     <>
-      <div
-        className={
-          search
-            ? "input-group search-pannel search-pannel--active"
-            : "input-group search-pannel"
-        }
-      >
-        <input
-          type="email"
-          className="form-control"
-          value={searchText}
-          onChange={e => setSearchText(e.target.value)}
-          placeholder="Szukaj marki..."
-        />
+      {window.location.pathname === "/mainSide/home/All" ? (
+        <div
+          className={
+            search
+              ? "input-group search-pannel search-pannel--active"
+              : "input-group search-pannel"
+          }
+        >
+          <input
+            type="email"
+            className="form-control"
+            value={searchText}
+            onChange={e => setSearchText(e.target.value)}
+            placeholder="Szukaj marki..."
+          />
 
-        <div class="input-group-append" id="btn">
-          <button
-            className="btn btn-primary"
-            onClick={() => dispatch(searchProduct(searchText))}
-          >
-            Wyszukaj
-          </button>
+          <div className="input-group-append" id="btn">
+            <button
+              className="btn btn-primary"
+              onClick={() => dispatch(searchProduct(searchText))}
+            >
+              Wyszukaj
+            </button>
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <div className="account-options">
         <Link to="/account" className="account-options__link">
@@ -104,17 +105,5 @@ const ShopOptions = () => {
     //<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
   );
 };
-/**
-    <form>
-                        <h5>Newsletter</h5>
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="your e-mail">
 
-                            <div class="input-group-append" id="btn">
-                                <button class="btn btn-primary">Sign in</button>
-                            </div>
-                        </div>
-
-                    </form>
- */
 export default ShopOptions;

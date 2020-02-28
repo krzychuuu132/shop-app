@@ -181,19 +181,14 @@ const Adres = () => {
   return (
     <>
       <div className="user-info">
-        <h1 className="user-info__title">urban city</h1>
+        <h1 className="user-info__title">urban shop</h1>
         <Steps />
       </div>
 
       <div className="shopping-container">
         <div className="shopping-info">
           <div className="shopping-info__supply">
-            <h1 className="shopping-info__supply-title">
-              Dostawa i płatność{" "}
-              {dataError ? (
-                <p className="adres__location-error">uzupełnij dane!</p>
-              ) : null}
-            </h1>
+            <h1 className="shopping-info__supply-title">Dostawa i płatność </h1>
 
             <p className="shopping-info__supply-info">1. Sposób dostawy</p>
 
@@ -278,6 +273,9 @@ const Adres = () => {
             Przejdź do podsumowania
             <span className="fas fa-chevron-right payment-sum__next-icon"></span>
           </button>
+          {dataError ? (
+            <p className="adres__location-error">uzupełnij dane!</p>
+          ) : null}
         </div>
       </div>
     </>

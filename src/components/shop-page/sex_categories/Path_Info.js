@@ -1,8 +1,7 @@
 import React from "react";
-import "../../sass/sex_categories/pathInfo.scss";
+import "../../sass/sex_categories/Path_Info.scss";
 
 const PathInfo = props => {
-  //console.log(space);
   return (
     <section className="section">
       <p className="section__path">

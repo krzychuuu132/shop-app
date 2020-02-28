@@ -72,7 +72,7 @@ const Costs = () => {
   return (
     <>
       <div className="user-info">
-        <h1 className="user-info__title">urban city</h1>
+        <h1 className="user-info__title">urban shop</h1>
         <Steps />
       </div>
       <div className="confirm-order">

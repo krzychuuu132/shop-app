@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../../sass/main/ProductDetails.scss";
 import ShopOptions from "../menu/ShopOptions";
-import ProductFavourite from "./ProductFavourite";
 import Footer from "./Footer";
 import store from "../../../redux/store";
 import { TweenMax } from "gsap";
@@ -40,7 +39,6 @@ const ProductDetails = () => {
 
   const handleChangeContent = index => {
     setText(index);
-    //setText(text[index]);
   };
 
   return (
@@ -187,7 +185,7 @@ const ProductDetails = () => {
                           let maxCounter = buyShopProduct.find(
                             product => product.counter >= 3
                           );
-                          console.log(maxCounter);
+
                           maxCounter !== undefined
                             ? (maxCounter = "")
                             : store.dispatch({
@@ -202,6 +200,7 @@ const ProductDetails = () => {
                             product: newObject
                           });
                         history.push("/shopping-list/new_product");
+                        window.scrollTo(0, 0);
 
                         TweenMax.fromTo(
                           btnIcon,
