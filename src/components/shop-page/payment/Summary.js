@@ -44,7 +44,10 @@ const Summary = () => {
         </div>
         <button
           className="shop-summary__order-product_btn"
-          onClick={() => history.push("/payment/gotowe")}
+          onClick={() => {
+            history.push("/payment/gotowe");
+            window.scrollTo(0, 0);
+          }}
         >
           Kupuję i płacę
         </button>

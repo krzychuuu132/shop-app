@@ -34,7 +34,7 @@ class Register extends React.Component {
     if (this.state.createdUser) {
       return (
         <div className="createdUser">
-          <h1 className="createdUser__title">{this.state.createdUser}</h1>
+          <p className="createdUser__title">{this.state.createdUser}</p>
           <Link to="/login" className="createdUser__link">
             Zaloguj sie! <span className="far fa-smile-beam"></span>
           </Link>
@@ -42,70 +42,76 @@ class Register extends React.Component {
       );
     } else {
       return (
-        <div className="register">
-          <div className="register__user">
-            <span className="fas fa-user-plus register__user-icon"></span>
+        <>
+          <div className="user-info">
+            <h1 className="user-info__title">urban shop</h1>
           </div>
-          <form
-            onSubmit={this.handleSubmit}
-            action="/register"
-            className="register__form"
-          >
-            <input
-              id="name"
-              name="name"
-              type="text"
-              placeholder="
+          <div className="register">
+            <div className="register__user">
+              <h1 className="register__title login__title">register</h1>
+              <span className="fas fa-user-plus register__user-icon"></span>
+            </div>
+            <form
+              onSubmit={this.handleSubmit}
+              action="/register"
+              className="register__form"
+            >
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="
                Name"
-              className="register__form-data"
-            />
-            <p className="register__form-errorText">
-              {this.state.type === "name" ? this.state.error : ""}
-            </p>
+                className="register__form-data"
+              />
+              <p className="register__form-errorText">
+                {this.state.type === "name" ? this.state.error : ""}
+              </p>
 
-            <input
-              id="surname"
-              name="surname"
-              type="text"
-              placeholder="Surname"
-              className="register__form-data"
-            />
-            <p className="register__form-errorText">
-              {this.state.type === "surname" ? this.state.error : ""}
-            </p>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Email Address"
-              className="register__form-email register__form-data"
-            />
-            <p className="register__form-errorText">
-              {this.state.type === "email" ? this.state.error : ""}
-            </p>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Password"
-              className="register__form-data"
-            />
-            <p className="register__form-errorText">
-              {this.state.type === "password" ? this.state.error : ""}
-            </p>
-            <input
-              id="repeatPassword"
-              name="repeatPassword"
-              type="password"
-              placeholder="Repeat Password"
-              className="register__form-data"
-            />
-            <p className="register__form-errorText">
-              {this.state.type === "repeatPassword" ? this.state.error : ""}
-            </p>
-            <button className="register__form-btn">register</button>
-          </form>
-        </div>
+              <input
+                id="surname"
+                name="surname"
+                type="text"
+                placeholder="Surname"
+                className="register__form-data"
+              />
+              <p className="register__form-errorText">
+                {this.state.type === "surname" ? this.state.error : ""}
+              </p>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Email Address"
+                className="register__form-email register__form-data"
+              />
+              <p className="register__form-errorText">
+                {this.state.type === "email" ? this.state.error : ""}
+              </p>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Password"
+                className="register__form-data"
+              />
+              <p className="register__form-errorText">
+                {this.state.type === "password" ? this.state.error : ""}
+              </p>
+              <input
+                id="repeatPassword"
+                name="repeatPassword"
+                type="password"
+                placeholder="Repeat Password"
+                className="register__form-data"
+              />
+              <p className="register__form-errorText">
+                {this.state.type === "repeatPassword" ? this.state.error : ""}
+              </p>
+              <button className="register__form-btn">register</button>
+            </form>
+          </div>
+        </>
       );
     }
   }

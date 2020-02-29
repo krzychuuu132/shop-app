@@ -8,22 +8,24 @@ const MoreInfo = () => {
   const [text, setText] = useState(false);
 
   const location = window.location.pathname;
-  const products = document.querySelectorAll(".product");
+
   return (
     <>
       <div className="main__more">
         <p
           className="main__more-text"
           onClick={() => {
+            const products = document.querySelectorAll(".product");
             if (location === "/mainSide/home/All") {
               products.forEach((product, index) => {
                 product.classList.toggle("product--hidden");
               });
               setText(!text);
             }
+            if (text) window.scrollTo(0, 700);
           }}
         >
-          {text ? " load less" : "load more"}
+          {text ? "load less" : "load more"}
         </p>
       </div>
       <div className="main__advert">

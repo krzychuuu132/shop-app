@@ -5,6 +5,9 @@ import "../../sass/account/StartSide.scss";
 const StartSide = () => {
   return (
     <>
+      <div className="user-info">
+        <h1 className="user-info__title">urban shop</h1>
+      </div>
       <div className="start-page">
         <div className="start-page__register">
           <h1 className="start-page__title">nowy użytkownik</h1>

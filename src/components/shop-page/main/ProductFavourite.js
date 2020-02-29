@@ -13,7 +13,8 @@ const ProductFavourite = props => {
           ? "product-favourite product-favourite--active"
           : "product-favourite"
       }
-      onClick={() => {
+      onClick={e => {
+        e.stopPropagation();
         store.dispatch({
           type: "ADD_PRODUCT_TO_FAVOURITE",
           product: props.product

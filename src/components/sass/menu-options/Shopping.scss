@@ -144,6 +144,8 @@ p {
         align-items: center;
         padding-top: 25px;
 
+
+
         &-back {
             border: none;
             background-color: #eee;
@@ -152,6 +154,10 @@ p {
             border-radius: 30px;
             padding: 10px 20px;
             transition: all .3s;
+
+            @media(max-width:460px) {
+                padding: 10px 5px;
+            }
 
             &_icon {
                 font-size: 15px;

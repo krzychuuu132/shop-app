@@ -72,14 +72,6 @@ const showClothes = (sex, change, useActive) => {
 };
 
 const Navigation = () => {
-  let menuList = useRef(null);
-  let menuSecondList = useRef(null);
-  let menuThirdList = useRef(null);
-
-  let firstLink = useRef(null);
-  let secondLink = useRef(null);
-  let thirdLink = useRef(null);
-
   const productsList = [
     {
       id: 0,
@@ -275,10 +267,15 @@ const Navigation = () => {
             </li>
             <li className="navigation-desktop__item">
               <NavLink
-                to="promotion"
+                to="/mainSide/home/All"
                 className="navigation-desktop__link"
                 activeClassName="navigation-desktop__link--active"
-                onClick={() => window.scrollTo(0, 700)}
+                onClick={() => {
+                  dispatch({
+                    type: "RETURN_DEFAULT_SEX"
+                  });
+                  window.scrollTo(0, 700);
+                }}
               >
                 promocje
               </NavLink>

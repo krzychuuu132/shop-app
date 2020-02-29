@@ -11,7 +11,7 @@
 
     &__ready {
         margin: 35px auto;
-        max-width: 350px;
+
 
         height: 200px;
         text-align: center;
@@ -20,6 +20,8 @@
         letter-spacing: 1px;
         position: relative;
         font-weight: bold;
+        display: flex;
+        flex-direction: column;
 
         &-icon {
             color: rgb(28, 226, 28);
@@ -40,6 +42,8 @@
         padding: 0px 15px;
         font-size: 14px;
         transition: all .3s;
+        width: 300px;
+        margin: 30px auto;
 
         &-icon {
             margin-right: 9px;

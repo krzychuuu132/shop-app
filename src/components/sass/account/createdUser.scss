@@ -1,5 +1,7 @@
+@import "../main/variables";
+
 .createdUser {
-    width: 60%;
+    width: auto;
     height: 500px;
     position: absolute;
     top: 50%;
@@ -11,10 +13,10 @@
     &__title {
         color: black;
         word-spacing: 6px;
-        letter-spacing: 1px;
+
         text-align: center;
         text-transform: uppercase;
-        letter-spacing: 1px;
+
         font-size: 22px;
     }
 
@@ -31,7 +33,7 @@
 
 
         &:hover {
-            color: #90C843;
+            color: $default-color;
 
         }
     }

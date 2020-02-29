@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../sass/shop-page__style/mainSide.scss";
 import { Route } from "react-router-dom";
 import ShopOptions from "./menu/ShopOptions";
@@ -18,12 +18,21 @@ import Kids from "./main/Kids";
 
 const mainSide = () => {
   const products = useSelector(state => state.productsReducer.products);
+  const [btn, setBtn] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     products.length >= 50 ? null : dispatch(getAllProducts());
+    window.addEventListener("scroll", GoToStart);
   }, []);
+
+  const GoToStart = e => {
+    if (window.scrollY > 1100) setBtn(true);
+    else setBtn(false);
+  };
+
+  console.log(btn);
 
   return (
     <>
@@ -48,6 +57,11 @@ const mainSide = () => {
         <Route path="/mainSide/girls" component={Girls}></Route>
         <Route path="/mainSide/mens" component={Mens}></Route>
         <Route path="/mainSide/kids" component={Kids}></Route>
+        {btn ? (
+          <button className="main__btn" onClick={() => window.scrollTo(0, 0)}>
+            <span className="fas fa-arrow-up main__btn-icon"></span>
+          </button>
+        ) : null}
       </main>
       <footer className="footer">
         <Footer />

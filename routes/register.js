@@ -36,7 +36,7 @@ router.post("/register", upload.single(), async (req, res) => {
   else if (password !== repeatPassword)
     return res
       .status(200)
-      .json({ text: "hasla musza byc takie same", type: "password" });
+      .json({ text: "passwords must be the same", type: "password" });
   else {
     const user = new User({
       name,
@@ -50,7 +50,7 @@ router.post("/register", upload.single(), async (req, res) => {
       const savedUser = await user.save();
 
       res.status(200).json({
-        createdUser: `Gratulacje ${name}! Udało ci sie stworzyć uzytkownika o mailu: ${email}`
+        createdUser: `Gratulacje ${name}! Udało ci sie stworzyć użytkownika o mailu: ${email}`
       });
     } catch (err) {
       res.status(404).send(err);

@@ -54,7 +54,7 @@ $filters-def-back : rgba(233, 241, 241, 0.794);
             color: black;
             display: flex;
             justify-content: space-between;
-
+            text-transform: capitalize;
             transform: translateX(0px);
             transition: all .2s;
             width: 100%;
