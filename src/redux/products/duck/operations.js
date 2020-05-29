@@ -4,7 +4,7 @@ const INITIAL_PRODUCTS = { products: [] };
 
 const fetchProducts = async () => {
   const response = await fetch(
-    "https://randomapi.com/api/3h7k0ior?key=5I2X-L570-JLRT-6CMV",
+    "https://randomapi.com/api/it5mczgi?key=SSPJ-891M-XX1F-6F21",
     { method: "GET" }
   );
   const json = await response.json();
