@@ -45,6 +45,7 @@ const productsReducer = (state = INITIAL_PRODUCTS, action) => {
       };
 
     case types.SHOW_PRODUCT:
+     
       return {
         ...state,
         products: INITIAL_PRODUCTS.products.filter(product => {

@@ -1,55 +1,21 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef} from "react";
 import "../../sass/main/SearchProducts.scss";
-import { Route, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import store from "../../../redux/store";
 
 const SearchProducts = props => {
   // STATE
-  const [active, useActive] = useState(false);
+
   const [activeCategory, useActiveCategory] = useState("");
   const [activePrice, useAtivePrice] = useState(40);
 
-  const divSearch = useRef(null);
+
   const exitElement = useRef(null);
   const exitElementContent = useRef(null);
 
   const dispatch = useDispatch();
 
-  const routes = props.sexChoice.map(person => (
-    <Route
-      path={person.path}
-      key={person.id}
-      component={() => <h3 className={person.class}>{person.type}</h3>}
-    ></Route>
-  ));
-  const _sizes = [
-    {
-      id: 0,
-      size: "XS",
-      className: "size__element"
-    },
-    {
-      id: 1,
-      size: "S",
-      className: "size__element"
-    },
-    {
-      id: 2,
-      size: "M",
-      className: "size__element"
-    },
-    {
-      id: 3,
-      size: "L",
-      className: "size__element"
-    },
-    {
-      id: 4,
-      size: "XL",
-      className: "size__element"
-    }
-  ];
   const _sortOptions = [
     {
       text: "najniższa cena",
@@ -101,11 +67,54 @@ const SearchProducts = props => {
     }
   ];
 
-  const handleChangePrice = e => {
-    useAtivePrice(e.target.value);
-
-    store.dispatch({ type: "SHOW_PRODUCT_PRICE", price: activePrice });
-  };
+  const productsList = [
+    {
+      item_className:"main__categories-products",
+      className:"main__categories-link",
+      activeClassName:"main__categories-link--active",
+      to:"/mainSide/home/kurtki",
+      type:"SHOW_PRODUCT",
+      product:"kurtka",
+      name:"kurtki"
+    },
+    {
+      item_className:"main__categories-products",
+      className:"main__categories-link",
+      activeClassName:"main__categories-link--active",
+      to:"/mainSide/home/spodnie",
+      type:"SHOW_PRODUCT",
+      product:"spodnie",
+      name:"spodnie"
+    },
+    {
+      item_className:"main__categories-products",
+      className:"main__categories-link",
+      activeClassName:"main__categories-link--active",
+      to:"/mainSide/home/buty",
+      type:"SHOW_PRODUCT",
+      product:"buty",
+      name:"buty"
+    },
+    {
+      item_className:"main__categories-products",
+      className:"main__categories-link",
+      activeClassName:"main__categories-link--active",
+      to:"/mainSide/home/T-shirty",
+      type:"SHOW_PRODUCT",
+      product:"T-shirt",
+      name:"T-shirty"
+    },
+    {
+      item_className:"main__categories-products",
+      className:"main__categories-link",
+      activeClassName:"main__categories-link--active",
+      to:"/mainSide/home/bluzy",
+      type:"SHOW_PRODUCT",
+      product:"bluza",
+      name:"bluzy"
+    
+    }
+  ]
 
   const showComponent = title => {
     const titleOfFilter = (
@@ -120,7 +129,7 @@ const SearchProducts = props => {
     };
 
     const handleCloseOptions = (type, stateTable, useStateTable) => {
-      const copyTable = stateTable.map(element => element);
+      const copyTable = [...stateTable];
 
       const activeElement = copyTable.filter(
         element => (element.className = `${type}__element`)
@@ -189,6 +198,7 @@ const SearchProducts = props => {
       type: "SHOW_MARK",
       product
     });
+    
     const [activeMarkElement, useActiveMarkElement] = useState(_markOptions);
 
     const handleMarkClick = index => {
@@ -211,7 +221,8 @@ const SearchProducts = props => {
       handleCloseOptions("mark", activeMarkElement, useActiveMarkElement);
     };
 
-    if (activeCategory === "sortuj")
+    switch(activeCategory){
+     case "sortuj":
       return (
         <div className="sorting">
           {titleOfFilter}
@@ -223,8 +234,9 @@ const SearchProducts = props => {
           {HandleShowSortOptions()}
         </div>
       );
+      break;
     // SIZE
-    else if (activeCategory === "rozmiar")
+      case "rozmiar":
       return (
         <>
           {titleOfFilter}
@@ -239,8 +251,9 @@ const SearchProducts = props => {
           </div>
         </>
       );
+      break;
     // MARK
-    else if (activeCategory === "marka")
+      case  "marka":
       return (
         <>
           {titleOfFilter}
@@ -263,10 +276,12 @@ const SearchProducts = props => {
           </div>
         </>
       );
+      break;
     // PRICE
-    else if (activeCategory === "cena") return titleOfFilter;
+      case  "cena": return titleOfFilter;
+      break;
   };
-
+  }
   return (
     <>
       <h1 className="main__title">best seller</h1>
@@ -287,88 +302,29 @@ const SearchProducts = props => {
               All
             </NavLink>
           </li>
-          <li className="main__categories-products">
+          {
+            productsList.map((productItem,index)=>(
+          <li className={productItem.item_className} key={index}>
             {" "}
             <NavLink
-              className="main__categories-link"
-              to="/mainSide/home/kurtki"
-              activeClassName="main__categories-link--active"
+              className={productItem.className}
+              to={productItem.to}
+              activeClassName={productItem.activeClassName}
               onClick={() => {
                 dispatch({
-                  type: "SHOW_PRODUCT",
-                  product: "kurtka",
+                  type: productItem.type,
+                  product: productItem.product,
                   sex: ""
                 });
               }}
             >
-              kurtki
+              {productItem.name}
             </NavLink>
           </li>
-          <li className="main__categories-products">
-            <NavLink
-              className="main__categories-link"
-              activeClassName="main__categories-link--active"
-              to="/mainSide/home/spodnie"
-              onClick={() => {
-                dispatch({
-                  type: "SHOW_PRODUCT",
-                  product: "spodnie",
-                  sex: ""
-                });
-              }}
-            >
-              spodnie
-            </NavLink>
-          </li>
-          <li className="main__categories-products">
-            <NavLink
-              className="main__categories-link"
-              activeClassName="main__categories-link--active"
-              to="/mainSide/home/buty"
-              onClick={() => {
-                dispatch({
-                  type: "SHOW_PRODUCT",
-                  product: "buty",
-                  sex: ""
-                });
-              }}
-            >
-              buty
-            </NavLink>
-          </li>
-          <li className="main__categories-products">
-            <NavLink
-              className="main__categories-link"
-              activeClassName="main__categories-link--active"
-              to="/mainSide/home/T-shirty"
-              onClick={() => {
-                dispatch({
-                  type: "SHOW_PRODUCT",
-
-                  product: "T-shirt",
-                  sex: ""
-                });
-              }}
-            >
-              t-shirty
-            </NavLink>
-          </li>
-          <li className="main__categories-products">
-            <NavLink
-              className="main__categories-link"
-              to="/mainSide/home/bluzy"
-              activeClassName="main__categories-link--active"
-              onClick={() => {
-                dispatch({
-                  type: "SHOW_PRODUCT",
-                  product: "bluza",
-                  sex: ""
-                });
-              }}
-            >
-              bluzy
-            </NavLink>
-          </li>
+            ))
+          }
+          
+   
         </ul>
       </div>
     </>

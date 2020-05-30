@@ -2,6 +2,7 @@
   width: 100%;
   height: 100vh;
   background-color: white;
+  margin: 0 auto;
 
   &__title {
     margin: 0 auto;
@@ -16,9 +17,12 @@
 
   //container
   &__info {
-    width: 100%;
-    padding: 15px;
+    max-width: 900px;
+    padding: 35px 25px;
     min-height: 350px;
+    @media (min-width:530px) {
+      padding: 35px 65px;
+    }
 
     //ul
     &-list {
@@ -27,13 +31,24 @@
       align-items: flex-start;
       flex-direction: column;
       list-style: none;
+     
+
+      @media (min-width:530px) {
+        margin-left: 80px;
+      }
 
       //li
       &_element {
         text-transform: uppercase;
         letter-spacing: 1px;
+        margin: 9px 0;
+        
+      }
+
+      //text
+      &_text{
         font-weight: bold;
-        margin: 7px 0;
+        margin-left: 5px;
       }
     }
   }

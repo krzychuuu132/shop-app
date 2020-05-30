@@ -237,7 +237,7 @@
   align-items: center;
   width: 550px;
   height: 650px;
-  background-color: #f3ecec;
+  background-color: white;
   margin: 60px auto;
   border: 1px solid #d6dae3; }
   .login__title {
@@ -293,10 +293,10 @@
 
 .container {
   width: 100vw;
-  min-height: 100vh; }
+  min-height: 100vh;
+  font-family: "roboto"; }
 
 .product-wrapper {
-  font-family: "Lato";
   width: 100%;
   height: 100%;
   background-color: white;
@@ -2949,7 +2949,8 @@ p {
 .account {
   width: 100%;
   height: 100vh;
-  background-color: white; }
+  background-color: white;
+  margin: 0 auto; }
   .account__title {
     margin: 0 auto;
     letter-spacing: 1px;
@@ -2960,20 +2961,28 @@ p {
     border-bottom: 0.05px solid lightgray;
     width: 90%; }
   .account__info {
-    width: 100%;
-    padding: 15px;
+    max-width: 900px;
+    padding: 35px 25px;
     min-height: 350px; }
+    @media (min-width: 530px) {
+      .account__info {
+        padding: 35px 65px; } }
     .account__info-list {
       display: flex;
       justify-content: center;
       align-items: flex-start;
       flex-direction: column;
       list-style: none; }
+      @media (min-width: 530px) {
+        .account__info-list {
+          margin-left: 80px; } }
       .account__info-list_element {
         text-transform: uppercase;
         letter-spacing: 1px;
+        margin: 9px 0; }
+      .account__info-list_text {
         font-weight: bold;
-        margin: 7px 0; }
+        margin-left: 5px; }
 
 .buy-product {
   max-width: 1000px;

@@ -4,7 +4,7 @@ const app = express();
 const register = require("../routes/register");
 const login = require("../routes/login");
 const startSide = require("../routes/start-side");
-const myAccout = require("../routes/myAccout");
+const myAccount = require("../routes/myAccount");
 require("dotenv/config");
 const bodyParser = require("body-parser");
 //mongoose
@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 
 /*"nodemon --exec @babel-node lib/server.js "*/
 app.use("/", register);
-app.use("/", myAccout);
+app.use("/", myAccount);
 app.use("/", login);
 app.use("/", startSide);
 
@@ -28,5 +28,5 @@ moongose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, err => {
 });
 //listening
 app.listen(config.port, () => {
-  console.log("server is listenning...");
+  console.log(`server is listenning on ${config.port}...`);
 });

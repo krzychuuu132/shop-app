@@ -1,7 +1,5 @@
 import React from "react";
 
-const Kids = props => {
-  return <>{props.showClothes()}</>;
-};
+const Kids = ({showClothes}) => showClothes();
 
 export default Kids;

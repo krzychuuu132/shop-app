@@ -72,6 +72,7 @@ const showClothes = (sex, change, useActive) => {
 };
 
 const Navigation = () => {
+  
   const productsList = [
     {
       id: 0,

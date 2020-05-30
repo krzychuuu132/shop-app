@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "../../sass/main/Product.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import store from "../../../redux/store";
+import { useHistory,useLocation } from "react-router-dom";
 import ProductFavourite from "./ProductFavourite";
 
 const Product = props => {
@@ -14,6 +13,7 @@ const Product = props => {
 
   let history = useHistory();
   const dispatch = useDispatch();
+  const location = useLocation().pathname;
 
   const handleProductClcik = id => {
     history.push(`/product`);
@@ -25,7 +25,7 @@ const Product = props => {
   };
 
   const showElements = products => {
-    const location = window.location.pathname;
+    
 
     return products.map((product, index) => (
       <div

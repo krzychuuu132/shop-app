@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../../sass/account/loginStyle.scss";
 import store from "../../../redux/store";
 
@@ -32,12 +32,7 @@ const Login = () => {
             type="submit"
             value="log in"
             className="login__form-submit"
-            onClick={() =>
-              localStorage.setItem(
-                store.dispatch({ type: "USER_DATA", data: UserEmail }),
-                "email"
-              )
-            }
+            onClick={() => localStorage.setItem("email", JSON.stringify(UserEmail))}
           />
         </form>
       </div>

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory,useLocation } from "react-router-dom";
 import "../../sass/main/MoreInfo.scss";
 
 const MoreInfo = () => {
   const history = useHistory();
-
+  const location = useLocation().pathname;
   const [text, setText] = useState(false);
 
-  const location = window.location.pathname;
+ 
 
   return (
     <>
@@ -17,7 +17,7 @@ const MoreInfo = () => {
           onClick={() => {
             const products = document.querySelectorAll(".product");
             if (location === "/mainSide/home/All") {
-              products.forEach((product, index) => {
+              products.forEach((product) => {
                 product.classList.toggle("product--hidden");
               });
               setText(!text);

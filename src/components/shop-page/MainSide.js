@@ -27,12 +27,10 @@ const mainSide = () => {
     window.addEventListener("scroll", GoToStart);
   }, []);
 
-  const GoToStart = e => {
+  const GoToStart = () => {
     if (window.scrollY > 1100) setBtn(true);
     else setBtn(false);
   };
-
-  console.log(btn);
 
   return (
     <>

@@ -41,6 +41,9 @@ const ProductDetails = () => {
     setText(index);
   };
 
+
+
+
   return (
     <>
       <div className="product-wrapper">

@@ -1,7 +1,6 @@
 import React from "react";
 
-const Girls = props => {
-  return <>{props.showClothes()}</>;
-};
+const Girls = ({showClothes}) => showClothes();
+
 
 export default Girls;

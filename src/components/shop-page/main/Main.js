@@ -1,5 +1,4 @@
 import React from "react";
-
 import "../../sass/main/main.scss";
 import Carousel from "react-bootstrap/Carousel";
 
