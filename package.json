@@ -10,7 +10,7 @@
     "dev:server": "webpack-dev-server",
     "dev": "webpack --config ./webpack.config.js",
     "dev:watch": "npm run dev -- --watch",
-    "start": "src/server.js"
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
